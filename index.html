@@ -93,7 +93,7 @@ h2{font-size:clamp(25px,3.2vw,36px);font-weight:900;letter-spacing:-.02em;margin
 .mindset p{font-size:15.5px;color:#ddd8f5;max-width:760px}
 .mindset p+p{margin-top:12px}
 .mindset b{color:#fff}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:680px;margin-top:26px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px}
 .contact-grid a.card{display:grid;gap:4px;text-align:center;justify-items:center;padding:30px}
 .contact-grid .emoji{font-size:28px}
 .contact-grid b{font-size:14.5px}
@@ -104,7 +104,15 @@ footer a{color:#c3b4ff}
 
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+.hero > div{opacity:0;transform:translateY(30px);animation:heroIn .8s cubic-bezier(.2,.7,.3,1) forwards}
+.hero > div:nth-child(2){animation-delay:.15s}
+@keyframes heroIn{to{opacity:1;transform:none}}
+.proj,.card,.skill,.edu .card{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .25s,box-shadow .3s}
+.f-img img{transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.proj:hover .f-img img{transform:scale(1.04)}
+.photo img{transition:transform .5s ease}
+.photo:hover img{transform:scale(1.02) rotate(.5deg)}
+@media(prefers-reduced-motion:reduce){.reveal,.hero > div{opacity:1;transform:none;transition:none;animation:none}}
 
 @media(max-width:860px){
   .hero{grid-template-columns:1fr;gap:32px;padding-top:44px;text-align:center}
@@ -131,6 +139,7 @@ footer a{color:#c3b4ff}
       <button id="btn-en" class="is-active" onclick="setLang('en')">EN</button>
       <button id="btn-de" onclick="setLang('de')">DE</button>
     </div>
+    <a class="btn btn-s nav-cta" href="Amir_Khosravi_CV.pdf" download data-i18n="nav.cv">CV (PDF)</a>
     <a class="btn btn-p nav-cta" href="#contact" data-i18n="nav.cta">Get in touch</a>
   </div>
 </div></nav>
@@ -141,10 +150,7 @@ footer a{color:#c3b4ff}
     <div class="badge"><i></i><span data-i18n="hero.badge">OPEN FOR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN</span></div>
     <h1><span data-i18n="hero.h1a">I like building things</span><br><span data-i18n="hero.h1b">people actually use.</span></h1>
     <p class="sub" data-i18n="hero.sub">Developer & BWL student in Wiesbaden. Building Nelurio — an AI study platform live in beta — plus NexDeutsch, Washhalle and client work like Saad Tattoo. Go · React · AI. Learning by shipping, every day.</p>
-    <div class="cta-row">
-      <a class="btn btn-p" href="#projects" data-i18n="hero.cta1">See my projects</a>
-      <a class="btn btn-s" href="Amir_Khosravi_CV.pdf" download data-i18n="hero.cta2">Download CV (PDF)</a>
-    </div>
+
   </div>
   <div class="photo"><img src="amir.jpg" alt="Amir Khosravi"></div>
 </header>
@@ -275,6 +281,7 @@ const I18N = {
 "nav.about":{"en":"About","de":"Über"},
 "nav.contact":{"en":"Contact","de":"Kontakt"},
 "nav.cta":{"en":"Get in touch","de":"Kontakt aufnehmen"},
+"nav.cv":{"en":"CV (PDF)","de":"Lebenslauf (PDF)"},
 "hero.badge":{"en":"OPEN FOR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN","de":"OFFEN FÜR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN"},
 "hero.h1a":{"en":"I like building things","de":"Ich baue Dinge,"},
 "hero.h1b":{"en":"people actually use.","de":"die wirklich benutzt werden."},
