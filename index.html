@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amir Khosravi — Software Developer & Product Builder</title>
+<meta name="description" content="Amir Khosravi — developer and BWL student in Wiesbaden. Building Nelurio (AI study platform), NexDeutsch and Washhalle. Go · React · AI.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238b6cff'/%3E%3Ctext x='32' y='44' font-size='36' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EA%3C/text%3E%3C/svg%3E">
 <meta property="og:title" content="Amir Khosravi — Software Developer & Product Builder">
-<meta property="og:description" content="Builder of Nelurio — a multilingual AI study platform, live in production. Go · React · AI · DevOps. Open for Werkstudent/Praktikum in Rhein-Main.">
+<meta property="og:description" content="Builder of Nelurio — a multilingual AI study platform, live in production. Go · React · AI · DevOps.">
 <meta property="og:image" content="https://amir.nelurio.duckdns.org/amir.jpg">
-<meta property="og:url" content="https://amir.nelurio.duckdns.org">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Amir Khosravi — developer and BWL student in Wiesbaden. Building Nelurio (AI study platform), NexDeutsch and Washhalle. Go · React · AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -18,7 +19,7 @@
   --txt:#efedff;--mut:#a49fd0;--acc:#8b6cff;--acc2:#4d8df7;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:'Inter','Segoe UI',system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;z-index:-1;background:
   radial-gradient(1100px 700px at 85% -5%, rgba(139,108,255,.16), transparent 60%),
   radial-gradient(900px 650px at -10% 105%, rgba(77,141,247,.12), transparent 55%)}
@@ -26,12 +27,26 @@ body::after{content:'';position:fixed;inset:0;z-index:-1;
   background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
   background-size:54px 54px;mask-image:radial-gradient(75% 65% at 50% 35%, black, transparent)}
 a{color:inherit;text-decoration:none}
+[hidden]{display:none!important}
 .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
 nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(13,11,29,.72);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{font-weight:900;font-size:19px}.logo b{color:var(--acc)}
-nav ul{display:flex;gap:26px;list-style:none;font-size:14px}
-nav ul a{color:var(--mut)}.nav-cta{padding:9px 18px;border-radius:11px;background:linear-gradient(140deg,#8b6cff,#5a34e7);color:#fff!important;font-weight:800}
+nav ul{display:flex;gap:24px;list-style:none;font-size:14px}
+nav ul a{color:var(--mut);transition:color .15s}
+nav ul a:hover{color:#fff}
+.nav-right{display:flex;align-items:center;gap:14px}
+.lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:3px}
+.lang-toggle button{padding:6px 12px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer;transition:all .15s}
+.lang-toggle button.is-active{background:linear-gradient(140deg,#8b6cff,#5a34e7);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:14px;font-weight:800;font-size:14.5px;transition:transform .18s,box-shadow .18s,border-color .18s;border:0;cursor:pointer}
+.btn-p{background:linear-gradient(140deg,#8b6cff,#5a34e7);color:#fff;box-shadow:0 14px 34px rgba(90,52,231,.4)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 20px 44px rgba(90,52,231,.55)}
+.btn-s{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--txt)}
+.btn-s:hover{border-color:var(--acc);transform:translateY(-2px)}
+.nav-cta{padding:10px 20px;font-size:13px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+
 .hero{min-height:88vh;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:60px 0 30px}
 .badge{display:inline-flex;align-items:center;gap:8px;padding:7px 15px;border:1px solid rgba(139,108,255,.4);border-radius:999px;color:#c3b4ff;font-size:12.5px;font-weight:700;margin-bottom:22px;background:rgba(139,108,255,.09)}
 .badge i{width:7px;height:7px;border-radius:50%;background:#5fe1a0;box-shadow:0 0 10px #5fe1a0;animation:pulse 2s infinite}
@@ -41,27 +56,24 @@ h1 span{background:linear-gradient(120deg,#a585ff,#4d8df7);-webkit-background-cl
 .sub{margin:20px 0 28px;font-size:17px;color:var(--mut);max-width:540px}
 .sub b{color:#d9d3ff;font-weight:650}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:14px;font-weight:800;font-size:14.5px;transition:all .18s;border:0}
-.btn-p{background:linear-gradient(140deg,#8b6cff,#5a34e7);color:#fff;box-shadow:0 14px 34px rgba(90,52,231,.4)}
-.btn-p:hover{transform:translateY(-2px)}
-.btn-s{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--txt)}
-.btn-s:hover{border-color:var(--acc)}
 .photo{position:relative;justify-self:center}
 .photo img{width:min(350px,80vw);border-radius:28px;display:block;border:1px solid rgba(255,255,255,.14);
-  box-shadow:0 0 0 1px rgba(255,255,255,.05), 0 40px 90px rgba(80,50,220,.35), 0 0 120px rgba(139,108,255,.14);filter:grayscale(.15) contrast(1.04)}
+  box-shadow:0 0 0 1px rgba(255,255,255,.05), 0 40px 90px rgba(80,50,220,.35), 0 0 120px rgba(139,108,255,.14);
+  filter:grayscale(.15) contrast(1.04)}
 .photo::after{content:'';position:absolute;inset:-2px;border-radius:30px;background:linear-gradient(140deg,rgba(165,133,255,.5),transparent 45%,rgba(77,141,247,.35));z-index:-1}
+
 section{padding:76px 0}
 .sec-kicker{color:#b9a8ff;font-size:12px;font-weight:800;letter-spacing:.35em;text-transform:uppercase;margin-bottom:12px}
 h2{font-size:clamp(25px,3.2vw,36px);font-weight:900;letter-spacing:-.02em;margin-bottom:14px}
 .lead{color:var(--mut);max-width:640px;margin-bottom:38px;font-size:15.5px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;transition:all .2s}
-.card:hover{border-color:rgba(139,108,255,.45);transform:translateY(-3px);box-shadow:0 24px 50px rgba(10,6,40,.4)}
-.proj{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:38px;margin-bottom:26px;position:relative;overflow:hidden;transition:border-color .2s}
-.proj:hover{border-color:rgba(139,108,255,.5)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:hover{border-color:rgba(139,108,255,.45);transform:translateY(-4px);box-shadow:0 24px 50px rgba(10,6,40,.4)}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:38px;margin-bottom:26px;transition:border-color .25s,transform .25s}
+.proj:hover{border-color:rgba(139,108,255,.5);transform:translateY(-3px)}
 .proj.live{background:linear-gradient(150deg,rgba(139,108,255,.1),rgba(77,141,247,.06));border-color:rgba(139,108,255,.3)}
-.flag{position:absolute;top:18px;right:24px;font-size:10.5px;font-weight:900;letter-spacing:.22em;color:#c3b4ff}
 .f-img{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 22px 50px rgba(10,6,40,.5)}
-.f-img img{width:100%;display:block}
+.f-img img{width:100%;display:block;transition:transform .4s ease}
+.proj:hover .f-img img{transform:scale(1.03)}
 .proj h3{font-size:23px;margin-bottom:6px}
 .proj .what{color:var(--mut);font-size:14.5px;margin-bottom:14px}
 .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
@@ -72,7 +84,7 @@ h2{font-size:clamp(25px,3.2vw,36px);font-weight:900;letter-spacing:-.02em;margin
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .skill b{font-size:14.5px;display:block;margin-bottom:5px}
 .skill small{color:var(--mut);font-size:12.5px;line-height:1.55;display:block}
-.edu{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.edu{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .edu .card{text-align:center;padding:24px}
 .edu .card b{display:block;font-size:15px;margin:8px 0 4px}
 .edu .card small{color:var(--mut);font-size:12.5px}
@@ -81,176 +93,171 @@ h2{font-size:clamp(25px,3.2vw,36px);font-weight:900;letter-spacing:-.02em;margin
 .mindset p{font-size:15.5px;color:#ddd8f5;max-width:760px}
 .mindset p+p{margin-top:12px}
 .mindset b{color:#fff}
-.contact-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:620px;margin-top:26px}
-.contact-cards a.card{display:grid;gap:4px;text-align:center;justify-items:center}
-.contact-cards .emoji{font-size:26px}
-.contact-cards b{font-size:14px}
-.contact-cards small{color:var(--mut);font-size:12px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:680px;margin-top:26px}
+.contact-grid a.card{display:grid;gap:4px;text-align:center;justify-items:center;padding:30px}
+.contact-grid .emoji{font-size:28px}
+.contact-grid b{font-size:14.5px}
+.contact-grid small{color:var(--mut);font-size:12.5px}
 footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-size:13px}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 footer a{color:#c3b4ff}
-@media(max-width:1020px){.edu{grid-template-columns:repeat(2,1fr)}}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
 @media(max-width:860px){
   .hero{grid-template-columns:1fr;gap:32px;padding-top:44px;text-align:center}
   .sub{margin-inline:auto}.cta-row{justify-content:center}.photo{order:-1}
-  .grid3,.edu,.contact-cards,.proj{grid-template-columns:1fr}
+  .grid3,.edu,.proj{grid-template-columns:1fr}
   nav ul{display:none}section{padding:60px 0}
   .proj{padding:26px}
+  .contact-grid{grid-template-columns:1fr}
 }
-
-/* Lang toggle */
-[hidden]{display:none!important}
-.lang-toggle{display:flex;gap:4px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:11px;padding:3px}
-.lang-toggle button{padding:7px 13px;border-radius:8px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer}
-.lang-toggle button.is-active{background:linear-gradient(140deg,#8b6cff,#5a34e7);color:#fff}
-[data-lang="de"] [data-en]:not([hidden]){display:none!important}
-[data-lang="en"] [data-de]:not([hidden]){display:none!important}
-
 </style>
 </head>
 <body>
 <nav><div class="wrap">
   <div class="logo">Amir<b>.</b>dev</div>
   <ul>
-    <li><a href="#projects" data-en>Projects</a><a href="#projects" data-de hidden>Projekte</a></li>
-    <li><a href="#skills" data-en>Stack</a><a href="#skills" data-de hidden>Stack</a></li>
-    <li><a href="#certificates" data-en>Certificates</a><a href="#certificates" data-de hidden>Zertifikate</a></li>
-    <li><a href="#about" data-en>About</a><a href="#about" data-de hidden>Über</a></li>
-    <li><a href="#contact" data-en>Contact</a><a href="#contact" data-de hidden>Kontakt</a></li>
+    <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="#skills" data-i18n="nav.stack">Stack</a></li>
+    <li><a href="#certificates" data-i18n="nav.cert">Certificates</a></li>
+    <li><a href="#about" data-i18n="nav.about">About</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
   </ul>
-  <div style="display:flex;align-items:center;gap:14px">
-  <div class="lang-toggle" role="group" aria-label="Language">
-    <button id="btn-en" class="is-active" onclick="setLang('en')">EN</button>
-    <button id="btn-de" onclick="setLang('de')">DE</button>
-  </div>
-  <a class="btn btn-p nav-cta" href="#contact" data-en>Get in touch</a>
-  <a class="btn btn-p nav-cta" href="#contact" data-de hidden> Kontakt</a>
+  <div class="nav-right">
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button id="btn-en" class="is-active" onclick="setLang('en')">EN</button>
+      <button id="btn-de" onclick="setLang('de')">DE</button>
+    </div>
+    <a class="btn btn-p nav-cta" href="#contact" data-i18n="nav.cta">Get in touch</a>
   </div>
 </div></nav>
 
 <div class="wrap">
 <header class="hero" id="top">
   <div>
-    <div class="badge"><i></i><span data-en>OPEN FOR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN</span><span data-de hidden>OFFEN FÜR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN</span></div>
-    <h1><span data-en>I like building things</span><span data-de hidden>Ich baue Dinge,</span><br><span data-en>people actually use.</span><span data-de hidden>die wirklich benutzt werden.</span></h1>
-    <p class="sub"><span data-en>Developer & BWL student in Wiesbaden. Building <b>Nelurio</b> — an AI study platform live in beta — plus <b>NexDeutsch</b>, <b>Washhalle</b> and client work like <b>Saad Tattoo</b>. Go · React · AI. Learning by shipping, every day.</span><span data-de hidden>Entwickler & BWL-Student in Wiesbaden. Baue aktuell <b>Nelurio</b> — eine KI-Lernplattform im Beta — sowie <b>NexDeutsch</b>, <b>Washhalle</b> und Kundenprojekte wie <b>Saad Tattoo</b>. Go · React · KI. Lernen durch Ausliefern, jeden Tag.</span></p>
+    <div class="badge"><i></i><span data-i18n="hero.badge">OPEN FOR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN</span></div>
+    <h1><span data-i18n="hero.h1a">I like building things</span><br><span data-i18n="hero.h1b">people actually use.</span></h1>
+    <p class="sub" data-i18n="hero.sub">Developer & BWL student in Wiesbaden. Building Nelurio — an AI study platform live in beta — plus NexDeutsch, Washhalle and client work like Saad Tattoo. Go · React · AI. Learning by shipping, every day.</p>
     <div class="cta-row">
-      <a class="btn btn-p" href="#projects" data-en>See my projects</a><a class="btn btn-p" href="#projects" data-de hidden>Projekte ansehen</a>
-      <a class="btn btn-s" href="Amir_Khosravi_CV.pdf" download data-en>Download CV (PDF)</a><a class="btn btn-s" href="Amir_Khosravi_CV.pdf" download data-de hidden>Lebenslauf (PDF)</a>
+      <a class="btn btn-p" href="#projects" data-i18n="hero.cta1">See my projects</a>
+      <a class="btn btn-s" href="Amir_Khosravi_CV.pdf" download data-i18n="hero.cta2">Download CV (PDF)</a>
     </div>
   </div>
   <div class="photo"><img src="amir.jpg" alt="Amir Khosravi"></div>
 </header>
 
 <section id="projects">
-  <div class="sec-kicker" data-en>Projects</div><div class="sec-kicker" data-de hidden>Projekte</div>
-  <h2 data-en>Things I've built and shipped</h2><h2 data-de hidden>Dinge, die ich gebaut und ausgeliefert habe</h2>
-  <p class="lead" data-en>Four products across four problem spaces — AI platform, learning, real business operations and client web design. Each one taught me a different layer of the stack.</p><p class="lead" data-de hidden>Vier Produkte in vier Problemwelten — KI-Plattform, Lernen, echte Geschäftsabläufe und Kundendesign. Jedes hat mir eine andere Schicht des Stacks beigebracht.</p>
+  <div class="sec-kicker" data-i18n="proj.kicker">Projects</div>
+  <h2 data-i18n="proj.h2">Things I've built and shipped</h2>
+  <p class="lead" data-i18n="proj.lead">Four products across four problem spaces — AI platform, learning, real business operations and client web design. Each one taught me a different layer of the stack.</p>
 
-  <div class="proj live">
-    <div class="f-img"><img src="shot.png" alt="Nelurio"></div>
+  <div class="proj live reveal">
+    <div class="f-img"><img src="shot.png" alt="Nelurio dashboard"></div>
     <div>
       <h3>Nelurio</h3>
-      <p class="what" data-en>AI study assistant for university students — live in beta.</p><p class="what" data-de hidden>KI-Lernassistent für Studierende — live im Beta.</p>
+      <p class="what" data-i18n="p1.what">AI study assistant for university students — live in beta.</p>
       <div class="tags"><span class="tag">Go / chi</span><span class="tag">PostgreSQL</span><span class="tag">React 19</span><span class="tag">OpenAI</span><span class="tag">PWA</span><span class="tag">10 languages</span><span class="tag">GDPR</span></div>
-      <p class="build"><span data-en>Record a lecture → AI writes the summary, schedules spaced-repetition reviews, generates flashcards &amp; quizzes, and a tutor answers from your own materials with citations. <b>Built solo — backend, frontend, AI, infra, deployment.</b></span><span data-de hidden>Vorlesung erfassen → die KI schreibt die Zusammenfassung, plant Wiederholungen, erstellt Lernkarten &amp; Quiz — der Tutor antwortet aus deinen eigenen Materialien mit Quellen. <b>Solo gebaut — Backend, Frontend, KI, Infra, Deployment.</b></span></p>
+      <p class="build" data-i18n="p1.build">Record a lecture → AI writes the summary, schedules spaced-repetition reviews, generates flashcards & quizzes, and a tutor answers from your own materials with citations. Built solo — backend, frontend, AI, infra, deployment.</p>
       <div class="f-links">
-        <a class="btn btn-p" href="https://nelurio.duckdns.org" target="_blank" data-en>Open live app</a><a class="btn btn-p" href="https://nelurio.duckdns.org" target="_blank" data-de hidden>Live-App öffnen</a>
-        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/nelurio" target="_blank" data-en>GitHub (private)</a><a class="btn btn-s" href="https://github.com/AmirKhosravi18118/nelurio" target="_blank" data-de hidden>GitHub (privat)</a>
+        <a class="btn btn-p" href="https://nelurio.duckdns.org" target="_blank" data-i18n="c.liveapp">Open live app</a>
+        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/nelurio" target="_blank"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
       </div>
     </div>
   </div>
 
-  <div class="proj">
+  <div class="proj reveal">
     <div class="f-img"><img src="nexdeutsch.png" alt="NexDeutsch"></div>
     <div>
       <h3>NexDeutsch</h3>
-      <p class="what">German vocabulary learning platform.</p>
+      <p class="what" data-i18n="p2.what">German vocabulary learning platform.</p>
       <div class="tags"><span class="tag">Learning platform</span><span class="tag">Spaced practice</span><span class="tag">German market</span></div>
-      <p class="build">My earlier product for German learners — vocabulary training with structured practice sessions. <b>Nelurio's review engine was born from what I learned building this one.</b> Currently being reworked with everything I know today.</p>
+      <p class="build" data-i18n="p2.build">My earlier product for German learners — vocabulary training with structured practice sessions. Nelurio's review engine was born from what I learned building this one. Currently being reworked with everything I know today.</p>
       <div class="f-links">
-        <a class="btn btn-p" href="https://nexdeutsch-92-5-111-34.sslip.io" target="_blank" data-en>Open live app</a><a class="btn btn-p" href="https://nexdeutsch-92-5-111-34.sslip.io" target="_blank" data-de hidden>Live-App öffnen</a>
-        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank" data-en>GitHub (private)</a><a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank" data-de hidden>GitHub (privat)</a>
+        <a class="btn btn-p" href="https://nexdeutsch-92-5-111-34.sslip.io" target="_blank" data-i18n="c.liveapp">Open live app</a>
+        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
       </div>
     </div>
   </div>
 
-  <div class="proj">
+  <div class="proj reveal">
     <div class="f-img"><img src="washhalle.png" alt="Washhalle App"></div>
     <div>
       <h3>Washhalle App</h3>
-      <p class="what">Operations app for a car-wash business.</p>
+      <p class="what" data-i18n="p3.what">Operations app for a car-wash business.</p>
       <div class="tags"><span class="tag">Real business</span><span class="tag">Operations</span><span class="tag">In daily use</span></div>
-      <p class="build">Built for an actual car-wash location: day-to-day operations, tracking and workflow. <b>My first lesson in software for a real customer with real constraints</b> — not a tutorial project.</p>
+      <p class="build" data-i18n="p3.build">Built for an actual car-wash location: day-to-day operations, tracking and workflow. My first lesson in software for a real customer with real constraints — not a tutorial project.</p>
       <div class="f-links">
-        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank" data-en>GitHub (private)</a><a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank" data-de hidden>GitHub (privat)</a>
+        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
       </div>
     </div>
   </div>
-  <div class="proj">
+
+  <div class="proj reveal">
     <div class="f-img"><img src="saadtattoo.png" alt="Saad Tattoo website"></div>
     <div>
       <h3>Saad Tattoo — Studio Website</h3>
-      <p class="what">Client website for a tattoo studio in Wiesbaden.</p>
+      <p class="what" data-i18n="p4.what">Client website for a tattoo studio in Wiesbaden.</p>
       <div class="tags"><span class="tag">Wix Studio</span><span class="tag">AI-assisted design</span><span class="tag">Client work</span><span class="tag">Live</span></div>
-      <p class="build">Designed and launched a booking-focused studio website using Wix combined with AI-generated visual assets. <b>My first paid client project</b> — concept, design, content and launch for a real business.</p>
+      <p class="build" data-i18n="p4.build">Designed and launched a booking-focused studio website using Wix combined with AI-generated visual assets. My first paid client project — concept, design, content and launch for a real business.</p>
       <div class="f-links">
-        <a class="btn btn-p" href="https://www.saadtattoo.de" target="_blank" data-en>Open live site</a><a class="btn btn-p" href="https://www.saadtattoo.de" target="_blank" data-de hidden>Live-Website öffnen</a>
+        <a class="btn btn-p" href="https://www.saadtattoo.de" target="_blank" data-i18n="c.livesite">Open live site</a>
       </div>
     </div>
   </div>
 </section>
 
 <section id="skills">
-  <div class="sec-kicker" data-en>Stack & Practices</div><div class="sec-kicker" data-de hidden>Stack & Praktiken</div>
-  <h2 data-en>What I work with</h2><h2 data-de hidden>Womit ich arbeite</h2>
+  <div class="sec-kicker" data-i18n="skills.kicker">Stack & Practices</div>
+  <h2 data-i18n="skills.h2">What I work with</h2>
   <div class="grid3">
-    <div class="card skill"><b>Go · REST APIs</b><small>chi router, pgx, PostgreSQL, modular monolith, session auth + CSRF + rate limiting, automated migrations.</small></div>
-    <div class="card skill"><b>React 19 · TypeScript</b><small>Vite monorepo, design-token CSS, full RTL, installable PWA, network-first service worker, i18n for 10 locales.</small></div>
-    <div class="card skill"><b>AI integration</b><small>OpenAI Responses API, grounded tutoring with citations from user uploads, structured extraction, mock fallbacks.</small></div>
-    <div class="card skill"><b>DevOps</b><small>Oracle Cloud VPS, Caddy auto-TLS, GitHub Actions CI, zero-downtime deploys, Linux admin.</small></div>
-    <div class="card skill"><b>Security & GDPR</b><small>Cookie sessions, CSRF, rate limits, cascade account deletion, privacy-request workflow, EU hosting.</small></div>
-    <div class="card skill"><b>Product & QA</b><small>Automated locale tests, AI review agents, building from real user feedback instead of assumptions.</small></div>
+    <div class="card skill reveal"><b>Go · REST APIs</b><small data-i18n="sk.s1">chi router, pgx, PostgreSQL, modular monolith, session auth + CSRF + rate limiting, automated migrations.</small></div>
+    <div class="card skill reveal"><b>React 19 · TypeScript</b><small data-i18n="sk.s2">Vite monorepo, design-token CSS, full RTL, installable PWA, network-first service worker, i18n for 10 locales.</small></div>
+    <div class="card skill reveal"><b>AI integration</b><small data-i18n="sk.s3">OpenAI Responses API, grounded tutoring with citations from user uploads, structured extraction, mock fallbacks.</small></div>
+    <div class="card skill reveal"><b>DevOps</b><small data-i18n="sk.s4">Oracle Cloud VPS, Caddy auto-TLS, GitHub Actions CI, zero-downtime deploys, Linux administration.</small></div>
+    <div class="card skill reveal"><b>Security & GDPR</b><small data-i18n="sk.s5">Cookie sessions, CSRF, rate limits, cascade account deletion, privacy-request workflow, EU hosting.</small></div>
+    <div class="card skill reveal"><b>Product & QA</b><small data-i18n="sk.s6">Automated persona tests, AI review agents, building from real user feedback instead of assumptions.</small></div>
   </div>
 </section>
 
 <section id="certificates">
-  <div class="sec-kicker">Certificates & Skills</div>
-  <h2>Certified & continuously learning</h2>
+  <div class="sec-kicker" data-i18n="cert.kicker">Certificates & Skills</div>
+  <h2 data-i18n="cert.h2">Certified & continuously learning</h2>
   <div class="grid3">
-    <div class="card skill"><b>🎨 UI/UX Design Certificate</b><small>Completed a structured UI/UX design program in Iran — used it for Nelurio's design-token system and the Saad Tattoo client site.</small></div>
-    <div class="card skill"><b>🐍 Python Certificate</b><small>Certified Python programming — used for automation tooling, deployment scripts and data processing around my projects.</small></div>
-    <div class="card skill"><b>🌐 Front-End Certificate</b><small>Front-end development certificate — HTML/CSS/JS fundamentals that everything I build stands on.</small></div>
+    <div class="card skill reveal"><b data-i18n="cert.c1">🎨 UI/UX Design Certificate</b><small data-i18n="cert.c1b">Completed a structured UI/UX program in Iran — applied it to Nelurio's design-token system and the Saad Tattoo client site.</small></div>
+    <div class="card skill reveal"><b data-i18n="cert.c2">🐍 Python Certificate</b><small data-i18n="cert.c2b">Certified Python programming — used for automation tooling, deployment scripts and data processing.</small></div>
+    <div class="card skill reveal"><b data-i18n="cert.c3">🌐 Front-End Certificate</b><small data-i18n="cert.c3b">Front-end development certificate — the HTML/CSS/JS fundamentals everything I build stands on.</small></div>
   </div>
-  <div class="mindset" style="margin-top:22px">
-    <p><b>Beyond certificates:</b> strong with Microsoft Office and Excel — including Excel-based programming and automation. Generally fast with anything computer-related, experienced in team project work, and genuinely eager to start as a working student and grow inside a skilled team.</p>
+  <div class="mindset reveal">
+    <p><span data-i18n="cert.extra1"><b>Beyond certificates:</b> strong with Microsoft Office and Excel — including Excel-based programming and automation. Generally fast with anything computer-related, and experienced in collaborative project work.</span></p>
   </div>
 </section>
 
 <section id="about">
-  <div class="sec-kicker">About</div>
-  <h2>Developer with a business brain — and room to grow</h2>
+  <div class="sec-kicker" data-i18n="about.kicker">About</div>
+  <h2 data-i18n="about.h2">Developer with a business brain — and room to grow</h2>
   <div class="edu">
-    <div class="card"><div class="emoji">🎓</div><b>BWL Student</b><small>Hochschule RheinMain, Wiesbaden — business + tech = products that find users</small></div>
-    <div class="card"><div class="emoji">🛠️</div><b>Learning by shipping</b><small>Four real products so far — each one a level deeper in the stack</small></div>
-    <div class="card"><div class="emoji">🗣️</div><b>Languages</b><small>German B2/C1 · English professional · Persian native</small></div>
-    <div class="card"><div class="emoji">📅</div><b>Availability</b><small>~20 h/week during semester, full-time in breaks · several semesters remaining</small></div>
+    <div class="card reveal"><div class="emoji">🎓</div><b data-i18n="about.bwl">BWL Student</b><small data-i18n="about.bwlS">Hochschule RheinMain, Wiesbaden — business + tech = products that find users</small></div>
+    <div class="card reveal"><div class="emoji">🛠️</div><b data-i18n="about.ship">Learning by shipping</b><small data-i18n="about.shipS">Four real products so far — each one a level deeper in the stack</small></div>
+    <div class="card reveal"><div class="emoji">🗣️</div><b data-i18n="about.lang">Languages</b><small data-i18n="about.langS">German B2/C1 · English professional · Persian native</small></div>
+    <div class="card reveal"><div class="emoji">📅</div><b data-i18n="about.avail">Availability</b><small data-i18n="about.availS">~20 h/week during semester, full-time in breaks · several semesters remaining</small></div>
   </div>
-  <div class="mindset">
-    <p><b>How I work:</b> I pick a real problem, ship the smallest working version, then iterate from feedback. Nelurio exists because I kept rebuilding the same study tools for myself — at some point it made sense to build the platform once, properly.</p>
-    <p><b>What I'm looking for:</b> a Werkstudent or Praktikum position where I can work on a real codebase with experienced developers. I know how to build alone — <b>now I want to learn how great teams build together</b>, take on new challenges, and level up on things like testing culture, code review and scale.</p>
-    <p><b>Honest boundaries:</b> I haven't worked in a large team yet, and my German is improving (B2→C1). What I bring instead: proven ability to ship complete systems alone, real production experience with the full stack, and the habit of figuring things out fast.</p>
+  <div class="mindset reveal">
+    <p><span data-i18n="about.m1"><b>How I work:</b> I pick a real problem, ship the smallest working version, then iterate from feedback. Nelurio exists because I kept rebuilding the same study tools for myself — at some point it made sense to build the platform once, properly.</span></p>
+    <p><span data-i18n="about.m2"><b>What I'm looking for:</b> a Werkstudent or Praktikum position where I can work on a real codebase with experienced developers. I know how to build alone — now I want to learn how great teams build together, and grow on a professional team.</span></p>
+    <p><span data-i18n="about.m3"><b>Honest boundaries:</b> I haven't worked in a large team yet, and my German keeps improving (B2→C1). What I bring instead: proven ability to ship complete systems alone, real production experience across the full stack, and the habit of figuring things out fast.</span></p>
   </div>
 </section>
 
 <section id="contact">
-  <div class="sec-kicker" data-en>Contact</div><div class="sec-kicker" data-de hidden>Kontakt</div>
-  <h2 data-en>Let's talk.</h2><h2 data-de hidden>Lass uns sprechen.</h2>
-  <p style="color:var(--mut);max-width:560px" data-en>If you have a Werkstudent or Praktikum opening — or just want to look at the code — I'd love a 5-minute live demo of Nelurio. No slides.</p><p style="color:var(--mut);max-width:560px" data-de hidden>Wenn du eine Werkstudenten- oder Praktikumsstelle hast — oder einfach den Code sehen willst — zeige ich dir Nelurio gerne live in 5 Minuten. Ohne Folien.</p>
-  <div class="contact-cards">
-    <a class="card" href="mailto:a.h.khosravi1383@gmail.com"><span class="emoji">✉️</span><b data-en>Email</b><b data-de hidden>E-Mail</b><small>a.h.khosravi1383@gmail.com</small></a>
-    <a class="card" href="tel:+491622002699"><span class="emoji">📱</span><b>Phone</b><small>+49 162 2002699</small></a>
-
+  <div class="sec-kicker" data-i18n="ct.kicker">Contact</div>
+  <h2 data-i18n="ct.h2">Let's talk.</h2>
+  <p class="lead" data-i18n="ct.lead">If you have a Werkstudent or Praktikum opening — or just want to look at the code — I'd love a 5-minute live demo of Nelurio. No slides.</p>
+  <div class="contact-grid">
+    <a class="card reveal" href="mailto:a.h.khosravi1383@gmail.com"><span class="emoji">✉️</span><b data-i18n="ct.email">Email</b><small>a.h.khosravi1383@gmail.com</small></a>
+    <a class="card reveal" href="tel:+491622002699"><span class="emoji">📱</span><b data-i18n="ct.phone">Phone</b><small>+49 162 2002699</small></a>
   </div>
 </section>
 
@@ -259,20 +266,90 @@ footer a{color:#c3b4ff}
   <span><a href="https://nelurio.duckdns.org/legal/imprint">Impressum</a> · <a href="https://nelurio.duckdns.org/legal/privacy">Privacy</a></span>
 </div></footer>
 </div>
+
 <script>
+const I18N = {
+"nav.projects":{"en":"Projects","de":"Projekte"},
+"nav.stack":{"en":"Stack","de":"Stack"},
+"nav.cert":{"en":"Certificates","de":"Zertifikate"},
+"nav.about":{"en":"About","de":"Über"},
+"nav.contact":{"en":"Contact","de":"Kontakt"},
+"nav.cta":{"en":"Get in touch","de":"Kontakt aufnehmen"},
+"hero.badge":{"en":"OPEN FOR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN","de":"OFFEN FÜR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN"},
+"hero.h1a":{"en":"I like building things","de":"Ich baue Dinge,"},
+"hero.h1b":{"en":"people actually use.","de":"die wirklich benutzt werden."},
+"hero.sub":{"en":"Developer & BWL student in Wiesbaden. Building Nelurio — an AI study platform live in beta — plus NexDeutsch, Washhalle and client work like Saad Tattoo. Go · React · AI. Learning by shipping, every day.","de":"Entwickler & BWL-Student in Wiesbaden. Baue aktuell Nelurio — eine KI-Lernplattform im Beta — sowie NexDeutsch, Washhalle und Kundenprojekte wie Saad Tattoo. Go · React · KI. Lernen durch Ausliefern, jeden Tag."},
+"hero.cta1":{"en":"See my projects","de":"Projekte ansehen"},
+"hero.cta2":{"en":"Download CV (PDF)","de":"Lebenslauf (PDF)"},
+"proj.kicker":{"en":"Projects","de":"Projekte"},
+"proj.h2":{"en":"Things I've built and shipped","de":"Dinge, die ich gebaut und ausgeliefert habe"},
+"proj.lead":{"en":"Four products across four problem spaces — AI platform, learning, real business operations and client web design. Each one taught me a different layer of the stack.","de":"Vier Produkte in vier Problemwelten — KI-Plattform, Lernen, echte Geschäftsabläufe und Kundendesign. Jedes hat mir eine andere Schicht des Stacks beigebracht."},
+"p1.what":{"en":"AI study assistant for university students — live in beta.","de":"KI-Lernassistent für Studierende — live im Beta."},
+"p1.build":{"en":"Record a lecture → AI writes the summary, schedules spaced-repetition reviews, generates flashcards & quizzes, and a tutor answers from your own materials with citations. Built solo — backend, frontend, AI, infra, deployment.","de":"Vorlesung erfassen → die KI schreibt die Zusammenfassung, plant Wiederholungen, erstellt Lernkarten & Quiz — der Tutor antwortet aus deinen eigenen Materialien mit Quellen. Solo gebaut — Backend, Frontend, KI, Infra, Deployment."},
+"p2.what":{"en":"German vocabulary learning platform.","de":"Plattform zum Deutsch-Vokabeln lernen."},
+"p2.build":{"en":"My earlier product for German learners — vocabulary training with structured practice sessions. Nelurio's review engine was born from what I learned building this one. Currently being reworked with everything I know today.","de":"Mein früheres Produkt für Deutschlerner — Vokabeltraining mit strukturierten Übungen. Nelurios Wiederholungs-Engine entstand aus den Erfahrungen dieses Projekts. Aktuelle Überarbeitung mit allem, was ich heute weiß."},
+"p3.what":{"en":"Operations app for a car-wash business.","de":"Operations-App für eine Autowaschanlage."},
+"p3.build":{"en":"Built for an actual car-wash location: day-to-day operations, tracking and workflow. My first lesson in software for a real customer with real constraints — not a tutorial project.","de":"Gebaut für eine echte Autowaschanlage: Tagesbetrieb, Tracking und Workflow. Meine erste Lektion in Software für einen echten Kunden — kein Tutorial-Projekt."},
+"p4.what":{"en":"Client website for a tattoo studio in Wiesbaden.","de":"Kundenwebsite für ein Tattoo-Studio in Wiesbaden."},
+"p4.build":{"en":"Designed and launched a booking-focused studio website using Wix combined with AI-generated visual assets. My first paid client project — concept, design, content and launch for a real business.","de":"Buchungsorientierte Studio-Website mit Wix und KI-generierten visuellen Assets gestaltet und gelauncht. Mein erstes bezahltes Kundenprojekt — Konzept, Design, Inhalt und Launch."},
+"skills.kicker":{"en":"Stack & Practices","de":"Stack & Praktiken"},
+"skills.h2":{"en":"What I work with","de":"Womit ich arbeite"},
+"sk.s1":{"en":"chi router, pgx, PostgreSQL, modular monolith, session auth + CSRF + rate limiting, automated migrations.","de":"chi router, pgx, PostgreSQL, modularer Monolith, Session-Auth + CSRF + Rate-Limiting, automatische Migrationen."},
+"sk.s2":{"en":"Vite monorepo, design-token CSS, full RTL, installable PWA, network-first service worker, i18n for 10 locales.","de":"Vite-Monorepo, Design-Token-CSS, volles RTL, installierbare PWA, Network-First-Service-Worker, i18n für 10 Sprachen."},
+"sk.s3":{"en":"OpenAI Responses API, grounded tutoring with citations from user uploads, structured extraction, mock fallbacks.","de":"OpenAI Responses API, kursbezogener Tutor mit Quellen aus eigenen Uploads, strukturierte Extraktion, Mock-Fallbacks."},
+"sk.s4":{"en":"Oracle Cloud VPS, Caddy auto-TLS, GitHub Actions CI, zero-downtime deploys, Linux administration.","de":"Oracle Cloud VPS, Caddy Auto-TLS, GitHub Actions CI, Zero-Downtime-Deploys, Linux-Administration."},
+"sk.s5":{"en":"Cookie sessions, CSRF, rate limits, cascade account deletion, privacy-request workflow, EU hosting.","de":"Cookie-Sessions, CSRF, Rate-Limits, Kaskaden-Kontolöschung, Privacy-Workflow, EU-Hosting."},
+"sk.s6":{"en":"Automated persona tests, AI review agents, building from real user feedback instead of assumptions.","de":"Automatisierte Persona-Tests, KI-Review-Agenten, Entwicklung aus echtem Nutzer-Feedback."},
+"cert.kicker":{"en":"Certificates & Skills","de":"Zertifikate & Skills"},
+"cert.h2":{"en":"Certified & continuously learning","de":"Zertifiziert & kontinuierlich am Lernen"},
+"cert.c1":{"en":"🎨 UI/UX Design Certificate","de":"🎨 UI/UX-Design-Zertifikat"},
+"cert.c1b":{"en":"Completed a structured UI/UX program in Iran — applied it to Nelurio's design-token system and the Saad Tattoo client site.","de":"Strukturiertes UI/UX-Programm im Iran abgeschlossen — angewendet auf Nelurios Design-Token-System und die Saad-Tattoo-Kundenwebsite."},
+"cert.c2":{"en":"🐍 Python Certificate","de":"🐍 Python-Zertifikat"},
+"cert.c2b":{"en":"Certified Python programming — used for automation tooling, deployment scripts and data processing.","de":"Zertifizierte Python-Programmierung — eingesetzt für Automatisierung, Deployment-Skripte und Datenverarbeitung."},
+"cert.c3":{"en":"🌐 Front-End Certificate","de":"🌐 Frontend-Zertifikat"},
+"cert.c3b":{"en":"Front-end development certificate — the HTML/CSS/JS fundamentals everything I build stands on.","de":"Frontend-Entwicklungszertifikat — die HTML/CSS/JS-Grundlagen, auf denen alles steht."},
+"cert.extra1":{"en":"Beyond certificates: strong with Microsoft Office and Excel — including Excel-based programming and automation. Generally fast with anything computer-related, and experienced in collaborative project work.","de":"Über Zertifikate hinaus: stark in Microsoft Office und Excel — inklusive Excel-Programmierung und Automatisierung. Generell schnell in allem rund um den Computer, erfahren in kollaborativer Projektarbeit."},
+"about.kicker":{"en":"About","de":"Über"},
+"about.h2":{"en":"Developer with a business brain — and room to grow","de":"Entwickler mit Business-Denke — und Raum zu wachsen"},
+"about.bwl":{"en":"BWL Student","de":"BWL-Student"},
+"about.bwlS":{"en":"Hochschule RheinMain, Wiesbaden — business + tech = products that find users","de":"Hochschule RheinMain, Wiesbaden — Business + Tech = Produkte, die Nutzer finden"},
+"about.ship":{"en":"Learning by shipping","de":"Lernen durch Ausliefern"},
+"about.shipS":{"en":"Four real products so far — each one a level deeper in the stack","de":"Vier echte Produkte bisher — jedes eine Ebene tiefer im Stack"},
+"about.lang":{"en":"Languages","de":"Sprachen"},
+"about.langS":{"en":"German B2/C1 · English professional · Persian native","de":"Deutsch B2/C1 · Englisch fließend · Persisch Muttersprache"},
+"about.avail":{"en":"Availability","de":"Verfügbarkeit"},
+"about.availS":{"en":"~20 h/week during semester, full-time in breaks · several semesters remaining","de":"~20 Std./Woche im Semester, vollzeit in den Ferien · mehrere Semester verbleibend"},
+"about.m1":{"en":"How I work: I pick a real problem, ship the smallest working version, then iterate from feedback. Nelurio exists because I kept rebuilding the same study tools for myself — at some point it made sense to build the platform once, properly.","de":"Wie ich arbeite: Ich wähle ein echtes Problem, liefere die kleinste funktionierende Version und iteriere aus Feedback. Nelurio entstand, weil ich immer wieder dieselben Lern-Tools neu gebaut habe — irgendwann war es sinnvoll, die Plattform einmal richtig zu bauen."},
+"about.m2":{"en":"What I'm looking for: a Werkstudent or Praktikum position where I can work on a real codebase with experienced developers. I know how to build alone — now I want to learn how great teams build together, and grow on a professional team.","de":"Was ich suche: eine Werkstudenten- oder Praktikumsstelle, in der ich an einer echten Codebasis mit erfahrenen Entwicklern arbeite. Ich kann allein bauen — jetzt will ich lernen, wie großartige Teams zusammen bauen und mich professionell weiterentwickeln."},
+"about.m3":{"en":"Honest boundaries: I haven't worked in a large team yet, and my German keeps improving (B2→C1). What I bring instead: proven ability to ship complete systems alone, real production experience across the full stack, and the habit of figuring things out fast.","de":"Ehrliche Grenzen: Ich habe noch nicht in einem großen Team gearbeitet, und mein Deutsch wird besser (B2→C1). Dafür bringe ich mit: nachweisbare Fähigkeit, komplette Systeme allein auszuliefern, echte Produktionserfahrung im vollen Stack und die Gewohnheit, Dinge schnell zu lösen."},
+"ct.kicker":{"en":"Contact","de":"Kontakt"},
+"ct.h2":{"en":"Let's talk.","de":"Lass uns sprechen."},
+"ct.lead":{"en":"If you have a Werkstudent or Praktikum opening — or just want to look at the code — I'd love a 5-minute live demo of Nelurio. No slides.","de":"Wenn du eine Werkstudenten- oder Praktikumsstelle hast — oder einfach den Code sehen willst — zeige ich dir Nelurio gerne live in 5 Minuten. Ohne Folien."},
+"ct.email":{"en":"Email","de":"E-Mail"},
+"ct.phone":{"en":"Phone","de":"Telefon"},
+"c.liveapp":{"en":"Open live app","de":"Live-App öffnen"},
+"c.livesite":{"en":"Open live site","de":"Live-Website öffnen"},
+"c.ghpriv":{"en":"GitHub (private)","de":"GitHub (privat)"}
+};
 function setLang(l){
   document.documentElement.setAttribute('data-lang', l);
   document.documentElement.lang = l;
   document.getElementById('btn-en').classList.toggle('is-active', l==='en');
   document.getElementById('btn-de').classList.toggle('is-active', l==='de');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    const v = I18N[k];
+    if(v && v[l]) el.textContent = v[l];
+  });
   try{localStorage.setItem('lang',l)}catch(e){}
 }
 try{const saved=localStorage.getItem('lang'); if(saved) setLang(saved);}catch(e){}
 </script>
+<script>
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
-
-/* audit fixes */
-a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
-.flag{font-size:12px}
-@media(max-width:860px){nav ul{display:flex;gap:14px;overflow-x:auto;font-size:12.5px}nav .nav-cta{display:none}}
