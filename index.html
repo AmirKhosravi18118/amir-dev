@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amir Khosravi — Software Developer & Product Builder</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238b6cff'/%3E%3Ctext x='32' y='44' font-size='36' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EA%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Amir Khosravi — Software Developer & Product Builder">
+<meta property="og:description" content="Builder of Nelurio — a multilingual AI study platform, live in production. Go · React · AI · DevOps. Open for Werkstudent/Praktikum in Rhein-Main.">
+<meta property="og:image" content="https://amir.nelurio.duckdns.org/amir.jpg">
+<meta property="og:url" content="https://amir.nelurio.duckdns.org">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Amir Khosravi — developer and BWL student in Wiesbaden. Building Nelurio (AI study platform), NexDeutsch and Washhalle. Go · React · AI.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -66,7 +72,7 @@ h2{font-size:clamp(25px,3.2vw,36px);font-weight:900;letter-spacing:-.02em;margin
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .skill b{font-size:14.5px;display:block;margin-bottom:5px}
 .skill small{color:var(--mut);font-size:12.5px;line-height:1.55;display:block}
-.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.edu{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .edu .card{text-align:center;padding:24px}
 .edu .card b{display:block;font-size:15px;margin:8px 0 4px}
 .edu .card small{color:var(--mut);font-size:12.5px}
@@ -83,6 +89,7 @@ h2{font-size:clamp(25px,3.2vw,36px);font-weight:900;letter-spacing:-.02em;margin
 footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-size:13px}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 footer a{color:#c3b4ff}
+@media(max-width:1020px){.edu{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:860px){
   .hero{grid-template-columns:1fr;gap:32px;padding-top:44px;text-align:center}
   .sub{margin-inline:auto}.cta-row{justify-content:center}.photo{order:-1}
@@ -112,6 +119,7 @@ footer a{color:#c3b4ff}
     <p class="sub">Developer & BWL student in Wiesbaden. Building <b>Nelurio</b> — an AI study platform live in beta — plus <b>NexDeutsch</b>, <b>Washhalle</b> and client work like <b>Saad Tattoo</b>. Go · React · AI. Learning by shipping, every day.</p>
     <div class="cta-row">
       <a class="btn btn-p" href="#projects">See my projects</a>
+      <a class="btn btn-s" href="Amir_Khosravi_CV.pdf" download>Download CV (PDF)</a>
       <a class="btn btn-s" href="mailto:a.h.khosravi1383@gmail.com">Get in touch</a>
     </div>
   </div>
@@ -120,7 +128,7 @@ footer a{color:#c3b4ff}
 
 <section id="projects">
   <div class="sec-kicker">Projects</div>
-  <h2>Things I built & ship</h2>
+  <h2>Things I've built and shipped</h2>
   <p class="lead">Four products across four problem spaces — AI platform, learning, real business operations and client web design. Each one taught me a different layer of the stack.</p>
 
   <div class="proj live">
@@ -145,7 +153,7 @@ footer a{color:#c3b4ff}
       <div class="tags"><span class="tag">Learning platform</span><span class="tag">Spaced practice</span><span class="tag">German market</span></div>
       <p class="build">My earlier product for German learners — vocabulary training with structured practice sessions. <b>Nelurio's review engine was born from what I learned building this one.</b> Currently being reworked with everything I know today.</p>
       <div class="f-links">
-        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank">GitHub repo</a>
+        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank">GitHub (private)</a>
       </div>
     </div>
   </div>
@@ -155,10 +163,10 @@ footer a{color:#c3b4ff}
     <div>
       <h3>Washhalle App</h3>
       <p class="what">Operations app for a car-wash business.</p>
-      <div class="tags"><span class="tag">Real business</span><span class="tag">Operations</span><span class="tag">Field-tested</span></div>
+      <div class="tags"><span class="tag">Real business</span><span class="tag">Operations</span><span class="tag">In daily use</span></div>
       <p class="build">Built for an actual car-wash location: day-to-day operations, tracking and workflow. <b>My first lesson in software for a real customer with real constraints</b> — not a tutorial project.</p>
       <div class="f-links">
-        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank">GitHub repo</a>
+        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank">GitHub (private)</a>
       </div>
     </div>
   </div>
@@ -194,8 +202,9 @@ footer a{color:#c3b4ff}
   <h2>Developer with a business brain — and room to grow</h2>
   <div class="edu">
     <div class="card"><div class="emoji">🎓</div><b>BWL Student</b><small>Hochschule RheinMain, Wiesbaden — business + tech = products that find users</small></div>
-    <div class="card"><div class="emoji">🛠️</div><b>Learning by shipping</b><small>Three real products so far — each one one level deeper in the stack</small></div>
+    <div class="card"><div class="emoji">🛠️</div><b>Learning by shipping</b><small>Four real products so far — each one a level deeper in the stack</small></div>
     <div class="card"><div class="emoji">🗣️</div><b>Languages</b><small>German B2/C1 · English professional · Persian native</small></div>
+    <div class="card"><div class="emoji">📅</div><b>Availability</b><small>~20 h/week during semester, full-time in breaks · several semesters remaining</small></div>
   </div>
   <div class="mindset">
     <p><b>How I work:</b> I pick a real problem, ship the smallest working version, then iterate from feedback. Nelurio exists because I kept rebuilding the same study tools for myself — at some point it made sense to build the platform once, properly.</p>
@@ -222,3 +231,8 @@ footer a{color:#c3b4ff}
 </div>
 </body>
 </html>
+
+/* audit fixes */
+a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+.flag{font-size:12px}
+@media(max-width:860px){nav ul{display:flex;gap:14px;overflow-x:auto;font-size:12.5px}nav .nav-cta{display:none}}
