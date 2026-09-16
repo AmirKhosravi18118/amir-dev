@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,7 +81,7 @@ h2{font-size:clamp(25px,3.2vw,36px);font-weight:900;letter-spacing:-.02em;margin
 .mindset p{font-size:15.5px;color:#ddd8f5;max-width:760px}
 .mindset p+p{margin-top:12px}
 .mindset b{color:#fff}
-.contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.contact-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:620px;margin-top:26px}
 .contact-cards a.card{display:grid;gap:4px;text-align:center;justify-items:center}
 .contact-cards .emoji{font-size:26px}
 .contact-cards b{font-size:14px}
@@ -97,50 +97,66 @@ footer a{color:#c3b4ff}
   nav ul{display:none}section{padding:60px 0}
   .proj{padding:26px}
 }
+
+/* Lang toggle */
+[hidden]{display:none!important}
+.lang-toggle{display:flex;gap:4px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:11px;padding:3px}
+.lang-toggle button{padding:7px 13px;border-radius:8px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer}
+.lang-toggle button.is-active{background:linear-gradient(140deg,#8b6cff,#5a34e7);color:#fff}
+[data-lang="de"] [data-en]:not([hidden]){display:none!important}
+[data-lang="en"] [data-de]:not([hidden]){display:none!important}
+
 </style>
 </head>
 <body>
 <nav><div class="wrap">
   <div class="logo">Amir<b>.</b>dev</div>
   <ul>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Stack</a></li>
-    <li><a href="#certificates">Certificates</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#projects" data-en>Projects</a><a href="#projects" data-de hidden>Projekte</a></li>
+    <li><a href="#skills" data-en>Stack</a><a href="#skills" data-de hidden>Stack</a></li>
+    <li><a href="#certificates" data-en>Certificates</a><a href="#certificates" data-de hidden>Zertifikate</a></li>
+    <li><a href="#about" data-en>About</a><a href="#about" data-de hidden>Über</a></li>
+    <li><a href="#contact" data-en>Contact</a><a href="#contact" data-de hidden>Kontakt</a></li>
   </ul>
-  <a class="btn btn-p nav-cta" href="#contact">Get in touch</a>
+  <div style="display:flex;align-items:center;gap:14px">
+  <div class="lang-toggle" role="group" aria-label="Language">
+    <button id="btn-en" class="is-active" onclick="setLang('en')">EN</button>
+    <button id="btn-de" onclick="setLang('de')">DE</button>
+  </div>
+  <a class="btn btn-p nav-cta" href="#contact" data-en>Get in touch</a>
+  <a class="btn btn-p nav-cta" href="#contact" data-de hidden> Kontakt</a>
+  </div>
 </div></nav>
 
 <div class="wrap">
 <header class="hero" id="top">
   <div>
-    <div class="badge"><i></i>OPEN FOR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN</div>
-    <h1>I like building things<br><span>people actually use.</span></h1>
-    <p class="sub">Developer & BWL student in Wiesbaden. Building <b>Nelurio</b> — an AI study platform live in beta — plus <b>NexDeutsch</b>, <b>Washhalle</b> and client work like <b>Saad Tattoo</b>. Go · React · AI. Learning by shipping, every day.</p>
+    <div class="badge"><i></i><span data-en>OPEN FOR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN</span><span data-de hidden>OFFEN FÜR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN</span></div>
+    <h1><span data-en>I like building things</span><span data-de hidden>Ich baue Dinge,</span><br><span data-en>people actually use.</span><span data-de hidden>die wirklich benutzt werden.</span></h1>
+    <p class="sub"><span data-en>Developer & BWL student in Wiesbaden. Building <b>Nelurio</b> — an AI study platform live in beta — plus <b>NexDeutsch</b>, <b>Washhalle</b> and client work like <b>Saad Tattoo</b>. Go · React · AI. Learning by shipping, every day.</span><span data-de hidden>Entwickler & BWL-Student in Wiesbaden. Baue aktuell <b>Nelurio</b> — eine KI-Lernplattform im Beta — sowie <b>NexDeutsch</b>, <b>Washhalle</b> und Kundenprojekte wie <b>Saad Tattoo</b>. Go · React · KI. Lernen durch Ausliefern, jeden Tag.</span></p>
     <div class="cta-row">
-      <a class="btn btn-p" href="#projects">See my projects</a>
-      <a class="btn btn-s" href="Amir_Khosravi_CV.pdf" download>Download CV (PDF)</a>
+      <a class="btn btn-p" href="#projects" data-en>See my projects</a><a class="btn btn-p" href="#projects" data-de hidden>Projekte ansehen</a>
+      <a class="btn btn-s" href="Amir_Khosravi_CV.pdf" download data-en>Download CV (PDF)</a><a class="btn btn-s" href="Amir_Khosravi_CV.pdf" download data-de hidden>Lebenslauf (PDF)</a>
     </div>
   </div>
   <div class="photo"><img src="amir.jpg" alt="Amir Khosravi"></div>
 </header>
 
 <section id="projects">
-  <div class="sec-kicker">Projects</div>
-  <h2>Things I've built and shipped</h2>
-  <p class="lead">Four products across four problem spaces — AI platform, learning, real business operations and client web design. Each one taught me a different layer of the stack.</p>
+  <div class="sec-kicker" data-en>Projects</div><div class="sec-kicker" data-de hidden>Projekte</div>
+  <h2 data-en>Things I've built and shipped</h2><h2 data-de hidden>Dinge, die ich gebaut und ausgeliefert habe</h2>
+  <p class="lead" data-en>Four products across four problem spaces — AI platform, learning, real business operations and client web design. Each one taught me a different layer of the stack.</p><p class="lead" data-de hidden>Vier Produkte in vier Problemwelten — KI-Plattform, Lernen, echte Geschäftsabläufe und Kundendesign. Jedes hat mir eine andere Schicht des Stacks beigebracht.</p>
 
   <div class="proj live">
     <div class="f-img"><img src="shot.png" alt="Nelurio"></div>
     <div>
       <h3>Nelurio</h3>
-      <p class="what">AI study assistant for university students — live in beta.</p>
+      <p class="what" data-en>AI study assistant for university students — live in beta.</p><p class="what" data-de hidden>KI-Lernassistent für Studierende — live im Beta.</p>
       <div class="tags"><span class="tag">Go / chi</span><span class="tag">PostgreSQL</span><span class="tag">React 19</span><span class="tag">OpenAI</span><span class="tag">PWA</span><span class="tag">10 languages</span><span class="tag">GDPR</span></div>
-      <p class="build">Record a lecture → AI writes the summary, schedules spaced-repetition reviews, generates flashcards & quizzes, and a tutor answers from your own materials with citations. Includes admin console, iCal feed, device notifications and full GDPR account deletion. <b>Built solo — backend, frontend, AI, infra, deployment.</b></p>
+      <p class="build"><span data-en>Record a lecture → AI writes the summary, schedules spaced-repetition reviews, generates flashcards &amp; quizzes, and a tutor answers from your own materials with citations. <b>Built solo — backend, frontend, AI, infra, deployment.</b></span><span data-de hidden>Vorlesung erfassen → die KI schreibt die Zusammenfassung, plant Wiederholungen, erstellt Lernkarten &amp; Quiz — der Tutor antwortet aus deinen eigenen Materialien mit Quellen. <b>Solo gebaut — Backend, Frontend, KI, Infra, Deployment.</b></span></p>
       <div class="f-links">
-        <a class="btn btn-p" href="https://nelurio.duckdns.org" target="_blank">Open live app</a>
-        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/nelurio" target="_blank">GitHub (private)</a>
+        <a class="btn btn-p" href="https://nelurio.duckdns.org" target="_blank" data-en>Open live app</a><a class="btn btn-p" href="https://nelurio.duckdns.org" target="_blank" data-de hidden>Live-App öffnen</a>
+        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/nelurio" target="_blank" data-en>GitHub (private)</a><a class="btn btn-s" href="https://github.com/AmirKhosravi18118/nelurio" target="_blank" data-de hidden>GitHub (privat)</a>
       </div>
     </div>
   </div>
@@ -153,8 +169,8 @@ footer a{color:#c3b4ff}
       <div class="tags"><span class="tag">Learning platform</span><span class="tag">Spaced practice</span><span class="tag">German market</span></div>
       <p class="build">My earlier product for German learners — vocabulary training with structured practice sessions. <b>Nelurio's review engine was born from what I learned building this one.</b> Currently being reworked with everything I know today.</p>
       <div class="f-links">
-        <a class="btn btn-p" href="https://nexdeutsch-92-5-111-34.sslip.io" target="_blank">Open live app</a>
-        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank">GitHub (private)</a>
+        <a class="btn btn-p" href="https://nexdeutsch-92-5-111-34.sslip.io" target="_blank" data-en>Open live app</a><a class="btn btn-p" href="https://nexdeutsch-92-5-111-34.sslip.io" target="_blank" data-de hidden>Live-App öffnen</a>
+        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank" data-en>GitHub (private)</a><a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank" data-de hidden>GitHub (privat)</a>
       </div>
     </div>
   </div>
@@ -167,8 +183,7 @@ footer a{color:#c3b4ff}
       <div class="tags"><span class="tag">Real business</span><span class="tag">Operations</span><span class="tag">In daily use</span></div>
       <p class="build">Built for an actual car-wash location: day-to-day operations, tracking and workflow. <b>My first lesson in software for a real customer with real constraints</b> — not a tutorial project.</p>
       <div class="f-links">
-        <a class="btn btn-p" href="https://waschhalle-92-5-111-34.sslip.io" target="_blank">Open live app</a>
-        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank">GitHub (private)</a>
+        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank" data-en>GitHub (private)</a><a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank" data-de hidden>GitHub (privat)</a>
       </div>
     </div>
   </div>
@@ -180,15 +195,15 @@ footer a{color:#c3b4ff}
       <div class="tags"><span class="tag">Wix Studio</span><span class="tag">AI-assisted design</span><span class="tag">Client work</span><span class="tag">Live</span></div>
       <p class="build">Designed and launched a booking-focused studio website using Wix combined with AI-generated visual assets. <b>My first paid client project</b> — concept, design, content and launch for a real business.</p>
       <div class="f-links">
-        <a class="btn btn-p" href="https://www.saadtattoo.de" target="_blank">Open live site</a>
+        <a class="btn btn-p" href="https://www.saadtattoo.de" target="_blank" data-en>Open live site</a><a class="btn btn-p" href="https://www.saadtattoo.de" target="_blank" data-de hidden>Live-Website öffnen</a>
       </div>
     </div>
   </div>
 </section>
 
 <section id="skills">
-  <div class="sec-kicker">Stack & Practices</div>
-  <h2>What I work with</h2>
+  <div class="sec-kicker" data-en>Stack & Practices</div><div class="sec-kicker" data-de hidden>Stack & Praktiken</div>
+  <h2 data-en>What I work with</h2><h2 data-de hidden>Womit ich arbeite</h2>
   <div class="grid3">
     <div class="card skill"><b>Go · REST APIs</b><small>chi router, pgx, PostgreSQL, modular monolith, session auth + CSRF + rate limiting, automated migrations.</small></div>
     <div class="card skill"><b>React 19 · TypeScript</b><small>Vite monorepo, design-token CSS, full RTL, installable PWA, network-first service worker, i18n for 10 locales.</small></div>
@@ -217,7 +232,6 @@ footer a{color:#c3b4ff}
   <h2>Developer with a business brain — and room to grow</h2>
   <div class="edu">
     <div class="card"><div class="emoji">🎓</div><b>BWL Student</b><small>Hochschule RheinMain, Wiesbaden — business + tech = products that find users</small></div>
-    <div class="card"><div class="emoji">💡</div><b>Eager to start</b><small>Excited to begin as a working student and grow in a skilled team — new challenges welcome</small></div>
     <div class="card"><div class="emoji">🛠️</div><b>Learning by shipping</b><small>Four real products so far — each one a level deeper in the stack</small></div>
     <div class="card"><div class="emoji">🗣️</div><b>Languages</b><small>German B2/C1 · English professional · Persian native</small></div>
     <div class="card"><div class="emoji">📅</div><b>Availability</b><small>~20 h/week during semester, full-time in breaks · several semesters remaining</small></div>
@@ -230,15 +244,13 @@ footer a{color:#c3b4ff}
 </section>
 
 <section id="contact">
-  <div class="sec-kicker">Contact</div>
-  <h2>Let's talk.</h2>
-  <p style="color:var(--mut);max-width:560px">If you have a Werkstudent or Praktikum opening — or just want to look at the code — I'd love a 5-minute live demo of Nelurio. No slides.</p>
+  <div class="sec-kicker" data-en>Contact</div><div class="sec-kicker" data-de hidden>Kontakt</div>
+  <h2 data-en>Let's talk.</h2><h2 data-de hidden>Lass uns sprechen.</h2>
+  <p style="color:var(--mut);max-width:560px" data-en>If you have a Werkstudent or Praktikum opening — or just want to look at the code — I'd love a 5-minute live demo of Nelurio. No slides.</p><p style="color:var(--mut);max-width:560px" data-de hidden>Wenn du eine Werkstudenten- oder Praktikumsstelle hast — oder einfach den Code sehen willst — zeige ich dir Nelurio gerne live in 5 Minuten. Ohne Folien.</p>
   <div class="contact-cards">
-    <a class="card" href="mailto:a.h.khosravi1383@gmail.com"><span class="emoji">✉️</span><b>Email</b><small>a.h.khosravi1383@gmail.com</small></a>
+    <a class="card" href="mailto:a.h.khosravi1383@gmail.com"><span class="emoji">✉️</span><b data-en>Email</b><b data-de hidden>E-Mail</b><small>a.h.khosravi1383@gmail.com</small></a>
     <a class="card" href="tel:+491622002699"><span class="emoji">📱</span><b>Phone</b><small>+49 162 2002699</small></a>
-    <a class="card" href="https://nelurio.duckdns.org" target="_blank"><span class="emoji">🚀</span><b>Nelurio — live</b><small>nelurio.duckdns.org</small></a>
-    <a class="card" href="https://www.saadtattoo.de" target="_blank"><span class="emoji">🎨</span><b>Client site</b><small>saadtattoo.de</small></a>
-    <a class="card" href="https://github.com/AmirKhosravi18118" target="_blank"><span class="emoji">💻</span><b>GitHub</b><small>github.com/AmirKhosravi18118</small></a>
+
   </div>
 </section>
 
@@ -247,6 +259,16 @@ footer a{color:#c3b4ff}
   <span><a href="https://nelurio.duckdns.org/legal/imprint">Impressum</a> · <a href="https://nelurio.duckdns.org/legal/privacy">Privacy</a></span>
 </div></footer>
 </div>
+<script>
+function setLang(l){
+  document.documentElement.setAttribute('data-lang', l);
+  document.documentElement.lang = l;
+  document.getElementById('btn-en').classList.toggle('is-active', l==='en');
+  document.getElementById('btn-de').classList.toggle('is-active', l==='de');
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+try{const saved=localStorage.getItem('lang'); if(saved) setLang(saved);}catch(e){}
+</script>
 </body>
 </html>
 
