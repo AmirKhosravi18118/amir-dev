@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amir Khosravi — Software Developer & Product Builder</title>
+<meta name="description" content="Amir Khosravi — developer and BWL student in Wiesbaden. Building Nelurio (AI study platform), NexDeutsch and Washhalle. Go · React · AI.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0d0b1d;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);
+  --txt:#efedff;--mut:#a49fd0;--acc:#8b6cff;--acc2:#4d8df7;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Inter','Segoe UI',system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:
+  radial-gradient(1100px 700px at 85% -5%, rgba(139,108,255,.16), transparent 60%),
+  radial-gradient(900px 650px at -10% 105%, rgba(77,141,247,.12), transparent 55%)}
+body::after{content:'';position:fixed;inset:0;z-index:-1;
+  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:54px 54px;mask-image:radial-gradient(75% 65% at 50% 35%, black, transparent)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(13,11,29,.72);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:900;font-size:19px}.logo b{color:var(--acc)}
+nav ul{display:flex;gap:26px;list-style:none;font-size:14px}
+nav ul a{color:var(--mut)}.nav-cta{padding:9px 18px;border-radius:11px;background:linear-gradient(140deg,#8b6cff,#5a34e7);color:#fff!important;font-weight:800}
+.hero{min-height:88vh;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:60px 0 30px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 15px;border:1px solid rgba(139,108,255,.4);border-radius:999px;color:#c3b4ff;font-size:12.5px;font-weight:700;margin-bottom:22px;background:rgba(139,108,255,.09)}
+.badge i{width:7px;height:7px;border-radius:50%;background:#5fe1a0;box-shadow:0 0 10px #5fe1a0;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.4}}
+h1{font-size:clamp(36px,5vw,58px);line-height:1.08;letter-spacing:-.025em;font-weight:900}
+h1 span{background:linear-gradient(120deg,#a585ff,#4d8df7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin:20px 0 28px;font-size:17px;color:var(--mut);max-width:540px}
+.sub b{color:#d9d3ff;font-weight:650}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:14px;font-weight:800;font-size:14.5px;transition:all .18s;border:0}
+.btn-p{background:linear-gradient(140deg,#8b6cff,#5a34e7);color:#fff;box-shadow:0 14px 34px rgba(90,52,231,.4)}
+.btn-p:hover{transform:translateY(-2px)}
+.btn-s{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--txt)}
+.btn-s:hover{border-color:var(--acc)}
+.photo{position:relative;justify-self:center}
+.photo img{width:min(350px,80vw);border-radius:28px;display:block;border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 0 0 1px rgba(255,255,255,.05), 0 40px 90px rgba(80,50,220,.35), 0 0 120px rgba(139,108,255,.14);filter:grayscale(.15) contrast(1.04)}
+.photo::after{content:'';position:absolute;inset:-2px;border-radius:30px;background:linear-gradient(140deg,rgba(165,133,255,.5),transparent 45%,rgba(77,141,247,.35));z-index:-1}
+section{padding:76px 0}
+.sec-kicker{color:#b9a8ff;font-size:12px;font-weight:800;letter-spacing:.35em;text-transform:uppercase;margin-bottom:12px}
+h2{font-size:clamp(25px,3.2vw,36px);font-weight:900;letter-spacing:-.02em;margin-bottom:14px}
+.lead{color:var(--mut);max-width:640px;margin-bottom:38px;font-size:15.5px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;transition:all .2s}
+.card:hover{border-color:rgba(139,108,255,.45);transform:translateY(-3px);box-shadow:0 24px 50px rgba(10,6,40,.4)}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:38px;margin-bottom:26px;position:relative;overflow:hidden;transition:border-color .2s}
+.proj:hover{border-color:rgba(139,108,255,.5)}
+.proj.live{background:linear-gradient(150deg,rgba(139,108,255,.1),rgba(77,141,247,.06));border-color:rgba(139,108,255,.3)}
+.flag{position:absolute;top:18px;right:24px;font-size:10.5px;font-weight:900;letter-spacing:.22em;color:#c3b4ff}
+.f-img{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 22px 50px rgba(10,6,40,.5)}
+.f-img img{width:100%;display:block}
+.proj h3{font-size:23px;margin-bottom:6px}
+.proj .what{color:var(--mut);font-size:14.5px;margin-bottom:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tag{padding:5px 12px;border-radius:999px;font-size:11.5px;font-weight:750;background:rgba(139,108,255,.13);color:#cfc3ff;border:1px solid rgba(139,108,255,.25)}
+.build{font-size:13.5px;color:#cfc9ee;margin-bottom:16px}
+.build b{color:#fff}
+.f-links{display:flex;gap:12px;flex-wrap:wrap}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skill b{font-size:14.5px;display:block;margin-bottom:5px}
+.skill small{color:var(--mut);font-size:12.5px;line-height:1.55;display:block}
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.edu .card{text-align:center;padding:24px}
+.edu .card b{display:block;font-size:15px;margin:8px 0 4px}
+.edu .card small{color:var(--mut);font-size:12.5px}
+.edu .emoji{font-size:30px}
+.mindset{background:linear-gradient(150deg,rgba(139,108,255,.1),rgba(77,141,247,.06));border:1px solid rgba(139,108,255,.3);border-radius:22px;padding:34px;margin-top:20px}
+.mindset p{font-size:15.5px;color:#ddd8f5;max-width:760px}
+.mindset p+p{margin-top:12px}
+.mindset b{color:#fff}
+.contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.contact-cards a.card{display:grid;gap:4px;text-align:center;justify-items:center}
+.contact-cards .emoji{font-size:26px}
+.contact-cards b{font-size:14px}
+.contact-cards small{color:var(--mut);font-size:12px}
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:#c3b4ff}
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;gap:32px;padding-top:44px;text-align:center}
+  .sub{margin-inline:auto}.cta-row{justify-content:center}.photo{order:-1}
+  .grid3,.edu,.contact-cards,.proj{grid-template-columns:1fr}
+  nav ul{display:none}section{padding:60px 0}
+  .proj{padding:26px}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <div class="logo">Amir<b>.</b>dev</div>
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Stack</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="btn btn-p nav-cta" href="#contact">Get in touch</a>
+</div></nav>
+
+<div class="wrap">
+<header class="hero" id="top">
+  <div>
+    <div class="badge"><i></i>OPEN FOR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN</div>
+    <h1>I like building things<br><span>people actually use.</span></h1>
+    <p class="sub">Developer & BWL student in Wiesbaden. Currently building <b>Nelurio</b> — an AI study platform, live in beta — and previously <b>NexDeutsch</b> and <b>Washhalle</b>. Go · React · AI. Learning by shipping, every day.</p>
+    <div class="cta-row">
+      <a class="btn btn-p" href="#projects">See my projects</a>
+      <a class="btn btn-s" href="mailto:a.h.khosravi1383@gmail.com">Get in touch</a>
+    </div>
+  </div>
+  <div class="photo"><img src="amir.jpg" alt="Amir Khosravi"></div>
+</header>
+
+<section id="projects">
+  <div class="sec-kicker">Projects</div>
+  <h2>Things I built & ship</h2>
+  <p class="lead">Three products, three different problem spaces — all live or in active development. Each one taught me a different layer of the stack.</p>
+
+  <div class="proj live">
+    <div class="f-img"><img src="shot.png" alt="Nelurio"></div>
+    <div>
+      <h3>Nelurio</h3>
+      <p class="what">AI study assistant for university students — live in beta.</p>
+      <div class="tags"><span class="tag">Go / chi</span><span class="tag">PostgreSQL</span><span class="tag">React 19</span><span class="tag">OpenAI</span><span class="tag">PWA</span><span class="tag">10 languages</span><span class="tag">GDPR</span></div>
+      <p class="build">Record a lecture → AI writes the summary, schedules spaced-repetition reviews, generates flashcards & quizzes, and a tutor answers from your own materials with citations. Includes admin console, iCal feed, device notifications and full GDPR account deletion. <b>Built solo — backend, frontend, AI, infra, deployment.</b></p>
+      <div class="f-links">
+        <a class="btn btn-p" href="https://nelurio.duckdns.org" target="_blank">Open live app</a>
+        <a class="btn btn-s" href="https://nelurio.duckdns.org/legal/imprint" target="_blank">Legal & privacy</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj">
+    <div class="f-img"><img src="nexdeutsch.png" alt="NexDeutsch"></div>
+    <div>
+      <h3>NexDeutsch</h3>
+      <p class="what">German vocabulary learning platform.</p>
+      <div class="tags"><span class="tag">Learning platform</span><span class="tag">Spaced practice</span><span class="tag">German market</span></div>
+      <p class="build">My earlier product for German learners — vocabulary training with structured practice sessions. <b>Nelurio's review engine was born from what I learned building this one.</b> Now being reworked with everything I know today.</p>
+      <div class="f-links"><span class="tag">source on request</span></div>
+    </div>
+  </div>
+
+  <div class="proj">
+    <div class="f-img"><img src="washhalle.png" alt="Washhalle App"></div>
+    <div>
+      <h3>Washhalle App</h3>
+      <p class="what">Operations app for a car-wash business.</p>
+      <div class="tags"><span class="tag">Real business</span><span class="tag">Operations</span><span class="tag">Field-tested</span></div>
+      <p class="build">Built for an actual car-wash location: day-to-day operations, tracking and workflow. <b>My first lesson in software for a real customer with real constraints</b> — not a tutorial project.</p>
+      <div class="f-links"><span class="tag">source on request</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="sec-kicker">Stack & Practices</div>
+  <h2>What I work with</h2>
+  <div class="grid3">
+    <div class="card skill"><b>Go · REST APIs</b><small>chi router, pgx, PostgreSQL, modular monolith, session auth + CSRF + rate limiting, automated migrations.</small></div>
+    <div class="card skill"><b>React 19 · TypeScript</b><small>Vite monorepo, design-token CSS, full RTL, installable PWA, network-first service worker, i18n for 10 locales.</small></div>
+    <div class="card skill"><b>AI integration</b><small>OpenAI Responses API, grounded tutoring with citations from user uploads, structured extraction, mock fallbacks.</small></div>
+    <div class="card skill"><b>DevOps</b><small>Oracle Cloud VPS, Caddy auto-TLS, GitHub Actions CI, zero-downtime deploys, Linux admin.</small></div>
+    <div class="card skill"><b>Security & GDPR</b><small>Cookie sessions, CSRF, rate limits, cascade account deletion, privacy-request workflow, EU hosting.</small></div>
+    <div class="card skill"><b>Product & QA</b><small>Automated locale tests, AI review agents, building from real user feedback instead of assumptions.</small></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="sec-kicker">About</div>
+  <h2>Developer with a business brain — and room to grow</h2>
+  <div class="edu">
+    <div class="card"><div class="emoji">🎓</div><b>BWL Student</b><small>Hochschule RheinMain, Wiesbaden — business + tech = products that find users</small></div>
+    <div class="card"><div class="emoji">🛠️</div><b>Learning by shipping</b><small>Three real products so far — each one one level deeper in the stack</small></div>
+    <div class="card"><div class="emoji">🗣️</div><b>Languages</b><small>German B2/C1 · English professional · Persian native</small></div>
+  </div>
+  <div class="mindset">
+    <p><b>How I work:</b> I pick a real problem, ship the smallest working version, then iterate from feedback. Nelurio exists because I kept rebuilding the same study tools for myself — at some point it made sense to build the platform once, properly.</p>
+    <p><b>What I'm looking for:</b> a Werkstudent or Praktikum position where I can work on a real codebase with experienced developers. I know how to build alone — <b>now I want to learn how great teams build together</b>, take on new challenges, and level up on things like testing culture, code review and scale.</p>
+    <p><b>Honest boundaries:</b> I haven't worked in a large team yet, and my German is improving (B2→C1). What I bring instead: proven ability to ship complete systems alone, real production experience with the full stack, and the habit of figuring things out fast.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-kicker">Contact</div>
+  <h2>Let's talk.</h2>
+  <p style="color:var(--mut);max-width:560px">If you have a Werkstudent or Praktikum opening — or just want to look at the code — I'd love a 5-minute live demo of Nelurio. No slides.</p>
+  <div class="contact-cards">
+    <a class="card" href="mailto:a.h.khosravi1383@gmail.com"><span class="emoji">✉️</span><b>Email</b><small>a.h.khosravi1383@gmail.com</small></a>
+    <a class="card" href="tel:+491622002699"><span class="emoji">📱</span><b>Phone</b><small>+49 162 2002699</small></a>
+    <a class="card" href="https://nelurio.duckdns.org" target="_blank"><span class="emoji">🚀</span><b>Nelurio — live</b><small>nelurio.duckdns.org</small></a>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <span>© 2026 Amir Khosravi · Handwritten HTML — no framework needed for a portfolio.</span>
+  <span><a href="https://nelurio.duckdns.org/legal/imprint">Impressum</a> · <a href="https://nelurio.duckdns.org/legal/privacy">Privacy</a></span>
+</div></footer>
+</div>
+</body>
+</html>
