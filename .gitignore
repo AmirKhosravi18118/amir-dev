@@ -1,0 +1,21 @@
+# local-only handoff file — contains server details + credentials. NEVER commit.
+PORTFOLIO_CONTEXT.md
+
+# local QC / working artifacts
+qc_*.png
+mock2/
+preview*.png
+cv_qc*.png
+final.png
+*.png.html
+*.png.png
+
+# node tooling (CI/dev only — the site itself is dependency-free)
+node_modules/
+playwright-report*/
+test-results/
+package-lock.json.tmp
+
+# OS junk
+Thumbs.db
+.DS_Store
