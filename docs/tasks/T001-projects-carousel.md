@@ -70,17 +70,17 @@ Behavior (all constants and conditions exactly as frozen in CONTRACT §4):
 
 Required test cases (ALL must appear in tests-ci/carousel.spec.ts):
 
-| #   | Scenario                             | Assertion                                                                            |
-| --- | ------------------------------------ | ------------------------------------------------------------------------------------ |
-| 1   | load `#projects`                     | 5 slides in `#carTrack`, 5 dots, slide 1 visible                                     |
-| 2   | click `.car-next` ×2, `.car-prev` ×1 | visible project title follows Nelurio→Washhalle→NexDeutsch order; active dot follows |
-| 3   | click dot 4                          | Saad Tattoo slide visible, dot 4 active                                              |
+| #   | Scenario                             | Assertion                                                                                  |
+| --- | ------------------------------------ | ------------------------------------------------------------------------------------------ |
+| 1   | load `#projects`                     | 5 slides in `#carTrack`, 5 dots, slide 1 visible                                           |
+| 2   | click `.car-next` ×2, `.car-prev` ×1 | visible project title follows Nelurio→Washhalle→NexDeutsch order; active dot follows       |
+| 3   | click dot 4                          | Saad Tattoo slide visible, dot 4 active                                                    |
 | 3b  | `.car-next` until wrap               | order ends …Saad Tattoo→**Finello**→Nelurio; Finello slide links the GitHub Pages live app |
-| 4   | no interaction, wait ≤ 9 s           | slide index advances by itself (autoplay)                                            |
-| 5   | click `#viewAllBtn`                  | `#projModal` visible, `#pmList` lists 5 projects, body scroll locked                 |
-| 6   | press ESC                            | modal hidden, focus back on `#viewAllBtn`                                            |
-| 7   | toggle DE                            | `#pmTitle` + slide `.what` text switch to German; reload keeps DE                    |
-| 8   | all `<img>` on page                  | every image loads (`naturalWidth > 0`) incl. `shot.png`                              |
+| 4   | no interaction, wait ≤ 9 s           | slide index advances by itself (autoplay)                                                  |
+| 5   | click `#viewAllBtn`                  | `#projModal` visible, `#pmList` lists 5 projects, body scroll locked                       |
+| 6   | press ESC                            | modal hidden, focus back on `#viewAllBtn`                                                  |
+| 7   | toggle DE                            | `#pmTitle` + slide `.what` text switch to German; reload keeps DE                          |
+| 8   | all `<img>` on page                  | every image loads (`naturalWidth > 0`) incl. `shot.png`                                    |
 
 ## Verify (paste output in PR)
 
