@@ -112,6 +112,47 @@ footer a{color:#c3b4ff}
 .proj:hover .f-img img{transform:scale(1.04)}
 .photo img{transition:transform .5s ease}
 .photo:hover img{transform:scale(1.02) rotate(.5deg)}
+
+/* ---- projects carousel ---- */
+.carousel{position:relative}
+.car-viewport{overflow:hidden;border-radius:26px}
+.car-track{display:flex;transition:transform .65s cubic-bezier(.2,.75,.25,1);touch-action:pan-y}
+.car-track.rm{transition:none}
+.car-track .proj{flex:0 0 100%;min-width:100%;margin-bottom:0}
+.car-track .proj:hover{transform:none}
+.car-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:rgba(16,13,36,.78);border:1px solid var(--line);color:var(--txt);cursor:pointer;backdrop-filter:blur(10px);transition:border-color .2s,box-shadow .2s}
+.car-btn:hover{border-color:var(--acc);box-shadow:0 10px 26px rgba(10,6,40,.55)}
+.car-prev{left:-14px}.car-next{right:-14px}
+.car-bar{display:flex;align-items:center;gap:18px;margin-top:18px}
+.car-dots{display:flex;gap:7px;align-items:center}
+.car-dot{width:8px;height:8px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.16);cursor:pointer;transition:width .35s,background .35s}
+.car-dot:hover{background:rgba(255,255,255,.34)}
+.car-dot.is-active{width:28px;background:linear-gradient(120deg,#a585ff,#4d8df7)}
+.car-progress{flex:1;height:3px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.car-progress span{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#8b6cff,#4d8df7)}
+.car-viewall{padding:11px 20px;font-size:13px;white-space:nowrap}
+.pnum{position:absolute;top:14px;left:14px;display:inline-flex;padding:5px 11px;border-radius:999px;background:rgba(13,11,29,.72);backdrop-filter:blur(6px);border:1px solid var(--line);color:#cfc9ee;font-size:11px;font-weight:800;letter-spacing:.14em}
+.live-chip{position:absolute;top:14px;right:14px;display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;background:rgba(9,20,14,.72);backdrop-filter:blur(6px);border:1px solid rgba(95,225,160,.35);color:#8af0bf;font-size:10.5px;font-weight:800;letter-spacing:.16em}
+.live-chip i{width:6px;height:6px;border-radius:50%;background:#5fe1a0;box-shadow:0 0 9px #5fe1a0;animation:pulse 2s infinite}
+.f-img{position:relative}
+.f-img img{-webkit-user-drag:none;user-select:none}
+.f-img.imgerr img{display:none}
+.f-img.imgerr::after{content:attr(data-name);display:flex;align-items:center;justify-content:center;min-height:280px;font-weight:900;font-size:28px;letter-spacing:-.02em;color:#cfc9ff;background:linear-gradient(150deg,rgba(139,108,255,.22),rgba(77,141,247,.12))}
+
+/* ---- view-all modal ---- */
+.pmodal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:22px;opacity:0;transition:opacity .25s}
+.pmodal.open{opacity:1}
+.pmodal-bg{position:absolute;inset:0;background:rgba(7,5,18,.8);backdrop-filter:blur(10px)}
+.pmodal-panel{position:relative;width:min(960px,100%);max-height:min(86vh,880px);overflow:auto;overscroll-behavior:contain;border-radius:24px;border:1px solid rgba(139,108,255,.25);background:linear-gradient(160deg,#181236,#0e0b20);box-shadow:0 50px 120px rgba(0,0,0,.6);padding:34px;transform:translateY(22px) scale(.985);transition:transform .3s cubic-bezier(.2,.7,.3,1)}
+.pmodal.open .pmodal-panel{transform:none}
+.pmodal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:20px}
+.pmodal-head h3{font-size:26px;font-weight:900;letter-spacing:-.02em}
+.pm-sub{color:var(--mut);font-size:14px;max-width:520px;margin-top:4px}
+.pm-close{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--txt);cursor:pointer;flex-shrink:0;transition:border-color .2s,transform .25s}
+.pm-close:hover{border-color:var(--acc);transform:rotate(90deg)}
+.pm-list .proj{margin-bottom:18px}
+.pm-list .proj:last-child{margin-bottom:0}
+
 @media(prefers-reduced-motion:reduce){.reveal,.hero > div{opacity:1;transform:none;transition:none;animation:none}}
 
 @media(max-width:860px){
@@ -121,6 +162,16 @@ footer a{color:#c3b4ff}
   nav ul{display:none}section{padding:60px 0}
   .proj{padding:26px}
   .contact-grid{grid-template-columns:1fr}
+  .car-btn{width:40px;height:40px}
+  .car-prev{left:-8px}.car-next{right:-8px}
+  .pmodal{padding:12px}
+  .pmodal-panel{padding:22px 16px}
+  .pmodal-head h3{font-size:22px}
+}
+@media(max-width:560px){
+  .car-bar{gap:12px}
+  .car-progress{display:none}
+  .car-viewall{padding:10px 16px;font-size:12px}
 }
 </style>
 </head>
@@ -148,7 +199,7 @@ footer a{color:#c3b4ff}
   <div>
     <div class="badge"><i></i><span data-i18n="hero.badge">OPEN FOR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN</span></div>
     <h1><span data-i18n="hero.h1a">I like building things</span><br><span data-i18n="hero.h1b">people actually use.</span></h1>
-    <p class="sub" data-i18n="hero.sub">Developer & BWL student in Wiesbaden. Building Nelurio — an AI study platform live in beta — plus NexDeutsch, Washhalle and client work like Saad Tattoo. Go · React · AI. Learning by shipping, every day.</p>
+    <p class="sub" data-i18n="hero.sub">Developer & BWL student in Wiesbaden. Building Nelurio — an AI study platform live in beta — plus NexDeutsch, Washhalle, Finello and client work like Saad Tattoo. Go · React · AI. Learning by shipping, every day.</p>
     <div class="cta-row">
       <a class="btn btn-p" href="#projects" data-i18n="hero.cta1">See my projects</a>
       <a class="btn btn-s" href="Amir_Khosravi_CV.pdf" download data-i18n="hero.cta2">Download CV (PDF)</a>
@@ -160,63 +211,112 @@ footer a{color:#c3b4ff}
 <section id="projects">
   <div class="sec-kicker" data-i18n="proj.kicker">Projects</div>
   <h2 data-i18n="proj.h2">Things I've built and shipped</h2>
-  <p class="lead" data-i18n="proj.lead">Four products across four problem spaces — AI platform, learning, real business operations and client web design. Each one taught me a different layer of the stack.</p>
+  <p class="lead" data-i18n="proj.lead">Five live products across five problem spaces — AI platform, learning, real business operations, client web design and student finance. Every single one is deployed and open to try right now. They rotate by themselves — watch, or click through.</p>
 
-  <div class="proj live reveal">
-    <div class="f-img"><img src="shot.png" alt="Nelurio dashboard"></div>
-    <div>
-      <h3>Nelurio</h3>
-      <p class="what" data-i18n="p1.what">AI study assistant for university students — live in beta.</p>
-      <div class="tags"><span class="tag">Go / chi</span><span class="tag">PostgreSQL</span><span class="tag">React 19</span><span class="tag">OpenAI</span><span class="tag">PWA</span><span class="tag">10 languages</span><span class="tag">GDPR</span></div>
-      <p class="build" data-i18n="p1.build">Record a lecture → AI writes the summary, schedules spaced-repetition reviews, generates flashcards & quizzes, and a tutor answers from your own materials with citations. Built solo — backend, frontend, AI, infra, deployment.</p>
-      <div class="f-links">
-        <a class="btn btn-p" href="https://nelurio.duckdns.org" target="_blank" data-i18n="c.liveapp">Open live app</a>
-        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/nelurio" target="_blank"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+  <div id="projCarousel" class="carousel reveal" aria-roledescription="carousel" tabindex="0">
+    <button class="car-btn car-prev" type="button" data-i18n-aria="proj.prev" aria-label="Previous project">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="car-viewport">
+      <div id="carTrack" class="car-track">
+
+        <article class="proj live">
+          <div class="f-img" data-name="Nelurio"><span class="pnum"></span><span class="live-chip"><i></i>LIVE · BETA</span><img src="shot.png" alt="Nelurio dashboard"></div>
+          <div>
+            <h3>Nelurio</h3>
+            <p class="what" data-i18n="p1.what">AI study assistant for university students — live in beta.</p>
+            <div class="tags"><span class="tag">Go / chi</span><span class="tag">PostgreSQL</span><span class="tag">React 19</span><span class="tag">OpenAI</span><span class="tag">PWA</span><span class="tag">10 languages</span><span class="tag">GDPR</span></div>
+            <p class="build" data-i18n="p1.build">Record a lecture → AI writes the summary, schedules spaced-repetition reviews, generates flashcards & quizzes, and a tutor answers from your own materials with citations. Built solo — backend, frontend, AI, infra, deployment.</p>
+            <div class="f-links">
+              <a class="btn btn-p" href="https://nelurio.duckdns.org" target="_blank" rel="noopener" data-i18n="c.liveapp">Open live app</a>
+              <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/nelurio" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="f-img" data-name="NexDeutsch"><span class="pnum"></span><span class="live-chip"><i></i>LIVE</span><img src="nexdeutsch.png" alt="NexDeutsch" loading="lazy"></div>
+          <div>
+            <h3>NexDeutsch</h3>
+            <p class="what" data-i18n="p2.what">German vocabulary learning platform.</p>
+            <div class="tags"><span class="tag">Learning platform</span><span class="tag">Spaced practice</span><span class="tag">German market</span></div>
+            <p class="build" data-i18n="p2.build">My earlier product for German learners — vocabulary training with structured practice sessions. Nelurio's review engine was born from what I learned building this one. Currently being reworked with everything I know today.</p>
+            <div class="f-links">
+              <a class="btn btn-p" href="https://nexdeutsch-92-5-111-34.sslip.io" target="_blank" rel="noopener" data-i18n="c.liveapp">Open live app</a>
+              <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="f-img" data-name="Washhalle App"><span class="pnum"></span><span class="live-chip"><i></i>LIVE · DAILY USE</span><img src="washhalle.png" alt="Washhalle App" loading="lazy"></div>
+          <div>
+            <h3>Washhalle App</h3>
+            <p class="what" data-i18n="p3.what">Operations app for a car-wash business.</p>
+            <div class="tags"><span class="tag">Real business</span><span class="tag">Operations</span><span class="tag">In daily use</span></div>
+            <p class="build" data-i18n="p3.build">Built for an actual car-wash location: day-to-day operations, tracking and workflow. My first lesson in software for a real customer with real constraints — not a tutorial project.</p>
+            <div class="f-links">
+              <a class="btn btn-p" href="https://waschhalle-92-5-111-34.sslip.io" target="_blank" rel="noopener" data-i18n="c.liveapp">Open live app</a>
+              <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="f-img" data-name="Saad Tattoo"><span class="pnum"></span><span class="live-chip"><i></i>CLIENT · LIVE</span><img src="saadtattoo.png" alt="Saad Tattoo website" loading="lazy"></div>
+          <div>
+            <h3>Saad Tattoo — Studio Website</h3>
+            <p class="what" data-i18n="p4.what">Client website for a tattoo studio in Wiesbaden.</p>
+            <div class="tags"><span class="tag">Wix Studio</span><span class="tag">AI-assisted design</span><span class="tag">Client work</span><span class="tag">Live</span></div>
+            <p class="build" data-i18n="p4.build">Designed and launched a booking-focused studio website using Wix combined with AI-generated visual assets. My first paid client project — concept, design, content and launch for a real business.</p>
+            <div class="f-links">
+              <a class="btn btn-p" href="https://www.saadtattoo.de" target="_blank" rel="noopener" data-i18n="c.livesite">Open live site</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="f-img" data-name="Finello"><span class="pnum"></span><span class="live-chip"><i></i>LIVE</span><img src="finello.png" alt="Finello app" loading="lazy"></div>
+          <div>
+            <h3>Finello</h3>
+            <p class="what" data-i18n="p5.what">Personal finance app for students in Germany — newest build.</p>
+            <div class="tags"><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS 4</span><span class="tag">Vite</span><span class="tag">Vitest</span><span class="tag">Student finance</span></div>
+            <p class="build" data-i18n="p5.build">Money, sorted: budget calendar with recurring payments and due-statuses, expenses and transactions (manual or imported), and a tax overview for student jobs. Built as a product, not a demo — shipped under a spec-and-issues engineering OS with CI and automated smoke tests.</p>
+            <div class="f-links">
+              <a class="btn btn-p" href="https://amirkhosravi18118.github.io/finello-app/" target="_blank" rel="noopener" data-i18n="c.liveapp">Open live app</a>
+              <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/finello" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
-  </div>
-
-  <div class="proj reveal">
-    <div class="f-img"><img src="nexdeutsch.png" alt="NexDeutsch"></div>
-    <div>
-      <h3>NexDeutsch</h3>
-      <p class="what" data-i18n="p2.what">German vocabulary learning platform.</p>
-      <div class="tags"><span class="tag">Learning platform</span><span class="tag">Spaced practice</span><span class="tag">German market</span></div>
-      <p class="build" data-i18n="p2.build">My earlier product for German learners — vocabulary training with structured practice sessions. Nelurio's review engine was born from what I learned building this one. Currently being reworked with everything I know today.</p>
-      <div class="f-links">
-        <a class="btn btn-p" href="https://nexdeutsch-92-5-111-34.sslip.io" target="_blank" data-i18n="c.liveapp">Open live app</a>
-        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="proj reveal">
-    <div class="f-img"><img src="washhalle.png" alt="Washhalle App"></div>
-    <div>
-      <h3>Washhalle App</h3>
-      <p class="what" data-i18n="p3.what">Operations app for a car-wash business.</p>
-      <div class="tags"><span class="tag">Real business</span><span class="tag">Operations</span><span class="tag">In daily use</span></div>
-      <p class="build" data-i18n="p3.build">Built for an actual car-wash location: day-to-day operations, tracking and workflow. My first lesson in software for a real customer with real constraints — not a tutorial project.</p>
-      <div class="f-links">
-        <a class="btn btn-p" href="https://waschhalle-92-5-111-34.sslip.io" target="_blank" data-i18n="c.liveapp">Open live app</a>
-        <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="proj reveal">
-    <div class="f-img"><img src="saadtattoo.png" alt="Saad Tattoo website"></div>
-    <div>
-      <h3>Saad Tattoo — Studio Website</h3>
-      <p class="what" data-i18n="p4.what">Client website for a tattoo studio in Wiesbaden.</p>
-      <div class="tags"><span class="tag">Wix Studio</span><span class="tag">AI-assisted design</span><span class="tag">Client work</span><span class="tag">Live</span></div>
-      <p class="build" data-i18n="p4.build">Designed and launched a booking-focused studio website using Wix combined with AI-generated visual assets. My first paid client project — concept, design, content and launch for a real business.</p>
-      <div class="f-links">
-        <a class="btn btn-p" href="https://www.saadtattoo.de" target="_blank" data-i18n="c.livesite">Open live site</a>
-      </div>
+    <button class="car-btn car-next" type="button" data-i18n-aria="proj.next" aria-label="Next project">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <div class="car-bar">
+      <div id="carDots" class="car-dots" role="tablist" aria-label="Projects"></div>
+      <div class="car-progress" aria-hidden="true"><span id="carBar"></span></div>
+      <button id="viewAllBtn" class="btn btn-s car-viewall" type="button" data-i18n="proj.viewall">View all</button>
     </div>
   </div>
 </section>
+
+<div id="projModal" class="pmodal" hidden aria-hidden="true">
+  <div class="pmodal-bg" data-close></div>
+  <div class="pmodal-panel" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+    <div class="pmodal-head">
+      <div>
+        <h3 id="pmTitle" data-i18n="pm.title">All projects</h3>
+        <p class="pm-sub" data-i18n="pm.sub">Every project here is live and open to try — no mockups, no vaporware. Newest at the bottom.</p>
+      </div>
+      <button class="pm-close" type="button" data-close data-i18n-aria="pm.close" aria-label="Close">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="pmList" class="pm-list"></div>
+  </div>
+</div>
 
 <section id="skills">
   <div class="sec-kicker" data-i18n="skills.kicker">Stack & Practices</div>
@@ -249,7 +349,7 @@ footer a{color:#c3b4ff}
   <h2 data-i18n="about.h2">Developer with a business brain — and room to grow</h2>
   <div class="edu">
     <div class="card reveal"><div class="emoji">🎓</div><b data-i18n="about.bwl">BWL Student</b><small data-i18n="about.bwlS">Hochschule RheinMain, Wiesbaden — business + tech = products that find users</small></div>
-    <div class="card reveal"><div class="emoji">🛠️</div><b data-i18n="about.ship">Learning by shipping</b><small data-i18n="about.shipS">Four real products so far — each one a level deeper in the stack</small></div>
+    <div class="card reveal"><div class="emoji">🛠️</div><b data-i18n="about.ship">Learning by shipping</b><small data-i18n="about.shipS">Five real products so far — each one a level deeper in the stack</small></div>
     <div class="card reveal"><div class="emoji">🗣️</div><b data-i18n="about.lang">Languages</b><small data-i18n="about.langS">German B2/C1 · English professional · Persian native</small></div>
     <div class="card reveal"><div class="emoji">📅</div><b data-i18n="about.avail">Availability</b><small data-i18n="about.availS">~20 h/week during semester, full-time in breaks · several semesters remaining</small></div>
   </div>
@@ -288,12 +388,18 @@ const I18N = {
 "hero.badge":{"en":"OPEN FOR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN","de":"OFFEN FÜR WERKSTUDENT / PRAKTIKUM · RHEIN-MAIN"},
 "hero.h1a":{"en":"I like building things","de":"Ich baue Dinge,"},
 "hero.h1b":{"en":"people actually use.","de":"die wirklich benutzt werden."},
-"hero.sub":{"en":"Developer & BWL student in Wiesbaden. Building Nelurio — an AI study platform live in beta — plus NexDeutsch, Washhalle and client work like Saad Tattoo. Go · React · AI. Learning by shipping, every day.","de":"Entwickler & BWL-Student in Wiesbaden. Baue aktuell Nelurio — eine KI-Lernplattform im Beta — sowie NexDeutsch, Washhalle und Kundenprojekte wie Saad Tattoo. Go · React · KI. Lernen durch Ausliefern, jeden Tag."},
+"hero.sub":{"en":"Developer & BWL student in Wiesbaden. Building Nelurio — an AI study platform live in beta — plus NexDeutsch, Washhalle, Finello and client work like Saad Tattoo. Go · React · AI. Learning by shipping, every day.","de":"Entwickler & BWL-Student in Wiesbaden. Baue aktuell Nelurio — eine KI-Lernplattform im Beta — sowie NexDeutsch, Washhalle, Finello und Kundenprojekte wie Saad Tattoo. Go · React · KI. Lernen durch Ausliefern, jeden Tag."},
 "hero.cta1":{"en":"See my projects","de":"Projekte ansehen"},
 "hero.cta2":{"en":"Download CV (PDF)","de":"Lebenslauf (PDF)"},
 "proj.kicker":{"en":"Projects","de":"Projekte"},
 "proj.h2":{"en":"Things I've built and shipped","de":"Dinge, die ich gebaut und ausgeliefert habe"},
-"proj.lead":{"en":"Four products across four problem spaces — AI platform, learning, real business operations and client web design. Each one taught me a different layer of the stack.","de":"Vier Produkte in vier Problemwelten — KI-Plattform, Lernen, echte Geschäftsabläufe und Kundendesign. Jedes hat mir eine andere Schicht des Stacks beigebracht."},
+"proj.lead":{"en":"Five live products across five problem spaces — AI platform, learning, real business operations, client web design and student finance. Every single one is deployed and open to try right now. They rotate by themselves — watch, or click through.","de":"Fünf live Produkte in fünf Problemwelten — KI-Plattform, Lernen, echte Geschäftsabläufe, Kundendesign und Studienfinanzen. Jedes einzelne ist deployed und jetzt sofort ausprobierbar. Sie wechseln von selbst — zuschauen oder durchklicken."},
+"proj.viewall":{"en":"View all","de":"Alle ansehen"},
+"proj.prev":{"en":"Previous project","de":"Vorheriges Projekt"},
+"proj.next":{"en":"Next project","de":"Nächstes Projekt"},
+"pm.title":{"en":"All projects","de":"Alle Projekte"},
+"pm.sub":{"en":"Every project here is live and open to try — no mockups, no vaporware. Newest at the bottom.","de":"Jedes Projekt hier ist live und zum Ausprobieren offen — keine Mockups, kein Vaporware. Neueste unten."},
+"pm.close":{"en":"Close","de":"Schließen"},
 "p1.what":{"en":"AI study assistant for university students — live in beta.","de":"KI-Lernassistent für Studierende — live im Beta."},
 "p1.build":{"en":"Record a lecture → AI writes the summary, schedules spaced-repetition reviews, generates flashcards & quizzes, and a tutor answers from your own materials with citations. Built solo — backend, frontend, AI, infra, deployment.","de":"Vorlesung erfassen → die KI schreibt die Zusammenfassung, plant Wiederholungen, erstellt Lernkarten & Quiz — der Tutor antwortet aus deinen eigenen Materialien mit Quellen. Solo gebaut — Backend, Frontend, KI, Infra, Deployment."},
 "p2.what":{"en":"German vocabulary learning platform.","de":"Plattform zum Deutsch-Vokabeln lernen."},
@@ -302,6 +408,8 @@ const I18N = {
 "p3.build":{"en":"Built for an actual car-wash location: day-to-day operations, tracking and workflow. My first lesson in software for a real customer with real constraints — not a tutorial project.","de":"Gebaut für eine echte Autowaschanlage: Tagesbetrieb, Tracking und Workflow. Meine erste Lektion in Software für einen echten Kunden — kein Tutorial-Projekt."},
 "p4.what":{"en":"Client website for a tattoo studio in Wiesbaden.","de":"Kundenwebsite für ein Tattoo-Studio in Wiesbaden."},
 "p4.build":{"en":"Designed and launched a booking-focused studio website using Wix combined with AI-generated visual assets. My first paid client project — concept, design, content and launch for a real business.","de":"Buchungsorientierte Studio-Website mit Wix und KI-generierten visuellen Assets gestaltet und gelauncht. Mein erstes bezahltes Kundenprojekt — Konzept, Design, Inhalt und Launch."},
+"p5.what":{"en":"Personal finance app for students in Germany — newest build.","de":"Persönliche Finanz-App für Studierende in Deutschland — mein neuestes Produkt."},
+"p5.build":{"en":"Money, sorted: budget calendar with recurring payments and due-statuses, expenses and transactions (manual or imported), and a tax overview for student jobs. Built as a product, not a demo — shipped under a spec-and-issues engineering OS with CI and automated smoke tests.","de":"Money, sorted: Budget-Kalender mit wiederkehrenden Zahlungen und Fälligkeits-Status, Ausgaben und Transaktionen (manuell oder importiert) sowie Steuer-Überblick für Studentenjobs. Als Produkt gebaut, nicht als Demo — ausgeliefert unter einer Spec-and-Issues-Engineering-OS mit CI und automatisierten Smoke-Tests."},
 "skills.kicker":{"en":"Stack & Practices","de":"Stack & Praktiken"},
 "skills.h2":{"en":"What I work with","de":"Womit ich arbeite"},
 "sk.s1":{"en":"chi router, pgx, PostgreSQL, modular monolith, session auth + CSRF + rate limiting, automated migrations.","de":"chi router, pgx, PostgreSQL, modularer Monolith, Session-Auth + CSRF + Rate-Limiting, automatische Migrationen."},
@@ -324,7 +432,7 @@ const I18N = {
 "about.bwl":{"en":"BWL Student","de":"BWL-Student"},
 "about.bwlS":{"en":"Hochschule RheinMain, Wiesbaden — business + tech = products that find users","de":"Hochschule RheinMain, Wiesbaden — Business + Tech = Produkte, die Nutzer finden"},
 "about.ship":{"en":"Learning by shipping","de":"Lernen durch Ausliefern"},
-"about.shipS":{"en":"Four real products so far — each one a level deeper in the stack","de":"Vier echte Produkte bisher — jedes eine Ebene tiefer im Stack"},
+"about.shipS":{"en":"Five real products so far — each one a level deeper in the stack","de":"Fünf echte Produkte bisher — jedes eine Ebene tiefer im Stack"},
 "about.lang":{"en":"Languages","de":"Sprachen"},
 "about.langS":{"en":"German B2/C1 · English professional · Persian native","de":"Deutsch B2/C1 · Englisch fließend · Persisch Muttersprache"},
 "about.avail":{"en":"Availability","de":"Verfügbarkeit"},
@@ -354,6 +462,121 @@ function setLang(l){
   try{localStorage.setItem('lang',l)}catch(e){}
 }
 try{const saved=localStorage.getItem('lang'); if(saved) setLang(saved);}catch(e){}
+</script>
+<script>
+/* Projects carousel — contract: docs/CONTRACT.md §4.
+   Slide list = children of #carTrack; dots/pnum/progress/modal derive from it.
+   Adding a project = append one article.proj + p{N}.what/p{N}.build i18n keys. */
+(function(){
+  const DUR = 7000, SWIPE = 44, DT_CLAMP = 100;
+  const root = document.getElementById('projCarousel');
+  const track = document.getElementById('carTrack');
+  const dotsBox = document.getElementById('carDots');
+  const bar = document.getElementById('carBar');
+  const modal = document.getElementById('projModal');
+  const slides = Array.from(track.children);
+  const N = slides.length;
+
+  slides.forEach((s,i)=>{ s.querySelector('.pnum').textContent =
+    String(i+1).padStart(2,'0') + ' / ' + String(N).padStart(2,'0'); });
+
+  const dots = slides.map((_,i)=>{
+    const d = document.createElement('button');
+    d.className = 'car-dot'; d.type = 'button';
+    d.setAttribute('role','tab');
+    d.setAttribute('aria-label','Go to project ' + (i+1));
+    d.addEventListener('click', ()=>go(i,true));
+    dotsBox.appendChild(d);
+    return d;
+  });
+
+  let idx = 0, elapsed = 0, last = performance.now();
+  let inView = false, hover = false, focused = false, modalOpen = false;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduced.matches) track.classList.add('rm');
+
+  function render(){
+    track.style.transform = 'translateX(' + (-idx*100) + '%)';
+    dots.forEach((d,i)=>{ d.classList.toggle('is-active', i===idx);
+      d.setAttribute('aria-selected', i===idx ? 'true' : 'false'); });
+    bar.style.width = '0%';
+  }
+  function go(i, byUser){
+    idx = ((i % N) + N) % N;
+    if (byUser) elapsed = 0;
+    render();
+  }
+
+  new IntersectionObserver(es=>{ inView = es[0].isIntersecting; }, {threshold:.2}).observe(root);
+  document.addEventListener('visibilitychange', ()=>{ last = performance.now(); });
+  root.addEventListener('pointerenter', ()=>{ hover = true; });
+  root.addEventListener('pointerleave', ()=>{ hover = false; });
+  root.addEventListener('focusin', ()=>{ focused = true; });
+  root.addEventListener('focusout', ()=>{ focused = false; });
+
+  function tick(now){
+    const dt = Math.min(DT_CLAMP, now - last);
+    last = now;
+    if (inView && !document.hidden && !hover && !focused && !modalOpen) {
+      elapsed += dt;
+      if (elapsed >= DUR) { idx = (idx+1) % N; elapsed = 0; render(); }
+    }
+    bar.style.width = Math.min(100, elapsed/DUR*100) + '%';
+    requestAnimationFrame(tick);
+  }
+
+  document.querySelector('.car-prev').addEventListener('click', ()=>go(idx-1,true));
+  document.querySelector('.car-next').addEventListener('click', ()=>go(idx+1,true));
+  root.addEventListener('keydown', e=>{
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(idx-1,true); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(idx+1,true); }
+  });
+  let tx = 0, ty = 0;
+  track.addEventListener('touchstart', e=>{ tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, {passive:true});
+  track.addEventListener('touchend', e=>{
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > SWIPE && Math.abs(dx) > Math.abs(dy)) go(idx + (dx < 0 ? 1 : -1), true);
+  }, {passive:true});
+
+  /* view-all modal: clones of the slides, vertical list */
+  const list = document.getElementById('pmList');
+  let opener = null;
+  function openModal(){
+    opener = document.activeElement;
+    modalOpen = true;
+    modal.hidden = false; modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(()=>{ modal.classList.add('open');
+      modal.querySelector('.pm-close').focus(); });
+  }
+  function closeModal(){
+    modalOpen = false;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    setTimeout(()=>{ modal.hidden = true;
+      if (opener && opener.focus) opener.focus(); }, 260);
+  }
+  document.getElementById('viewAllBtn').addEventListener('click', openModal);
+  modal.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click', closeModal));
+  document.addEventListener('keydown', e=>{
+    if (e.key === 'Escape' && modalOpen) closeModal();
+  });
+
+  slides.forEach(s=>{
+    const c = s.cloneNode(true);
+    c.querySelectorAll('img').forEach(im=>{ im.setAttribute('loading','lazy'); });
+    list.appendChild(c);
+  });
+  /* clones carry data-i18n — re-run the dictionary so they match the active language */
+  if (typeof setLang === 'function') {
+    const cur = document.documentElement.getAttribute('data-lang') || 'en';
+    setLang(cur);
+  }
+
+  render();
+  requestAnimationFrame(tick);
+})();
 </script>
 <script>
 const io = new IntersectionObserver((entries)=>{

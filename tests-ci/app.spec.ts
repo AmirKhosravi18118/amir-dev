@@ -28,10 +28,10 @@ test("all sections anchor-resolve", async ({ page }) => {
 
 test("every project card renders: title, links, tags", async ({ page }) => {
   await page.goto("/index.html#projects");
-  const cards = page.locator(".proj");
-  await expect(cards).toHaveCount(4); // pre-carousel baseline; T001 updates this
-  await expect(page.locator(".proj h3").filter({ hasText: "Nelurio" })).toBeVisible();
-  await expect(page.locator('.proj a[href*="nelurio.duckdns.org"]').first()).toBeVisible();
+  const cards = page.locator("#carTrack .proj"); // modal clones exist too — scope to the track
+  await expect(cards).toHaveCount(5);
+  await expect(page.locator("#carTrack .proj h3").filter({ hasText: "Nelurio" })).toBeVisible();
+  await expect(page.locator('#carTrack a[href*="nelurio.duckdns.org"]').first()).toBeVisible();
 });
 
 test("all images load (naturalWidth > 0)", async ({ page }) => {
