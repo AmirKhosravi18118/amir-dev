@@ -16,5 +16,5 @@
 - **Next up:** CI PR → then T001 (claim on its issue first) → deploy merged
   `index.html` to the VPS and verify 200.
 - **Fresh-session bootstrap:** 1) read AGENT-HANDOFF.md, then CONTRIBUTING.md,
-   then this file; 2) `gh issue list --state open`; 3) claim on the T001 issue
-   with branch + files; 4) follow docs/CONTRACT.md §4 exactly.
+  then this file; 2) `gh issue list --state open`; 3) claim on the T001 issue
+  with branch + files; 4) follow docs/CONTRACT.md §4 exactly.

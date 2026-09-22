@@ -1,0 +1,12 @@
+# index.html is exempt from prettier (CONTRIBUTING traps #7): handcrafted single-file
+# site; reformatting churns 100% of lines and destroys grouped one-liner CSS.
+# htmlhint + npm run check:js own that file instead.
+index.html
+cv_print.html
+package-lock.json
+
+# Legacy generator artifacts from the mockup pipeline — working files, not part
+# of the deployed site; formatting them is churn with no gate value.
+nexdeutsch.html
+washhalle.html
+
