@@ -11,7 +11,7 @@
 > a production monorepo where **nine work packages were shipped entirely by AI
 > agents through PRs** under exactly these rules. Nothing here is theoretical;
 > every rule exists because skipping it burned real time somewhere. Where the
-> doc shows a concrete tool, it is an *example*: §5.3 maps every gate to the
+> doc shows a concrete tool, it is an _example_: §5.3 maps every gate to the
 > equivalent tool for the common stacks.
 
 ---
@@ -55,47 +55,53 @@ truth: issues are the task board, PRs are the evidence log, CI is the bouncer.
 
 ## 2. Day-1 repo artifacts (create these before any feature code)
 
-| Artifact | Role | Who may change it |
-|---|---|---|
-| `CONTRIBUTING.md` | Operating contract for humans AND agents: branch model, claim protocol, agent rules, traps list | anyone, via PR |
-| `docs/PLAN.md` | Self-contained master plan: scope, stack, architecture, CI/test policy, timeline, explicit out-of-scope table | owner-approved PRs |
-| `docs/EXECUTION.md` | Work-package breakdown + the task-spec template (§2.1) | owner-approved PRs |
-| `docs/CONTRACT.md` | **Frozen interface contract** — for an HTTP API: every endpoint's method, path, auth, exact JSON shapes. For other systems: the schema/IDL/event/CLI contract. Implementing agents code against it, never invent shapes, never extend it | owner-approved PRs only, committed BEFORE the code that implements it |
-| `docs/tasks/T###-slug.md` | One spec file per task (template §2.1) | spec'd just-in-time per work package, then frozen |
-| `docs/tasks/WP#-slug.md` | One umbrella spec per work package: problem, owner decisions baked in, PR + claim map, out-of-scope | owner-approved before coding starts |
-| `docs/HANDOVER.md` | Living handover, newest entry on top — state, evidence, as-built notes, traps, next up | updated at every milestone |
-| `docs/decisions/ADR-NNN-slug.md` | Lightweight ADRs, ~20 lines each | via PR |
+| Artifact                         | Role                                                                                                                                                                                                                                     | Who may change it                                                     |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `CONTRIBUTING.md`                | Operating contract for humans AND agents: branch model, claim protocol, agent rules, traps list                                                                                                                                          | anyone, via PR                                                        |
+| `docs/PLAN.md`                   | Self-contained master plan: scope, stack, architecture, CI/test policy, timeline, explicit out-of-scope table                                                                                                                            | owner-approved PRs                                                    |
+| `docs/EXECUTION.md`              | Work-package breakdown + the task-spec template (§2.1)                                                                                                                                                                                   | owner-approved PRs                                                    |
+| `docs/CONTRACT.md`               | **Frozen interface contract** — for an HTTP API: every endpoint's method, path, auth, exact JSON shapes. For other systems: the schema/IDL/event/CLI contract. Implementing agents code against it, never invent shapes, never extend it | owner-approved PRs only, committed BEFORE the code that implements it |
+| `docs/tasks/T###-slug.md`        | One spec file per task (template §2.1)                                                                                                                                                                                                   | spec'd just-in-time per work package, then frozen                     |
+| `docs/tasks/WP#-slug.md`         | One umbrella spec per work package: problem, owner decisions baked in, PR + claim map, out-of-scope                                                                                                                                      | owner-approved before coding starts                                   |
+| `docs/HANDOVER.md`               | Living handover, newest entry on top — state, evidence, as-built notes, traps, next up                                                                                                                                                   | updated at every milestone                                            |
+| `docs/decisions/ADR-NNN-slug.md` | Lightweight ADRs, ~20 lines each                                                                                                                                                                                                         | via PR                                                                |
 
-The point of `CONTRACT.md` being frozen *before* implementation and off-limits
+The point of `CONTRACT.md` being frozen _before_ implementation and off-limits
 to implementing agents: contract debates happen once, in the open, on the issue —
 not per-PR, and not invented mid-code. Same for work-package decisions: the
 umbrella spec records **"owner decisions baked in"** numbered, and the agent asks
-for approval/veto on the epic issue *before* starting (see the claim example in
+for approval/veto on the epic issue _before_ starting (see the claim example in
 §3.3).
 
 ### 2.1 Task spec template (`docs/tasks/T###-slug.md`)
 
 ```markdown
 # T### — <area>: <one-line what>
+
 Status: draft|ready|done | Depends: T### | Est: 0.5d | PR n of WP#
 
 ## Goal
+
 One sentence.
 
 ## Files (create/modify ONLY these)
+
 - path/to/source_file
 - path/to/test_file
 
 ## Spec
+
 Exact signatures / SQL / behavior — enough detail that an agent never guesses:
-  function signatures with input→output contracts
+function signatures with input→output contracts
 Required test cases (ALL must appear):
-  explicit table rows / scenario list
+explicit table rows / scenario list
 
 ## Verify (paste output in PR)
+
 <the exact commands that prove this task, e.g. unit + integration + lint>
 
 ## Out of scope
+
 Explicitly named non-goals (so nothing creeps silently).
 ```
 
@@ -138,6 +144,7 @@ Comment on the issue **before the first commit**:
 
 ```markdown
 **Claim:** branch `feat/T119-cleanup-jobs`; files:
+
 - backend/orders/{expire.go,queries.sql,generated/,orders_integration_test.go}
 - backend/config/{config.go,config_test.go}
 - backend/cmd/jobs/main.go
@@ -158,9 +165,11 @@ Closes #30, closes #31 (WP8 PR 1 — epic #28). Specs: docs/tasks/T116-....md, .
 Contract frozen in docs/CONTRACT.md (committed first — docs(wp8), owner-approved on #28).
 
 ## What ships
+
 - <bullet per task: exact behavior, endpoints, edge cases>
 
 ## Verify
+
 - lint: 0 issues (pinned version)
 - format check clean, build clean
 - full unit + integration suite — ALL GREEN (paste output / counts)
@@ -212,13 +221,13 @@ The rules that shape the workflow file — all stack-independent:
 3. `concurrency: <group per ref>` with `cancel-in-progress: true` — superseded
    pushes don't queue.
 4. **Timeout on every job** — no hung job eats runners.
-5. **No `continue-on-error`, no `|| true`** — a flaky gate gets *fixed*, never
+5. **No `continue-on-error`, no `|| true`** — a flaky gate gets _fixed_, never
    muted.
 6. Caches keyed by the real lockfile paths, per package directory.
 7. **Artifacts on failure only** (HTML report + traces), short retention (3–7
    days).
 8. **Self-skipping test honesty check** — `t.Skip()`-style skips make test
-   runners exit 0 even when *everything* skipped, so any dedicated integration
+   runners exit 0 even when _everything_ skipped, so any dedicated integration
    gate must count declared vs actually-passed tests (§6.2).
 9. Shell steps avoid `[ -n "$x" ] && cmd` idioms (exit 1 under `set -e` when
    empty) — use explicit `if` guards; use `xargs -r` equivalents so empty
@@ -236,34 +245,35 @@ name: CI
 on:
   push:
     branches: [main]
-    paths: ['src-a/**', 'src-b/**', 'e2e/**', '.github/workflows/ci.yml']
+    paths: ["src-a/**", "src-b/**", "e2e/**", ".github/workflows/ci.yml"]
   pull_request:
-    paths: ['src-a/**', 'src-b/**', 'e2e/**', '.github/workflows/ci.yml']
+    paths: ["src-a/**", "src-b/**", "e2e/**", ".github/workflows/ci.yml"]
 
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  lint-test:          # × per language area, working-directory: <area>
+  lint-test: # × per language area, working-directory: <area>
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@<sha>
-      - uses: setup-<toolchain>@<sha>        # version FROM the lockfile, cache on it
-      - run: <fmt check>                      # fail on diff, never auto-fix in CI
-      - run: <lint>                           # pinned linter version
+      - uses: setup-<toolchain>@<sha> # version FROM the lockfile, cache on it
+      - run: <fmt check> # fail on diff, never auto-fix in CI
+      - run: <lint> # pinned linter version
       - run: <build>
-      - run: <unit + integration tests>       # sanitizers on; container-backed
-                                              # suites serialized (-p 1 / single
-                                              # process) to avoid reaper races
+      - run:
+          <unit + integration tests> # sanitizers on; container-backed
+          # suites serialized (-p 1 / single
+          # process) to avoid reaper races
 
   audit:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@<sha>
-      - run: <audit --level high>             # twice: all deps AND prod-only
+      - run: <audit --level high> # twice: all deps AND prod-only
 
   e2e-smoke:
     runs-on: ubuntu-latest
@@ -274,7 +284,7 @@ jobs:
       - run: <build app in hermetic/mock mode>
       - run: <install e2e toolchain + browsers>
       - run: <smoke suite>
-      - uses: actions/upload-artifact@<sha>   # report + traces, if: failure()
+      - uses: actions/upload-artifact@<sha> # report + traces, if: failure()
 ```
 
 Also plan (add when they become real): a **manual-only production image build**
@@ -314,13 +324,13 @@ handling checks; unused/dead code detection. Exclusions rare, narrow, justified.
 
 ### 5.3 Stack adapter (pick your row; equivalent gate for gate)
 
-| Gate | Go | TypeScript/JS | Python | Rust | JVM |
-|---|---|---|---|---|---|
-| Format check | `gofmt -l .` | `prettier --check` / `biome format` | `ruff format --check` | `cargo fmt --check` | spotless/fmt-maven-plugin `check` |
-| Lint | `golangci-lint` (bodyclose, errcheck, gosec, gocyclo, staticcheck) | `eslint` (flat config, framework preset) + `knip` (dead code) | `ruff check` + `bandit` | `clippy -- -D warnings` | Error Prone / SpotBugs + detekt (kotlin) |
-| Type check | (compiler) | `tsc --noEmit` as its own `typecheck` script | `mypy` (strict on your packages) | (compiler) | compiler `-Werror` set |
-| Unit/integration runner | `go test -race` | `vitest`/`jest` | `pytest` | `cargo test` / `cargo nextest` | surefire/failsafe |
-| Dependency audit (×2, all + prod-only) | `govulncheck ./...` | `yarn audit --audit-level high` (+ `--groups dependencies`) | `pip-audit` | `cargo audit` / `cargo deny` | OWASP dependency-check |
+| Gate                                   | Go                                                                 | TypeScript/JS                                                 | Python                           | Rust                           | JVM                                      |
+| -------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------- | -------------------------------- | ------------------------------ | ---------------------------------------- |
+| Format check                           | `gofmt -l .`                                                       | `prettier --check` / `biome format`                           | `ruff format --check`            | `cargo fmt --check`            | spotless/fmt-maven-plugin `check`        |
+| Lint                                   | `golangci-lint` (bodyclose, errcheck, gosec, gocyclo, staticcheck) | `eslint` (flat config, framework preset) + `knip` (dead code) | `ruff check` + `bandit`          | `clippy -- -D warnings`        | Error Prone / SpotBugs + detekt (kotlin) |
+| Type check                             | (compiler)                                                         | `tsc --noEmit` as its own `typecheck` script                  | `mypy` (strict on your packages) | (compiler)                     | compiler `-Werror` set                   |
+| Unit/integration runner                | `go test -race`                                                    | `vitest`/`jest`                                               | `pytest`                         | `cargo test` / `cargo nextest` | surefire/failsafe                        |
+| Dependency audit (×2, all + prod-only) | `govulncheck ./...`                                                | `yarn audit --audit-level high` (+ `--groups dependencies`)   | `pip-audit`                      | `cargo audit` / `cargo deny`   | OWASP dependency-check                   |
 
 Exemplar config (the Go set from the source project — this shape, translated):
 
@@ -389,10 +399,10 @@ is what matters.)
 
 Two suites, two scopes, stated honestly in every spec header:
 
-| Suite | Config | Needs | What it proves |
-|---|---|---|---|
-| **CI smoke** | `ci` config (`yarn test`-equivalent) | hermetic/mock-mode prod build only, zero infra | the built artifact boots: core flows, i18n/layout invariants, no server errors on public routes, a11y ratchet |
-| **Full-stack** | main config (`yarn test:full`-equivalent) | live backend + DB + seeded data | real wiring: auth walls, admin surfaces, third-party drivers |
+| Suite          | Config                                    | Needs                                          | What it proves                                                                                                |
+| -------------- | ----------------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **CI smoke**   | `ci` config (`yarn test`-equivalent)      | hermetic/mock-mode prod build only, zero infra | the built artifact boots: core flows, i18n/layout invariants, no server errors on public routes, a11y ratchet |
+| **Full-stack** | main config (`yarn test:full`-equivalent) | live backend + DB + seeded data                | real wiring: auth walls, admin surfaces, third-party drivers                                                  |
 
 CI runs only the smoke suite per PR. The full suite runs locally/pre-release —
 per-PR full-stack e2e would make CI slow and flaky; the smoke/full split is the
@@ -419,7 +429,7 @@ export default defineConfig({
   },
   projects: [{ name: "mobile-chromium", use: { ...devices["Pixel 7"] } }], // mobile-first if the product is
   webServer: {
-    command: "yarn --cwd ../frontend start",   // serve the HERMETIC build
+    command: "yarn --cwd ../frontend start", // serve the HERMETIC build
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
@@ -449,7 +459,7 @@ export default defineConfig({
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
   use: {
     baseURL,
-    trace: "on-first-retry",       // cheap when green, rich when flaky
+    trace: "on-first-retry", // cheap when green, rich when flaky
     channel: "chromium",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
@@ -465,7 +475,7 @@ E2E discipline (each rule paid for by a real flake or false-green):
 - **Auth fixtures drive the real login UI once**, persist the session, and —
   critically — **re-validate cached sessions by probing the API with the stored
   cookie/token** (200 = reuse, else discard + re-login). A stored credential's
-  *presence* is not proof of a live session; a stale artifact slipping past the
+  _presence_ is not proof of a live session; a stale artifact slipping past the
   gate poisons the whole run.
 - **Seed directly into the DB** (idempotent `INSERT … ON CONFLICT DO NOTHING`
   style) for accounts you need; drive everything else through the UI.
@@ -529,7 +539,7 @@ Follow this mechanically, every session:
    specs that carry design decisions.
 4. **Branch**: `git checkout main && git pull && git checkout -b feat/T###-slug`.
 5. **Implement strictly within the spec's file list.** Ambiguity → `gh issue
-   comment` and stop that thread of work; pick up a different file meanwhile if
+comment` and stop that thread of work; pick up a different file meanwhile if
    possible. Generated code: run the pinned generator, never hand-edit.
 6. **Run the full local gate ladder** (§6.4). Fix until clean — including lint
    findings in code, not config.
@@ -548,6 +558,7 @@ Follow this mechanically, every session:
 
 ```markdown
 ## 2026-09-07 — WP8 admin surface delivered (PRs #37, #38, #39)
+
 - **What is now live end-to-end**: ...
 - **Verified**: <exact commands + counts: "full suite ALL GREEN", "smoke 20/20", "lint 0 issues">
 - **As-built**: deviations from spec, patterns the next agent must reuse
@@ -610,19 +621,20 @@ hermetic/mock mode + e2e scaffold as its own early work package → then feature
 work packages, spec'd just-in-time, one epic each.
 
 **Retrofitting an existing repo:** same order, as separate PRs —
+
 1. `docs: CONTRIBUTING + plan/handover artifacts`;
 2. `ci: workflow + lint configs` (expect it red; that's the point);
 3. `fix(lint): resolve surfaced findings` in code, per §5 policy;
 4. close the honesty gaps the new gates expose (silently-skipped integration
    tests, missing smoke specs) as their own tasks;
 5. only then new features under the full loop.
-Existing work gets reflected onto issues (one per open thread, closed with
-evidence when done) so the board becomes truthful on day one.
+   Existing work gets reflected onto issues (one per open thread, closed with
+   evidence when done) so the board becomes truthful on day one.
 
 ---
 
-*Source: harvested from a production monorepo (Go + Postgres + Meilisearch
+_Source: harvested from a production monorepo (Go + Postgres + Meilisearch
 backend, Next.js frontend, Playwright e2e, GitHub Actions) where nine work
 packages and 14 PRs were shipped entirely by agent sessions under these rules —
 then de-specialized. The Go/yarn/Playwright snippets that remain are examples of
-the shape, not requirements.*
+the shape, not requirements._

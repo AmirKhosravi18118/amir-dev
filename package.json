@@ -1,0 +1,20 @@
+{
+  "name": "amir-dev-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Portfolio site of Amir Khosravi — static, dependency-free. Node tooling is dev/CI only.",
+  "type": "module",
+  "scripts": {
+    "lint": "htmlhint index.html cv_print.html",
+    "format:check": "prettier --check .",
+    "check:js": "node tools/check-inline-js.mjs index.html cv_print.html",
+    "audit:all": "npm audit --audit-level=high",
+    "audit:prod": "npm audit --audit-level=high --omit=dev",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "htmlhint": "^1.1.4",
+    "prettier": "^3.6.2"
+  }
+}

@@ -35,13 +35,13 @@ Actions pinned by commit SHA; no `continue-on-error`; artifacts on failure only.
 
 ## Out of scope (explicit)
 
-| Not doing | Why |
-| --- | --- |
-| Framework / build step / bundler | ADR-001 — the site is deliberately handcrafted |
-| Backend / CMS / analytics | Static by design; GDPR-cheap |
-| Secrets in repo | Server details live in local-only `PORTFOLIO_CONTEXT.md` |
-| Auto-deploy from CI | Deploy is a deliberate manual step after merge (CONTRACT §5) |
-| New social/contact channels | Owner decision: email + phone only |
+| Not doing                        | Why                                                          |
+| -------------------------------- | ------------------------------------------------------------ |
+| Framework / build step / bundler | ADR-001 — the site is deliberately handcrafted               |
+| Backend / CMS / analytics        | Static by design; GDPR-cheap                                 |
+| Secrets in repo                  | Server details live in local-only `PORTFOLIO_CONTEXT.md`     |
+| Auto-deploy from CI              | Deploy is a deliberate manual step after merge (CONTRACT §5) |
+| New social/contact channels      | Owner decision: email + phone only                           |
 
 ## Deployment
 

@@ -1,17 +1,22 @@
 # T001 — site: projects carousel (slides, autoplay, view-all modal)
 
-Status: ready | Depends: ci-gates PR | Est: 1d | PR 2 of WP1
+Status: ready (amended 2026-09-22: 5 slides — Finello added by owner decision, recorded on issue #3) | Depends: ci-gates PR | Est: 1d | PR 2 of WP1
 
 ## Goal
 
 Replace the vertically stacked project cards with the carousel frozen in
 docs/CONTRACT.md §4: big single-project slides, prev/next arrows, dots, 7 s
 autoplay with progress bar, and a View-all modal listing every project.
+**Amendment (owner, 2026-09-22):** the carousel ships with **five** slides —
+Finello (student finance app, React 19 · TS · Vite · Tailwind, live on GitHub
+Pages) is appended as the last slide.
 
 ## Files (create/modify ONLY these)
 
 - index.html
 - tests-ci/carousel.spec.ts
+- finello.png (generated cover, committed)
+- make_cover_finello.py (its generator, following the make_mockups2.py pattern)
 - docs/tasks/T001-projects-carousel.md (Status line)
 - docs/tasks/WP1-projects-showcase.md (Status line)
 
@@ -21,11 +26,11 @@ Markup (inside `#projects`, after the unchanged kicker/h2/lead — `proj.lead`
 copy is updated to the count-agnostic showcase wording):
 
 - `#projCarousel.carousel.reveal` wrapping: `.car-btn.car-prev`,
-  `.car-viewport > #carTrack` (the four existing `article.proj` blocks, in the
+  `.car-viewport > #carTrack` (the five existing `article.proj` blocks, in the
   same order, minus their `reveal` classes, plus `.pnum` / `.live-chip` spans
   inside each `.f-img` which gains `data-name` + `onerror` fallback),
   `.car-btn.car-next`, and `.car-bar` = `#carDots` + `.car-progress > #carBar`
-  + `#viewAllBtn` (`data-i18n="proj.viewall"`).
+  - `#viewAllBtn` (`data-i18n="proj.viewall"`).
 - `#projModal` (hidden by default): `.pmodal-bg[data-close]` +
   `.pmodal-panel[role=dialog][aria-modal]` labelled by `#pmTitle`
   (`data-i18n="pm.title"`), `.pm-sub` (`data-i18n="pm.sub"`), `.pm-close`
@@ -65,16 +70,17 @@ Behavior (all constants and conditions exactly as frozen in CONTRACT §4):
 
 Required test cases (ALL must appear in tests-ci/carousel.spec.ts):
 
-| # | Scenario | Assertion |
-| --- | --- | --- |
-| 1 | load `#projects` | 4 slides in `#carTrack`, 4 dots, slide 1 visible |
-| 2 | click `.car-next` ×2, `.car-prev` ×1 | visible project title follows Nelurio→Washhalle→NexDeutsch order; active dot follows |
-| 3 | click dot 4 | Saad Tattoo slide visible, dot 4 active |
-| 4 | no interaction, wait ≤ 9 s | slide index advances by itself (autoplay) |
-| 5 | click `#viewAllBtn` | `#projModal` visible, `#pmList` lists 4 projects, body scroll locked |
-| 6 | press ESC | modal hidden, focus back on `#viewAllBtn` |
-| 7 | toggle DE | `#pmTitle` + slide `.what` text switch to German; reload keeps DE |
-| 8 | all `<img>` on page | every image loads (`naturalWidth > 0`) incl. `shot.png` |
+| #   | Scenario                             | Assertion                                                                                  |
+| --- | ------------------------------------ | ------------------------------------------------------------------------------------------ |
+| 1   | load `#projects`                     | 5 slides in `#carTrack`, 5 dots, slide 1 visible                                           |
+| 2   | click `.car-next` ×2, `.car-prev` ×1 | visible project title follows Nelurio→Washhalle→NexDeutsch order; active dot follows       |
+| 3   | click dot 4                          | Saad Tattoo slide visible, dot 4 active                                                    |
+| 3b  | `.car-next` until wrap               | order ends …Saad Tattoo→**Finello**→Nelurio; Finello slide links the GitHub Pages live app |
+| 4   | no interaction, wait ≤ 9 s           | slide index advances by itself (autoplay)                                                  |
+| 5   | click `#viewAllBtn`                  | `#projModal` visible, `#pmList` lists 5 projects, body scroll locked                       |
+| 6   | press ESC                            | modal hidden, focus back on `#viewAllBtn`                                                  |
+| 7   | toggle DE                            | `#pmTitle` + slide `.what` text switch to German; reload keeps DE                          |
+| 8   | all `<img>` on page                  | every image loads (`naturalWidth > 0`) incl. `shot.png`                                    |
 
 ## Verify (paste output in PR)
 
@@ -86,5 +92,5 @@ npx playwright test
 
 ## Out of scope
 
-- New projects, real screenshots, LinkedIn, hero copy beyond `proj.lead`.
+- Projects beyond the amended five (future additions append per CONTRACT §4).
 - Any change to other sections, the CV, or deploy tooling.

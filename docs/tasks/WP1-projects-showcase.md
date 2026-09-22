@@ -21,10 +21,10 @@ cycling itself, and be able to open a clean full list on demand.
 
 ## PR + claim map
 
-| PR | Branch | Contents |
-| --- | --- | --- |
-| ci gates | `ci/gates-smoke` | workflow + lint/format/inline-js/audit + Playwright smoke scaffold + `shot.png` into repo |
-| T001 | `feat/T001-projects-carousel` | the carousel per docs/tasks/T001-projects-carousel.md |
+| PR       | Branch                        | Contents                                                                                  |
+| -------- | ----------------------------- | ----------------------------------------------------------------------------------------- |
+| ci gates | `ci/gates-smoke`              | workflow + lint/format/inline-js/audit + Playwright smoke scaffold + `shot.png` into repo |
+| T001     | `feat/T001-projects-carousel` | the carousel per docs/tasks/T001-projects-carousel.md                                     |
 
 ## Out of scope
 
