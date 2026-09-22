@@ -1,6 +1,6 @@
 # WP1 — Projects showcase: auto-rotating carousel + view-all modal
 
-Status: in flight | Epic issue: created alongside this spec | PRs: ci-gates → T001
+Status: done (T001 = PR #5) | Epic issue: created alongside this spec | PRs: ci-gates → T001
 
 ## Problem
 

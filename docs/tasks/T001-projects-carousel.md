@@ -1,6 +1,6 @@
 # T001 — site: projects carousel (slides, autoplay, view-all modal)
 
-Status: ready (amended 2026-09-22: 5 slides — Finello added by owner decision, recorded on issue #3) | Depends: ci-gates PR | Est: 1d | PR 2 of WP1
+Status: done (PR #5, merged 2026-09-22; CI green; smoke 14/14) | Depends: ci-gates PR | Est: 1d | PR 2 of WP1
 
 ## Goal
 
