@@ -1,65 +1,136 @@
-<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><title>Amir Khosravi — Lebenslauf</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><title>Amir Khosravi — Lebenslauf</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"><style>
 @page{size:A4;margin:0}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',Arial,sans-serif;color:#1c1830;font-size:12px;line-height:1.5;padding:30px 36px}
-.head{display:grid;grid-template-columns:110px 1fr auto;gap:18px;align-items:center;border-bottom:3px solid #6c4cf6;padding-bottom:14px;margin-bottom:14px}
-.photo{width:106px;height:106px;object-fit:cover;border-radius:50%;border:3px solid #6c4cf6}
-h1{font-size:25px;letter-spacing:-.02em}h1 span{color:#6c4cf6}
-.role{font-weight:700;font-size:12px;color:#3d3564}
-.contact{font-size:11px;color:#55506e;text-align:right;line-height:1.75}
-h2{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:#6c4cf6;margin:14px 0 6px}
-p{margin-bottom:5px}
-.proj{margin-bottom:9px}
-.proj b{font-size:12.5px}
-.proj .t{color:#6b6486;font-size:10.5px}
-ul{margin:3px 0 0 16px}li{margin-bottom:2.5px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.tag{display:inline-block;padding:2px 9px;border:1px solid #c9bdf7;border-radius:99px;font-size:10px;font-weight:700;color:#4a3a8a;margin:0 3px 3px 0}
-.cert{margin-bottom:5px}.cert b{font-size:11.5px}
+html,body{width:210mm;height:297mm}
+body{font-family:'Inter','Segoe UI',Arial,sans-serif;color:#241f3d;font-size:11.2px;line-height:1.56;background:#fff;display:flex;overflow:hidden}
+/* ---------- sidebar (Canva-style navy panel, brand violet) ---------- */
+.side{width:71mm;background:linear-gradient(165deg,#171233 0%,#241a4f 55%,#2c2061 100%);color:#e9e5ff;padding:13mm 8mm 10mm 10mm;flex-shrink:0}
+.photo{width:48mm;height:48mm;object-fit:cover;border-radius:50%;display:block;margin:0 auto 2.5mm;border:.9mm solid rgba(255,255,255,.25);box-shadow:0 2mm 6mm rgba(0,0,0,.35)}
+.side h2{font-size:10.2px;text-transform:uppercase;letter-spacing:.22em;color:#c9baff;margin:5.5mm 0 2.2mm;padding-bottom:1.5mm;border-bottom:1px solid rgba(255,255,255,.18)}
+.side h2:first-of-type{margin-top:5mm}
+.side p,.side li{color:#ded9f7;font-size:10.8px;line-height:1.66}
+.side a{color:#ded9f7;text-decoration:none;word-break:break-all}
+.side ul{list-style:none}
+.side li{margin-bottom:1.6mm;padding-left:4mm;position:relative}
+.side li::before{content:'';position:absolute;left:0;top:.9em;width:1.6mm;height:1.6mm;border-radius:50%;background:#a585ff}
+.lang{margin-bottom:1.8mm}
+.lang b{color:#fff;display:inline-block;width:17mm;font-weight:600}
+.lang .lvl{color:#c9baff;font-size:9px}
+.bar{height:1.4mm;background:rgba(255,255,255,.14);border-radius:99px;margin-top:.8mm;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#a585ff,#7ea2ff)}
+.cert{margin-bottom:2.2mm}
+.cert b{color:#fff;font-weight:700;display:block;font-size:11px}
+.cert small{color:#bcb2e8;font-size:9px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:1.3mm}
+.skill-tags span{padding:.8mm 2.4mm;border:1px solid rgba(196,178,255,.45);border-radius:99px;font-size:9.4px;font-weight:600;color:#e4dcff}
+/* ---------- main column ---------- */
+.main{flex:1;padding:13mm 10mm 10mm 10mm}
+h1{font-size:32px;font-weight:900;letter-spacing:-.02em;line-height:1.05}
+h1 span{color:#6c4cf6}
+.role{font-size:12.5px;font-weight:700;color:#4a3a8a;margin-top:1.5mm}
+.main h2{font-size:11.5px;text-transform:uppercase;letter-spacing:.2em;color:#6c4cf6;margin:5.2mm 0 2.4mm;display:flex;align-items:center;gap:2.5mm}
+.main h2::after{content:'';flex:1;height:1px;background:#e4ddfa}
+.sum{color:#4c4668}
+.sum b{color:#241f3d}
+.job{margin-bottom:3.4mm}
+.job .top{display:flex;justify-content:space-between;align-items:baseline;gap:3mm}
+.job b{font-size:12.3px;font-weight:800}
+.job .t{color:#6b6486;font-size:9.8px;white-space:nowrap;font-weight:600}
+.job .what{color:#4c4668;margin-top:.6mm}
+.job ul{margin:1mm 0 0 4mm}
+.job li{margin-bottom:.7mm;color:#3d3858}
+.tag{display:inline-block;padding:.7mm 2.4mm;border:1px solid #cfc3f5;border-radius:99px;font-size:9.6px;font-weight:700;color:#4a3a8a;margin:0 .8mm 1mm 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+p{margin-bottom:1mm}
+.foot{margin-top:4mm;padding-top:2mm;border-top:1px solid #e4ddfa;color:#6b6486;font-size:9px;display:flex;justify-content:space-between}
 </style></head><body>
-<div class="head">
-<img class="photo" src="file:///D:/Z.Ai/portfolio/amir.jpg">
-<div>
-<h1>AMIR <span>KHOSRAVI</span></h1>
-<div class="role">Software Developer (Working Student) — Full-Stack · Go · React · AI Integration</div>
-</div>
-<div class="contact">
-Wiesbaden, Germany<br>a.h.khosravi1383@gmail.com<br>+49 162 2002699<br>amir.nelurio.duckdns.org
-</div>
-</div>
 
-<p>I design, build and <b>operate complete web applications end-to-end</b> — REST API development, responsive frontends, AI integration (OpenAI), CI/CD deployment and GDPR-compliant data handling. Shipped <b>Nelurio</b>, a multilingual AI-powered study platform, live in production. Seeking a <b>Werkstudent / Internship</b> in software development (Rhein-Main).</p>
+<aside class="side">
+  <img class="photo" src="file:///D:/Z.Ai/portfolio/amir.jpg" alt="Amir Khosravi">
 
-<h2>Key Project — Nelurio · AI Study Platform (2026, solo, production)</h2>
-<div class="proj"><b>Full-stack SaaS application</b> <span class="t">— nelurio.duckdns.org</span>
-<ul>
-<li><b>Backend (Go):</b> REST API, PostgreSQL, session authentication, CSRF protection, rate limiting, RBAC admin console, automated database migrations.</li>
-<li><b>Frontend (React 19 + TypeScript):</b> responsive PWA, installable service worker with offline support, internationalization (i18n) for 10 languages incl. RTL layouts.</li>
-<li><b>AI integration (OpenAI API):</b> automated lesson summarization, retrieval-based tutoring with source citations, flashcard & quiz generation with deduplication.</li>
-<li><b>Spaced repetition engine:</b> automated review scheduling (+1 to +30 days), user performance feedback loops, learning analytics.</li>
-<li><b>DevOps & Security:</b> Linux VPS administration, Caddy reverse proxy with automatic TLS, GitHub Actions CI/CD, GDPR-compliant data deletion workflows.</li>
-</ul></div>
+  <h2>Kontakt</h2>
+  <ul>
+    <li>Wiesbaden, Deutschland</li>
+    <li><a href="mailto:a.h.khosravi1383@gmail.com">a.h.khosravi1383@gmail.com</a></li>
+    <li><a href="tel:+491622002699">+49 162 2002699</a></li>
+    <li><a href="https://amir.nelurio.duckdns.org">amir.nelurio.duckdns.org</a></li>
+    <li><a href="https://github.com/AmirKhosravi18118">github.com/AmirKhosravi18118</a></li>
+  </ul>
 
-<div class="two">
-<div>
-<h2>Further Projects</h2>
-<div class="proj"><b>NexDeutsch</b> <span class="t">— German learning platform</span><p>Spaced-practice vocabulary training; predecessor of Nelurio's review engine.</p></div>
-<div class="proj"><b>Washhalle App</b> <span class="t">— business operations</span><p>Operations tracking app built for a real car-wash business.</p></div>
-<div class="proj"><b>Saad Tattoo</b> <span class="t">— client website (Wix + AI design)</span><p>Booking-focused studio website, concept to launch. saadtattoo.de</p></div>
-</div>
-<div>
-<h2>Tech Stack</h2>
-<p><span class="tag">Go</span><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">REST API</span><span class="tag">OpenAI / LLM</span><span class="tag">Python</span><span class="tag">PWA</span><span class="tag">CI/CD</span><span class="tag">Linux</span><span class="tag">Git</span><span class="tag">HTML/CSS</span><span class="tag">GDPR</span></p>
-<h2>Certificates</h2>
-<div class="cert"><b>UI/UX Design</b> — certified design program</div>
-<div class="cert"><b>Python Programming</b> — certified course</div>
-<div class="cert"><b>Front-End Development</b> — certified course</div>
-<h2>Software & Office</h2>
-<p><b>Microsoft Office & Excel</b> — incl. Excel formulas & automation · fast with any computer tooling · collaborative project experience</p>
-<h2>Education & Languages</h2>
-<p><b>BWL (Business Administration)</b> — Hochschule RheinMain, Wiesbaden<br>
-<b>German</b> B2/C1 · <b>English</b> professional · <b>Persian</b> native<br>
-<b>Availability:</b> ~20 h/week (semester), full-time in breaks</p>
-</div>
-</div>
+  <h2>Sprachen</h2>
+  <div class="lang"><b>Deutsch</b> <span class="lvl">B2/C1</span><div class="bar"><i style="width:82%"></i></div></div>
+  <div class="lang"><b>Englisch</b> <span class="lvl">verhandlungssicher</span><div class="bar"><i style="width:88%"></i></div></div>
+  <div class="lang"><b>Persisch</b> <span class="lvl">Muttersprache</span><div class="bar"><i style="width:100%"></i></div></div>
+
+  <h2>Zertifikate</h2>
+  <div class="cert"><b>UI/UX Design</b><small>strukturiertes Design-Programm</small></div>
+  <div class="cert"><b>Python Programming</b><small>zertifizierter Kurs</small></div>
+  <div class="cert"><b>Front-End Development</b><small>HTML/CSS/JS-Grundlagen</small></div>
+
+  <h2>Tools &amp; Office</h2>
+  <div class="skill-tags">
+    <span>Excel + Automation</span><span>MS Office</span><span>Git / GitHub</span><span>Figma-Basics</span><span>Linux</span><span>Docker</span>
+  </div>
+</aside>
+
+<main class="main">
+  <h1>AMIR <span>KHOSRAVI</span></h1>
+  <div class="role">Software Developer — Full-Stack · Go · React · AI-Integration</div>
+
+  <h2>Profil</h2>
+  <p class="sum">Ich designe, baue und <b>betreibe komplette Webanwendungen end-to-end</b> — REST-APIs, responsive Frontends, KI-Integration (OpenAI), CI/CD-Deployment und DSGVO-konforme Datenverarbeitung. Fünf live Produkte, darunter <b>Nelurio</b>, eine mehrsprachige KI-Lernplattform im Produktivbetrieb. BWL-Studium (Hochschule RheinMain) × Software-Praxis = Produkte, die Nutzer finden. Gesucht: <b>Werkstudent / Praktikum</b> in der Softwareentwicklung (Rhein-Main).</p>
+
+  <h2>Projekte &amp; Erfahrung — alle live</h2>
+
+  <div class="job">
+    <div class="top"><b>Nelurio · KI-Lernplattform (SaaS)</b><span class="t">2026 — Solo, Production · nelurio.duckdns.org</span></div>
+    <ul>
+      <li><b>Backend (Go):</b> REST-API, PostgreSQL, Session-Auth, CSRF, Rate-Limiting, RBAC-Admin, automatische Migrationen.</li>
+      <li><b>Frontend (React 19 + TypeScript):</b> installierbare PWA, Offline-Support, i18n für 10 Sprachen inkl. RTL.</li>
+      <li><b>KI (OpenAI API):</b> Vorlesungs-Zusammenfassung, Tutor mit Quellenangaben, Lernkarten &amp; Quiz mit Deduplizierung.</li>
+      <li><b>Spaced-Repetition-Engine:</b> automatische Wiederholungsplanung (+1 bis +30 Tage), Lernanalytics.</li>
+      <li><b>DevOps &amp; Security:</b> Linux-VPS, Caddy mit Auto-TLS, GitHub-Actions-CI/CD, DSGVO-Lösch-Workflows.</li>
+    </ul>
+  </div>
+
+  <div class="two">
+    <div>
+      <div class="job">
+        <div class="top"><b>Finello · Finanz-App für Studierende</b><span class="t">2026 · React 19 · TypeScript</span></div>
+        <p class="what">Budget-Kalender mit wiederkehrenden Zahlungen, Ausgaben-/Transaktionsverwaltung und Steuer-Überblick; spec-getriebener Prozess mit CI und automatisierten Tests.</p>
+      </div>
+      <div class="job">
+        <div class="top"><b>Washhalle App · Operations</b><span class="t">2025 · im täglichen Einsatz</span></div>
+        <p class="what">Betriebs-App für eine echte Autowaschanlage: Tagesbetrieb, Tracking, Workflow — Software für einen echten Kunden.</p>
+      </div>
+      <div class="job">
+        <div class="top"><b>Saad Tattoo · Kundenwebsite</b><span class="t">2025 · bezahlt · saadtattoo.de</span></div>
+        <p class="what">Buchungsorientierte Studio-Website (Wix + KI-gestützte Visuals) — Konzept, Design, Launch.</p>
+      </div>
+      <div class="job">
+        <div class="top"><b>NexDeutsch · Lernplattform</b><span class="t">2024/25 · Vorgänger von Nelurio</span></div>
+        <p class="what">Vokabeltraining mit strukturierten Übungen; Keimzelle der Nelurio-Review-Engine.</p>
+      </div>
+    </div>
+    <div>
+      <h2 style="margin-top:0">Tech-Stack</h2>
+      <p>
+        <span class="tag">Go</span><span class="tag">TypeScript</span><span class="tag">React 19</span><span class="tag">PostgreSQL</span><span class="tag">REST-API</span><span class="tag">OpenAI / LLM</span><span class="tag">Python</span><span class="tag">PWA</span><span class="tag">CI/CD</span><span class="tag">Tailwind CSS</span><span class="tag">HTML/CSS</span><span class="tag">GDPR</span>
+      </p>
+      <h2>Arbeitsweise</h2>
+      <p class="sum">Ausliefern statt theoretisieren: kleine funktionierende Versionen, echtes Feedback, nächste Iteration — mit Specs, Issues, Code-Review-Gates und automatisierten Tests wie in einem professionellen Team.</p>
+    </div>
+  </div>
+
+  <h2>Ausbildung</h2>
+  <div class="job">
+    <div class="top"><b>BWL (Betriebswirtschaftslehre)</b><span class="t">seit 2025 · Hochschule RheinMain, Wiesbaden</span></div>
+    <p class="what">2. Semester — Business × Technology; mehrere Semester verbleibend.</p>
+  </div>
+
+  <div class="foot">
+    <span><b>Verfügbarkeit:</b> ~20 Std./Woche im Semester · Vollzeit in den Semesterferien</span>
+    <span>Lebenslauf als PDF — alle Projekte live besuchbar</span>
+  </div>
+</main>
 </body></html>
