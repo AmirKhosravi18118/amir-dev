@@ -1,5 +1,20 @@
 # HANDOVER — living handover log (newest entry on top)
 
+## 2026-09-25 — WP2 phase 2 live: products.html storefront (PR #10)
+
+- **Live:** products.html — the platform storefront (5 products, status chips,
+  per-product proof notes, ops strip: VPS/Caddy/CI/monitoring/testing/GDPR,
+  EN+DE). index.html nav has a Products tab. Live 200 verified.
+- **Verified:** local + CI smoke 20/20 (6 new products cases), lint/audit green.
+- **As-built:** standalone page mirrors index.html's design system and i18n
+  engine; prettier-exempt like index.html; check:js covers 5 script blocks now.
+  WP2 phase 1 is frozen in docs/platform-runbook.md — when the owner's domain
+  arrives, follow it (vhosts → migration order → URL swap in index/products +
+  job-agent monitor list).
+- **Next up:** owner buys the domain (phase 0 — only owner step) → phase 1
+  migration; Telegram token still pending (30 s owner step); phases 3/4 are
+  data-driven, do not start without real user demand.
+
 ## 2026-09-24 — T002 CV redesign live + job-agent runs on GitHub Actions (PC-off)
 
 - **Live:** new CV PDF (Canva-style, 1 page, Finello included) on the site's

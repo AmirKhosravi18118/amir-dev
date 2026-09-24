@@ -1,6 +1,6 @@
 # T003 — site: products.html storefront page + nav tab
 
-Status: ready | Est: 1d | PR 1 of WP2 (phase 2)
+Status: done (PR #10, merged 2026-09-25; smoke 20/20; deployed, live 200) | Est: 1d | PR 1 of WP2 (phase 2)
 
 ## Goal
 
