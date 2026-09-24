@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "htmlhint index.html cv_print.html",
     "format:check": "prettier --check .",
-    "check:js": "node tools/check-inline-js.mjs index.html cv_print.html",
+    "check:js": "node tools/check-inline-js.mjs index.html cv_print.html products.html",
     "audit:all": "npm audit --audit-level=high",
     "audit:prod": "npm audit --audit-level=high --omit=dev",
     "test:e2e": "playwright test"
