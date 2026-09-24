@@ -1,5 +1,24 @@
 # HANDOVER — living handover log (newest entry on top)
 
+## 2026-09-24 — T002 CV redesign live + job-agent runs on GitHub Actions (PC-off)
+
+- **Live:** new CV PDF (Canva-style, 1 page, Finello included) on the site's
+  Download button (live 200). Job-agent: `.github/workflows/daily.yml` runs
+  08:00 Berlin on GitHub — collect → digest → commits results to the repo →
+  monitors the portfolio (alerts via Telegram + issue when down). Verified by
+  a successful manual dispatch run.
+- **Blocked on owner (30 s):** Telegram bot token — BotFather `/newbot` in
+  their desktop Telegram. Then: local.json + `npm run setup:telegram` +
+  `gh secret set TELEGRAM_TOKEN/TELEGRAM_CHAT_ID` on job-agent → digests flow
+  to Telegram. Computer Use (desktop control) is NOT available in ZCode
+  sessions on this host — do not retry it.
+- **As-built:** telegram config resolves env vars first (Actions secrets),
+  local.json second. Canva itself cannot be edited without the owner's login;
+  "Canva template" requests are best served by browsing the public gallery for
+  the layout and re-implementing in cv_print.html.
+- **Next up:** Telegram wiring (above); SMTP auto-send remains roadmap;
+  weekly stats digest optional.
+
 ## 2026-09-22 — WP1 shipped end-to-end: carousel + Finello live (PRs #1, #4, #5)
 
 - **What is now live end-to-end (after deploy):** the projects section is a
