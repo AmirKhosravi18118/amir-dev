@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — Amir Khosravi's Platform</title>
+<meta name="description" content="Five live products by Amir Khosravi on one platform: Nelurio (AI study platform), Finello, NexDeutsch, Washhalle, Saad Tattoo. Every one deployed and open to try.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238b6cff'/%3E%3Ctext x='32' y='44' font-size='36' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EA%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Products — Amir Khosravi's Platform">
+<meta property="og:description" content="Five live products, one platform: AI, learning, fintech, operations, client work. All deployed, all open to try.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0d0b1d;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);
+  --txt:#efedff;--mut:#a49fd0;--acc:#8b6cff;--acc2:#4d8df7;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:
+  radial-gradient(1100px 700px at 85% -5%, rgba(139,108,255,.16), transparent 60%),
+  radial-gradient(900px 650px at -10% 105%, rgba(77,141,247,.12), transparent 55%)}
+body::after{content:'';position:fixed;inset:0;z-index:-1;
+  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:54px 54px;mask-image:radial-gradient(75% 65% at 50% 35%, black, transparent)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(13,11,29,.72);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:900;font-size:19px}.logo b{color:var(--acc)}
+nav ul{display:flex;gap:24px;list-style:none;font-size:14px}
+nav ul a{color:var(--mut);transition:color .15s}
+nav ul a:hover{color:#fff}
+nav ul a.is-here{color:#fff;font-weight:700}
+.nav-right{display:flex;align-items:center;gap:14px}
+.lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:3px}
+.lang-toggle button{padding:6px 12px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer;transition:all .15s}
+.lang-toggle button.is-active{background:linear-gradient(140deg,#8b6cff,#5a34e7);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:14px;font-weight:800;font-size:14.5px;transition:transform .18s,box-shadow .18s,border-color .18s;border:0;cursor:pointer}
+.btn-p{background:linear-gradient(140deg,#8b6cff,#5a34e7);color:#fff;box-shadow:0 14px 34px rgba(90,52,231,.4)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 20px 44px rgba(90,52,231,.55)}
+.btn-s{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--txt)}
+.btn-s:hover{border-color:var(--acc);transform:translateY(-2px)}
+.nav-cta{padding:10px 20px;font-size:13px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+
+.hero{padding:72px 0 20px;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 15px;border:1px solid rgba(139,108,255,.4);border-radius:999px;color:#c3b4ff;font-size:12.5px;font-weight:700;margin-bottom:22px;background:rgba(139,108,255,.09)}
+.badge i{width:7px;height:7px;border-radius:50%;background:#5fe1a0;box-shadow:0 0 10px #5fe1a0;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.4}}
+h1{font-size:clamp(32px,4.6vw,52px);line-height:1.08;letter-spacing:-.025em;font-weight:900}
+h1 span{background:linear-gradient(120deg,#a585ff,#4d8df7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);max-width:640px;margin:18px auto 0;font-size:16px}
+
+section{padding:56px 0}
+.sec-kicker{color:#b9a8ff;font-size:12px;font-weight:800;letter-spacing:.35em;text-transform:uppercase;margin-bottom:12px;text-align:center}
+h2{font-size:clamp(24px,3vw,34px);font-weight:900;letter-spacing:-.02em;margin-bottom:10px;text-align:center}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s}
+.prod:hover{border-color:rgba(139,108,255,.5);box-shadow:0 24px 50px rgba(10,6,40,.45)}
+.prod.hero-card{grid-column:1 / -1}
+.cover{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.cover img{width:100%;display:block;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.prod:hover .cover img{transform:scale(1.03)}
+.status{position:absolute;top:14px;right:14px;display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;background:rgba(9,20,14,.78);backdrop-filter:blur(6px);border:1px solid rgba(95,225,160,.35);color:#8af0bf;font-size:10.5px;font-weight:800;letter-spacing:.16em}
+.status i{width:6px;height:6px;border-radius:50%;background:#5fe1a0;box-shadow:0 0 9px #5fe1a0;animation:pulse 2s infinite}
+.status.beta{border-color:rgba(139,108,255,.45);color:#c3b4ff}
+.status.beta i{background:#a585ff;box-shadow:0 0 9px #a585ff}
+.status.client{border-color:rgba(77,141,247,.45);color:#a9c8ff}
+.status.client i{background:#4d8df7;box-shadow:0 0 9px #4d8df7}
+.body{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
+h3{font-size:21px;font-weight:900;letter-spacing:-.01em}
+.what{color:var(--mut);font-size:14px;margin:5px 0 13px}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.tag{padding:4px 11px;border-radius:999px;font-size:11px;font-weight:750;background:rgba(139,108,255,.13);color:#cfc3ff;border:1px solid rgba(139,108,255,.25)}
+.links{display:flex;gap:11px;flex-wrap:wrap;margin-top:auto}
+.links .btn{padding:11px 20px;font-size:13px}
+.stack{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);font-size:12.5px;color:#9d97c6}
+.stack b{color:#cfc9ee}
+
+.ops{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.op{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;text-align:center}
+.op .ico{font-size:26px}
+.op b{display:block;font-size:14px;margin:8px 0 4px}
+.op small{color:var(--mut);font-size:12px;line-height:1.55;display:block}
+
+.cta{margin:10px auto 0;text-align:center;background:linear-gradient(150deg,rgba(139,108,255,.1),rgba(77,141,247,.06));border:1px solid rgba(139,108,255,.3);border-radius:22px;padding:32px;max-width:760px}
+.cta p{color:#ddd8f5;font-size:15px;margin-bottom:18px}
+.cta b{color:#fff}
+
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:#c3b4ff}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+@media(max-width:860px){
+  .grid{grid-template-columns:1fr}
+  .ops{grid-template-columns:1fr}
+  nav ul{display:none}
+  section{padding:44px 0}
+  .hero{padding:52px 0 10px}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="logo" href="index.html">Amir<b>.</b>dev</a>
+  <ul>
+    <li><a href="index.html#projects" data-i18n="nav.portfolio">Portfolio</a></li>
+    <li><a href="products.html" class="is-here" data-i18n="nav.products">Products</a></li>
+    <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+    <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button id="btn-en" class="is-active" onclick="setLang('en')">EN</button>
+      <button id="btn-de" onclick="setLang('de')">DE</button>
+    </div>
+    <a class="btn btn-p nav-cta" href="index.html#contact" data-i18n="nav.cta">Get in touch</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+<header class="hero">
+  <div class="badge"><i></i><span data-i18n="ph.badge">5 LIVE PRODUCTS · 1 PLATFORM · RHEIN-MAIN</span></div>
+  <h1><span data-i18n="ph.h1a">Not demo projects.</span><br><span data-i18n="ph.h1b">Products that run.</span></h1>
+  <p class="lead" data-i18n="ph.lead">Everything here is deployed, monitored and open to try right now — AI, learning, fintech, real business operations and client work, all on infrastructure I run myself. Pick one and use it.</p>
+</header>
+
+<section id="catalog">
+  <div class="grid">
+
+    <article class="prod hero-card reveal">
+      <div class="cover"><img src="shot.png" alt="Nelurio dashboard"><span class="status beta"><i></i><span data-i18n="st.beta">LIVE · BETA</span></span></div>
+      <div class="body">
+        <h3>Nelurio</h3>
+        <p class="what" data-i18n="c1.what">AI study assistant for university students — record a lecture, get summaries, spaced-repetition reviews, flashcards & a tutor that answers from your own materials with citations.</p>
+        <div class="tags"><span class="tag">Go / chi</span><span class="tag">PostgreSQL</span><span class="tag">React 19</span><span class="tag">OpenAI</span><span class="tag">PWA</span><span class="tag">10 languages</span><span class="tag">GDPR</span></div>
+        <div class="links">
+          <a class="btn btn-p" href="https://nelurio.duckdns.org" target="_blank" rel="noopener" data-i18n="c.openapp">Open live app</a>
+          <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/nelurio" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+        </div>
+        <p class="stack"><b data-i18n="c1.stack">Flagship product:</b> <span data-i18n="c1.stackb">full stack solo — backend, frontend, AI integration, infra, CI/CD, deployment. Live in production with real users.</span></p>
+      </div>
+    </article>
+
+    <article class="prod reveal">
+      <div class="cover"><img src="finello.png" alt="Finello app" loading="lazy"><span class="status"><i></i><span data-i18n="st.live">LIVE</span></span></div>
+      <div class="body">
+        <h3>Finello</h3>
+        <p class="what" data-i18n="c2.what">Personal finance app for students in Germany — budget calendar with recurring payments, expenses & transactions, and a tax overview for student jobs.</p>
+        <div class="tags"><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS 4</span><span class="tag">Vite</span><span class="tag">Vitest</span></div>
+        <div class="links">
+          <a class="btn btn-p" href="https://amirkhosravi18118.github.io/finello-app/" target="_blank" rel="noopener" data-i18n="c.openapp">Open live app</a>
+          <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/finello" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+        </div>
+        <p class="stack"><b data-i18n="c2.stack">Newest build:</b> <span data-i18n="c2.stackb">shipped under a spec-and-issues engineering process with CI and automated tests — the same process I'd bring to your team.</span></p>
+      </div>
+    </article>
+
+    <article class="prod reveal">
+      <div class="cover"><img src="washhalle.png" alt="Washhalle App" loading="lazy"><span class="status"><i></i><span data-i18n="st.daily">LIVE · DAILY USE</span></span></div>
+      <div class="body">
+        <h3>Washhalle App</h3>
+        <p class="what" data-i18n="c3.what">Operations app for a real car-wash business — day-to-day operations, tracking and workflow. In daily use on site since launch.</p>
+        <div class="tags"><span class="tag">Real business</span><span class="tag">Operations</span><span class="tag">In daily use</span></div>
+        <div class="links">
+          <a class="btn btn-p" href="https://waschhalle-92-5-111-34.sslip.io" target="_blank" rel="noopener" data-i18n="c.openapp">Open live app</a>
+          <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+        </div>
+        <p class="stack"><b data-i18n="c3.stack">Proof, not promise:</b> <span data-i18n="c3.stackb">software for a real customer with real constraints — not a tutorial project.</span></p>
+      </div>
+    </article>
+
+    <article class="prod reveal">
+      <div class="cover"><img src="nexdeutsch.png" alt="NexDeutsch" loading="lazy"><span class="status"><i></i><span data-i18n="st.live">LIVE</span></span></div>
+      <div class="body">
+        <h3>NexDeutsch</h3>
+        <p class="what" data-i18n="c4.what">German vocabulary learning platform — structured practice sessions with spaced practice. Nelurio's review engine was born from what I learned here; a rework is in progress.</p>
+        <div class="tags"><span class="tag">Learning platform</span><span class="tag">Spaced practice</span><span class="tag">German market</span></div>
+        <div class="links">
+          <a class="btn btn-p" href="https://nexdeutsch-92-5-111-34.sslip.io" target="_blank" rel="noopener" data-i18n="c.openapp">Open live app</a>
+          <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+        </div>
+        <p class="stack"><b data-i18n="c4.stack">Lesson engine:</b> <span data-i18n="c4.stackb">the earlier product that taught me iteration — build, measure, rebuild better.</span></p>
+      </div>
+    </article>
+
+    <article class="prod reveal">
+      <div class="cover"><img src="saadtattoo.png" alt="Saad Tattoo website" loading="lazy"><span class="status client"><i></i><span data-i18n="st.client">CLIENT · LIVE</span></span></div>
+      <div class="body">
+        <h3>Saad Tattoo — Studio Website</h3>
+        <p class="what" data-i18n="c5.what">Booking-focused website for a tattoo studio in Wiesbaden — concept, design, AI-generated visual assets, content and launch. My first paid client project.</p>
+        <div class="tags"><span class="tag">Wix Studio</span><span class="tag">AI-assisted design</span><span class="tag">Client work</span></div>
+        <div class="links">
+          <a class="btn btn-p" href="https://www.saadtattoo.de" target="_blank" rel="noopener" data-i18n="c.opensite">Open live site</a>
+        </div>
+        <p class="stack"><b data-i18n="c5.stack">Client delivery:</b> <span data-i18n="c5.stackb">a real business paid for this and runs on it — requirements, deadlines and all.</span></p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="platform">
+  <div class="sec-kicker" data-i18n="ops.kicker">The platform behind it</div>
+  <h2 data-i18n="ops.h2">One VPS. Zero drama. Everything monitored.</h2>
+  <div class="ops">
+    <div class="op reveal"><div class="ico">🖥️</div><b data-i18n="ops.o1">Oracle Cloud VPS</b><small data-i18n="ops.o1b">All products run on one EU-hosted virtual server — consolidated, cost-efficient, GDPR-conscious.</small></div>
+    <div class="op reveal"><div class="ico">🔒</div><b data-i18n="ops.o2">Caddy auto-TLS</b><small data-i18n="ops.o2b">Reverse proxy with automatic HTTPS for every app — new products go live in minutes.</small></div>
+    <div class="op reveal"><div class="ico">⚙️</div><b data-i18n="ops.o3">GitHub Actions CI/CD</b><small data-i18n="ops.o3b">Spec → issue → PR → automated gates on every change — nothing ships by hand-waving.</small></div>
+    <div class="op reveal"><div class="ico">📡</div><b data-i18n="ops.o4">Uptime monitoring</b><small data-i18n="ops.o4b">A daily automated agent checks this site and reports incidents before I notice them.</small></div>
+    <div class="op reveal"><div class="ico">🧪</div><b data-i18n="ops.o5">Automated testing</b><small data-i18n="ops.o5b">Playwright smoke suites and unit tests guard the site and the newest products.</small></div>
+    <div class="op reveal"><div class="ico">🇪🇺</div><b data-i18n="ops.o6">GDPR-minded</b><small data-i18n="ops.o6b">EU hosting, cookie sessions, rate limiting and privacy-first defaults across my apps.</small></div>
+  </div>
+  <div class="cta reveal">
+    <p data-i18n="ops.cta"><b>Want to see how any of this works?</b> I'll walk you through the code, the infrastructure or a live product in a 5-minute demo — no slides, just the real thing.</p>
+    <a class="btn btn-p" href="index.html#contact" data-i18n="ops.ctabtn">Get in touch</a>
+  </div>
+</section>
+</div>
+
+<footer><div class="wrap">
+  <span>© 2026 Amir Khosravi · <a href="index.html" data-i18n="f.back">← Back to portfolio</a></span>
+  <span><a href="https://nelurio.duckdns.org/legal/imprint">Impressum</a> · <a href="https://nelurio.duckdns.org/legal/privacy">Privacy</a></span>
+</div></footer>
+
+<script>
+const I18N = {
+"nav.portfolio":{"en":"Portfolio","de":"Portfolio"},
+"nav.products":{"en":"Products","de":"Produkte"},
+"nav.about":{"en":"About","de":"Über"},
+"nav.contact":{"en":"Contact","de":"Kontakt"},
+"nav.cta":{"en":"Get in touch","de":"Kontakt aufnehmen"},
+"ph.badge":{"en":"5 LIVE PRODUCTS · 1 PLATFORM · RHEIN-MAIN","de":"5 LIVE-PRODUKTE · 1 PLATTFORM · RHEIN-MAIN"},
+"ph.h1a":{"en":"Not demo projects.","de":"Keine Demo-Projekte."},
+"ph.h1b":{"en":"Products that run.","de":"Produkte, die laufen."},
+"ph.lead":{"en":"Everything here is deployed, monitored and open to try right now — AI, learning, fintech, real business operations and client work, all on infrastructure I run myself. Pick one and use it.","de":"Alles hier ist deployed, überwacht und jetzt sofort ausprobierbar — KI, Lernen, FinTech, echte Geschäftsabläufe und Kundenprojekte, alles auf Infrastruktur, die ich selbst betreibe. Such dir eines aus und leg los."},
+"st.beta":{"en":"LIVE · BETA","de":"LIVE · BETA"},
+"st.live":{"en":"LIVE","de":"LIVE"},
+"st.daily":{"en":"LIVE · DAILY USE","de":"LIVE · TÄGLICH IM EINSATZ"},
+"st.client":{"en":"CLIENT · LIVE","de":"KUNDE · LIVE"},
+"c.openapp":{"en":"Open live app","de":"Live-App öffnen"},
+"c.opensite":{"en":"Open live site","de":"Live-Website öffnen"},
+"c.ghpriv":{"en":"GitHub (private)","de":"GitHub (privat)"},
+"c1.what":{"en":"AI study assistant for university students — record a lecture, get summaries, spaced-repetition reviews, flashcards & a tutor that answers from your own materials with citations.","de":"KI-Lernassistent für Studierende — Vorlesung aufnehmen, Zusammenfassungen erhalten, Wiederholungen planen, Lernkarten & ein Tutor, der aus deinen eigenen Materialien mit Quellen antwortet."},
+"c1.stack":{"en":"Flagship product:","de":"Leuchtturm-Projekt:"},
+"c1.stackb":{"en":"full stack solo — backend, frontend, AI integration, infra, CI/CD, deployment. Live in production with real users.","de":"voller Stack solo — Backend, Frontend, KI-Integration, Infra, CI/CD, Deployment. Live im Produktivbetrieb mit echten Nutzern."},
+"c2.what":{"en":"Personal finance app for students in Germany — budget calendar with recurring payments, expenses & transactions, and a tax overview for student jobs.","de":"Persönliche Finanz-App für Studierende in Deutschland — Budget-Kalender mit wiederkehrenden Zahlungen, Ausgaben & Transaktionen und Steuer-Überblick für Studentenjobs."},
+"c2.stack":{"en":"Newest build:","de":"Neustes Produkt:"},
+"c2.stackb":{"en":"shipped under a spec-and-issues engineering process with CI and automated tests — the same process I'd bring to your team.","de":"ausgeliefert unter einem Spec-and-Issues-Prozess mit CI und automatisierten Tests — derselbe Prozess, den ich in dein Team bringe."},
+"c3.what":{"en":"Operations app for a real car-wash business — day-to-day operations, tracking and workflow. In daily use on site since launch.","de":"Operations-App für eine echte Autowaschanlage — Tagesbetrieb, Tracking und Workflow. Seit Launch täglich im Einsatz."},
+"c3.stack":{"en":"Proof, not promise:","de":"Beweis statt Versprechen:"},
+"c3.stackb":{"en":"software for a real customer with real constraints — not a tutorial project.","de":"Software für einen echten Kunden mit echten Anforderungen — kein Tutorial-Projekt."},
+"c4.what":{"en":"German vocabulary learning platform — structured practice sessions with spaced practice. Nelurio's review engine was born from what I learned here; a rework is in progress.","de":"Plattform zum Deutsch-Vokabeln lernen — strukturierte Übungen mit Spaced Practice. Nelurios Wiederholungs-Engine entstand aus den Erfahrungen hier; eine Überarbeitung läuft."},
+"c4.stack":{"en":"Lesson engine:","de":"Lektion:"},
+"c4.stackb":{"en":"the earlier product that taught me iteration — build, measure, rebuild better.","de":"das frühere Produkt, das mir Iteration beigebracht hat — bauen, messen, besser neu bauen."},
+"c5.what":{"en":"Booking-focused website for a tattoo studio in Wiesbaden — concept, design, AI-generated visual assets, content and launch. My first paid client project.","de":"Buchungsorientierte Website für ein Tattoo-Studio in Wiesbaden — Konzept, Design, KI-generierte Visuals, Inhalt und Launch. Mein erstes bezahltes Kundenprojekt."},
+"c5.stack":{"en":"Client delivery:","de":"Kundenlieferung:"},
+"c5.stackb":{"en":"a real business paid for this and runs on it — requirements, deadlines and all.","de":"ein echter Betrieb hat dafür bezahlt und arbeitet damit — mit Anforderungen und Deadlines."},
+"ops.kicker":{"en":"The platform behind it","de":"Die Plattform dahinter"},
+"ops.h2":{"en":"One VPS. Zero drama. Everything monitored.","de":"Ein VPS. Kein Drama. Alles überwacht."},
+"ops.o1":{"en":"Oracle Cloud VPS","de":"Oracle-Cloud-VPS"},
+"ops.o1b":{"en":"All products run on one EU-hosted virtual server — consolidated, cost-efficient, GDPR-conscious.","de":"Alle Produkte laufen auf einem EU-gehosteten Server — konsolidiert, kosteneffizient, DSGVO-bewusst."},
+"ops.o2":{"en":"Caddy auto-TLS","de":"Caddy Auto-TLS"},
+"ops.o2b":{"en":"Reverse proxy with automatic HTTPS for every app — new products go live in minutes.","de":"Reverse Proxy mit automatischem HTTPS für jede App — neue Produkte sind in Minuten live."},
+"ops.o3":{"en":"GitHub Actions CI/CD","de":"GitHub Actions CI/CD"},
+"ops.o3b":{"en":"Spec → issue → PR → automated gates on every change — nothing ships by hand-waving.","de":"Spec → Issue → PR → automatische Gates bei jeder Änderung — nichts geht ohne Prüfung live."},
+"ops.o4":{"en":"Uptime monitoring","de":"Uptime-Monitoring"},
+"ops.o4b":{"en":"A daily automated agent checks this site and reports incidents before I notice them.","de":"Ein täglicher automatisierter Agent prüft diese Website und meldet Vorfälle, bevor ich sie bemerke."},
+"ops.o5":{"en":"Automated testing","de":"Automatisierte Tests"},
+"ops.o5b":{"en":"Playwright smoke suites and unit tests guard the site and the newest products.","de":"Playwright-Smoke-Suites und Unit-Tests sichern die Website und die neuesten Produkte."},
+"ops.o6":{"en":"GDPR-minded","de":"DSGVO-bewusst"},
+"ops.o6b":{"en":"EU hosting, cookie sessions, rate limiting and privacy-first defaults across my apps.","de":"EU-Hosting, Cookie-Sessions, Rate-Limiting und Privacy-First-Standards in all meinen Apps."},
+"ops.cta":{"en":"Want to see how any of this works? I'll walk you through the code, the infrastructure or a live product in a 5-minute demo — no slides, just the real thing.","de":"Du willst sehen, wie das funktioniert? Ich führe dich in einer 5-Minuten-Demo durch Code, Infrastruktur oder ein Live-Produkt — ohne Folien, einfach das Echte."},
+"ops.ctabtn":{"en":"Get in touch","de":"Kontakt aufnehmen"},
+"f.back":{"en":"← Back to portfolio","de":"← Zurück zum Portfolio"}
+};
+function setLang(l){
+  document.documentElement.setAttribute('data-lang', l);
+  document.documentElement.lang = l;
+  document.getElementById('btn-en').classList.toggle('is-active', l==='en');
+  document.getElementById('btn-de').classList.toggle('is-active', l==='de');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    const v = I18N[k];
+    if(v && v[l]) el.textContent = v[l];
+  });
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+try{const saved=localStorage.getItem('lang'); if(saved) setLang(saved);}catch(e){}
+</script>
+<script>
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
