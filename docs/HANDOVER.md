@@ -1,5 +1,27 @@
 # HANDOVER — living handover log (newest entry on top)
 
+## 2026-09-25 (latest) — WP3/T005 spec closed: Google Sign-in frozen + activation runbook (PR #15)
+
+- **What landed:** docs/tasks/T005-google-oauth.md — the frozen spec for
+  Google Sign-in on Nelurio (first platform app) documenting the flow AS BUILT
+  in nelurio-code@385ce67: authorization-code flow, `nelurio_oauth_state`
+  cookie (10 min, HttpOnly, constant-time compare), stdlib-only JWKS
+  id_token verification (RS256/iss/aud/exp), account linking rules
+  ((provider,subject) → same-email link → passwordless create), frontend
+  provider buttons, error-code → i18n mapping — plus the owner activation
+  checklist (Google Cloud client → `/etc/nelurio/nelurio.env` → restart).
+- **Verified:** local gates green (lint/format/check:js/audit/smoke 25/25);
+  live `GET /api/v1/auth/oauth/providers` returns google:false — the layer is
+  inert until the owner's keys land, exactly like the consent layer.
+- **As-built:** the WP3 draft in this file previously described an
+  `auth/google/*` + userinfo-endpoint plan; the real nelurio implementation
+  standardized on `auth/oauth/{provider}/*` + JWKS-verified id_token (already
+  in nelurio's frozen CONTRACT). The spec records as-built, not the draft.
+- **Next up (owner inputs pending — all three are ~10-minute steps):**
+  ① GA4 Measurement ID → `data-ga-id` on both pages, deploy; ② Google Cloud
+  OAuth client → `/etc/nelurio/nelurio.env` + API restart (checklist in T005
+  spec); ③ domain `amir-khosravi.de` → WP2 phase 1 runbook.
+
 ## 2026-09-25 (later) — WP3/T004 live: consent-gated analytics layer (PR #13)
 
 - **Live:** consent banner layer on index.html + products.html (EN/DE, consent

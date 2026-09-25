@@ -15,15 +15,12 @@ more official), approved 2026-09-25
    Nelurio is one of the platform's own products (owner framing, 2026-09-25) —
    it gets Google Sign-in first and its implementation becomes the reusable
    pattern for the platform's other apps.
-   Nelurio = Go API (cookie sessions, `internal/api` + `internal/store`) +
-   React `AuthProvider`. Plan: OAuth 2.0 authorization-code flow with Google
-   as IdP — `GET /auth/google/start` (state+PKCE cookie) → Google consent →
-   `GET /auth/google/callback` (verify state, fetch token, read userinfo,
-   upsert user by google sub, issue the existing session cookie). Frontend:
-   "Mit Google anmelden" button in `AuthProvider`/login screen. Blocked on
-   owner: Google Cloud project + OAuth client ID/secret (authorized origin =
-   Nelurio URL; redirect = `/auth/google/callback`). Client secrets live in
-   VPS env, never in git.
+   **Implemented in the Nelurio repo** (`nelurio@385ce67`, Google + Apple,
+   authorization-code flow, stdlib JWKS id_token verification, account
+   linking by verified email, frontend provider buttons) and **frozen as
+   spec + activation runbook in docs/tasks/T005-google-oauth.md**. Remaining:
+   owner's Google Cloud OAuth client ID/secret → VPS env → restart → verify.
+   Client secrets live in VPS env, never in git.
 3. **Domain (WP2 phase 0)** — remains the single owner-executable step for
    trust-grade branding.
 
