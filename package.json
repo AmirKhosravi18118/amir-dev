@@ -5,9 +5,9 @@
   "description": "Portfolio site of Amir Khosravi — static, dependency-free. Node tooling is dev/CI only.",
   "type": "module",
   "scripts": {
-    "lint": "htmlhint index.html cv_print.html",
+    "lint": "htmlhint index.html cv_print.html nelurio.html",
     "format:check": "prettier --check .",
-    "check:js": "node tools/check-inline-js.mjs index.html cv_print.html products.html",
+    "check:js": "node tools/check-inline-js.mjs index.html cv_print.html products.html nelurio.html",
     "audit:all": "npm audit --audit-level=high",
     "audit:prod": "npm audit --audit-level=high --omit=dev",
     "test:e2e": "playwright test"

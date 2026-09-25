@@ -60,8 +60,11 @@ API surface is already frozen in nelurio's `docs/CONTRACT.md`
 `APPLE_CLIENT_ID`, `APPLE_TEAM_ID`, `APPLE_KEY_ID`, `APPLE_CLIENT_SECRET` or
 `APPLE_PRIVATE_KEY`). Redirect URI derives from `APIPublicBaseURL` → today
 `https://nelurio-api.duckdns.org/api/v1/auth/oauth/google/callback`; app
-origin `https://nelurio.duckdns.org`. When the platform domain lands
-(WP2 phase 1) both become `*.amir-khosravi.de` subdomain URLs.
+origin `https://nelurio.duckdns.org`. Final URLs after the platform migration
+(owner decision 2026-09-25: platform domain is `nelurio.com`):
+origin `https://app.nelurio.com`, redirect URI
+`https://app.nelurio.com/api/v1/auth/oauth/google/callback` (full map in
+`docs/platform-runbook.md`; configure both URI pairs if set up early).
 
 ### Owner activation checklist (the ONLY remaining step — ~10 min)
 
@@ -70,9 +73,10 @@ origin `https://nelurio.duckdns.org`. When the platform domain lands
 2. OAuth consent screen: External, scopes `openid email profile`, app name
    Nelurio + support email.
 3. Credentials → Create credentials → OAuth client ID → Web application:
-   Authorized JavaScript origin `https://nelurio.duckdns.org`; Authorized
-   redirect URI
-   `https://nelurio-api.duckdns.org/api/v1/auth/oauth/google/callback`.
+   Authorized JavaScript origins `https://nelurio.duckdns.org` AND (post-
+   migration) `https://app.nelurio.com`; Authorized redirect URIs
+   `https://nelurio-api.duckdns.org/api/v1/auth/oauth/google/callback` AND
+   `https://app.nelurio.com/api/v1/auth/oauth/google/callback`.
 4. Copy client ID + secret into `/etc/nelurio/nelurio.env`
    (`GOOGLE_CLIENT_ID=…`, `GOOGLE_CLIENT_SECRET=…`), restart the API service.
 5. Verify (commands below): providers flag flips to true, real browser login
