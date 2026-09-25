@@ -1,6 +1,6 @@
 # T004 — site: consent-gated analytics layer (GA4-ready, GDPR-safe)
 
-Status: ready | Est: 0.5d | PR 1 of WP3
+Status: done (PR #13, merged 2026-09-25; smoke 25/25; deployed, live 200; inert until data-ga-id set) | Est: 0.5d | PR 1 of WP3
 
 ## Goal
 
