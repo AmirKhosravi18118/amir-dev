@@ -153,6 +153,11 @@ footer a{color:#c3b4ff}
 .pm-list .proj{margin-bottom:18px}
 .pm-list .proj:last-child{margin-bottom:0}
 
+/* ---- consent banner (WP3/T004 — inert until data-ga-id is set) ---- */
+.consent{position:fixed;left:20px;right:20px;bottom:20px;z-index:90;max-width:660px;margin:0 auto;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:16px 20px;border-radius:16px;background:rgba(16,13,36,.92);border:1px solid rgba(139,108,255,.35);backdrop-filter:blur(12px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.consent p{font-size:13px;color:#cfc9ee;flex:1;min-width:240px}
+.consent .btn{padding:9px 16px;font-size:12.5px}
+
 @media(prefers-reduced-motion:reduce){.reveal,.hero > div{opacity:1;transform:none;transition:none;animation:none}}
 
 @media(max-width:860px){
@@ -375,6 +380,14 @@ footer a{color:#c3b4ff}
   <span>© 2026 Amir Khosravi · Handwritten HTML — no framework needed for a portfolio.</span>
   <span><a href="https://nelurio.duckdns.org/legal/imprint">Impressum</a> · <a href="https://nelurio.duckdns.org/legal/privacy">Privacy</a></span>
 </div></footer>
+
+<div id="consentBanner" class="consent" hidden role="dialog" aria-live="polite">
+  <p data-i18n="cons.text">This site uses consent-based, privacy-friendly analytics — page statistics only, no ads, no cross-site tracking. You decide; change your mind anytime by clearing this site's data.</p>
+  <div style="display:flex;gap:10px">
+    <button id="consent-accept" class="btn btn-p" type="button" data-i18n="cons.accept">Accept</button>
+    <button id="consent-decline" class="btn btn-s" type="button" data-i18n="cons.decline">Decline</button>
+  </div>
+</div>
 </div>
 
 <script>
@@ -402,6 +415,9 @@ const I18N = {
 "pm.title":{"en":"All projects","de":"Alle Projekte"},
 "pm.sub":{"en":"Every project here is live and open to try — no mockups, no vaporware. Newest at the bottom.","de":"Jedes Projekt hier ist live und zum Ausprobieren offen — keine Mockups, kein Vaporware. Neueste unten."},
 "pm.close":{"en":"Close","de":"Schließen"},
+"cons.text":{"en":"This site uses consent-based, privacy-friendly analytics — page statistics only, no ads, no cross-site tracking. You decide; change your mind anytime by clearing this site's data.","de":"Diese Website nutzt einwilligungsbasierte, datenschutzfreundliche Analytik — nur Seitenstatistik, keine Werbung, kein übergreifendes Tracking. Du entscheidest; jederzeit änderbar durch Löschen der Website-Daten."},
+"cons.accept":{"en":"Accept","de":"Akzeptieren"},
+"cons.decline":{"en":"Decline","de":"Ablehnen"},
 "p1.what":{"en":"AI study assistant for university students — live in beta.","de":"KI-Lernassistent für Studierende — live im Beta."},
 "p1.build":{"en":"Record a lecture → AI writes the summary, schedules spaced-repetition reviews, generates flashcards & quizzes, and a tutor answers from your own materials with citations. Built solo — backend, frontend, AI, infra, deployment.","de":"Vorlesung erfassen → die KI schreibt die Zusammenfassung, plant Wiederholungen, erstellt Lernkarten & Quiz — der Tutor antwortet aus deinen eigenen Materialien mit Quellen. Solo gebaut — Backend, Frontend, KI, Infra, Deployment."},
 "p2.what":{"en":"German vocabulary learning platform.","de":"Plattform zum Deutsch-Vokabeln lernen."},
@@ -585,6 +601,49 @@ const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script>
+/* Consent-gated analytics (WP3/T004) — inert until <html data-ga-id="G-…"> is set.
+   GDPR/TTDSG: consent mode v2 defaults denied; no script before opt-in. */
+(function(){
+  const KEY = 'analytics_consent';
+  const banner = document.getElementById('consentBanner');
+  let injected = false;
+  function inject(){
+    if (injected) return;
+    const id = document.documentElement.getAttribute('data-ga-id');
+    if (!id) return;
+    injected = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+      analytics_storage: 'denied', wait_for_update: 500
+    });
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+    document.head.appendChild(s);
+    window.gtag('js', new Date());
+    window.gtag('config', id);
+    window.gtag('consent', 'update', { analytics_storage: 'granted' });
+  }
+  function decide(v){
+    try{ localStorage.setItem(KEY, v); }catch(e){}
+    banner.hidden = true;
+    if (v === 'granted') inject();
+  }
+  window.initAnalytics = function(){
+    const id = document.documentElement.getAttribute('data-ga-id');
+    if (!id) return;
+    let c = null; try{ c = localStorage.getItem(KEY); }catch(e){}
+    if (c === 'granted') inject();
+    else if (c !== 'denied') banner.hidden = false;
+  };
+  document.getElementById('consent-accept').addEventListener('click', ()=>decide('granted'));
+  document.getElementById('consent-decline').addEventListener('click', ()=>decide('denied'));
+  window.initAnalytics();
+})();
 </script>
 </body>
 </html>
