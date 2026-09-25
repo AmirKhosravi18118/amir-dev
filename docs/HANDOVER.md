@@ -1,5 +1,21 @@
 # HANDOVER — living handover log (newest entry on top)
 
+## 2026-09-25 (later) — WP3/T004 live: consent-gated analytics layer (PR #13)
+
+- **Live:** consent banner layer on index.html + products.html (EN/DE, consent
+  mode v2 denied-by-default, gtag only after opt-in, decline persisted).
+  **Inert until the owner's GA4 Measurement ID is placed in `<html
+data-ga-id>`** — that one attribute is the whole activation step. Live 200.
+- **Verified:** smoke 25/25 (5 analytics cases), lint/audit green, CI green.
+- **As-built:** products.html gained the global `[hidden]{display:none!important}`
+  rule it was missing (banner display:flex overrode hidden — real bug).
+  **New trap #11:** Playwright `addInitScript` runs before documentElement
+  exists — setting html attributes there crashes; inject test state by
+  route-rewriting the served HTML instead (see tests-ci/analytics.spec.ts).
+- **Next up (owner inputs pending):** ① GA4 Measurement ID → set data-ga-id,
+  deploy, done; ② Google Cloud OAuth client (Nelurio as platform app, T005) →
+  implement in the Nelurio repo; ③ domain purchase (WP2 phase 0).
+
 ## 2026-09-25 — WP2 phase 2 live: products.html storefront (PR #10)
 
 - **Live:** products.html — the platform storefront (5 products, status chips,

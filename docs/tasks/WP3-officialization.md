@@ -11,7 +11,10 @@ more official), approved 2026-09-25
    choice persisted, decline honored. The layer activates the moment the owner
    provides a GA4 Measurement ID (`data-ga-id` on `<html>`); until then it is
    inert and ships no banner.
-2. **T005 — Google Sign-in (OAuth) for the apps (Nelurio repo, next WP).**
+2. **T005 — Google Sign-in (OAuth), platform-wide pattern, first app: Nelurio.**
+   Nelurio is one of the platform's own products (owner framing, 2026-09-25) —
+   it gets Google Sign-in first and its implementation becomes the reusable
+   pattern for the platform's other apps.
    Nelurio = Go API (cookie sessions, `internal/api` + `internal/store`) +
    React `AuthProvider`. Plan: OAuth 2.0 authorization-code flow with Google
    as IdP — `GET /auth/google/start` (state+PKCE cookie) → Google consent →
