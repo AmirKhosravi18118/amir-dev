@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en" data-ga-id="G-M5C9K1JWH4">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Nelurio — the product suite by Amir Khosravi. Focused apps for studying, finance, language and real business operations. Create an account and start free.">
+<title>Nelurio — Product Suite by Amir Khosravi</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238b6cff'/%3E%3Ctext x='32' y='44' font-size='36' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0b1d;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);
+  --txt:#efedff;--mut:#a49fd0;--acc:#8b6cff;--acc2:#4d8df7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(13,11,29,.72);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:900;font-size:19px}
+.logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px;box-shadow:0 6px 18px rgba(139,108,255,.35)}
+.logo b{color:var(--acc);font-weight:900}
+nav ul{display:flex;gap:26px;list-style:none}
+nav ul a{color:var(--mut);text-decoration:none;font-size:14px;font-weight:600;transition:color .15s}
+nav ul a:hover{color:var(--txt)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:3px}
+.lang-toggle button{padding:6px 12px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer;transition:all .15s}
+.lang-toggle button.is-active{background:var(--acc);color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:12px;font-weight:800;font-size:14px;text-decoration:none;cursor:pointer;transition:transform .15s,border-color .15s,background .15s;border:1px solid transparent}
+.btn-p{background:linear-gradient(135deg,var(--acc),#7452f2);color:#fff;box-shadow:0 10px 26px rgba(139,108,255,.3)}
+.btn-p:hover{transform:translateY(-2px)}
+.btn-s{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--txt)}
+.btn-s:hover{border-color:var(--acc);transform:translateY(-2px)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+section{padding:64px 0}
+.kicker{display:inline-block;font-size:11.5px;font-weight:900;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:12px}
+h2{font-size:30px;font-weight:900;letter-spacing:-.5px;margin-bottom:10px}
+.lead{color:var(--mut);max-width:660px;font-size:15.5px;margin-bottom:34px}
+.hero{padding:72px 0 26px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-220px;right:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(139,108,255,.22),transparent 65%);pointer-events:none}
+.hero::after{content:"";position:absolute;top:-80px;left:-200px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(77,141,247,.14),transparent 65%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:999px;border:1px solid rgba(139,108,255,.4);background:rgba(139,108,255,.1);font-size:11px;font-weight:900;letter-spacing:.16em;color:#c3b4ff;margin-bottom:24px}
+.badge i{width:7px;height:7px;border-radius:50%;background:#a585ff;box-shadow:0 0 10px #a585ff;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1{font-size:56px;font-weight:900;letter-spacing:-2px;line-height:1.05}
+h1 .grad{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{margin:20px 0 10px;font-size:19px;color:#ddd8f5;max-width:600px;font-weight:600}
+.hero .lead{font-size:15.5px;margin-bottom:32px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.builder-note{margin-top:22px;font-size:13.5px;color:var(--mut)}
+.builder-note a{color:#c3b4ff;font-weight:700;text-decoration:none;border-bottom:1px dotted rgba(195,180,255,.5)}
+.builder-note a:hover{color:var(--txt)}
+.lib{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.prod{position:relative;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;display:flex;flex-direction:column}
+.prod:hover{transform:translateY(-4px);border-color:rgba(139,108,255,.5);box-shadow:0 24px 50px rgba(10,6,40,.55)}
+.prod .cover{position:relative;aspect-ratio:16/10;overflow:hidden;background:#141024}
+.prod .cover img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.status{position:absolute;top:14px;right:14px;display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;background:rgba(9,20,14,.78);backdrop-filter:blur(6px);border:1px solid rgba(95,225,160,.35);color:#8af0bf;font-size:10.5px;font-weight:800;letter-spacing:.16em}
+.status i{width:6px;height:6px;border-radius:50%;background:#5fe1a0;box-shadow:0 0 9px #5fe1a0;animation:pulse 2s infinite}
+.status.beta{border-color:rgba(139,108,255,.45);color:#c3b4ff}
+.status.beta i{background:#a585ff;box-shadow:0 0 9px #a585ff}
+.status.client{border-color:rgba(77,141,247,.45);color:#a9c8ff}
+.status.client i{background:#4d8df7;box-shadow:0 0 9px #4d8df7}
+.prod .body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.prod h3{font-size:19px;font-weight:900}
+.prod .flag{font-size:10.5px;font-weight:900;letter-spacing:.18em;color:var(--acc);text-transform:uppercase}
+.prod .what{color:var(--mut);font-size:13.8px;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:#cfc9ee;background:rgba(255,255,255,.04)}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
+.links .btn{padding:9px 16px;font-size:12.5px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}
+.step .num{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;font-weight:900;color:#fff;margin-bottom:14px}
+.step h3{font-size:16.5px;font-weight:900;margin-bottom:8px}
+.step p{color:var(--mut);font-size:13.8px}
+.honest{margin-top:22px;padding:16px 20px;border:1px dashed rgba(139,108,255,.4);border-radius:14px;color:#cfc9ee;font-size:13.5px;background:rgba(139,108,255,.06)}
+.honest b{color:#c3b4ff}
+.ops{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.op{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.op h3{font-size:14.5px;font-weight:900;margin-bottom:6px;color:#ddd8f5}
+.op p{color:var(--mut);font-size:12.8px}
+.road{display:flex;flex-wrap:wrap;gap:12px}
+.road .chip{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-size:13.5px;font-weight:700;color:#ddd8f5}
+.road .chip i{width:8px;height:8px;border-radius:50%;background:var(--acc2);box-shadow:0 0 8px var(--acc2)}
+.roadnote{margin-top:16px;color:var(--mut);font-size:13px;max-width:640px}
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+footer a{color:#cfc9ee;text-decoration:none}
+footer a:hover{color:var(--txt)}
+.consent{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:90;display:flex;gap:16px;align-items:center;width:min(860px,calc(100% - 32px));padding:16px 20px;border-radius:16px;border:1px solid var(--line);background:rgba(19,15,38,.92);backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(5,3,18,.6)}
+.consent p{font-size:13px;color:#cfc9ee;flex:1;min-width:240px}
+.consent .btn{padding:9px 16px;font-size:12.5px}
+[hidden]{display:none!important}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+@media(max-width:900px){
+  .steps{grid-template-columns:1fr}
+  .ops{grid-template-columns:1fr}
+  nav ul{display:none}
+  section{padding:46px 0}
+  .hero{padding:48px 0 8px}
+  h1{font-size:40px}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="logo" href="/"><span class="mark">N</span>Nelurio<b>&nbsp;Suite</b></a>
+  <ul>
+    <li><a href="#products" data-i18n="nav.products">Products</a></li>
+    <li><a href="#how" data-i18n="nav.how">How it works</a></li>
+    <li><a href="#platform" data-i18n="nav.platform">Platform</a></li>
+    <li><a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button id="btn-en" class="is-active" onclick="setLang('en')">EN</button>
+      <button id="btn-de" onclick="setLang('de')">DE</button>
+    </div>
+    <a class="btn btn-p nav-cta" href="#products" data-i18n="nav.cta">Browse apps</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+<header class="hero">
+  <div class="badge"><i></i><span data-i18n="nl.badge">NELURIO SUITE · BY AMIR KHOSRAVI</span></div>
+  <h1><span class="grad">Nelurio</span> Suite</h1>
+  <p class="sub" data-i18n="nl.sub">The product library of Amir Khosravi — focused apps for studying, money, language and real business operations.</p>
+  <p class="lead" data-i18n="nl.lead">Pick an app, open it and start right away — every product here is live, monitored and maintained. Accounts are free, your data belongs to you, and new tools land in the same library as they ship.</p>
+  <div class="hero-ctas">
+    <a class="btn btn-p" href="#products" data-i18n="nl.cta.browse">Browse the library</a>
+    <a class="btn btn-s" href="/" data-i18n="nl.cta.builder">About the builder</a>
+  </div>
+  <p class="builder-note"><span data-i18n="nl.builder">Built end-to-end by</span> <a href="/">Amir Khosravi</a> <span data-i18n="nl.builder2">— developer & BWL student, Rhein-Main. The story behind every product lives on the portfolio.</span></p>
+</header>
+
+<section id="products">
+  <span class="kicker" data-i18n="lib.kicker">The library</span>
+  <h2 data-i18n="lib.h2">Five products. One shelf.</h2>
+  <p class="lead" data-i18n="lib.lead">Every card is a real, running product — not a demo. Open one and use it right now.</p>
+  <div class="lib">
+
+    <article class="prod reveal">
+      <div class="cover"><img src="shot.png" alt="Nelurio study dashboard"><span class="status beta"><i></i><span data-i18n="st.beta">LIVE · BETA — FREE</span></span></div>
+      <div class="body">
+        <span class="flag" data-i18n="n1.flag">FLAGSHIP APP</span>
+        <h3>Nelurio</h3>
+        <p class="what" data-i18n="n1.what">AI study assistant for university students — record a lecture, get summaries, spaced-repetition reviews, flashcards & a tutor that answers from your own materials with citations.</p>
+        <div class="tags"><span class="tag">Go / chi</span><span class="tag">PostgreSQL</span><span class="tag">React 19</span><span class="tag">OpenAI</span><span class="tag">PWA</span><span class="tag">10 languages</span><span class="tag">GDPR</span></div>
+        <div class="links">
+          <a class="btn btn-p" href="https://nelurio.duckdns.org" target="_blank" rel="noopener" data-i18n="n1.cta">Open app — create free account</a>
+          <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/nelurio" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="prod reveal">
+      <div class="cover"><img src="finello.png" alt="Finello app" loading="lazy"><span class="status"><i></i><span data-i18n="st.live">LIVE — FREE</span></span></div>
+      <div class="body">
+        <span class="flag" data-i18n="n2.flag">FINANCE</span>
+        <h3>Finello</h3>
+        <p class="what" data-i18n="n2.what">Personal finance app for students in Germany — budget calendar with recurring payments, expenses & transactions, and a tax overview for student jobs.</p>
+        <div class="tags"><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS 4</span><span class="tag">Vite</span><span class="tag">Vitest</span></div>
+        <div class="links">
+          <a class="btn btn-p" href="https://amirkhosravi18118.github.io/finello-app/" target="_blank" rel="noopener" data-i18n="n2.cta">Open app — start instantly</a>
+          <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/finello" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="prod reveal">
+      <div class="cover"><img src="washhalle.png" alt="Washhalle operations dashboard" loading="lazy"><span class="status"><i></i><span data-i18n="st.daily">LIVE · DAILY USE</span></span></div>
+      <div class="body">
+        <span class="flag" data-i18n="n3.flag">OPERATIONS</span>
+        <h3>Washhalle</h3>
+        <p class="what" data-i18n="n3.what">Operations app for a real car-wash business — day-to-day operations, tracking and workflow. In daily use on site since launch.</p>
+        <div class="tags"><span class="tag">Real business</span><span class="tag">Operations</span><span class="tag">In daily use</span></div>
+        <div class="links">
+          <a class="btn btn-p" href="https://waschhalle-92-5-111-34.sslip.io" target="_blank" rel="noopener" data-i18n="c.openapp">Open live app</a>
+          <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="prod reveal">
+      <div class="cover"><img src="nexdeutsch.png" alt="NexDeutsch learning platform" loading="lazy"><span class="status"><i></i><span data-i18n="st.live">LIVE</span></span></div>
+      <div class="body">
+        <span class="flag" data-i18n="n4.flag">LANGUAGE</span>
+        <h3>NexDeutsch</h3>
+        <p class="what" data-i18n="n4.what">German vocabulary learning platform — structured practice sessions with spaced practice. Nelurio's review engine was born from what I learned here; a rework is in progress.</p>
+        <div class="tags"><span class="tag">Learning platform</span><span class="tag">Spaced practice</span><span class="tag">German market</span></div>
+        <div class="links">
+          <a class="btn btn-p" href="https://nexdeutsch-92-5-111-34.sslip.io" target="_blank" rel="noopener" data-i18n="c.openapp">Open live app</a>
+          <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="prod reveal">
+      <div class="cover"><img src="saadtattoo.png" alt="Saad Tattoo website" loading="lazy"><span class="status client"><i></i><span data-i18n="st.client">CLIENT · LIVE</span></span></div>
+      <div class="body">
+        <span class="flag" data-i18n="n5.flag">CLIENT WORK</span>
+        <h3>Saad Tattoo</h3>
+        <p class="what" data-i18n="n5.what">Booking-focused website for a tattoo studio in Wiesbaden — concept, design, AI-generated visual assets, content and launch. My first paid client project.</p>
+        <div class="tags"><span class="tag">Wix Studio</span><span class="tag">AI-assisted design</span><span class="tag">Client work</span></div>
+        <div class="links">
+          <a class="btn btn-p" href="https://www.saadtattoo.de" target="_blank" rel="noopener" data-i18n="c.opensite">Open live site</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="how">
+  <span class="kicker" data-i18n="how.kicker">How it works</span>
+  <h2 data-i18n="how.h2">From visitor to user in three steps.</h2>
+  <p class="lead" data-i18n="how.lead">No installation, no credit card — pick an app and start.</p>
+  <div class="steps">
+    <div class="step reveal"><span class="num">1</span><h3 data-i18n="how.s1t">Pick an app</h3><p data-i18n="how.s1b">Every card above is live. Choose the tool that fits what you need today.</p></div>
+    <div class="step reveal"><span class="num">2</span><h3 data-i18n="how.s2t">Create your account</h3><p data-i18n="how.s2b">Sign up inside the app with email — or with one click via Google Sign-in where it's offered. Your account keeps your work safe across devices.</p></div>
+    <div class="step reveal"><span class="num">3</span><h3 data-i18n="how.s3t">Your data stays yours</h3><p data-i18n="how.s3b">EU-hosted infrastructure, GDPR-first defaults — and you can delete your account and all its data yourself, any time.</p></div>
+  </div>
+  <div class="honest reveal"><b data-i18n="how.honestT">Honest note:</b> <span data-i18n="how.honest">accounts currently live inside each app. One platform-wide login for the whole library is planned — it appears here the moment it ships.</span></div>
+</section>
+
+<section id="platform">
+  <span class="kicker" data-i18n="pl.kicker">The platform</span>
+  <h2 data-i18n="pl.h2">One shelf, professionally kept.</h2>
+  <p class="lead" data-i18n="pl.lead">The whole library runs on infrastructure I operate myself — same standard for every product on it.</p>
+  <div class="ops">
+    <div class="op reveal"><h3 data-i18n="pl.o1">One EU-hosted VPS</h3><p data-i18n="pl.o1b">All products consolidated on a single, cost-efficient, GDPR-conscious server.</p></div>
+    <div class="op reveal"><h3 data-i18n="pl.o2">Caddy auto-TLS</h3><p data-i18n="pl.o2b">Automatic HTTPS for every app — new products go live in minutes.</p></div>
+    <div class="op reveal"><h3 data-i18n="pl.o3">CI/CD on every change</h3><p data-i18n="pl.o3b">Spec → issue → PR → automated gates. Nothing ships by hand-waving.</p></div>
+    <div class="op reveal"><h3 data-i18n="pl.o4">24/7 monitoring</h3><p data-i18n="pl.o4b">An automated agent checks the sites daily and reports incidents first.</p></div>
+    <div class="op reveal"><h3 data-i18n="pl.o5">Consent-first analytics</h3><p data-i18n="pl.o5b">Statistics load only after your opt-in — no ads, no cross-site tracking.</p></div>
+    <div class="op reveal"><h3 data-i18n="pl.o6">Automated testing</h3><p data-i18n="pl.o6b">Playwright smoke suites and unit tests guard the library's pages and apps.</p></div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <span class="kicker" data-i18n="rd.kicker">Roadmap</span>
+  <h2 data-i18n="rd.h2">What's coming to the library.</h2>
+  <p class="lead" data-i18n="rd.lead">Shipped features appear here when they are real — nothing on this list is sold yet.</p>
+  <div class="road">
+    <span class="chip reveal"><i></i><span data-i18n="rd.c1">One platform-wide login (Google Sign-in)</span></span>
+    <span class="chip reveal"><i></i><span data-i18n="rd.c2">Pro tiers with subscriptions per app</span></span>
+    <span class="chip reveal"><i></i><span data-i18n="rd.c3">New products — the shelf keeps growing</span></span>
+  </div>
+  <p class="roadnote" data-i18n="rd.note">Roadmap items land data-driven: they ship when real usage justifies them, not before.</p>
+</section>
+</div>
+
+<footer><div class="wrap">
+  <span>© 2026 Amir Khosravi · <b style="color:#cfc9ee">Nelurio Suite</b></span>
+  <span><a href="https://nelurio.duckdns.org/legal/imprint" data-i18n="f.imprint">Impressum</a> · <a href="https://nelurio.duckdns.org/legal/privacy" data-i18n="f.privacy">Privacy</a> · <a href="/" data-i18n="f.portfolio">Portfolio</a></span>
+</div></footer>
+
+<div id="consentBanner" class="consent" hidden role="dialog" aria-live="polite">
+  <p data-i18n="cons.text">This site uses consent-based, privacy-friendly analytics — page statistics only, no ads, no cross-site tracking. You decide; change your mind anytime by clearing this site's data.</p>
+  <div style="display:flex;gap:10px">
+    <button id="consent-accept" class="btn btn-p" type="button" data-i18n="cons.accept">Accept</button>
+    <button id="consent-decline" class="btn btn-s" type="button" data-i18n="cons.decline">Decline</button>
+  </div>
+</div>
+
+<script>
+const I18N = {
+"nav.products":{"en":"Products","de":"Produkte"},
+"nav.how":{"en":"How it works","de":"So funktioniert's"},
+"nav.platform":{"en":"Platform","de":"Plattform"},
+"nav.roadmap":{"en":"Roadmap","de":"Roadmap"},
+"nav.cta":{"en":"Browse apps","de":"Apps ansehen"},
+"nl.badge":{"en":"NELURIO SUITE · BY AMIR KHOSRAVI","de":"NELURIO SUITE · VON AMIR KHOSRAVI"},
+"nl.sub":{"en":"The product library of Amir Khosravi — focused apps for studying, money, language and real business operations.","de":"Die Produktbibliothek von Amir Khosravi — fokussierte Apps für Studium, Finanzen, Sprache und echte Geschäftsabläufe."},
+"nl.lead":{"en":"Pick an app, open it and start right away — every product here is live, monitored and maintained. Accounts are free, your data belongs to you, and new tools land in the same library as they ship.","de":"Such dir eine App, öffne sie und leg sofort los — jedes Produkt hier ist live, überwacht und gewartet. Konten sind kostenlos, deine Daten gehören dir, und neue Tools landen in derselben Bibliothek, sobald sie fertig sind."},
+"nl.cta.browse":{"en":"Browse the library","de":"Bibliothek ansehen"},
+"nl.cta.builder":{"en":"About the builder","de":"Über den Entwickler"},
+"nl.builder":{"en":"Built end-to-end by","de":"Komplett gebaut von"},
+"nl.builder2":{"en":"— developer & BWL student, Rhein-Main. The story behind every product lives on the portfolio.","de":"— Entwickler & BWL-Student, Rhein-Main. Die Geschichte hinter jedem Produkt findest du im Portfolio."},
+"lib.kicker":{"en":"The library","de":"Die Bibliothek"},
+"lib.h2":{"en":"Five products. One shelf.","de":"Fünf Produkte. Ein Regal."},
+"lib.lead":{"en":"Every card is a real, running product — not a demo. Open one and use it right now.","de":"Jede Karte ist ein echtes, laufendes Produkt — keine Demo. Öffne eines und leg sofort los."},
+"st.beta":{"en":"LIVE · BETA — FREE","de":"LIVE · BETA — KOSTENLOS"},
+"st.live":{"en":"LIVE — FREE","de":"LIVE — KOSTENLOS"},
+"st.daily":{"en":"LIVE · DAILY USE","de":"LIVE · TÄGLICH IM EINSATZ"},
+"st.client":{"en":"CLIENT · LIVE","de":"KUNDE · LIVE"},
+"c.openapp":{"en":"Open live app","de":"Live-App öffnen"},
+"c.opensite":{"en":"Open live site","de":"Live-Website öffnen"},
+"c.ghpriv":{"en":"GitHub (private)","de":"GitHub (privat)"},
+"n1.flag":{"en":"FLAGSHIP APP","de":"LEUCHTTURM-APP"},
+"n1.cta":{"en":"Open app — create free account","de":"App öffnen — kostenloses Konto"},
+"n1.what":{"en":"AI study assistant for university students — record a lecture, get summaries, spaced-repetition reviews, flashcards & a tutor that answers from your own materials with citations.","de":"KI-Lernassistent für Studierende — Vorlesung aufnehmen, Zusammenfassungen erhalten, Wiederholungen planen, Lernkarten & ein Tutor, der aus deinen eigenen Materialien mit Quellen antwortet."},
+"n2.flag":{"en":"FINANCE","de":"FINANZEN"},
+"n2.cta":{"en":"Open app — start instantly","de":"App öffnen — sofort starten"},
+"n2.what":{"en":"Personal finance app for students in Germany — budget calendar with recurring payments, expenses & transactions, and a tax overview for student jobs.","de":"Persönliche Finanz-App für Studierende in Deutschland — Budget-Kalender mit wiederkehrenden Zahlungen, Ausgaben & Transaktionen und Steuer-Überblick für Studentenjobs."},
+"n3.flag":{"en":"OPERATIONS","de":"OPERATIONS"},
+"n3.what":{"en":"Operations app for a real car-wash business — day-to-day operations, tracking and workflow. In daily use on site since launch.","de":"Operations-App für eine echte Autowaschanlage — Tagesbetrieb, Tracking und Workflow. Seit Launch täglich im Einsatz."},
+"n4.flag":{"en":"LANGUAGE","de":"SPRACHE"},
+"n4.what":{"en":"German vocabulary learning platform — structured practice sessions with spaced practice. Nelurio's review engine was born from what I learned here; a rework is in progress.","de":"Plattform zum Deutsch-Vokabeln lernen — strukturierte Übungen mit Spaced Practice. Nelurios Wiederholungs-Engine entstand aus den Erfahrungen hier; eine Überarbeitung läuft."},
+"n5.flag":{"en":"CLIENT WORK","de":"KUNDENARBEIT"},
+"n5.what":{"en":"Booking-focused website for a tattoo studio in Wiesbaden — concept, design, AI-generated visual assets, content and launch. My first paid client project.","de":"Buchungsorientierte Website für ein Tattoo-Studio in Wiesbaden — Konzept, Design, KI-generierte Visuals, Inhalt und Launch. Mein erstes bezahltes Kundenprojekt."},
+"how.kicker":{"en":"How it works","de":"So funktioniert's"},
+"how.h2":{"en":"From visitor to user in three steps.","de":"Von Besucher zu Nutzer in drei Schritten."},
+"how.lead":{"en":"No installation, no credit card — pick an app and start.","de":"Keine Installation, keine Kreditkarte — App wählen und starten."},
+"how.s1t":{"en":"Pick an app","de":"App wählen"},
+"how.s1b":{"en":"Every card above is live. Choose the tool that fits what you need today.","de":"Jede Karte oben ist live. Wähle das Werkzeug, das heute zu dir passt."},
+"how.s2t":{"en":"Create your account","de":"Konto erstellen"},
+"how.s2b":{"en":"Sign up inside the app with email — or with one click via Google Sign-in where it's offered. Your account keeps your work safe across devices.","de":"Registriere dich in der App per E-Mail — oder mit einem Klick über Google Sign-in, wo angeboten. Dein Konto bewahrt deine Arbeit geräteübergreifend."},
+"how.s3t":{"en":"Your data stays yours","de":"Deine Daten bleiben deine"},
+"how.s3b":{"en":"EU-hosted infrastructure, GDPR-first defaults — and you can delete your account and all its data yourself, any time.","de":"EU-gehostete Infrastruktur, DSGVO-first — und du kannst dein Konto samt Daten jederzeit selbst löschen."},
+"how.honestT":{"en":"Honest note:","de":"Ehrlicher Hinweis:"},
+"how.honest":{"en":"accounts currently live inside each app. One platform-wide login for the whole library is planned — it appears here the moment it ships.","de":"Konten leben derzeit in jeder App. Ein plattformweiter Login für die ganze Bibliothek ist geplant — er erscheint hier, sobald er live ist."},
+"pl.kicker":{"en":"The platform","de":"Die Plattform"},
+"pl.h2":{"en":"One shelf, professionally kept.","de":"Ein Regal, professionell gepflegt."},
+"pl.lead":{"en":"The whole library runs on infrastructure I operate myself — same standard for every product on it.","de":"Die ganze Bibliothek läuft auf Infrastruktur, die ich selbst betreibe — derselbe Standard für jedes Produkt darauf."},
+"pl.o1":{"en":"One EU-hosted VPS","de":"Ein EU-gehosteter VPS"},
+"pl.o1b":{"en":"All products consolidated on a single, cost-efficient, GDPR-conscious server.","de":"Alle Produkte auf einem einzigen, kosteneffizienten, DSGVO-bewussten Server."},
+"pl.o2":{"en":"Caddy auto-TLS","de":"Caddy Auto-TLS"},
+"pl.o2b":{"en":"Automatic HTTPS for every app — new products go live in minutes.","de":"Automatisches HTTPS für jede App — neue Produkte sind in Minuten live."},
+"pl.o3":{"en":"CI/CD on every change","de":"CI/CD bei jeder Änderung"},
+"pl.o3b":{"en":"Spec → issue → PR → automated gates. Nothing ships by hand-waving.","de":"Spec → Issue → PR → automatische Gates. Nichts geht ohne Prüfung live."},
+"pl.o4":{"en":"24/7 monitoring","de":"24/7-Monitoring"},
+"pl.o4b":{"en":"An automated agent checks the sites daily and reports incidents first.","de":"Ein automatisierter Agent prüft die Seiten täglich und meldet Vorfälle zuerst."},
+"pl.o5":{"en":"Consent-first analytics","de":"Consent-first-Analytik"},
+"pl.o5b":{"en":"Statistics load only after your opt-in — no ads, no cross-site tracking.","de":"Statistiken laden erst nach deiner Zustimmung — keine Werbung, kein übergreifendes Tracking."},
+"pl.o6":{"en":"Automated testing","de":"Automatisierte Tests"},
+"pl.o6b":{"en":"Playwright smoke suites and unit tests guard the library's pages and apps.","de":"Playwright-Smoke-Suites und Unit-Tests sichern die Seiten und Apps der Bibliothek."},
+"rd.kicker":{"en":"Roadmap","de":"Roadmap"},
+"rd.h2":{"en":"What's coming to the library.","de":"Was in die Bibliothek kommt."},
+"rd.lead":{"en":"Shipped features appear here when they are real — nothing on this list is sold yet.","de":"Fertige Features erscheinen hier, wenn sie real sind — von dieser Liste wird noch nichts verkauft."},
+"rd.c1":{"en":"One platform-wide login (Google Sign-in)","de":"Ein plattformweiter Login (Google Sign-in)"},
+"rd.c2":{"en":"Pro tiers with subscriptions per app","de":"Pro-Tarife mit Abos pro App"},
+"rd.c3":{"en":"New products — the shelf keeps growing","de":"Neue Produkte — das Regal wächst weiter"},
+"rd.note":{"en":"Roadmap items land data-driven: they ship when real usage justifies them, not before.","de":"Roadmap-Punkte kommen datengetrieben: sie erscheinen, wenn echte Nutzung sie rechtfertigt — nicht vorher."},
+"f.imprint":{"en":"Impressum","de":"Impressum"},
+"f.privacy":{"en":"Privacy","de":"Datenschutz"},
+"f.portfolio":{"en":"Portfolio","de":"Portfolio"},
+"cons.text":{"en":"This site uses consent-based, privacy-friendly analytics — page statistics only, no ads, no cross-site tracking. You decide; change your mind anytime by clearing this site's data.","de":"Diese Website nutzt einwilligungsbasierte, datenschutzfreundliche Analytik — nur Seitenstatistik, keine Werbung, kein übergreifendes Tracking. Du entscheidest; jederzeit änderbar durch Löschen der Website-Daten."},
+"cons.accept":{"en":"Accept","de":"Akzeptieren"},
+"cons.decline":{"en":"Decline","de":"Ablehnen"}
+};
+function setLang(l){
+  document.documentElement.setAttribute('data-lang', l);
+  document.documentElement.lang = l;
+  document.getElementById('btn-en').classList.toggle('is-active', l==='en');
+  document.getElementById('btn-de').classList.toggle('is-active', l==='de');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    const v = I18N[k];
+    if(v && v[l]) el.textContent = v[l];
+  });
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+try{const saved=localStorage.getItem('lang'); if(saved) setLang(saved);}catch(e){}
+</script>
+<script>
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script>
+/* Consent-gated analytics (WP3/T004) — active: <html data-ga-id="G-M5C9K1JWH4">
+   (GA4 web stream "Nelurio Platform", 15842112317). GDPR/TTDSG: consent mode v2
+   defaults denied; no script before opt-in. */
+(function(){
+  const KEY = 'analytics_consent';
+  const banner = document.getElementById('consentBanner');
+  let injected = false;
+  function inject(){
+    if (injected) return;
+    const id = document.documentElement.getAttribute('data-ga-id');
+    if (!id) return;
+    injected = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+      analytics_storage: 'denied', wait_for_update: 500
+    });
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+    document.head.appendChild(s);
+    window.gtag('js', new Date());
+    window.gtag('config', id);
+    window.gtag('consent', 'update', { analytics_storage: 'granted' });
+  }
+  function decide(v){
+    try{ localStorage.setItem(KEY, v); }catch(e){}
+    banner.hidden = true;
+    if (v === 'granted') inject();
+  }
+  window.initAnalytics = function(){
+    const id = document.documentElement.getAttribute('data-ga-id');
+    if (!id) return;
+    let c = null; try{ c = localStorage.getItem(KEY); }catch(e){}
+    if (c === 'granted') inject();
+    else if (c !== 'denied') banner.hidden = false;
+  };
+  document.getElementById('consent-accept').addEventListener('click', ()=>decide('granted'));
+  document.getElementById('consent-decline').addEventListener('click', ()=>decide('denied'));
+  window.initAnalytics();
+})();
+</script>
+</body>
+</html>
