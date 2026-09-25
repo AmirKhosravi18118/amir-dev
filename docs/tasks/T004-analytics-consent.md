@@ -1,6 +1,9 @@
 # T004 — site: consent-gated analytics layer (GA4-ready, GDPR-safe)
 
-Status: done (PR #13, merged 2026-09-25; smoke 25/25; deployed, live 200; inert until data-ga-id set) | Est: 0.5d | PR 1 of WP3
+Status: done + activated (layer PR #13, merged 2026-09-25; ACTIVATED via PR #18
+— `data-ga-id="G-3EYMYY7KCD"` shipped on both pages, analytics tests rewritten
+for the active reality, deployed, live banner verified, GA4 property
+amir-khosravi.de 555984228 receiving hits) | Est: 0.5d | PR 1 of WP3
 
 ## Goal
 

@@ -1,6 +1,33 @@
 # HANDOVER — living handover log (newest entry on top)
 
-## 2026-09-25 (latest) — WP3/T005 spec closed: Google Sign-in frozen + activation runbook (PR #15)
+## 2026-09-25 (latest) — Analytics ACTIVATED: GA4 live on both pages (PR #18)
+
+- **Live:** `data-ga-id="G-3EYMYY7KCD"` ships on index.html + products.html —
+  the one-attribute activation frozen in the T004 spec. GA4: account
+  `amir-khosravi.de` (409471058), property `amir-khosravi.de` (555984228),
+  web stream "Portfolio" (15841969369), timezone Germany, currency EUR,
+  event-data retention 14 months, consent mode v2 denied-by-default (gtag
+  loads only after opt-in). Created in the owner's GA console during a
+  supervised browser session; console work driven end-to-end by agent.
+- **Verified:** local gates + smoke 25/25 (5 rewritten analytics cases) and CI
+  green (lint/audit/e2e); deployed file-by-file; live 200 with the attribute
+  present; in-browser live check: banner visible with zero gtag scripts →
+  Accept → `gtag/js?id=G-3EYMYY7KCD` injected, consent=granted persisted →
+  property Realtime receiving hits.
+- **As-built:** the analytics tests assumed "no ID in prod" (route-rewrite
+  injected a test ID); with the real ID shipped they were rewritten — the
+  synthetic no-ID case now STRIPS the attribute (regex ` data-ga-id="[^"]*"`),
+  keeping the inert path covered for future changes. Realtime showed US
+  entries alongside our German test visit — likely Google's own tag-verification
+  probes; not investigated further.
+- **Side observation for the owner:** his pre-existing GA4 property for
+  www.saadtattoo.de (account "Google Ads Account" 396293654, property 539626310) reports in **US Dollar** and has no industry set — worth switching
+  to EUR if he looks at that dashboard.
+- **Next up (owner-only, unchanged):** ① Google Cloud OAuth client for Nelurio
+  (checklist in docs/tasks/T005-google-oauth.md); ② domain `amir-khosravi.de`
+  (Netcup ~5–6 €/yr) → WP2 phase 1 runbook.
+
+## 2026-09-25 — WP3/T005 spec closed: Google Sign-in frozen + activation runbook (PR #16)
 
 - **What landed:** docs/tasks/T005-google-oauth.md — the frozen spec for
   Google Sign-in on Nelurio (first platform app) documenting the flow AS BUILT
