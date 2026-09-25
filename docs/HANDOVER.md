@@ -1,5 +1,37 @@
 # HANDOVER — living handover log (newest entry on top)
 
+## 2026-09-25 (latest) — WP4/T006: "Nelurio Suite" library landing live (PR #21) + domains ordered
+
+- **What landed:** `nelurio.html` — the product-library landing with the
+  platform identity coordinated with the resume site (same token family, own
+  "N" mark), 5-product grid (real covers + honest status chips + real hrefs),
+  the accounts story (per-app accounts today, unified login planned — no fake
+  checkout), ops strip, roadmap chips, i18n EN/DE, and the T004 consent layer
+  wired to **GA4 web stream #2 "Nelurio Platform" (`G-M5C9K1JWH4`, stream 15842112317)** created in property 555984228 — platform data separate from
+  portfolio data. `docs/platform-runbook.md` now freezes the two-domain
+  architecture (resume = `amir-khosravi.de`, platform = `nelurio.com` apex,
+  `nelurio.de` → 301, apps on `*.nelurio.com`, final OAuth URLs); T005's
+  redirect-URI line corrected accordingly.
+- **Owner state:** all three domains **ordered at Netcup** (2,21 €/mo =
+  26,52 €/yr incl. VAT; order in manual new-customer review). Post-order
+  server/hosting upsells correctly declined. Next owner-side step:
+  provisioning email → then DNS `A @` + `A *` → 92.5.111.34 for each domain
+  (owner-supervised agent click-through in the IAB pane is the established
+  pattern).
+- **Verified:** local gates + smoke **30/30** (5 new platform cases), CI green
+  (lint/audit/e2e 49s), merged PR #21, deployed preview — live 200 at
+  `amir.nelurio.duckdns.org/nelurio.html`; in-browser check: consent persisted
+  → gtag auto-injected with the stream-2 ID.
+- **As-built:** the hero h1 is brand-first ("Nelurio Suite") — the first test
+  draft assumed a statement-h1 and failed; brand-in-h1 is the correct pattern
+  for a platform landing. QC recipe for scroll-reveal pages: Playwright
+  context with `reducedMotion: "reduce"` + fullPage screenshot (naive
+  full-page shots show reveal-hidden content, known trap).
+- **Next up:** domains provision → execute the runbook migration (vhosts + TLS
+  → resume to `amir-khosravi.de` → library to `nelurio.com` + `.de` redirect →
+  app subdomains → href flip PR → 301s) → then the OAuth client checklist
+  (T005) against the final `app.nelurio.com` URLs.
+
 ## 2026-09-25 (latest) — Analytics ACTIVATED: GA4 live on both pages (PR #18)
 
 - **Live:** `data-ga-id="G-3EYMYY7KCD"` ships on index.html + products.html —

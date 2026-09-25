@@ -1,6 +1,8 @@
 # T006 — platform: "Nelurio Suite" product-library landing page
 
-Status: ready | Depends: T004 (consent layer pattern), T005 (accounts story) | Est: 1d | PR 1 of WP4
+Status: done (PR #21, merged 2026-09-25; smoke 30/30; deployed — live preview at
+`amir.nelurio.duckdns.org/nelurio.html`; moves to the `nelurio.com` apex at
+migration per the updated runbook) | Depends: T004, T005 | Est: 1d | PR 1 of WP4
 
 ## Goal
 
