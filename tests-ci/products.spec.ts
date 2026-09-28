@@ -27,10 +27,10 @@ test("2: all cover images load", async ({ page }) => {
 test("3: every product carries its live link", async ({ page }) => {
   await page.goto("/products.html");
   for (const url of [
-    "https://nelurio.duckdns.org",
-    "https://amirkhosravi18118.github.io/finello-app/",
-    "https://waschhalle-92-5-111-34.sslip.io",
-    "https://nexdeutsch-92-5-111-34.sslip.io",
+    "https://app.nelurio.com",
+    "https://finello.nelurio.com",
+    "https://washhalle.nelurio.com",
+    "https://nexdeutsch.nelurio.com",
     "https://www.saadtattoo.de",
   ]) {
     await expect(page.locator(`.prod a[href="${url}"]`)).toHaveCount(1);
