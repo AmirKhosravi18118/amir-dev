@@ -21,6 +21,24 @@
 | `washhalle.nelurio.com`               | Washhalle app                                                                                           |
 | old `*.duckdns.org` / `sslip.io` URLs | 301 redirects for a grace period                                                                        |
 
+## STAGED GO-LIVE (2026-09-28 — everything below already sits on the VPS)
+
+After the Netcup payment provisions the domains, go-live is mechanical:
+
+1. DNS (CCP → Domains → DNS, per domain): `A @` and `A *` → `92.5.111.34`.
+2. Wait for resolution (`dig +short amir-khosravi.de A` returns the IP).
+3. `sudo bash /opt/golive-domains.sh` — idempotent: appends the three vhost
+   imports (amir-khosravi.de / nelurio.com / nelurio.de, incl. www→apex and
+   .de→301), `caddy validate` (rolls the imports back on failure), reloads,
+   then curl-verifies each host. Expect: 200 / 200 / 301.
+4. Staged assets (all verified in place): `/var/www/nelurio/platform/`
+   (`index.html` = nelurio.html with builder links already flipped to
+   `https://amir-khosravi.de` + all 5 covers), `/etc/caddy/{amir-khosravi.de,
+nelurio.com,nelurio.de}.Caddyfile` (NOT imported until go-live).
+5. Not staged (needs the live domains first): app subdomain vhosts
+   (`app./nexdeutsch./washhalle.`) per "Adding a new product" below, the
+   href-flip PR in this repo, and the OAuth client (T005).
+
 ## One-time domain wiring (phase 0 → 1)
 
 1. DNS (done at the registrar): for EACH of the three domains an `A` record on
