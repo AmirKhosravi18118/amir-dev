@@ -63,7 +63,7 @@ test("5: structure — how/platform/roadmap + legal and builder links", async ({
   await expect(page.locator("#roadmap .chip")).toHaveCount(3);
   await expect(page.locator('footer a[href*="legal/imprint"]')).toBeAttached();
   await expect(page.locator('footer a[href*="legal/privacy"]')).toBeAttached();
-  await expect(page.locator('footer a[href="/"]')).toBeAttached();
+  await expect(page.locator('footer a[href="https://amir-khosravi.de"]')).toBeAttached();
   // honesty: no fake pricing/checkout anywhere
   const html = await page.content();
   expect(html.toLowerCase()).not.toContain("checkout");
