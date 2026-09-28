@@ -21,23 +21,34 @@
 | `washhalle.nelurio.com`               | Washhalle app                                                                                           |
 | old `*.duckdns.org` / `sslip.io` URLs | 301 redirects for a grace period                                                                        |
 
-## STAGED GO-LIVE (2026-09-28 — everything below already sits on the VPS)
+## ✅ GO-LIVE EXECUTED (2026-09-28) — all three domains LIVE
 
-After the Netcup payment provisions the domains, go-live is mechanical:
+- DNS: `A @` + `A *` → `92.5.111.34` set via CCP CloudDNS for all three
+  (applied through the zone editor; each apply needs the "Ja, fortfahren"
+  modal confirm).
+- `/opt/golive-domains.sh` executed: all three vhosts imported, caddy validate
+  green, reloaded. Verified live: `amir-khosravi.de` → 200 (resume),
+  `nelurio.com` → 200 (library, GA4 stream G-M5C9K1JWH4), `nelurio.de` → 301
+  → `nelurio.com`, `www.` → 301 → apex.
+- Job-agent monitor now checks all three hosts daily (commit 08e32de).
 
-1. DNS (CCP → Domains → DNS, per domain): `A @` and `A *` → `92.5.111.34`.
-2. Wait for resolution (`dig +short amir-khosravi.de A` returns the IP).
-3. `sudo bash /opt/golive-domains.sh` — idempotent: appends the three vhost
-   imports (amir-khosravi.de / nelurio.com / nelurio.de, incl. www→apex and
-   .de→301), `caddy validate` (rolls the imports back on failure), reloads,
-   then curl-verifies each host. Expect: 200 / 200 / 301.
-4. Staged assets (all verified in place): `/var/www/nelurio/platform/`
-   (`index.html` = nelurio.html with builder links already flipped to
-   `https://amir-khosravi.de` + all 5 covers), `/etc/caddy/{amir-khosravi.de,
-nelurio.com,nelurio.de}.Caddyfile` (NOT imported until go-live).
-5. Not staged (needs the live domains first): app subdomain vhosts
+## Staged go-live assets (historical — executed as above)
+
+Everything below was pre-staged on the VPS before the DNS was applied; the
+same recipe applies to FUTURE domains (stage vhost + webroot → DNS → run
+script):
+
+1. DNS (CCP → Domains → per-domain CloudDNS): `A @` and `A *` → VPS IP.
+2. Wait for authoritative resolution, then
+   `sudo bash /opt/golive-domains.sh` — idempotent: appends missing vhost
+   imports, `caddy validate` (rolls the imports back on failure), reloads,
+   then curl-verifies each host.
+3. The platform webroot `/var/www/nelurio/platform/` serves the library
+   landing with builder links already pointing at `https://amir-khosravi.de`.
+4. Still pending (needs per-app work): app subdomain vhosts
    (`app./nexdeutsch./washhalle.`) per "Adding a new product" below, the
-   href-flip PR in this repo, and the OAuth client (T005).
+   href-flip PR in this repo (card links → `*.nelurio.com`), and the OAuth
+   client (T005).
 
 ## One-time domain wiring (phase 0 → 1)
 
