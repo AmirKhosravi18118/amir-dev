@@ -1,11 +1,16 @@
 # amir.dev — Personal portfolio
 
-Source of [amir.nelurio.duckdns.org](https://amir.nelurio.duckdns.org) — my developer portfolio.
+Source of [amir-khosravi.de](https://amir-khosravi.de) — my developer portfolio.
 
-Handwritten HTML/CSS (no framework needed for a static portfolio). Features:
+My product platform lives at [nelurio.com](https://nelurio.com):
 
-- Nelurio — live AI study platform (solo-built, production)
-- NexDeutsch — German vocabulary learning platform
-- Washhalle App — operations app for a real car-wash business
+- [app.nelurio.com](https://app.nelurio.com) — Nelurio, live AI study platform (solo-built, production)
+- [nexdeutsch.nelurio.com](https://nexdeutsch.nelurio.com) — German vocabulary learning platform
+- [washhalle.nelurio.com](https://washhalle.nelurio.com) — operations app for a real car-wash business
+- [finello.nelurio.com](https://finello.nelurio.com) — personal finance app for students
+
+Handwritten HTML/CSS (no framework needed for a static portfolio). The whole
+platform runs on one self-operated VPS: Caddy auto-TLS, CI/CD, daily
+monitoring, consent-first analytics.
 
 © 2026 Amir Khosravi
