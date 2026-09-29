@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
   await page.route(GTM, (route) => route.fulfill({ status: 200, body: "" }));
 });
 
-test("1: loads — hero, 5 product cards, zero console errors", async ({ page }) => {
+test("1: loads — hero, 4 product cards, zero console errors", async ({ page }) => {
   const errors: string[] = [];
   page.on("console", (msg) => {
     if (msg.type() === "error") errors.push(msg.text());
@@ -76,12 +76,11 @@ test("4: consent — banner visible, no gtag; accept injects and persists", asyn
   expect(await page.evaluate(() => localStorage.getItem("analytics_consent"))).toBe("granted");
 });
 
-test("5: structure — support, FAQ, roadmap and legal links", async ({ page }) => {
+test("5: structure — support, FAQ and legal links", async ({ page }) => {
   await page.goto("/nelurio.html");
   await expect(page.locator(".steps")).toHaveCount(1);
   await expect(page.locator(".support .supcard")).toHaveCount(2);
   await expect(page.locator(".faq details")).toHaveCount(5);
-  await expect(page.locator("#roadmap .chip")).toHaveCount(2);
   await expect(page.locator('footer a[href="/legal/impressum.html"]')).toBeAttached();
   await expect(page.locator('footer a[href="/legal/privacy.html"]')).toBeAttached();
   await expect(page.locator('footer a[href="/legal/terms.html"]')).toBeAttached();
