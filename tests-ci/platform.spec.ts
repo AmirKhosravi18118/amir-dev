@@ -15,7 +15,8 @@ test("1: loads — hero, 5 product cards, zero console errors", async ({ page })
     if (msg.type() === "error") errors.push(msg.text());
   });
   await page.goto("/nelurio.html");
-  await expect(page.locator("h1")).toContainText("Nelurio");
+  await expect(page.locator(".logo")).toContainText("Nelurio");
+  await expect(page.locator("h1 .grad")).toContainText("one library");
   await expect(page.locator(".lib .prod")).toHaveCount(4);
   expect(errors).toEqual([]);
 });
@@ -28,18 +29,15 @@ test("2: every card is real — status chip + https open link", async ({ page })
     await expect(cards.nth(i).locator(".status")).toBeVisible();
     await expect(cards.nth(i).locator('a[href^="https://"]').first()).toBeAttached();
   }
-  // flagship carries the trial CTA (its real auth exists)
-  await expect(cards.nth(0).getByRole("link", { name: /free trial/i })).toBeAttached();
-  // platform sells honestly: trial + buy per card, ZERO GitHub links
   for (let i = 0; i < 4; i++) {
-    await expect(cards.nth(i).getByRole("link", { name: /buy product/i })).toBeAttached();
+    await expect(cards.nth(i).locator(".feat li").first()).toBeVisible();
   }
+  // ZERO GitHub links — the platform tunnel is the only sales channel
   expect(await page.locator('a[href*="github.com"]').count()).toBe(0);
-  // store funnel: every card shows its price line + Buy routes into checkout
-  for (let i = 0; i < 4; i++) {
-    await expect(cards.nth(i).locator(".price")).toBeVisible();
-  }
-  expect(await page.locator('a[href^="checkout.html?app="]').count()).toBe(4);
+  // store funnel: pricing section with 4 plans routing into checkout
+  await expect(page.locator(".plans .plan")).toHaveCount(4);
+  // 4 library cards + 4 pricing plans route into checkout
+  expect(await page.locator('a[href^="checkout.html?app="]').count()).toBe(8);
 });
 
 test("3: DE toggle — hero + cards translate, persists over reload", async ({ page }) => {
@@ -78,14 +76,19 @@ test("4: consent — banner visible, no gtag; accept injects and persists", asyn
   expect(await page.evaluate(() => localStorage.getItem("analytics_consent"))).toBe("granted");
 });
 
-test("5: structure — how/platform/roadmap + legal and builder links", async ({ page }) => {
+test("5: structure — support, FAQ, roadmap and legal links", async ({ page }) => {
   await page.goto("/nelurio.html");
-  await expect(page.locator("#how .step")).toHaveCount(3);
-  await expect(page.locator("#platform .op")).toHaveCount(6);
-  await expect(page.locator("#roadmap .chip")).toHaveCount(3);
-  await expect(page.locator('footer a[href*="legal/imprint"]')).toBeAttached();
-  await expect(page.locator('footer a[href*="legal/privacy"]')).toBeAttached();
+  await expect(page.locator(".steps")).toHaveCount(1);
+  await expect(page.locator(".support .supcard")).toHaveCount(2);
+  await expect(page.locator(".faq details")).toHaveCount(5);
+  await expect(page.locator("#roadmap .chip")).toHaveCount(2);
+  await expect(page.locator('footer a[href="/legal/impressum.html"]')).toBeAttached();
+  await expect(page.locator('footer a[href="/legal/privacy.html"]')).toBeAttached();
+  await expect(page.locator('footer a[href="/legal/terms.html"]')).toBeAttached();
+  await expect(page.locator('footer a[href="/legal/widerruf.html"]')).toBeAttached();
   await expect(page.locator('footer a[href="https://amir-khosravi.de"]')).toBeAttached();
-  // store funnel is real: buy routes into the config-driven checkout page
-  await expect(page.locator('a[href^="checkout.html?app="]').first()).toBeAttached();
+  // SEO: structured data present
+  expect(await page.locator('script[type="application/ld+json"]').count()).toBeGreaterThanOrEqual(
+    2,
+  );
 });
