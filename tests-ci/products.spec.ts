@@ -46,13 +46,13 @@ test("4: DE toggle translates hero + cards, persists over reload", async ({ page
 
 test("5: index nav links to Products with i18n", async ({ page }) => {
   await page.goto("/index.html");
-  const link = page.locator('nav a[href="products.html"]');
+  const link = page.locator('nav ul a[href="products.html"]');
   await expect(link).toHaveCount(1);
   await link.click();
   await expect(page).toHaveURL(/products\.html/);
   await expect(page.locator(".prod")).toHaveCount(5);
   await page.click("#btn-de");
-  await expect(page.locator('nav a[href="products.html"]')).toHaveText("Produkte");
+  await expect(page.locator('nav ul a[href="products.html"]')).toHaveText("Produkte");
 });
 
 test("6: platform strip lists the ops facts", async ({ page }) => {

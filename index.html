@@ -37,7 +37,7 @@ nav ul a{color:var(--mut);transition:color .15s}
 nav ul a:hover{color:#fff}
 .nav-right{display:flex;align-items:center;gap:14px}
 .lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:3px}
-.lang-toggle button{padding:6px 12px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer;transition:all .15s}
+.lang-toggle button{min-height:44px;padding:6px 12px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer;transition:all .15s}
 .lang-toggle button.is-active{background:linear-gradient(140deg,#8b6cff,#5a34e7);color:#fff}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:14px;font-weight:800;font-size:14.5px;transition:transform .18s,box-shadow .18s,border-color .18s;border:0;cursor:pointer}
 .btn-p{background:linear-gradient(140deg,#8b6cff,#5a34e7);color:#fff;box-shadow:0 14px 34px rgba(90,52,231,.4)}
@@ -125,9 +125,9 @@ footer a{color:#c3b4ff}
 .car-prev{left:-14px}.car-next{right:-14px}
 .car-bar{display:flex;align-items:center;gap:18px;margin-top:18px}
 .car-dots{display:flex;gap:7px;align-items:center}
-.car-dot{width:8px;height:8px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.16);cursor:pointer;transition:width .35s,background .35s}
+.car-dot{width:16px;height:24px;border-radius:999px;border:0;padding:8px 4px;background:rgba(255,255,255,.16);background-clip:content-box;cursor:pointer;transition:width .35s,background .35s}
 .car-dot:hover{background:rgba(255,255,255,.34)}
-.car-dot.is-active{width:28px;background:linear-gradient(120deg,#a585ff,#4d8df7)}
+.car-dot.is-active{width:36px;background:linear-gradient(120deg,#a585ff,#4d8df7);background-clip:content-box}
 .car-progress{flex:1;height:3px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
 .car-progress span{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#8b6cff,#4d8df7)}
 .car-viewall{padding:11px 20px;font-size:13px;white-space:nowrap}
@@ -196,7 +196,29 @@ footer a{color:#c3b4ff}
 .nlp-meta b{font-size:14.5px}
 .nlp-meta small{color:#a49fd0;font-size:12px}
 .nlp-dot{position:absolute;top:14px;right:14px;width:7px;height:7px;border-radius:50%;background:#5fe1a0;box-shadow:0 0 8px #5fe1a0}
-@media(max-width:900px){.nl-panel{grid-template-columns:1fr;padding:30px}}
+@media(max-width:900px){.nl-panel{grid-template-columns:minmax(0,1fr);padding:30px}}
+@media(max-width:560px){.nlp-apps{grid-template-columns:1fr}}
+
+/* mobile nav (firewall standard: full navigation on every viewport) */
+.nav-burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.05);color:var(--txt);cursor:pointer;align-items:center;justify-content:center;flex-shrink:0}
+.nav-burger svg{width:20px;height:20px}
+.nav-burger:hover{border-color:var(--acc)}
+.nav-mobile{position:fixed;top:64px;left:0;right:0;z-index:49;background:rgba(13,11,29,.97);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:6px 22px 12px;display:none}
+.nav-mobile a{display:flex;align-items:center;min-height:48px;color:#cfc9ee;text-decoration:none;font-size:15px;font-weight:600;border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-mobile a:last-child{border-bottom:0}
+.nav-mobile.open{display:block}
+@media(max-width:900px){
+  .nav-burger{display:inline-flex}
+  nav ul{display:none}
+  .nav-mobile.open{display:block}
+}
+
+/* firewall tap-target standard */
+.lang-dd-btn,.lang-dd-menu button,.seg button,.lang-toggle button{min-height:44px}
+.iconlink{width:44px;height:44px}
+.links .btn,.pactions .btn,.act,.alt a,.consent .btn,.pm-close,.car-btn{min-height:44px}
+.eye{width:44px;height:44px}
+@media(max-width:960px){footer .cols{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -217,7 +239,17 @@ footer a{color:#c3b4ff}
     </div>
     <a class="btn btn-p nav-cta" href="#contact" data-i18n="nav.cta">Get in touch</a>
   </div>
-</div></nav>
+    <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false" onclick="navToggle()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="#projects"  data-i18n-mirror="nav.projects">Projects</a>
+    <a href="products.html"  data-i18n-mirror="nav.products">Products</a>
+    <a href="#skills"  data-i18n-mirror="nav.stack">Stack</a>
+    <a href="#certificates"  data-i18n-mirror="nav.cert">Certificates</a>
+    <a href="#about"  data-i18n-mirror="nav.about">About</a>
+    <a href="#contact"  data-i18n-mirror="nav.contact">Contact</a>
+  </div>
+</div>
+</nav>
 
 <div class="wrap">
 <header class="hero" id="top">
@@ -535,6 +567,12 @@ function setLang(l){
     const v = I18N[k];
     if(v && v[l]) el.textContent = v[l];
   });
+
+  document.querySelectorAll('[data-i18n-mirror]').forEach(el=>{
+    const kk = el.getAttribute('data-i18n-mirror');
+    const vv = I18N[kk] || (window.CH_I18N && window.CH_I18N[kk]);
+    if(vv && vv[l]) el.textContent = vv[l];
+  });
   try{localStorage.setItem('lang',l)}catch(e){}
 }
 const qpLang = new URLSearchParams(location.search).get("lang");
@@ -723,6 +761,19 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   window.openConsent = function(){ detail.hidden = true; saveBtn.hidden = true; banner.hidden = false; };
   window.initAnalytics();
 })();
+</script>
+<script>
+function navToggle(){
+  const m = document.getElementById("nav-mobile");
+  const b = document.getElementById("nav-burger");
+  const open = m.classList.toggle("open");
+  b.setAttribute("aria-expanded", open ? "true" : "false");
+}
+document.querySelectorAll("#nav-mobile a").forEach(a => a.addEventListener("click", () => {
+  document.getElementById("nav-mobile").classList.remove("open");
+  document.getElementById("nav-burger").setAttribute("aria-expanded", "false");
+}));
+document.addEventListener("keydown", e => { if(e.key === "Escape" && document.getElementById("nav-mobile").classList.contains("open")) navToggle(); });
 </script>
 </body>
 </html>
