@@ -38,7 +38,7 @@ test("3: dot 4 → Saad Tattoo; 3b: next until wrap ends Finello→Nelurio", asy
   await page.locator(".car-dot").nth(3).click();
   await trackX(page, 300);
   await expect(page.locator("#carTrack .proj").nth(3).locator("h3")).toHaveText(
-    "Saad Tattoo — Studio Website",
+    "Saad Tattoo, Studio Website",
   );
 
   for (let i = 3; i < 4; i++) await page.locator(".car-next").click();
@@ -85,7 +85,7 @@ test("7: DE toggle translates slides + modal; persists over reload", async ({ pa
   await expect(page.locator("#pmTitle")).toHaveText("Alle Projekte");
   await expect(page.locator('[data-i18n="proj.viewall"]')).toHaveText("Alle ansehen");
   await expect(page.locator('#carTrack [data-i18n="p1.what"]')).toHaveText(
-    "KI-Lernassistent für Studierende — live im Beta.",
+    "KI-Lernassistent für Studierende – live im Beta.",
   );
   await page.reload();
   await expect(page.locator('[data-i18n="nav.projects"]')).toHaveText("Projekte");
