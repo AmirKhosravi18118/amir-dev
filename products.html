@@ -315,6 +315,7 @@ const I18N = {
 "cons.cat.stats.desc":{"en":"Anonymous page statistics via Google Analytics 4.","de":"Anonyme Seitenstatistik über Google Analytics 4.","fa":"آمار ناشناس بازدید با Google Analytics 4."}
 };
 function setLang(l){
+  if(l !== "en" && l !== "de") l = "en";
   document.documentElement.setAttribute('data-lang', l);
   document.documentElement.lang = l;
   document.getElementById('btn-en').classList.toggle('is-active', l==='en');
@@ -326,7 +327,16 @@ function setLang(l){
   });
   try{localStorage.setItem('lang',l)}catch(e){}
 }
-try{const saved=localStorage.getItem('lang'); if(saved) setLang(saved);}catch(e){}
+const qpLang = new URLSearchParams(location.search).get("lang");
+if(qpLang === "en" || qpLang === "de") setLang(qpLang);
+else { try{ const saved = localStorage.getItem("lang"); setLang(saved === "de" ? "de" : "en"); }catch(e){ setLang("en"); } }
+function nlSyncLinks(){
+  const cur = (document.documentElement.lang === "de") ? "de" : "en";
+  document.querySelectorAll('a[href*="nelurio.com"]').forEach(function(a){
+    try{ const u = new URL(a.href, location.origin); u.searchParams.set("lang", cur); a.href = u.toString(); }catch(e){}
+  });
+}
+nlSyncLinks();
 </script>
 <script>
 const io = new IntersectionObserver((entries)=>{
