@@ -8,7 +8,7 @@ const PAGES = [
   "/index.html", "/nelurio.html", "/products.html",
   "/checkout.html", "/account.html", "/chat.html",
 ];
-const VPS = [390, 768, 1024];
+const VPS = [320, 390, 768, 1024];
 const b = await chromium.launch();
 const report = [];
 
@@ -27,7 +27,7 @@ for (const width of VPS) {
       const scrolled = window.scrollX;
       window.scrollTo(0, 0);
       // nav usable? classic links OR burger pattern (burger visible + menu links exist)
-      const navLinks = Array.from(document.querySelectorAll("nav ul a, nav ul button"));
+      const navLinks = Array.from(document.querySelectorAll("nav ul a, nav ul button, nav .right a"));
       const navVisible = navLinks.filter((a) => {
         const r = a.getBoundingClientRect();
         return r.width > 0 && r.height > 0;
@@ -39,6 +39,7 @@ for (const width of VPS) {
       document.querySelectorAll("button, a, input, select, textarea, [role='button']").forEach((el) => {
         const r = el.getBoundingClientRect();
         if (r.width === 0 || r.height === 0) return;
+        if (el.tagName === "INPUT" && (el.type === "radio" || el.type === "checkbox")) return; // label is the target
         if (r.width < 40 && r.height < 44) {
           const st = getComputedStyle(el);
           if (st.visibility !== "hidden" && st.display !== "none") {
@@ -46,7 +47,7 @@ for (const width of VPS) {
           }
         }
       });
-      return { scrolled, navTotal: navLinks.length, navVisible, tiny: tiny.slice(0, 4) };
+      return { scrolled, navTotal: navLinks.length, navVisible, burgerOK, tiny: tiny.slice(0, 4) };
     });
     const issues = [];
     if (res.scrolled > 0) issues.push("HSCROLL");
