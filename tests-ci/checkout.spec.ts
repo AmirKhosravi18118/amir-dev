@@ -8,10 +8,10 @@ test("checkout: ?app preselect + order summary total", async ({ page }) => {
   await expect(page.locator(".appopt")).toHaveCount(4);
   await expect(page.locator('input[name="app"][value="finello"]')).toBeChecked();
   await expect(page.locator("#sum-app")).toHaveText("finello");
-  await expect(page.locator("#sum-total")).toHaveText("€2.99/mo");
+  await expect(page.locator("#sum-total")).toHaveText("€4.99/mo");
   await page.selectOption("#plan", "yearly");
   await expect(page.locator("#sum-plan")).toHaveText("Yearly — 2 months free");
-  await expect(page.locator("#sum-total")).toHaveText("€29.90/yr");
+  await expect(page.locator("#sum-total")).toHaveText("€49.90/yr");
   expect(errors).toEqual([]);
 });
 
@@ -21,7 +21,7 @@ test("checkout: PayPal live, card/bank honestly Coming soon, no dead pay path", 
   await page.goto("/checkout.html");
   const pp = page.locator('input[name="method"][value="paypal"]');
   await expect(pp).toBeChecked();
-  await expect(pp).toHaveAttribute("data-url", /paypal\.me\/amirhoseinkhosravi\/4\.99EUR/);
+  await expect(pp).toHaveAttribute("data-url", /paypal\.me\/amirhoseinkhosravi\/8\.99EUR/);
   for (const m of ["stripe", "bank"]) {
     await expect(page.locator(`input[name="method"][value="${m}"]`)).toHaveAttribute(
       "data-url",
@@ -50,14 +50,14 @@ test("checkout: cart mode sums checked items + paypal amount follows the total",
   await expect(boxes.nth(0)).toBeChecked();
   await expect(boxes.nth(1)).toBeChecked();
   await expect(page.locator("#sum-app")).toHaveText("2 apps");
-  await expect(page.locator("#sum-total")).toHaveText("€7.98/mo");
+  await expect(page.locator("#sum-total")).toHaveText("€13.98/mo");
   await expect(page.locator('input[name="method"][value="paypal"]')).toHaveAttribute(
     "data-url",
-    /paypal\.me\/amirhoseinkhosravi\/7\.98EUR/,
+    /paypal\.me\/amirhoseinkhosravi\/13\.98EUR/,
   );
   // unchecking one drops the total (input is visually hidden — click its label)
   await page.locator('.appopt:has(input[value="finello"])').click();
   await expect(page.locator("#sum-app")).toHaveText("1 app");
-  await expect(page.locator("#sum-total")).toHaveText("€4.99/mo");
+  await expect(page.locator("#sum-total")).toHaveText("€8.99/mo");
   expect(errors).toEqual([]);
 });
