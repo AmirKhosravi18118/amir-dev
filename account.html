@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account — Nelurio Suite</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238b6cff'/%3E%3Ctext x='32' y='44' font-size='36' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0b1d;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);--txt:#efedff;--mut:#a49fd0;--acc:#8b6cff;--acc2:#4d8df7;--ok:#5fe1a0;--r-md:18px}
+*{margin:0;padding:0;box-sizing:border-box}
+html[lang="fa"]{direction:rtl}
+html[lang="fa"] body{font-family:'Vazirmatn','Inter',system-ui,sans-serif}
+body{background:var(--bg);color:var(--txt);font-family:'Inter','Vazirmatn',system-ui,sans-serif;line-height:1.65}
+.lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:3px}
+.lang-toggle button{min-height:36px;padding:6px 13px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer}
+.lang-toggle button.is-active{background:var(--acc);color:#fff}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:900;font-size:18px}
+.logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px}
+.right{display:flex;gap:14px;align-items:center}
+.right a{color:var(--mut);text-decoration:none;font-size:13.5px}
+.right a:hover{color:var(--txt)}
+h1{font-size:clamp(24px,4vw,34px);font-weight:900;margin:34px 0 4px}
+.sub{color:var(--mut);font-size:14px;margin-bottom:26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:26px;margin-bottom:20px}
+h2{font-size:15px;font-weight:900;margin-bottom:14px}
+label{display:block;font-size:12.5px;font-weight:800;color:#cfc9ee;margin:12px 0 6px}
+input{width:100%;min-height:46px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--txt);font:inherit;font-size:14px}
+input:focus{outline:2px solid var(--acc);outline-offset:1px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 24px;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;border:1px solid transparent;text-decoration:none;margin-top:16px}
+.btn-p{background:linear-gradient(135deg,var(--acc),#7452f2);color:#fff}
+.btn-s{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--txt);text-decoration:none}
+.msg{margin-top:12px;font-size:13px;min-height:18px}
+.msg.err{color:#ff9d9d}.msg.ok{color:var(--ok)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.row:last-child{border-bottom:0}
+.badge{font-size:10.5px;font-weight:900;letter-spacing:.1em;border-radius:999px;padding:4px 11px;border:1px solid var(--line);color:var(--mut)}
+.badge.trial{border-color:rgba(139,108,255,.5);color:#c3b4ff}
+.badge.premium{border-color:rgba(95,225,160,.5);color:#8af0bf}
+.badge.available{color:var(--mut)}
+.hidden{display:none!important}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/"><span class="mark">N</span>Nelurio</a>
+  <div class="right">
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button id="btn-en" class="is-active" onclick="setLang('en')">EN</button>
+      <button id="btn-de" onclick="setLang('de')">DE</button>
+      <button id="btn-fa" onclick="setLang('fa')">فا</button>
+    </div>
+    <a href="/" data-i18n="nav.home">Home</a>
+    <a href="/#products" data-i18n="nav.products">Products</a>
+    <a href="/#pricing" data-i18n="nav.pricing">Pricing</a>
+  </div>
+</nav>
+<div class="wrap">
+  <h1 data-i18n="ac.h1">My account</h1>
+  <p class="sub" data-i18n="ac.sub">Sign in to manage your trials, plans and apps.</p>
+
+  <div class="card" id="authcard">
+    <div style="display:flex;gap:10px;margin-bottom:8px">
+      <button class="btn btn-p" style="min-height:40px;margin:0" id="tab-login" onclick="switchTab('login')" data-i18n="ac.login">Sign in</button>
+      <button class="btn btn-s" style="min-height:40px;margin:0" id="tab-register" onclick="switchTab('register')" data-i18n="ac.register">Create account</button>
+    </div>
+    <div id="f-login">
+      <label for="li-email" data-i18n="ac.email">Email</label>
+      <input id="li-email" type="email" autocomplete="email">
+      <label for="li-pass" data-i18n="ac.pass">Password</label>
+      <input id="li-pass" type="password" autocomplete="current-password">
+      <button class="btn btn-p" id="btn-login" onclick="doLogin()" data-i18n="ac.login">Sign in</button>
+    </div>
+    <div id="f-register" class="hidden">
+      <label for="rg-name" data-i18n="ac.name">Display name</label>
+      <input id="rg-name" type="text" autocomplete="name">
+      <label for="rg-email" data-i18n="ac.email">Email</label>
+      <input id="rg-email" type="email" autocomplete="email">
+      <label for="rg-pass" data-i18n="ac.pass">Password (min. 10 characters)</label>
+      <input id="rg-pass" type="password" autocomplete="new-password">
+      <button class="btn btn-p" id="btn-register" onclick="doRegister()" data-i18n="ac.register">Create account</button>
+    </div>
+    <p class="msg" id="authmsg"></p>
+  </div>
+
+  <div class="card hidden" id="accountcard">
+    <h2 data-i18n="ac.profile">Profile</h2>
+    <div class="row"><span data-i18n="ac.email">Email</span><b id="p-email">—</b></div>
+    <div class="row"><span data-i18n="ac.name">Display name</span><b id="p-name">—</b></div>
+    <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+      <a class="btn btn-s" href="checkout.html" data-i18n="ac.buy">Buy a product</a>
+      <button class="btn btn-s" onclick="logout()" data-i18n="ac.logout">Sign out</button>
+    </div>
+  </div>
+
+  <div class="card hidden" id="entcard">
+    <h2 data-i18n="ac.apps">Your apps</h2>
+    <div id="entlist"></div>
+    <p class="msg" id="entmsg"></p>
+  </div>
+</div>
+
+<footer style="border-top:1px solid var(--line);padding:22px;text-align:center;color:var(--mut);font-size:12.5px;margin-top:30px">© 2026 Nelurio Suite · <a href="/" style="color:inherit">nelurio.com</a></footer>
+
+<script>
+const API = "/api/v1";
+let CSRF = sessionStorage.getItem("csrf") || "";
+const S = { user: null, ents: null };
+const I18N = {
+"nav.home":{"en":"Home","de":"Start","fa":"خانه"},
+"nav.products":{"en":"Products","de":"Produkte","fa":"محصولات"},
+"nav.pricing":{"en":"Pricing","de":"Preise","fa":"قیمت‌ها"},
+"ac.h1":{"en":"My account","de":"Mein Konto","fa":"حساب من"},
+"ac.sub":{"en":"Sign in to manage your trials, plans and apps.","de":"Melde dich an, um Tests, Pläne und Apps zu verwalten.","fa":"برای مدیریت تست‌ها، پلن‌ها و اپ‌ها وارد شو."},
+"ac.login":{"en":"Sign in","de":"Anmelden","fa":"ورود"},
+"ac.register":{"en":"Create account","de":"Konto erstellen","fa":"ساخت حساب"},
+"ac.email":{"en":"Email","de":"E-Mail","fa":"ایمیل"},
+"ac.pass":{"en":"Password","de":"Passwort","fa":"رمز عبور"},
+"ac.name":{"en":"Display name","de":"Anzeigename","fa":"نام نمایشی"},
+"ac.profile":{"en":"Profile","de":"Profil","fa":"پروفایل"},
+"ac.apps":{"en":"Your apps","de":"Deine Apps","fa":"اپ‌های تو"},
+"ac.buy":{"en":"Buy a product","de":"Produkt kaufen","fa":"خرید محصول"},
+"ac.logout":{"en":"Sign out","de":"Abmelden","fa":"خروج"},
+"ac.err.email":{"en":"Enter a valid email.","de":"Gültige E-Mail eingeben.","fa":"ایمیل معتبر وارد کن."},
+"ac.err.pass":{"en":"Password must be at least 10 characters.","de":"Passwort muss mindestens 10 Zeichen haben.","fa":"رمز حداقل ۱۰ کاراکتر باشد."},
+"ac.err.name":{"en":"Enter a display name.","de":"Anzeigename eingeben.","fa":"نام نمایشی وارد کن."},
+"ac.ok.registered":{"en":"Account created — you are signed in.","de":"Konto erstellt — du bist angemeldet.","fa":"حساب ساخته شد — وارد شدی."},
+"ac.trial":{"en":"Trial — {d} days left","de":"Test — {d} Tage übrig","fa":"تست — {d} روز مانده"},
+"ac.premium":{"en":"Premium","de":"Premium","fa":"پریمیوم"},
+"ac.available":{"en":"Available — start trial","de":"Verfügbar — Test starten","fa":"قابل شروع — شروع تست"},
+"ac.started":{"en":"Trial started 🎉","de":"Test gestartet 🎉","fa":"تست شروع شد 🎉"},
+"ac.state.premium":{"en":"Premium","de":"Premium","fa":"پریمیوم"},
+"ac.state.trial":{"en":"Trial","de":"Test","fa":"تست"},
+"ac.state.available":{"en":"Available","de":"Verfügbar","fa":"قابل شروع"},
+"app.nelurio":{"en":"Nelurio — AI study assistant","de":"Nelurio — KI-Lernassistent","fa":"نلوریو — دستیار مطالعه هوش مصنوعی"},
+"app.finello":{"en":"Finello — student finance","de":"Finello — Studenten-Finanzen","fa":"فینلو — مالی دانشجویی"},
+"app.nexdeutsch":{"en":"NexDeutsch — vocabulary trainer","de":"NexDeutsch — Vokabeltrainer","fa":"نکس‌دویچ — آموزش واژگان"},
+"app.washhalle":{"en":"Washhalle — business operations","de":"Washhalle — Geschäftsabläufe","fa":"واشهاله — عملیات کسب‌وکار"}
+};
+function t(k, vars){ let v = I18N[k]; if(!v) return k; let out = v[lang()] ?? v.en; if(vars) for(const key in vars) out = out.replace("{"+key+"}", vars[key]); return out; }
+function lang(){ return document.documentElement.lang || "en"; }
+function setLang(l){
+  document.documentElement.lang = l; document.documentElement.dir = (l==="fa")?"rtl":"ltr";
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ const v=I18N[el.getAttribute("data-i18n")]; if(v&&v[l]) el.textContent=v[l]; });
+  try{localStorage.setItem("lang",l)}catch(e){}
+  if(S.ents) renderEnts();
+}
+try{ const l = localStorage.getItem("lang"); if(l) setLang(l); }catch(e){}
+
+async function api(path, opts={}){
+  opts.headers = Object.assign({"Content-Type":"application/json"}, opts.headers||{});
+  if(CSRF) opts.headers["X-CSRF-Token"] = CSRF;
+  const res = await fetch(API+path, Object.assign({credentials:"include"}, opts));
+  if(res.headers.get("x-csrf-token")) { CSRF = res.headers.get("x-csrf-token"); sessionStorage.setItem("csrf", CSRF); }
+  let data = null; try{ data = await res.json(); }catch(e){}
+  return { res, data };
+}
+function msg(id, text, isErr){ const el = document.getElementById(id); el.textContent = text; el.className = "msg " + (isErr ? "err" : "ok"); }
+function switchTab(which){
+  document.getElementById("f-login").classList.toggle("hidden", which !== "login");
+  document.getElementById("f-register").classList.toggle("hidden", which !== "register");
+}
+async function doLogin(){
+  const email = document.getElementById("li-email").value.trim();
+  const pass = document.getElementById("li-pass").value;
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return msg("authmsg", t("ac.err.email"), true);
+  document.getElementById("btn-login").disabled = true;
+  const { res, data } = await api("/auth/login", { method:"POST", body: JSON.stringify({ email, password: pass }) });
+  document.getElementById("btn-login").disabled = false;
+  if(!res.ok) return msg("authmsg", (data && data.error && data.error.message) || ("HTTP " + res.status), true);
+  await loadAccount();
+}
+async function doRegister(){
+  const name = document.getElementById("rg-name").value.trim();
+  const email = document.getElementById("rg-email").value.trim();
+  const pass = document.getElementById("rg-pass").value;
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return msg("authmsg", t("ac.err.email"), true);
+  if(pass.length < 10) return msg("authmsg", t("ac.err.pass"), true);
+  if(!name) return msg("authmsg", t("ac.err.name"), true);
+  document.getElementById("btn-register").disabled = true;
+  const { res, data } = await api("/auth/register", { method:"POST", body: JSON.stringify({ email, password: pass, displayName: name }) });
+  document.getElementById("btn-register").disabled = false;
+  if(!res.ok) return msg("authmsg", (data && data.error && data.error.message) || ("HTTP " + res.status), true);
+  msg("authmsg", t("ac.ok.registered"));
+  await loadAccount();
+}
+async function logout(){
+  await api("/auth/logout", { method:"POST", body:"{}" });
+  CSRF = ""; try{ sessionStorage.removeItem("csrf"); }catch(e){}
+  location.reload();
+}
+async function startTrial(slug){
+  const { res, data } = await api("/entitlements/" + slug + "/trial", { method:"POST", body:"{}" });
+  if(!res.ok) return msg("entmsg", (data && data.error && data.error.message) || ("HTTP " + res.status), true);
+  msg("entmsg", t("ac.started"));
+  await loadEnts();
+}
+async function loadEnts(){
+  const { res, data } = await api("/entitlements");
+  if(!res.ok){ msg("entmsg", "HTTP " + res.status, true); return; }
+  const ents = (data && data.data) || [];
+  S.ents = ents;
+  renderEnts();
+}
+function renderEnts(){
+  const box = document.getElementById("entlist"); box.innerHTML = "";
+  for(const e of S.ents){
+    const row = document.createElement("div"); row.className = "row";
+    const state = e.status === "premium" ? '<span class="badge premium">' + t("ac.state.premium") + '</span>'
+      : e.status === "trial" ? '<span class="badge trial">' + t("ac.state.trial") + (e.daysLeft != null ? " · " + e.daysLeft + "d" : "") + '</span>'
+      : '<span class="badge available">' + t("ac.state.available") + '</span>';
+    row.innerHTML = '<span>' + t("app." + e.appSlug) + '</span><span style="display:flex;gap:10px;align-items:center">' + state +
+      (e.status === "available" ? '<button class="btn btn-s" style="min-height:36px;margin:0;padding:6px 14px" onclick="startTrial(\'' + e.appSlug + '\')">' + t("ac.state.available") + '</button>' : '') + '</span>';
+    box.appendChild(row);
+  }
+  document.getElementById("entcard").classList.remove("hidden");
+}
+async function loadAccount(){
+  const { res, data } = await api("/auth/me");
+  if(!res.ok){ // not signed in — show auth card
+    document.getElementById("authcard").classList.remove("hidden");
+    document.getElementById("accountcard").classList.add("hidden");
+    document.getElementById("entcard").classList.add("hidden");
+    return;
+  }
+  const u = (data && data.data) || {};
+  document.getElementById("authcard").classList.add("hidden");
+  document.getElementById("accountcard").classList.remove("hidden");
+  document.getElementById("entcard").classList.remove("hidden");
+  document.getElementById("p-email").textContent = u.email || "—";
+  document.getElementById("p-name").textContent = u.displayName || "—";
+  await loadEnts();
+}
+loadAccount();
+</script>
+</body>
+</html>
