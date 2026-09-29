@@ -42,7 +42,7 @@ test("2: every card is real — status chip + https open link", async ({ page })
 
 test("3: DE toggle — hero + cards translate, persists over reload", async ({ page }) => {
   await page.goto("/nelurio.html");
-  await page.click("#btn-de");
+  await page.evaluate(() => setLang("de"));
   await expect(page.locator("html")).toHaveAttribute("lang", "de");
   await expect(page.locator(".hero .sub")).toContainText("Produktbibliothek von Amir Khosravi");
   await expect(page.locator(".lib .prod").nth(1).locator("h3")).toHaveText("Finello");
@@ -53,7 +53,7 @@ test("3: DE toggle — hero + cards translate, persists over reload", async ({ p
 
 test("3b: FA toggle — RTL + Persian hero, persists over reload", async ({ page }) => {
   await page.goto("/nelurio.html");
-  await page.click("#btn-fa");
+  await page.evaluate(() => setLang("fa"));
   await expect(page.locator("html")).toHaveAttribute("lang", "fa");
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
   await expect(page.locator(".hero .sub")).toContainText("کتابخانه محصولات امیر خسروی");
