@@ -58,7 +58,11 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 nav ul{display:flex;gap:24px;list-style:none}
 nav ul a{color:var(--mut);text-decoration:none;font-size:14px;font-weight:600;transition:color .15s}
 nav ul a:hover{color:var(--txt)}
-.nav-right{display:flex;align-items:center;gap:12px}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-acct{color:var(--mut);text-decoration:none;font-size:13.5px;font-weight:700}
+.nav-acct:hover{color:var(--txt)}
+.nav-cart{position:relative;text-decoration:none;font-size:17px}
+.cart-badge{position:absolute;top:-8px;inset-inline-end:-10px;background:var(--acc);color:#fff;font-size:10.5px;font-weight:900;border-radius:999px;padding:1px 6px}
 .lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:3px}
 .lang-toggle button{min-height:36px;padding:6px 13px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer}
 .lang-toggle button.is-active{background:var(--acc);color:#fff}
@@ -188,6 +192,8 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
       <button id="btn-de" onclick="setLang('de')">DE</button>
       <button id="btn-fa" onclick="setLang('fa')">فا</button>
     </div>
+    <a href="/account.html" class="nav-acct" data-i18n="nav.account">My account</a>
+    <a href="checkout.html?cart=1" class="nav-cart" aria-label="Cart">🛒<span id="cart-badge" class="cart-badge hidden">0</span></a>
     <a class="btn btn-p" href="#pricing" data-i18n="nav.cta">Start free</a>
   </div>
 </div></nav>
@@ -226,7 +232,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
         <p class="price" data-i18n="n1.price">1-month free trial · then €4.99/mo</p>
         <div class="links">
           <a class="btn btn-p" href="https://app.nelurio.com" target="_blank" rel="noopener" data-i18n="n.trial">Start 1-month free trial</a>
-          <a class="btn btn-s" href="checkout.html?app=nelurio" data-i18n="n.buy">Buy product</a>
+          <button class="btn btn-s" onclick="addToCart('nelurio')" data-i18n="n.cart">Add to cart</button>
         </div>
       </div>
     </article>
@@ -240,7 +246,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
         <p class="price" data-i18n="n2.price">1-month free trial · then €2.99/mo</p>
         <div class="links">
           <a class="btn btn-p" href="https://finello.nelurio.com" target="_blank" rel="noopener" data-i18n="n.trial">Start 1-month free trial</a>
-          <a class="btn btn-s" href="checkout.html?app=finello" data-i18n="n.buy">Buy product</a>
+          <button class="btn btn-s" onclick="addToCart('finello')" data-i18n="n.cart">Add to cart</button>
         </div>
       </div>
     </article>
@@ -254,7 +260,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
         <p class="price" data-i18n="n3.price">1-month free trial · then €9.99/mo</p>
         <div class="links">
           <a class="btn btn-p" href="https://washhalle.nelurio.com" target="_blank" rel="noopener" data-i18n="n.trial">Start 1-month free trial</a>
-          <a class="btn btn-s" href="checkout.html?app=washhalle" data-i18n="n.buy">Buy product</a>
+          <button class="btn btn-s" onclick="addToCart('washhalle')" data-i18n="n.buy">Add to cart</button>
         </div>
       </div>
     </article>
@@ -268,7 +274,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
         <p class="price" data-i18n="n4.price">1-month free trial · then €3.49/mo</p>
         <div class="links">
           <a class="btn btn-p" href="https://nexdeutsch.nelurio.com" target="_blank" rel="noopener" data-i18n="n.trial">Start 1-month free trial</a>
-          <a class="btn btn-s" href="checkout.html?app=nexdeutsch" data-i18n="n.buy">Buy product</a>
+          <button class="btn btn-s" onclick="addToCart('nexdeutsch')" data-i18n="n.buy">Add to cart</button>
         </div>
       </div>
     </article>
@@ -393,6 +399,8 @@ const I18N = {
 "nav.support":{"en":"Support","de":"Support","fa":"پشتیبانی"},
 "nav.faq":{"en":"FAQ","de":"FAQ","fa":"سؤالات متداول"},
 "nav.cta":{"en":"Start free","de":"Gratis starten","fa":"شروع رایگان"},
+"nav.account":{"en":"My account","de":"Mein Konto","fa":"حساب من"},
+"n.cart":{"en":"Add to cart","de":"In den Warenkorb","fa":"افزودن به سبد"},
 "nl.badge":{"en":"NELURIO SUITE · BY AMIR KHOSRAVI","de":"NELURIO SUITE · VON AMIR KHOSRAVI","fa":"مجموعه نلوریو · ساخته امیر خسروی"},
 "nl.h1a":{"en":"Stop juggling tools.","de":"Schluss mit Tool-Chaos.","fa":"وسایل پراکنده را کنار بگذار."},
 "nl.h1b":{"en":"Run everything from one library.","de":"Alles aus einer Bibliothek.","fa":"همه‌چیز از یک کتابخانه."},
@@ -502,6 +510,10 @@ const I18N = {
 "cons.accept":{"en":"Accept","de":"Akzeptieren","fa":"می‌پذیرم"},
 "cons.decline":{"en":"Decline","de":"Ablehnen","fa":"رد می‌کنم"}
 };
+function cartGet(){ try{ return JSON.parse(localStorage.getItem("nelurio_cart")||"[]"); }catch(e){ return []; } }
+function cartSet(v){ try{ localStorage.setItem("nelurio_cart", JSON.stringify(v)); }catch(e){} cartBadge(); }
+function cartBadge(){ const b = document.getElementById("cart-badge"); if(!b) return; const n = cartGet().length; b.textContent = n; b.classList.toggle("hidden", n === 0); }
+function addToCart(slug){ const c = cartGet(); if(!c.includes(slug)){ c.push(slug); cartSet(c); } const b = document.getElementById("cart-badge"); if(b){ b.animate([{transform:"scale(1.5)"},{transform:"scale(1)"}],{duration:250}); } }
 function setLang(l){
   document.documentElement.setAttribute('data-lang', l);
   document.documentElement.lang = l;
@@ -518,6 +530,7 @@ const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+cartBadge();
 </script>
 <script>
 /* Consent-gated analytics (WP3/T004) — active: <html data-ga-id="G-M5C9K1JWH4">
