@@ -98,7 +98,11 @@ h1 .grad{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-backg
 .shelfhead{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--sp-4);margin-bottom:var(--sp-4)}
 .shelfhead .lead{margin-bottom:0}
 .shelfnav{display:flex;gap:10px;flex-shrink:0}
-.shelfbtn{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--txt);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:border-color .15s,background .15s,opacity .15s}
+.shelfbtn{width:44px;height:44px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);backdrop-filter:blur(8px);color:var(--txt);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .2s cubic-bezier(.2,.8,.2,1)}
+.shelfbtn:hover:not(:disabled){border-color:var(--acc);background:rgba(139,108,255,.15);transform:scale(1.06)}
+.shelfbtn:active:not(:disabled){transform:scale(.95)}
+.shelfbtn:disabled{opacity:.25;cursor:default;transform:none!important;box-shadow:none!important}
+.shelfbtn svg{width:16px;height:16px}
 .shelfbtn:hover{border-color:var(--acc);background:rgba(139,108,255,.12)}
 .shelfbtn:disabled{opacity:.35;cursor:default;transform:none!important;box-shadow:none!important}
 .lib{display:flex;gap:var(--sp-4);overflow-x:auto;scroll-snap-type:x mandatory;
@@ -110,7 +114,7 @@ scrollbar-width:thin;scrollbar-color:rgba(139,108,255,.45) transparent;
 .lib::-webkit-scrollbar-thumb{background:rgba(139,108,255,.45);border-radius:8px}
 .prod{position:relative;flex:0 0 min(420px,86%);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;scroll-margin-top:90px}
 .prod:hover{transform:translateY(-6px);border-color:rgba(139,108,255,.55);box-shadow:0 28px 60px rgba(10,6,40,.6)}
-.prod .cover{position:relative;aspect-ratio:16/10;overflow:hidden;background:#141024}
+.prod .cover{position:relative;aspect-ratio:16/10;overflow:hidden;background:#141024;border-radius:var(--r-lg) var(--r-lg) 0 0}
 .prod .cover img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .prod:hover .cover img{transform:scale(1.045)}
 .status{position:absolute;top:14px;inset-inline-end:14px;display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;background:rgba(9,20,14,.78);backdrop-filter:blur(6px);border:1px solid rgba(95,225,160,.35);color:#8af0bf;font-size:10.5px;font-weight:800;letter-spacing:.14em}
@@ -123,9 +127,14 @@ scrollbar-width:thin;scrollbar-color:rgba(139,108,255,.45) transparent;
 .prod .what{color:var(--mut);font-size:13.8px;flex:1}
 .feat{list-style:none;display:flex;flex-direction:column;gap:6px;margin:2px 0}
 .feat li{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#cfc9ee}
-.feat li svg{width:14px;height:14px;color:var(--ok);flex-shrink:0;margin-top:3px}
+.feat li svg{width:13px;height:13px;color:var(--acc);flex-shrink:0;margin-top:3px;opacity:.8}
 .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:var(--sp-2)}
-.links .btn{min-height:42px;padding:8px 18px;font-size:13px}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:var(--sp-2)}
+.links .btn{min-height:40px;padding:0 18px;font-size:12.5px;border-radius:10px;font-weight:700;letter-spacing:.02em}
+.links .btn-p{box-shadow:0 4px 14px rgba(139,108,255,.25)}
+.links .btn-p:hover{box-shadow:0 8px 22px rgba(139,108,255,.4)}
+.links .btn-s{border-color:rgba(255,255,255,.12);color:var(--mut)}
+.links .btn-s:hover{color:var(--txt);border-color:var(--acc)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4)}
 .step{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp-4)}
 .step .num{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;font-weight:900;color:#fff;margin-bottom:var(--sp-2)}
@@ -143,7 +152,7 @@ scrollbar-width:thin;scrollbar-color:rgba(139,108,255,.45) transparent;
 .plan .yr{font-size:12px;color:var(--mut)}
 .plan ul{list-style:none;display:flex;flex-direction:column;gap:6px;flex:1}
 .plan ul li{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#cfc9ee}
-.plan ul li svg{width:14px;height:14px;color:var(--ok);flex-shrink:0;margin-top:3px}
+.plan ul li svg{width:13px;height:13px;color:var(--acc);flex-shrink:0;margin-top:3px;opacity:.8}
 .support{display:grid;grid-template-columns:1.2fr 1fr;gap:var(--sp-4)}
 .supcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp-4)}
 .supcard h3{font-size:15.5px;font-weight:900;margin-bottom:8px}
@@ -386,12 +395,6 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
       <h4>Nelurio Suite</h4>
       <ul><li data-i18n="ft.about">Four production-ready apps on one EU-hosted platform — built and operated by Amir Khosravi.</li></ul>
     </div>
-    <div><h4 data-i18n="ft.products">Products</h4><ul>
-      <li><a href="https://app.nelurio.com">Nelurio</a></li>
-      <li><a href="https://finello.nelurio.com">Finello</a></li>
-      <li><a href="https://nexdeutsch.nelurio.com">NexDeutsch</a></li>
-      <li><a href="https://washhalle.nelurio.com">Washhalle</a></li>
-    </ul></div>
     <div><h4 data-i18n="ft.legal">Legal</h4><ul>
       <li><a href="/legal/impressum.html" data-i18n="f.imprint">Impressum</a></li>
       <li><a href="/legal/privacy.html" data-i18n="f.privacy">Privacy Policy</a></li>
@@ -535,7 +538,6 @@ const I18N = {
 "fin.p":{"en":"Pick an app, create your account and see why the Nelurio library keeps growing.","de":"Wähle eine App, erstelle dein Konto und sieh, warum die Nelurio-Bibliothek weiter wächst.","fa":"یک اپ انتخاب کن، حسابت را بساز و ببین چرا کتابخانهٔ نلوریو بزرگ‌تر می‌شود."},
 "fin.cta":{"en":"Start your free month","de":"Starte deinen Gratis-Monat","fa":"ماه رایگانت را شروع کن"},
 "ft.about":{"en":"Four production-ready apps on one EU-hosted platform — built and operated by Amir Khosravi.","de":"Vier produktionsreife Apps auf einer EU-gehosteten Plattform — gebaut und betrieben von Amir Khosravi.","fa":"چهار اپ آمادهٔ تولید روی یک پلتفرم اروپایی — ساخته و اداره‌شده توسط امیر خسروی."},
-"ft.products":{"en":"Products","de":"Produkte","fa":"محصولات"},
 "ft.legal":{"en":"Legal","de":"Rechtliches","fa":"قانونی"},
 "f.imprint":{"en":"Impressum","de":"Impressum","fa":"Impressum"},
 "f.privacy":{"en":"Privacy Policy","de":"Datenschutzerklärung","fa":"سیاست حریم خصوصی"},
