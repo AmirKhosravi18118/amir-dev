@@ -26,15 +26,11 @@ test("2: all cover images load", async ({ page }) => {
 
 test("3: every product carries its live link", async ({ page }) => {
   await page.goto("/products.html");
-  for (const url of [
-    "https://nelurio.com/#p-nelurio",
-    "https://nelurio.com/#p-finello",
-    "https://nelurio.com/#p-washhalle",
-    "https://nelurio.com/#p-nexdeutsch",
-    "https://www.saadtattoo.de",
-  ]) {
-    await expect(page.locator(`.prod a[href="${url}"]`)).toHaveCount(1);
+  // nelurio.com links may carry ?lang= (cross-domain language sync)
+  for (const hash of ["#p-nelurio", "#p-finello", "#p-washhalle", "#p-nexdeutsch"]) {
+    await expect(page.locator(`.prod a[href*="nelurio.com"][href*="${hash}"]`)).toHaveCount(1);
   }
+  await expect(page.locator('.prod a[href="https://www.saadtattoo.de"]')).toHaveCount(1);
 });
 
 test("4: DE toggle translates hero + cards, persists over reload", async ({ page }) => {
