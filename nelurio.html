@@ -45,7 +45,7 @@
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 html[lang="fa"]{direction:rtl}
-html[lang="fa"] body{font-family:'Vazirmatn','Inter',system-ui,sans-serif}
+html[lang="fa"] body{font-family:'Vazirmatn','Inter',system-ui,sans-serif;overflow-x:clip}
 body{background:var(--bg);color:var(--txt);font-family:'Inter','Vazirmatn',system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
 .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
 .topbar{background:linear-gradient(90deg,var(--acc),#6a4df0);color:#fff;text-align:center;padding:9px 16px;font-size:13.5px;font-weight:700}
@@ -81,7 +81,39 @@ section{padding:var(--sp-7) 0}
 .kicker{display:inline-block;font-size:11.5px;font-weight:900;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:var(--sp-2)}
 h2{font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-.6px;margin-bottom:var(--sp-2)}
 .lead{color:var(--mut);max-width:660px;font-size:15.5px;margin-bottom:var(--sp-5)}
-.hero{padding:var(--sp-6) 0 var(--sp-4);position:relative}
+.hero{padding:var(--sp-6) 0 var(--sp-4);position:relative;display:grid;grid-template-columns:1.04fr .96fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(34px,3.8vw,54px)}
+.hero-visual{position:relative;min-height:400px}
+.hv-glow{position:absolute;inset:-36px;background:radial-gradient(circle at 62% 38%,rgba(139,108,255,.24),transparent 62%);pointer-events:none}
+.hv-frame{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(5,3,18,.6);transform:rotate(1.5deg);background:#141024}
+.hv-bar{display:flex;gap:6px;align-items:center;padding:10px 12px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.08)}
+.hv-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
+.hv-bar i:nth-child(1){background:#ff5f57}
+.hv-bar i:nth-child(2){background:#febc2e}
+.hv-bar i:nth-child(3){background:#28c840}
+.hv-bar span{margin-inline-start:auto;font-size:10.5px;color:var(--mut);letter-spacing:.06em}
+.hv-frame img{width:100%;display:block}
+.hv-card{position:absolute;display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(19,15,38,.92);backdrop-filter:blur(10px);box-shadow:0 18px 44px rgba(5,3,18,.5);text-decoration:none;color:var(--txt);width:196px}
+.hv-card img{width:58px;height:38px;object-fit:cover;border-radius:8px;display:block;flex-shrink:0}
+.hv-card b{font-size:12.5px;display:block}
+.hv-card small{color:var(--mut);font-size:10px;display:inline-flex;align-items:center;gap:5px}
+.hv-card small i{width:5px;height:5px;border-radius:50%;background:var(--ok)}
+.hv-f1{top:7%;inset-inline-end:-16px;animation:hvfloat 7s ease-in-out infinite alternate}
+.hv-f2{bottom:9%;inset-inline-start:-14px;animation:hvfloat 8.5s ease-in-out infinite alternate-reverse}
+@keyframes hvfloat{from{transform:translateY(-6px)}to{transform:translateY(8px)}}
+@media(prefers-reduced-motion:reduce){.hv-f1,.hv-f2{animation:none}}
+@media(max-width:1020px){.hero{grid-template-columns:1fr;gap:34px}.hero-visual{min-height:0;margin-top:6px}.hv-f1{inset-inline-end:4px}.hv-f2{inset-inline-start:4px}}
+@media(max-width:560px){
+  .hv-frame{transform:none}
+  .hv-glow{inset:0}
+  .hv-card{width:150px;padding:8px 10px;gap:8px}
+  .hv-card img{width:44px;height:30px}
+  .hv-card b{font-size:11.5px}
+  .hv-card small{font-size:9px}
+  .hv-f1{inset-inline-end:0;top:-4%}
+  .hv-f2{inset-inline-start:0;bottom:-2%}
+  .hero-visual{margin-inline:-4px}
+}
 .hero::before{content:"";position:absolute;top:-220px;inset-inline-end:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(139,108,255,.15),transparent 65%);pointer-events:none;animation:breathe 9s ease-in-out infinite;opacity:.6}
 .hero::after{content:"";position:absolute;top:-80px;inset-inline-start:-200px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(77,141,247,.10),transparent 65%);pointer-events:none;animation:breathe 11s ease-in-out infinite reverse;opacity:.6}
 @keyframes breathe{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
@@ -317,17 +349,28 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 
 <div class="wrap">
 <header class="hero">
-  <h1><span data-i18n="nl.h1a">Stop juggling tools</span><br><span class="grad" data-i18n="nl.h1b">Run everything from one library</span></h1>
-  <p class="sub" data-i18n="nl.sub">Four focused apps for studying, money, language and real business, one platform, one account</p>
-  <div class="hero-ctas">
-    <a class="btn btn-p" href="#pricing" data-i18n="nl.cta.trial0">Start your free month</a>
-    <a class="btn btn-s" href="#products" data-i18n="nl.cta.browse">Explore the products</a>
+  <div class="hero-copy">
+    <h1><span data-i18n="nl.h1a">Stop juggling tools</span><br><span class="grad" data-i18n="nl.h1b">Run everything from one library</span></h1>
+    <p class="sub" data-i18n="nl.sub">Four focused apps for studying, money, language and real business, one platform, one account</p>
+    <div class="hero-ctas">
+      <a class="btn btn-p" href="#pricing" data-i18n="nl.cta.trial0">Start your free month</a>
+      <a class="btn btn-s" href="#products" data-i18n="nl.cta.browse">Explore the products</a>
+    </div>
+    <div class="proof">
+      <span class="pf"><i></i><span data-i18n="pf.1">4 live products</span></span>
+      <span class="pf"><i></i><span data-i18n="pf.2">EU-hosted</span></span>
+      <span class="pf"><i></i><span data-i18n="pf.3">24/7 monitoring</span></span>
+      <span class="pf"><i></i><span data-i18n="pf.4">GDPR delete anytime</span></span>
+    </div>
   </div>
-  <div class="proof">
-    <span class="pf"><i></i><span data-i18n="pf.1">4 live products</span></span>
-    <span class="pf"><i></i><span data-i18n="pf.2">EU-hosted</span></span>
-    <span class="pf"><i></i><span data-i18n="pf.3">24/7 monitoring</span></span>
-    <span class="pf"><i></i><span data-i18n="pf.4">GDPR delete anytime</span></span>
+  <div class="hero-visual">
+    <div class="hv-glow"></div>
+    <div class="hv-frame">
+      <div class="hv-bar"><i></i><i></i><i></i><span>nelurio.com</span></div>
+      <img src="shot.png" alt="Nelurio app">
+    </div>
+    <a class="hv-card hv-f1" href="#p-finello"><img src="finello.png" alt=""><span><b>Finello</b><small><i></i>LIVE</small></span></a>
+    <a class="hv-card hv-f2" href="#p-washhalle"><img src="washhalle.png" alt=""><span><b>Washhalle</b><small><i></i>LIVE</small></span></a>
   </div>
 </header>
 
