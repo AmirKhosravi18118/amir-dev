@@ -36,7 +36,7 @@
 </script>
 <style>
 :root{
-  --bg:#0d0b1d;--bg2:#12102a;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);
+  --bg:#0d0b1d;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);
   --txt:#efedff;--mut:#a49fd0;--acc:#8b6cff;--acc2:#4d8df7;--ok:#5fe1a0;
   --sp-2:12px;--sp-3:16px;--sp-4:24px;--sp-5:32px;--sp-6:48px;--sp-7:72px;--sp-8:96px;
   --r-md:18px;--r-lg:22px;
@@ -51,22 +51,22 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter','Vazirmatn',syste
 .topbar{background:linear-gradient(90deg,var(--acc),#6a4df0);color:#fff;text-align:center;padding:9px 16px;font-size:13.5px;font-weight:700}
 .topbar a{color:#fff;text-decoration:underline;font-weight:900;margin-inline-start:6px}
 nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(13,11,29,.78);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:900;font-size:18px}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:900;font-size:17px;flex-shrink:0}
 .logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px;box-shadow:0 6px 18px rgba(139,108,255,.35)}
-.logo b{color:var(--acc)}
-nav ul{display:flex;gap:24px;list-style:none}
-nav ul a{color:var(--mut);text-decoration:none;font-size:14px;font-weight:600;transition:color .15s}
+nav ul{display:flex;gap:22px;list-style:none;align-items:center}
+nav ul a{color:var(--mut);text-decoration:none;font-size:13.5px;font-weight:600;transition:color .15s;white-space:nowrap}
 nav ul a:hover{color:var(--txt)}
-.nav-right{display:flex;align-items:center;gap:14px}
-.nav-acct{color:var(--mut);text-decoration:none;font-size:13.5px;font-weight:700}
-.nav-acct:hover{color:var(--txt)}
-.nav-cart{position:relative;text-decoration:none;font-size:17px}
-.cart-badge{position:absolute;top:-8px;inset-inline-end:-10px;background:var(--acc);color:#fff;font-size:10.5px;font-weight:900;border-radius:999px;padding:1px 6px}
+.nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:3px}
-.lang-toggle button{min-height:36px;padding:6px 13px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer}
+.lang-toggle button{min-height:34px;padding:5px 11px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:11.5px;cursor:pointer}
 .lang-toggle button.is-active{background:var(--acc);color:#fff}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 24px;border-radius:12px;font-weight:800;font-size:14.5px;cursor:pointer;border:1px solid transparent;text-decoration:none;transition:transform .15s,border-color .15s,box-shadow .15s}
+.iconlink{position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--txt);text-decoration:none;transition:border-color .15s}
+.iconlink:hover{border-color:var(--acc)}
+.iconlink svg{width:18px;height:18px}
+.iconlink .cart-badge{position:absolute;top:-7px;inset-inline-end:-7px;background:var(--acc);color:#fff;font-size:10px;font-weight:900;border-radius:999px;padding:1px 5px;min-width:16px;text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 22px;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;border:1px solid transparent;text-decoration:none;transition:transform .15s,border-color .15s,box-shadow .15s;white-space:nowrap}
+.btn svg{width:16px;height:16px;flex-shrink:0}
 .btn-p{background:linear-gradient(135deg,var(--acc),#7452f2);color:#fff;box-shadow:0 10px 26px rgba(139,108,255,.3)}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(139,108,255,.42)}
 .btn-s{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--txt)}
@@ -91,8 +91,6 @@ h1 .grad{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-backg
 .proof{display:flex;flex-wrap:wrap;gap:10px 22px;margin:var(--sp-5) 0 0}
 .pf{display:inline-flex;align-items:center;gap:8px;color:#cfc9ee;font-size:13px;font-weight:700}
 .pf i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
-.builder-note{margin-top:var(--sp-5);font-size:13.5px;color:var(--mut)}
-.builder-note a{color:#c3b4ff;font-weight:700;text-decoration:none;border-bottom:1px dotted rgba(195,180,255,.5)}
 .lib{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--sp-4)}
 .prod{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;scroll-margin-top:90px}
 .prod:hover{transform:translateY(-6px);border-color:rgba(139,108,255,.55);box-shadow:0 28px 60px rgba(10,6,40,.6)}
@@ -109,9 +107,7 @@ h1 .grad{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-backg
 .prod .what{color:var(--mut);font-size:13.8px;flex:1}
 .feat{list-style:none;display:flex;flex-direction:column;gap:6px;margin:2px 0}
 .feat li{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#cfc9ee}
-.feat li::before{content:"✓";color:var(--ok);font-weight:900;flex-shrink:0}
-.price{font-size:13px;font-weight:800;color:#8af0bf}
-.price small{color:var(--mut);font-weight:600}
+.feat li svg{width:14px;height:14px;color:var(--ok);flex-shrink:0;margin-top:3px}
 .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:var(--sp-2)}
 .links .btn{min-height:42px;padding:8px 18px;font-size:13px}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4)}
@@ -131,7 +127,7 @@ h1 .grad{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-backg
 .plan .yr{font-size:12px;color:var(--mut)}
 .plan ul{list-style:none;display:flex;flex-direction:column;gap:6px;flex:1}
 .plan ul li{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#cfc9ee}
-.plan ul li::before{content:"✓";color:var(--ok);font-weight:900;flex-shrink:0}
+.plan ul li svg{width:14px;height:14px;color:var(--ok);flex-shrink:0;margin-top:3px}
 .support{display:grid;grid-template-columns:1.2fr 1fr;gap:var(--sp-4)}
 .supcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp-4)}
 .supcard h3{font-size:15.5px;font-weight:900;margin-bottom:8px}
@@ -143,16 +139,12 @@ h1 .grad{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-backg
 .faq summary::after{content:"+";color:var(--acc);font-weight:900;font-size:18px;transition:transform .2s}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq details p{color:var(--mut);font-size:13.5px;margin-top:10px}
-.road{display:flex;flex-wrap:wrap;gap:12px}
-.road .chip{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-size:13.5px;font-weight:700;color:#ddd8f5}
-.road .chip i{width:8px;height:8px;border-radius:50%;background:var(--acc2);box-shadow:0 0 8px var(--acc2)}
-.roadnote{margin-top:var(--sp-3);color:var(--mut);font-size:13px;max-width:640px}
 .final{background:linear-gradient(135deg,rgba(139,108,255,.16),rgba(77,141,247,.10));border:1px solid rgba(139,108,255,.35);border-radius:var(--r-lg);padding:var(--sp-6) var(--sp-5);text-align:center}
 .final h2{margin-bottom:var(--sp-2)}
 .final p{color:#cfc9ee;max-width:560px;margin:0 auto var(--sp-4)}
 .final .btn{min-width:220px}
 footer{border-top:1px solid var(--line);padding:var(--sp-6) 0 var(--sp-5);color:var(--mut);font-size:13px}
-footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:var(--sp-5);margin-bottom:var(--sp-5)}
+footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:var(--sp-5);margin-bottom:var(--sp-5)}
 footer h4{color:#ddd8f5;font-size:13px;font-weight:900;margin-bottom:10px}
 footer ul{list-style:none;display:flex;flex-direction:column;gap:7px}
 footer a{color:#cfc9ee;text-decoration:none}
@@ -162,9 +154,20 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 .consent p{font-size:13px;color:#cfc9ee;flex:1;min-width:240px}
 .consent .btn{min-height:44px;padding:8px 18px;font-size:12.5px}
 [hidden]{display:none!important}
+.chatdock{position:fixed;bottom:20px;inset-inline-end:20px;z-index:80;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.chatdock .chat-btns{display:flex;flex-direction:column;gap:10px;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .25s,transform .25s}
+.chatdock.open .chat-btns{opacity:1;pointer-events:auto;transform:none}
+.chatdock .cbtn{display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border-radius:999px;color:#fff;font-size:13px;font-weight:800;text-decoration:none;box-shadow:0 10px 26px rgba(5,3,18,.45)}
+.chatdock .cbtn svg{width:17px;height:17px}
+.chatdock .cbtn.wa{background:#25d366}
+.chatdock .cbtn.mail{background:var(--acc)}
+.chatdock .chat-toggle{width:56px;height:56px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(139,108,255,.45)}
+.chatdock .chat-toggle svg{width:24px;height:24px;color:#fff;transition:transform .25s}
+.chatdock.open .chat-toggle svg{transform:rotate(135deg)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media(max-width:1080px){nav ul{gap:16px}}
 @media(max-width:960px){
   .steps{grid-template-columns:1fr}
   .support{grid-template-columns:1fr}
@@ -192,8 +195,8 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
       <button id="btn-de" onclick="setLang('de')">DE</button>
       <button id="btn-fa" onclick="setLang('fa')">فا</button>
     </div>
-    <a href="/account.html" class="nav-acct" data-i18n="nav.account">My account</a>
-    <a href="checkout.html?cart=1" class="nav-cart" aria-label="Cart">🛒<span id="cart-badge" class="cart-badge hidden">0</span></a>
+    <a class="iconlink" href="/account.html" aria-label="My account" data-i18n-aria="ac.navacct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+    <a class="iconlink" href="checkout.html?cart=1" aria-label="Cart" data-i18n-aria="ac.navcart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span id="cart-badge" class="cart-badge hidden">0</span></a>
     <a class="btn btn-p" href="#pricing" data-i18n="nav.cta">Start free</a>
   </div>
 </div></nav>
@@ -228,11 +231,15 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
         <span class="flag" data-i18n="n1.flag">FLAGSHIP APP</span>
         <h3>Nelurio</h3>
         <p class="what" data-i18n="n1.what">AI study assistant for university students — record a lecture, get summaries, spaced-repetition reviews, flashcards &amp; a tutor that answers from your own materials with citations.</p>
-        <ul class="feat"><li data-i18n="n1.f1">Lecture recording with AI summaries</li><li data-i18n="n1.f2">Spaced-repetition review planner</li><li data-i18n="n1.f3">Tutor answers with citations</li></ul>
+        <ul class="feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="n1.f1">Lecture recording with AI summaries</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="n1.f2">Spaced-repetition review planner</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="n1.f3">Tutor answers with citations</span></li>
+        </ul>
         <p class="price" data-i18n="n1.price">1-month free trial · then €4.99/mo</p>
         <div class="links">
           <a class="btn btn-p" href="https://app.nelurio.com" target="_blank" rel="noopener" data-i18n="n.trial">Start 1-month free trial</a>
-          <button class="btn btn-s" onclick="addToCart('nelurio')" data-i18n="n.cart">Add to cart</button>
+          <a class="btn btn-s" href="checkout.html?app=nelurio" data-i18n="n.buy">Buy product</a>
         </div>
       </div>
     </article>
@@ -242,11 +249,15 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
         <span class="flag" data-i18n="n2.flag">FINANCE</span>
         <h3>Finello</h3>
         <p class="what" data-i18n="n2.what">Personal finance app for students in Germany — budget calendar with recurring payments, expenses &amp; transactions, and a tax overview for student jobs.</p>
-        <ul class="feat"><li data-i18n="n2.f1">Budget calendar</li><li data-i18n="n2.f2">Recurring payments tracking</li><li data-i18n="n2.f3">Tax overview for mini-jobs</li></ul>
+        <ul class="feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="n2.f1">Budget calendar</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="n2.f2">Recurring payments tracking</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="n2.f3">Tax overview for mini-jobs</span></li>
+        </ul>
         <p class="price" data-i18n="n2.price">1-month free trial · then €2.99/mo</p>
         <div class="links">
           <a class="btn btn-p" href="https://finello.nelurio.com" target="_blank" rel="noopener" data-i18n="n.trial">Start 1-month free trial</a>
-          <button class="btn btn-s" onclick="addToCart('finello')" data-i18n="n.cart">Add to cart</button>
+          <a class="btn btn-s" href="checkout.html?app=finello" data-i18n="n.buy">Buy product</a>
         </div>
       </div>
     </article>
@@ -256,11 +267,15 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
         <span class="flag" data-i18n="n3.flag">OPERATIONS</span>
         <h3>Washhalle</h3>
         <p class="what" data-i18n="n3.what">Operations app for a real car-wash business — day-to-day operations, tracking and workflow. In daily use on site since launch.</p>
-        <ul class="feat"><li data-i18n="n3.f1">Day-to-day operations</li><li data-i18n="n3.f2">Real-time tracking</li><li data-i18n="n3.f3">Built with a real customer</li></ul>
+        <ul class="feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="n3.f1">Day-to-day operations</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="n3.f2">Real-time tracking</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="n3.f3">Built with a real customer</span></li>
+        </ul>
         <p class="price" data-i18n="n3.price">1-month free trial · then €9.99/mo</p>
         <div class="links">
           <a class="btn btn-p" href="https://washhalle.nelurio.com" target="_blank" rel="noopener" data-i18n="n.trial">Start 1-month free trial</a>
-          <button class="btn btn-s" onclick="addToCart('washhalle')" data-i18n="n.buy">Add to cart</button>
+          <a class="btn btn-s" href="checkout.html?app=washhalle" data-i18n="n.buy">Buy product</a>
         </div>
       </div>
     </article>
@@ -270,11 +285,15 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
         <span class="flag" data-i18n="n4.flag">LANGUAGE</span>
         <h3>NexDeutsch</h3>
         <p class="what" data-i18n="n4.what">German vocabulary learning platform — structured practice sessions with spaced practice. Nelurio's review engine was born from what I learned here; a rework is in progress.</p>
-        <ul class="feat"><li data-i18n="n4.f1">Structured practice sessions</li><li data-i18n="n4.f2">Spaced repetition</li><li data-i18n="n4.f3">Built for the German market</li></ul>
+        <ul class="feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="n4.f1">Structured practice sessions</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="n4.f2">Spaced repetition</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="n4.f3">Built for the German market</span></li>
+        </ul>
         <p class="price" data-i18n="n4.price">1-month free trial · then €3.49/mo</p>
         <div class="links">
           <a class="btn btn-p" href="https://nexdeutsch.nelurio.com" target="_blank" rel="noopener" data-i18n="n.trial">Start 1-month free trial</a>
-          <button class="btn btn-s" onclick="addToCart('nexdeutsch')" data-i18n="n.buy">Add to cart</button>
+          <a class="btn btn-s" href="checkout.html?app=nexdeutsch" data-i18n="n.buy">Buy product</a>
         </div>
       </div>
     </article>
@@ -286,10 +305,10 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   <h2 class="reveal" data-i18n="pr.h2">Try free for a month. Then pick your plan.</h2>
   <p class="lead reveal" data-i18n="pr.lead">Every app starts with a full free month — no credit card. Stay on the free core or go premium.</p>
   <div class="plans">
-    <div class="plan reveal"><span class="ribbon" data-i18n="pr.flagship">FLAGSHIP</span><span class="cat" data-i18n="n1.flag">FLAGSHIP APP</span><h3>Nelurio</h3><div class="pr"><b>€4.99</b><span data-i18n="pr.mo">/ month</span></div><p class="yr" data-i18n="pr.yr1">or €49.90 / year (2 months free)</p><ul><li data-i18n="pr.n1a">All study features</li><li data-i18n="pr.n1b">AI summaries &amp; tutor</li><li data-i18n="pr.n1c">Priority support</li></ul><a class="btn btn-p" href="checkout.html?app=nelurio" data-i18n="pr.buy">Get Nelurio</a></div>
-    <div class="plan reveal"><span class="cat" data-i18n="n2.flag">FINANCE</span><h3>Finello</h3><div class="pr"><b>€2.99</b><span data-i18n="pr.mo">/ month</span></div><p class="yr" data-i18n="pr.yr2">or €29.90 / year (2 months free)</p><ul><li data-i18n="pr.n2a">Budget calendar</li><li data-i18n="pr.n2b">Expense tracking</li><li data-i18n="pr.n2c">Tax overview</li></ul><a class="btn btn-p" href="checkout.html?app=finello" data-i18n="pr.buy">Get Finello</a></div>
-    <div class="plan reveal"><span class="cat" data-i18n="n4.flag">LANGUAGE</span><h3>NexDeutsch</h3><div class="pr"><b>€3.49</b><span data-i18n="pr.mo">/ month</span></div><p class="yr" data-i18n="pr.yr3">or €34.90 / year (2 months free)</p><ul><li data-i18n="pr.n3a">Structured sessions</li><li data-i18n="pr.n3b">Spaced practice</li><li data-i18n="pr.n3c">German-market focus</li></ul><a class="btn btn-p" href="checkout.html?app=nexdeutsch" data-i18n="pr.buy">Get NexDeutsch</a></div>
-    <div class="plan reveal"><span class="cat" data-i18n="n3.flag">OPERATIONS</span><h3>Washhalle</h3><div class="pr"><b>€9.99</b><span data-i18n="pr.mo">/ month</span></div><p class="yr" data-i18n="pr.yr4">or €99.90 / year (2 months free)</p><ul><li data-i18n="pr.n4a">Full operations suite</li><li data-i18n="pr.n4b">Onboarding included</li><li data-i18n="pr.n4c">Direct support line</li></ul><a class="btn btn-p" href="checkout.html?app=washhalle" data-i18n="pr.buy">Get Washhalle</a></div>
+    <div class="plan reveal"><span class="ribbon" data-i18n="pr.flagship">FLAGSHIP</span><span class="cat" data-i18n="n1.flag">FLAGSHIP APP</span><h3>Nelurio</h3><div class="pr"><b>€4.99</b><span data-i18n="pr.mo">/ month</span></div><p class="yr" data-i18n="pr.yr1">or €49.90 / year (2 months free)</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="pr.n1a">All study features</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="pr.n1b">AI summaries &amp; tutor</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="pr.n1c">Priority support</span></li></ul><a class="btn btn-p" href="checkout.html?app=nelurio" data-i18n="pr.buy">Get Nelurio</a></div>
+    <div class="plan reveal"><span class="cat" data-i18n="n2.flag">FINANCE</span><h3>Finello</h3><div class="pr"><b>€2.99</b><span data-i18n="pr.mo">/ month</span></div><p class="yr" data-i18n="pr.yr2">or €29.90 / year (2 months free)</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="pr.n2a">Budget calendar</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="pr.n2b">Expense tracking</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="pr.n2c">Tax overview</span></li></ul><a class="btn btn-p" href="checkout.html?app=finello" data-i18n="pr.buy">Get Finello</a></div>
+    <div class="plan reveal"><span class="cat" data-i18n="n4.flag">LANGUAGE</span><h3>NexDeutsch</h3><div class="pr"><b>€3.49</b><span data-i18n="pr.mo">/ month</span></div><p class="yr" data-i18n="pr.yr3">or €34.90 / year (2 months free)</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="pr.n3a">Structured sessions</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="pr.n3b">Spaced practice</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="pr.n3c">German-market focus</span></li></ul><a class="btn btn-p" href="checkout.html?app=nexdeutsch" data-i18n="pr.buy">Get NexDeutsch</a></div>
+    <div class="plan reveal"><span class="cat" data-i18n="n3.flag">OPERATIONS</span><h3>Washhalle</h3><div class="pr"><b>€9.99</b><span data-i18n="pr.mo">/ month</span></div><p class="yr" data-i18n="pr.yr4">or €99.90 / year (2 months free)</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="pr.n4a">Full operations suite</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="pr.n4b">Onboarding included</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="pr.n4c">Direct support line</span></li></ul><a class="btn btn-p" href="checkout.html?app=washhalle" data-i18n="pr.buy">Get Washhalle</a></div>
   </div>
   <p class="roadnote" data-i18n="pr.note">All plans start with a 1-month free trial — no credit card required. Cancel anytime.</p>
 </section>
@@ -311,7 +330,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   <p class="lead reveal" data-i18n="su.lead">You are not talking to a ticket black hole — the person who built the product answers.</p>
   <div class="support">
     <div class="supcard reveal"><h3 data-i18n="su.o1">Email support</h3><p data-i18n="su.o1b">Write to support@nelurio.com — response within 24 hours on business days, usually much faster.</p><a href="mailto:support@nelurio.com" class="btn btn-s" data-i18n="su.mail">support@nelurio.com</a></div>
-    <div class="supcard reveal"><h3 data-i18n="su.o2">Built by the person you talk to</h3><p data-i18n="su.o2b">Feature requests and bug reports go straight into the development queue — many shipped within days.</p><a class="btn btn-s" href="https://amir-khosravi.de" data-i18n="su.o2c">Meet the builder</a></div>
+    <div class="supcard reveal"><h3 data-i18n="su.o2">Live chat &amp; WhatsApp</h3><p data-i18n="su.o2b">Use the chat bubble in the corner of every page — WhatsApp or email, straight to the builder.</p><button class="btn btn-s" onclick="document.querySelector('.chatdock .chat-toggle').click()" data-i18n="su.o2c">Open chat</button></div>
   </div>
 </section>
 
@@ -326,17 +345,6 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
     <details class="reveal"><summary data-i18n="fq.q4">Can I cancel anytime?</summary><p data-i18n="fq.a4">Yes. No lock-in, no hidden fees. You keep access until the end of your paid period.</p></details>
     <details class="reveal"><summary data-i18n="fq.q5">Who builds Nelurio Suite?</summary><p data-i18n="fq.a5">Amir Khosravi — software developer and BWL student in Rhein-Main, Germany. Every product is designed, built and operated by the same person you email.</p></details>
   </div>
-</section>
-
-<section id="roadmap">
-  <span class="kicker reveal" data-i18n="rd.kicker">Roadmap</span>
-  <h2 class="reveal" data-i18n="rd.h2">What's coming to the library.</h2>
-  <p class="lead reveal" data-i18n="rd.lead">Shipped features appear here when they are real — nothing on this list is sold yet.</p>
-  <div class="road">
-    <span class="chip reveal"><i></i><span data-i18n="rd.c1">One platform-wide login (Google Sign-in)</span></span>
-    <span class="chip reveal"><i></i><span data-i18n="rd.c2">New products — the shelf keeps growing</span></span>
-  </div>
-  <p class="roadnote" data-i18n="rd.note">Roadmap items land data-driven: they ship when real usage justifies them, not before.</p>
 </section>
 
 <section class="final reveal">
@@ -380,6 +388,14 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   </div>
 </div>
 
+<div class="chatdock" id="chatdock">
+  <div class="chat-btns">
+    <a class="cbtn wa" href="https://wa.me/496122002699" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span>WhatsApp</span></a>
+    <a class="cbtn mail" href="mailto:support@nelurio.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg><span>Email</span></a>
+  </div>
+  <button class="chat-toggle" onclick="document.getElementById('chatdock').classList.toggle('open')" aria-label="Chat with us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+</div>
+
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Is there a free trial?","acceptedAnswer":{"@type":"Answer","text":"Yes — every app comes with a full 1-month free trial. No credit card required."}},
@@ -399,13 +415,13 @@ const I18N = {
 "nav.support":{"en":"Support","de":"Support","fa":"پشتیبانی"},
 "nav.faq":{"en":"FAQ","de":"FAQ","fa":"سؤالات متداول"},
 "nav.cta":{"en":"Start free","de":"Gratis starten","fa":"شروع رایگان"},
-"nav.account":{"en":"My account","de":"Mein Konto","fa":"حساب من"},
-"n.cart":{"en":"Add to cart","de":"In den Warenkorb","fa":"افزودن به سبد"},
+"ac.navacct":{"en":"My account","de":"Mein Konto","fa":"حساب من"},
+"ac.navcart":{"en":"Cart","de":"Warenkorb","fa":"سبد خرید"},
 "nl.badge":{"en":"NELURIO SUITE · BY AMIR KHOSRAVI","de":"NELURIO SUITE · VON AMIR KHOSRAVI","fa":"مجموعه نلوریو · ساخته امیر خسروی"},
 "nl.h1a":{"en":"Stop juggling tools.","de":"Schluss mit Tool-Chaos.","fa":"وسایل پراکنده را کنار بگذار."},
 "nl.h1b":{"en":"Run everything from one library.","de":"Alles aus einer Bibliothek.","fa":"همه‌چیز از یک کتابخانه."},
 "nl.sub":{"en":"The product library of Amir Khosravi — focused apps for studying, money, language and real business operations.","de":"Die Produktbibliothek von Amir Khosravi — fokussierte Apps für Studium, Finanzen, Sprache und echte Geschäftsabläufe.","fa":"کتابخانه محصولات امیر خسروی — اپ‌های متمرکز برای تحصیل، مالی، زبان و عملیات واقعی کسب‌وکار."},
-"nl.lead":{"en":"Pick an app, start your free month and get productive today. No credit card. No setup. EU-hosted and GDPR-first from day one.","de":"Wähle eine App, starte deinen Gratis-Monat und werde heute produktiv. Keine Kreditkarte. Kein Setup. EU-gehostet und DSGVO-first von Anfang an.","fa":"یک اپ انتخاب کن، ماه رایگانت را شروع کن و همین امروز بهره‌ور شو. بدون کارت بانکی، بدون راه‌اندازی. از روز اول میزبانی اروپا و GDPR-محور."},
+"nl.lead":{"en":"Pick an app, start your free month and get productive today. No credit card. No setup. EU-hosted and GDPR-first from day one.","de":"Wähle eine App, starte deinen Gratis-Monat و werde heute produktiv. Keine Kreditkarte. Kein Setup. EU-gehostet und DSGVO-first von Anfang an.","fa":"یک اپ انتخاب کن، ماه رایگانت را شروع کن و همین امروز بهره‌ور شو. بدون کارت بانکی، بدون راه‌اندازی. از روز اول میزبانی اروپا و GDPR-محور."},
 "nl.cta.trial0":{"en":"Start your free month","de":"Starte deinen Gratis-Monat","fa":"ماه رایگانت را شروع کن"},
 "nl.cta.browse":{"en":"Explore the products","de":"Produkte entdecken","fa":"مشاهده محصولات"},
 "nl.builder":{"en":"Built end-to-end by","de":"Komplett gebaut von","fa":"ساخته شده توسط"},
@@ -429,7 +445,7 @@ const I18N = {
 "n1.f3":{"en":"Tutor answers with citations","de":"Tutor antwortet mit Quellen","fa":"معلم با پاسخ مستند"},
 "n1.price":{"en":"1-month free trial · then €4.99/mo","de":"1 Monat gratis · danach 4,99 €/Mon.","fa":"۱ ماه رایگان · سپس ۴٫۹۹ € در ماه"},
 "n2.flag":{"en":"FINANCE","de":"FINANZEN","fa":"مالی"},
-"n2.what":{"en":"Personal finance app for students in Germany — budget calendar with recurring payments, expenses & transactions, and a tax overview for student jobs.","de":"Persönliche Finanz-App für Studierende in Deutschland — Budget-Kalender mit wiederkehrenden Zahlungen, Ausgaben & Transaktionen und Steuer-Überblick für Studentenjobs.","fa":"اپ مالی شخصی برای دانشجوهای آلمان — تقویم بودجه با پرداخت‌های تکرارشونده، هزینه‌ها و تراکنش‌ها و نمای مالیاتی برای کارهای دانشجویی."},
+"n2.what":{"en":"Personal finance app for students in Germany — budget calendar with recurring payments, expenses & transactions, and a tax overview for student jobs.","de":"Persönliche Finanz-App für Studierende in Deutschland — Budget-Kalender mit wiederkehrenden Zahlungen, Ausgaben & Transaktionen و Steuer-Überblick für Studentenjobs.","fa":"اپ مالی شخصی برای دانشجوهای آلمان — تقویم بودجه با پرداخت‌های تکرارشونده، هزینه‌ها و تراکنش‌ها و نمای مالیاتی برای کارهای دانشجویی."},
 "n2.f1":{"en":"Budget calendar","de":"Budget-Kalender","fa":"تقویم بودجه"},
 "n2.f2":{"en":"Recurring payments tracking","de":"Wiederkehrende Zahlungen","fa":"پیگیری پرداخت‌های تکرارشونده"},
 "n2.f3":{"en":"Tax overview for mini-jobs","de":"Steuer-Überblick für Minijobs","fa":"نمای مالیاتی مینی‌جاب‌ها"},
@@ -465,16 +481,16 @@ const I18N = {
 "how.s2t":{"en":"Start your free month","de":"Starte deinen Gratis-Monat","fa":"ماه رایگانت را شروع کن"},
 "how.s2b":{"en":"Create your account inside the app — the 30-day trial starts instantly, no card needed.","de":"Erstelle dein Konto in der App — der 30-Tage-Test startet sofort, keine Karte nötig.","fa":"داخل اپ حسابت را بساز — تست ۳۰ روزه فوراً شروع می‌شود، بدون کارت."},
 "how.s3t":{"en":"Your data stays yours","de":"Deine Daten bleiben deine","fa":"داده‌هایت مال خودت می‌ماند"},
-"how.s3b":{"en":"EU-hosted infrastructure, GDPR-first defaults — and you can delete your account and all its data yourself, any time.","de":"EU-gehostete Infrastruktur, DSGVO-first — و هر زمان خودت می‌توانی حسابت و همه داده‌هایش را حذف کنی.","fa":"زیرساخت اروپا، پیش‌فرض‌های GDPR — و هر زمان خودت می‌توانی حسابت و همه داده‌هایش را حذف کنی."},
+"how.s3b":{"en":"EU-hosted infrastructure, GDPR-first defaults — and you can delete your account and all its data yourself, any time.","de":"EU-gehostete Infrastruktur, DSGVO-first — und du kannst dein Konto samt Daten jederzeit selbst löschen.","fa":"زیرساخت اروپا، پیش‌فرض‌های GDPR — و هر زمان خودت می‌توانی حسابت و همه داده‌هایش را حذف کنی."},
 "su.kicker":{"en":"Support","de":"Support","fa":"پشتیبانی"},
 "su.h2":{"en":"Real humans answer. Fast.","de":"Echte Menschen antworten. Schnell.","fa":"آدم‌های واقعی جواب می‌دهند. سریع."},
 "su.lead":{"en":"You are not talking to a ticket black hole — the person who built the product answers.","de":"Du redest nicht in ein Ticket-Loch — der Mensch, der das Produkt gebaut hat, antwortet.","fa":"با سیاه‌چالهٔ تیکت حرف نمی‌زنی — کسی که محصول را ساخته جواب می‌دهد."},
 "su.o1":{"en":"Email support","de":"E-Mail-Support","fa":"پشتیبانی ایمیلی"},
 "su.o1b":{"en":"Write to support@nelurio.com — response within 24 hours on business days, usually much faster.","de":"Schreibe an support@nelurio.com — Antwort innerhalb von 24 Stunden an Werktagen, meist schneller.","fa":"به support@nelurio.com بنویس — پاسخ در ۲۴ ساعت کاری، معمولاً خیلی سریع‌تر."},
 "su.mail":{"en":"support@nelurio.com","de":"support@nelurio.com","fa":"support@nelurio.com"},
-"su.o2":{"en":"Built by the person you talk to","de":"Gebaut vom Menschen, mit dem du redest","fa":"ساختهٔ همان کسی که باهاش حرف می‌زنی"},
-"su.o2b":{"en":"Feature requests and bug reports go straight into the development queue — many shipped within days.","de":"Feature-Wünsche und Bug-Reports landen direkt in der Entwicklung — viele innerhalb von Tagen ausgeliefert.","fa":"درخواست‌ها و باگ‌ها مستقیم وارد صف توسعه می‌شوند — بسیاری در چند روز تحویل شده‌اند."},
-"su.o2c":{"en":"Meet the builder","de":"Den Entwickler kennenlernen","fa":"آشنایی با سازنده"},
+"su.o2":{"en":"Live chat & WhatsApp","de":"Live-Chat & WhatsApp","fa":"چت زنده و واتساپ"},
+"su.o2b":{"en":"Use the chat bubble on every page — WhatsApp or email, straight to the builder.","de":"Nutze die Chat-Blase auf jeder Seite — WhatsApp oder E-Mail, direkt zum Entwickler.","fa":"از حباب چت در گوشهٔ هر صفحه استفاده کن — واتساپ یا ایمیل، مستقیم به سازنده."},
+"su.o2c":{"en":"Open chat","de":"Chat öffnen","fa":"باز کردن چت"},
 "fq.kicker":{"en":"FAQ","de":"FAQ","fa":"سؤالات متداول"},
 "fq.h2":{"en":"Questions, answered.","de":"Fragen, beantwortet.","fa":"سؤالات، پاسخ‌گفته."},
 "fq.lead":{"en":"Anything else? support@nelurio.com — answered within 24 hours.","de":"Noch etwas? support@nelurio.com — Antwort innerhalb von 24 Stunden.","fa":"چیز دیگر؟ support@nelurio.com — پاسخ در ۲۴ ساعت."},
@@ -488,12 +504,6 @@ const I18N = {
 "fq.a4":{"en":"Yes. No lock-in, no hidden fees. You keep access until the end of your paid period.","de":"Ja. Kein Lock-in, keine versteckten Kosten. Zugang bleibt bis zum Ende der bezahlten Laufzeit.","fa":"بله. بدون قفل، بدون هزینهٔ پنهان. دسترسی‌ات تا پایان دورهٔ پرداخت‌شده باقی می‌ماند."},
 "fq.q5":{"en":"Who builds Nelurio Suite?","de":"Wer baut Nelurio Suite?","fa":"چه کسی Nelurio Suite را می‌سازد؟"},
 "fq.a5":{"en":"Amir Khosravi — software developer and BWL student in Rhein-Main, Germany. Every product is designed, built and operated by the same person you email.","de":"Amir Khosravi — Softwareentwickler und BWL-Student in Rhein-Main. Jedes Produkt wird von derselben Person entworfen, gebaut und betrieben, die auch deine E-Mail beantwortet.","fa":"امیر خسروی — توسعه‌دهندهٔ نرم‌افزار و دانشجوی BWL در راین‌ماین آلمان. هر محصول توسط همان کسی طراحی، ساخته و اداره می‌شود که ایمیلت را جواب می‌دهد."},
-"rd.kicker":{"en":"Roadmap","de":"Roadmap","fa":"نقشه راه"},
-"rd.h2":{"en":"What's coming to the library.","de":"Was in die Bibliothek kommt.","fa":"چه چیزهایی به کتابخانه می‌آید."},
-"rd.lead":{"en":"Shipped features appear here when they are real — nothing on this list is sold yet.","de":"Fertige Features erscheinen hier, wenn sie real sind — von dieser Liste wird noch nichts verkauft.","fa":"قابلیت‌های تحویل‌شده وقتی واقعی شوند اینجا می‌آیند — از این لیست هنوز چیزی فروخته نمی‌شود."},
-"rd.c1":{"en":"One platform-wide login (Google Sign-in)","de":"Ein plattformweiter Login (Google Sign-in)","fa":"یک ورود سراسری (ورود با گوگل)"},
-"rd.c2":{"en":"New products — the shelf keeps growing","de":"Neue Produkte — das Regal wächst weiter","fa":"محصولات جدید — قفسه بزرگ‌تر می‌شود"},
-"rd.note":{"en":"Roadmap items land data-driven: they ship when real usage justifies them, not before.","de":"Roadmap-Punkte kommen datengetrieben: sie erscheinen, wenn echte Nutzung sie rechtfertigt — nicht vorher.","fa":"آیتم‌های نقشه راه داده‌محور می‌آیند: وقتی استفاده واقعی توجیهشان کند، نه قبل از آن."},
 "fin.h2":{"en":"Your free month is one click away.","de":"Dein Gratis-Monat ist einen Klick entfernt.","fa":"ماه رایگانت یک کلیک فاصله دارد."},
 "fin.p":{"en":"Pick an app, create your account and see why the Nelurio library keeps growing.","de":"Wähle eine App, erstelle dein Konto und sieh, warum die Nelurio-Bibliothek weiter wächst.","fa":"یک اپ انتخاب کن، حسابت را بساز و ببین چرا کتابخانهٔ نلوریو بزرگ‌تر می‌شود."},
 "fin.cta":{"en":"Start your free month","de":"Starte deinen Gratis-Monat","fa":"ماه رایگانت را شروع کن"},
@@ -506,14 +516,10 @@ const I18N = {
 "f.withdraw":{"en":"Right of Withdrawal","de":"Widerrufsbelehrung","fa":"حق انصراف"},
 "f.contact":{"en":"Contact / Support","de":"Kontakt / Support","fa":"تماس / پشتیبانی"},
 "f.portfolio":{"en":"Portfolio","de":"Portfolio","fa":"پورتفولیو"},
-"cons.text":{"en":"This site uses consent-based, privacy-friendly analytics — page statistics only, no ads, no cross-site tracking. You decide; change your mind anytime by clearing this site's data.","de":"Diese Website nutzt einwilligungsbasierte, datenschutzfreundliche Analytik — nur Seitenstatistik, keine Werbung, kein übergreifendes Tracking. Du entscheidest; jederzeit änderbar durch Löschen der Website-Daten.","fa":"این سایت از تحلیل آماری مبتنی بر رضایت استفاده می‌کند — فقط آمار بازدید، بدون تبلیغ و ردیابی بین‌سایتی. تصمیم با توست؛ هر زمان با پاک کردن داده‌های سایت می‌توانی نظرت را عوض کنی."},
+"cons.text":{"en":"This site uses consent-based, privacy-friendly analytics — page statistics only, no ads, no cross-site tracking. You decide; change your mind anytime by clearing this site's data.","de":"Diese Website nutzt einwilligungsbasierte, datenschutzfreundliche Analytik — nur Seitenstatistik, keine Werbung, kein übergreifendes Tracking. Du entscheidest؛ هر زمان با پاک کردن داده‌های سایت می‌توانی نظرت را عوض کنی.","fa":"این سایت از تحلیل آماری مبتنی بر رضایت استفاده می‌کند — فقط آمار بازدید، بدون تبلیغ و ردیابی بین‌سایتی. تصمیم با توست؛ هر زمان با پاک کردن داده‌های سایت می‌توانی نظرت را عوض کنی."},
 "cons.accept":{"en":"Accept","de":"Akzeptieren","fa":"می‌پذیرم"},
 "cons.decline":{"en":"Decline","de":"Ablehnen","fa":"رد می‌کنم"}
 };
-function cartGet(){ try{ return JSON.parse(localStorage.getItem("nelurio_cart")||"[]"); }catch(e){ return []; } }
-function cartSet(v){ try{ localStorage.setItem("nelurio_cart", JSON.stringify(v)); }catch(e){} cartBadge(); }
-function cartBadge(){ const b = document.getElementById("cart-badge"); if(!b) return; const n = cartGet().length; b.textContent = n; b.classList.toggle("hidden", n === 0); }
-function addToCart(slug){ const c = cartGet(); if(!c.includes(slug)){ c.push(slug); cartSet(c); } const b = document.getElementById("cart-badge"); if(b){ b.animate([{transform:"scale(1.5)"},{transform:"scale(1)"}],{duration:250}); } }
 function setLang(l){
   document.documentElement.setAttribute('data-lang', l);
   document.documentElement.lang = l;
@@ -523,6 +529,10 @@ function setLang(l){
     const v = I18N[el.getAttribute('data-i18n')];
     if(v && v[l]) el.textContent = v[l];
   });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>{
+    const v = I18N[el.getAttribute('data-i18n-aria')];
+    if(v && v[l]) el.setAttribute('aria-label', v[l]);
+  });
   try{localStorage.setItem('lang',l)}catch(e){}
 }
 try{const saved=localStorage.getItem('lang'); if(saved) setLang(saved);}catch(e){}
@@ -530,6 +540,10 @@ const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function cartGet(){ try{ return JSON.parse(localStorage.getItem("nelurio_cart")||"[]"); }catch(e){ return []; } }
+function cartSet(v){ try{ localStorage.setItem("nelurio_cart", JSON.stringify(v)); }catch(e){} cartBadge(); }
+function cartBadge(){ const b = document.getElementById("cart-badge"); if(!b) return; const n = cartGet().length; b.textContent = n; b.classList.toggle("hidden", n === 0); }
+function addToCart(slug){ const c = cartGet(); if(!c.includes(slug)){ c.push(slug); cartSet(c); } const b = document.getElementById("cart-badge"); if(b){ b.animate([{transform:"scale(1.5)"},{transform:"scale(1)"}],{duration:250}); } }
 cartBadge();
 </script>
 <script>
