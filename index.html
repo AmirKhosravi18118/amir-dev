@@ -182,11 +182,21 @@ footer a{color:#c3b4ff}
   .car-progress{display:none}
   .car-viewall{padding:10px 16px;font-size:12px}
 }
-.promo-band{border-top:1px solid rgba(255,255,255,.09);border-bottom:1px solid rgba(255,255,255,.09);background:linear-gradient(90deg,rgba(139,108,255,.12),rgba(77,141,247,.08))}
-.promo-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;flex-wrap:wrap}
-.promo-txt b{display:block;font-size:16px}
-.promo-txt span{color:var(--mut);font-size:13.5px}
-.promo-in .btn{min-height:44px}
+.nl-promo{padding:8px 0}
+.nl-panel{position:relative;overflow:hidden;border:1px solid rgba(139,108,255,.35);border-radius:22px;background:linear-gradient(135deg,rgba(139,108,255,.14),rgba(77,141,247,.06)),#121024;padding:44px;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.nl-panel::before{content:"";position:absolute;top:-140px;right:-120px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(139,108,255,.22),transparent 65%);pointer-events:none}
+.nlp-copy h2{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-1px;margin:12px 0;line-height:1.1}
+.nlp-sub{color:#a49fd0;font-size:15.5px;margin-bottom:26px;max-width:420px}
+.nlp-cta{min-height:50px;padding:12px 26px;font-size:15px;border-radius:14px;display:inline-flex;align-items:center;gap:9px}
+.nlp-apps{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative}
+.nlp-app{display:flex;align-items:center;gap:12px;padding:16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);text-decoration:none;color:#efedff;transition:transform .2s,border-color .2s,background .2s;position:relative}
+.nlp-app:hover{transform:translateY(-3px);border-color:rgba(139,108,255,.55);background:rgba(139,108,255,.08)}
+.nlp-ico{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#8b6cff,#4d8df7);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#fff;flex-shrink:0;box-shadow:0 8px 20px rgba(139,108,255,.35)}
+.nlp-meta{display:flex;flex-direction:column}
+.nlp-meta b{font-size:14.5px}
+.nlp-meta small{color:#a49fd0;font-size:12px}
+.nlp-dot{position:absolute;top:14px;right:14px;width:7px;height:7px;border-radius:50%;background:#5fe1a0;box-shadow:0 0 8px #5fe1a0}
+@media(max-width:900px){.nl-panel{grid-template-columns:1fr;padding:30px}}
 </style>
 </head>
 <body>
@@ -223,15 +233,6 @@ footer a{color:#c3b4ff}
   <div class="photo"><img src="amir.jpg" alt="Amir Khosravi"></div>
 </header>
 
-<section class="promo-band" aria-label="Nelurio platform">
-  <div class="wrap promo-in">
-    <div class="promo-txt">
-      <b>Nelurio Suite</b>
-      <span data-i18n="promo.text">All my products run on one platform — free 1-month trials, accounts and more.</span>
-    </div>
-    <a class="btn btn-p" href="https://nelurio.com" data-i18n="promo.cta">Open nelurio.com ↗</a>
-  </div>
-</section>
 <section id="projects">
   <div class="sec-kicker" data-i18n="proj.kicker">Projects</div>
   <h2 data-i18n="proj.h2">Things I've built and shipped</h2>
@@ -323,6 +324,25 @@ footer a{color:#c3b4ff}
       <div id="carDots" class="car-dots" role="tablist" aria-label="Projects"></div>
       <div class="car-progress" aria-hidden="true"><span id="carBar"></span></div>
       <button id="viewAllBtn" class="btn btn-s car-viewall" type="button" data-i18n="proj.viewall">View all</button>
+    </div>
+  </div>
+</section>
+
+<section class="nl-promo" aria-label="Nelurio Suite store">
+  <div class="wrap">
+    <div class="nl-panel">
+      <div class="nlp-copy">
+        <div class="sec-kicker" data-i18n="promo.kicker">Nelurio Suite — my product store</div>
+        <h2 data-i18n="promo.h2">All my products. One platform. One account.</h2>
+        <p class="nlp-sub" data-i18n="promo.sub">Free 1-month trials on every app — EU-hosted, GDPR-first, no credit card needed.</p>
+        <a class="btn btn-p nlp-cta" href="https://nelurio.com" target="_blank" rel="noopener"><span data-i18n="promo.cta">Explore the platform</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+      </div>
+      <div class="nlp-apps">
+        <a class="nlp-app" href="https://nelurio.com/#p-nelurio" target="_blank" rel="noopener"><span class="nlp-ico">N</span><span class="nlp-meta"><b>Nelurio</b><small>Study AI</small></span><i class="nlp-dot"></i></a>
+        <a class="nlp-app" href="https://nelurio.com/#p-finello" target="_blank" rel="noopener"><span class="nlp-ico">F</span><span class="nlp-meta"><b>Finello</b><small>Finance</small></span><i class="nlp-dot"></i></a>
+        <a class="nlp-app" href="https://nelurio.com/#p-washhalle" target="_blank" rel="noopener"><span class="nlp-ico">W</span><span class="nlp-meta"><b>Washhalle</b><small>Operations</small></span><i class="nlp-dot"></i></a>
+        <a class="nlp-app" href="https://nelurio.com/#p-nexdeutsch" target="_blank" rel="noopener"><span class="nlp-ico">N</span><span class="nlp-meta"><b>NexDeutsch</b><small>German</small></span><i class="nlp-dot"></i></a>
+      </div>
     </div>
   </div>
 </section>
@@ -495,8 +515,10 @@ const I18N = {
 "ct.email":{"en":"Email","de":"E-Mail"},
 "ct.phone":{"en":"Phone","de":"Telefon"},
 "c.viewsuite":{"en":"View in Nelurio Suite ↗","de":"In der Nelurio Suite ansehen ↗"},
-"promo.text":{"en":"All my products run on one platform — free 1-month trials, accounts and more.","de":"Alle meine Produkte laufen auf einer Plattform — gratis 1-Monat-Tests, Konten und mehr."},
-"promo.cta":{"en":"Open nelurio.com ↗","de":"nelurio.com öffnen ↗"},
+"promo.kicker":{"en":"Nelurio Suite — my product store","de":"Nelurio Suite — mein Produkt-Store"},
+"promo.h2":{"en":"All my products. One platform. One account.","de":"Alle meine Produkte. Eine Plattform. Ein Konto."},
+"promo.sub":{"en":"Free 1-month trials on every app — EU-hosted, GDPR-first, no credit card needed.","de":"Gratis 1-Monat-Tests in jeder App — EU-gehostet, DSGVO-first, keine Kreditkarte nötig."},
+"promo.cta":{"en":"Explore the platform","de":"Plattform entdecken"},
 "c.suite":{"en":"Built on Nelurio Suite ↗","de":"Mit der Nelurio Suite gebaut ↗"},
 "c.liveapp":{"en":"Open live app","de":"Live-App öffnen"},
 "c.livesite":{"en":"Open live site","de":"Live-Website öffnen"},
