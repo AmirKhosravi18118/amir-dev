@@ -24,14 +24,14 @@
 
 ## Repo-type gate maps (minimum per stack)
 
-| Gate | Go | TS/JS static site | TS/JS app |
-|---|---|---|---|
-| format | gofmt -l | prettier --check (exempt handcrafted HTML) | prettier --check |
-| lint | go vet + golangci-lint | htmlhint | eslint flat |
-| build | go build | — (no build) | tsc/vite build |
-| tests | go test -race | playwright smoke | vitest + playwright |
-| audit | govulncheck | npm audit ×2 | npm audit ×2 |
-| guards | scripts/ci/check-*.sh with --self-test | check-inline-js, link integrity | bundle-size, env-contract |
+| Gate   | Go                                     | TS/JS static site                          | TS/JS app                 |
+| ------ | -------------------------------------- | ------------------------------------------ | ------------------------- |
+| format | gofmt -l                               | prettier --check (exempt handcrafted HTML) | prettier --check          |
+| lint   | go vet + golangci-lint                 | htmlhint                                   | eslint flat               |
+| build  | go build                               | — (no build)                               | tsc/vite build            |
+| tests  | go test -race                          | playwright smoke                           | vitest + playwright       |
+| audit  | govulncheck                            | npm audit ×2                               | npm audit ×2              |
+| guards | scripts/ci/check-*.sh with --self-test | check-inline-js, link integrity            | bundle-size, env-contract |
 
 ## Daily rules (top of every coding session in any project)
 
@@ -50,12 +50,12 @@
 
 ## Rollout status (2026-09-28)
 
-| Repo | OS docs | CI | smoke | guards | ledger |
-|---|---|---|---|---|---|
-| amir-dev (portfolio) | ✅ | ✅ | ✅ 30 | partial (check-inline-js) | — |
-| nelurio-code | ✅ | ✅ | partial | — | — |
-| job-agent | — | ✅ daily | — | — | — |
-| finello | partial | ✅ (GH Pages CI) | — | — | — |
+| Repo                 | OS docs | CI               | smoke   | guards                    | ledger |
+| -------------------- | ------- | ---------------- | ------- | ------------------------- | ------ |
+| amir-dev (portfolio) | ✅      | ✅               | ✅ 30   | partial (check-inline-js) | —      |
+| nelurio-code         | ✅      | ✅               | partial | —                         | —      |
+| job-agent            | —       | ✅ daily         | —       | —                         | —      |
+| finello              | partial | ✅ (GH Pages CI) | —       | —                         | —      |
 
 Missing rows become tasks in the owning repo — CEO schedules them; no product
 feature work jumps the queue ahead of closing a red row.
