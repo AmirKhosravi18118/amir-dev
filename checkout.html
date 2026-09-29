@@ -260,6 +260,13 @@ h1{font-size:clamp(26px,4vw,36px);font-weight:900;margin:34px 0 6px}
 <p class="note" id="cknote">Secure payment via provider. Premium unlocks after payment — or we email within 24h.</p>
 </div>
 </div>
+<aside class="summary" aria-label="Order summary"><div class="ckcard"><h2>Order summary</h2>
+<div class="sumrow"><span>Product</span><b id="sum-app">—</b></div>
+<div class="sumrow"><span>Plan</span><b id="sum-plan">—</b></div>
+<div class="sumrow"><span>Free trial</span><b>1 month</b></div>
+<div class="sumrow total"><span>Total after trial</span><b id="sum-total">—</b></div>
+<p class="note">Cancel anytime. 1-month free trial, then the plan price — cancel before it ends and you pay nothing.</p>
+</div></aside>
 </div>
 </div>
 <footer><div class="wrap">
@@ -317,6 +324,8 @@ function ckRender() {
   if(sa) sa.textContent = app;
   const sp = document.getElementById('sum-plan');
   if(sp) sp.textContent = plan === 'yearly' ? 'Yearly — 2 months free' : 'Monthly';
+  const st = document.getElementById('sum-total');
+  if(st) st.textContent = '€' + price.toFixed(2) + (plan === 'yearly' ? '/yr' : '/mo');
   ckRenderMethods(app, plan, ckRegion());
 }
 
@@ -326,7 +335,7 @@ function ckRenderMethods(app, plan, region) {
   const methods = [
     ['paypal', 'PayPal', 'Pay with your PayPal account', PAYPAL_ME ? 'https://paypal.me/' + PAYPAL_ME + '/' + APPS[app][plan === 'yearly' ? 'y' : 'm'].toFixed(2) + 'EUR' : ''],
     ['stripe', 'Card — Visa / Mastercard / debit', 'Secure card payment (Stripe)', (PAY_LINKS.stripe || {})[app + '|' + plan + '|' + region] || ''],
-    ['bank', 'Bank transfer (Überweisung)', 'Transfer with reference code', 'bank']
+    ['bank', 'Bank transfer (Überweisung)', 'Transfer with reference code', 'soon']
   ];
   if(region === 'ir') methods.push(['zarinpal', 'Zarinpal — for Iran', 'Pay in IRR via Zarinpal', region === 'ir' ? ((PAY_LINKS.zarinpal || {})[app + '|' + plan + '|' + region] || '') : '']);
   for(const [id, label, sub, url] of methods) {
