@@ -21,7 +21,7 @@
 ## 2. Plans & prices (OWNER-EDITABLE defaults — set in checkout config)
 
 | app        | monthly | yearly (2 months free) |
-|------------|---------|------------------------|
+| ---------- | ------- | ---------------------- |
 | nelurio    | €4.99   | €49.90                 |
 | finello    | €2.99   | €29.90                 |
 | nexdeutsch | €3.49   | €34.90                 |
@@ -32,11 +32,11 @@ Trial: 30 days free per app, once, no card required (already live via
 
 ## 3. Payment providers
 
-| Provider      | Covers                     | Status |
-|---------------|----------------------------|--------|
-| PayPal        | EU + global PayPal balance | link ready — owner connects account |
-| Stripe Checkout | Visa/Mastercard/debit, SEPA — EU-wide | link ready — owner connects account (Stripe Payment Links, no backend needed) |
-| Zarinpal      | Iran (IRR)                 | owner needs an Iranian merchant account; else NOWPayments (crypto) fallback — decision pending owner |
+| Provider        | Covers                                | Status                                                                                               |
+| --------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| PayPal          | EU + global PayPal balance            | link ready — owner connects account                                                                  |
+| Stripe Checkout | Visa/Mastercard/debit, SEPA — EU-wide | link ready — owner connects account (Stripe Payment Links, no backend needed)                        |
+| Zarinpal        | Iran (IRR)                            | owner needs an Iranian merchant account; else NOWPayments (crypto) fallback — decision pending owner |
 
 Checkout page is config-driven: `checkout-config.js` holds each provider's
 payment link per app+plan. Missing link = option shows "coming soon" —

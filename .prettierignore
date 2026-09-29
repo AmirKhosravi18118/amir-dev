@@ -12,4 +12,6 @@ package-lock.json
 # of the deployed site; formatting them is churn with no gate value.
 nexdeutsch.html
 washhalle.html
-
+robots.txt
+sitemap.xml
+legal/
