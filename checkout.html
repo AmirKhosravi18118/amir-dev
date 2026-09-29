@@ -1,239 +1,360 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="en" data-lang="en" data-ga-id="G-M5C9K1JWH4">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Checkout — get your Nelurio Suite product. 1-month free trial or premium plan. PayPal, Card and more.">
 <title>Checkout — Nelurio Suite</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238b6cff'/%3E%3Ctext x='32' y='44' font-size='36' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EN%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --bg:#0d0b1d;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);
-  --txt:#efedff;--mut:#a49fd0;--acc:#8b6cff;--acc2:#4d8df7;
+  --txt:#efedff;--mut:#a49fd0;--acc:#8b6cff;--acc2:#4d8df7;--ok:#5fe1a0;
+  --sp-2:12px;--sp-3:16px;--sp-4:24px;--sp-5:32px;--sp-6:48px;--sp-7:72px;--sp-8:96px;
+  --r-md:18px;--r-lg:22px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 html[lang="fa"]{direction:rtl}
 html[lang="fa"] body{font-family:'Vazirmatn','Inter',system-ui,sans-serif}
-body{background:var(--bg);color:var(--txt);font-family:'Inter','Vazirmatn',system-ui,sans-serif;line-height:1.65}
-.wrap{max-width:860px;margin:0 auto;padding:0 22px}
-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line)}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:900;font-size:18px}
-.logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px}
+body{background:var(--bg);color:var(--txt);font-family:'Inter','Vazirmatn',system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.topbar{background:linear-gradient(90deg,var(--acc),#6a4df0);color:#fff;text-align:center;padding:9px 16px;font-size:13.5px;font-weight:700}
+.topbar a{color:#fff;text-decoration:underline;font-weight:900;margin-inline-start:6px}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(13,11,29,.78);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:900;font-size:17px;flex-shrink:0}
+.logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px;box-shadow:0 6px 18px rgba(139,108,255,.35)}
+nav ul{display:flex;gap:22px;list-style:none;align-items:center}
+nav ul a{color:var(--mut);text-decoration:none;font-size:13.5px;font-weight:600;transition:color .15s;white-space:nowrap}
+nav ul a:hover{color:var(--txt)}
+.nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:3px}
-.lang-toggle button{min-height:36px;padding:6px 13px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer}
+.lang-toggle button{min-height:34px;padding:5px 11px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:11.5px;cursor:pointer}
+.lang-dd{position:relative}
+.lang-dd-btn{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:5px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--txt);font-weight:800;font-size:12px;cursor:pointer}
+.lang-dd-menu{position:absolute;top:calc(100% + 4px);inset-inline-end:0;background:#1a1733;border:1px solid var(--line);border-radius:12px;padding:4px;min-width:130px;display:none;z-index:60;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.lang-dd-menu button{display:block;width:100%;text-align:start;padding:8px 14px;border-radius:8px;border:0;background:transparent;color:var(--txt);font-weight:700;font-size:13px;cursor:pointer}
+.lang-dd-menu button:hover{background:rgba(139,108,255,.15)}
 .lang-toggle button.is-active{background:var(--acc);color:#fff}
-h1{font-size:clamp(26px,4vw,36px);font-weight:900;letter-spacing:-1px;margin:34px 0 6px}
-.sub{color:var(--mut);font-size:15px;margin-bottom:28px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;margin-bottom:22px}
-h2{font-size:16px;font-weight:900;margin-bottom:14px}
-label{display:block;font-size:12.5px;font-weight:800;color:#cfc9ee;margin:14px 0 6px}
-input,select{width:100%;min-height:46px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--txt);font:inherit;font-size:14px}
-input:focus,select:focus{outline:2px solid var(--acc);outline-offset:1px}
-.apps{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media(max-width:640px){.apps{grid-template-columns:1fr}}
-.appopt{cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:rgba(255,255,255,.04);transition:border-color .15s}
+.iconlink{position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--txt);text-decoration:none;transition:border-color .15s}
+.iconlink:hover{border-color:var(--acc)}
+.iconlink svg{width:18px;height:18px}
+.iconlink .cart-badge{position:absolute;top:-7px;inset-inline-end:-7px;background:var(--acc);color:#fff;font-size:10px;font-weight:900;border-radius:999px;padding:1px 5px;min-width:16px;text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 22px;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;border:1px solid transparent;text-decoration:none;transition:transform .15s,border-color .15s,box-shadow .15s;white-space:nowrap}
+.btn svg{width:16px;height:16px;flex-shrink:0}
+.btn-p{background:linear-gradient(135deg,var(--acc),#7452f2);color:#fff;box-shadow:0 10px 26px rgba(139,108,255,.3)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(139,108,255,.42)}
+.btn-s{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--txt)}
+.btn-s:hover{border-color:var(--acc);transform:translateY(-2px)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+section{padding:var(--sp-7) 0}
+.kicker{display:inline-block;font-size:11.5px;font-weight:900;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:var(--sp-2)}
+h2{font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-.6px;margin-bottom:var(--sp-2)}
+.lead{color:var(--mut);max-width:660px;font-size:15.5px;margin-bottom:var(--sp-5)}
+.hero{padding:var(--sp-6) 0 var(--sp-4);position:relative}
+.hero::before{content:"";position:absolute;top:-220px;inset-inline-end:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(139,108,255,.15),transparent 65%);pointer-events:none;animation:breathe 9s ease-in-out infinite;opacity:.6}
+.hero::after{content:"";position:absolute;top:-80px;inset-inline-start:-200px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(77,141,247,.10),transparent 65%);pointer-events:none;animation:breathe 11s ease-in-out infinite reverse;opacity:.6}
+@keyframes breathe{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+.badge i{width:7px;height:7px;border-radius:50%;background:#a585ff;box-shadow:0 0 10px #a585ff;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1{font-size:clamp(38px,5.4vw,62px);font-weight:900;letter-spacing:-2px;line-height:1.04;margin-bottom:var(--sp-3)}
+h1 .grad{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font-size:17px;color:#cfc9ee;max-width:580px;margin-bottom:var(--sp-2)}
+.hero .lead{display:none}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.proof{display:flex;flex-wrap:wrap;gap:10px 22px;margin:var(--sp-5) 0 0}
+.pf{display:inline-flex;align-items:center;gap:8px;color:#cfc9ee;font-size:13px;font-weight:700}
+.pf i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
+.shelfhead{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--sp-4);margin-bottom:var(--sp-4)}
+.shelfhead .lead{margin-bottom:0}
+.shelfnav{display:flex;gap:10px;flex-shrink:0}
+.shelfbtn{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--txt);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:border-color .15s,background .15s,opacity .15s}
+.shelfbtn:hover{border-color:var(--acc);background:rgba(139,108,255,.12)}
+.shelfbtn:disabled{opacity:.35;cursor:default;transform:none!important;box-shadow:none!important}
+.lib{display:flex;gap:var(--sp-4);overflow-x:auto;scroll-snap-type:x mandatory;
+padding:4px 4px var(--sp-4);scroll-padding-inline-start:4px;
+scrollbar-width:thin;scrollbar-color:rgba(139,108,255,.45) transparent;
+-webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);mask-image:linear-gradient(90deg,#000 92%,transparent)}
+.lib::-webkit-scrollbar{height:8px}
+.lib::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:8px}
+.lib::-webkit-scrollbar-thumb{background:rgba(139,108,255,.45);border-radius:8px}
+.prod{position:relative;flex:0 0 min(420px,86%);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;scroll-margin-top:90px}
+.prod:hover{transform:translateY(-6px);border-color:rgba(139,108,255,.55);box-shadow:0 28px 60px rgba(10,6,40,.6)}
+.prod .cover{position:relative;aspect-ratio:16/10;overflow:hidden;background:#141024}
+.prod .cover img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.prod:hover .cover img{transform:scale(1.045)}
+.status{position:absolute;top:14px;inset-inline-end:14px;display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;background:rgba(9,20,14,.78);backdrop-filter:blur(6px);border:1px solid rgba(95,225,160,.35);color:#8af0bf;font-size:10.5px;font-weight:800;letter-spacing:.14em}
+.status i{width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 9px var(--ok);animation:pulse 2s infinite}
+.status.beta{border-color:rgba(139,108,255,.45);color:#c3b4ff}
+.status.beta i{background:#a585ff;box-shadow:0 0 9px #a585ff}
+.prod .body{padding:var(--sp-3) var(--sp-4) var(--sp-4);display:flex;flex-direction:column;gap:var(--sp-2);flex:1}
+.prod .flag{font-size:10.5px;font-weight:900;letter-spacing:.18em;color:var(--acc);text-transform:uppercase}
+.prod h3{font-size:19px;font-weight:900}
+.prod .what{color:var(--mut);font-size:13.8px;flex:1}
+.feat{list-style:none;display:flex;flex-direction:column;gap:6px;margin:2px 0}
+.feat li{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#cfc9ee}
+.feat li svg{width:14px;height:14px;color:var(--ok);flex-shrink:0;margin-top:3px}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:var(--sp-2)}
+.links .btn{min-height:42px;padding:8px 18px;font-size:13px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4)}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp-4)}
+.step .num{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;font-weight:900;color:#fff;margin-bottom:var(--sp-2)}
+.step h3{font-size:16px;font-weight:900;margin-bottom:6px}
+.step p{color:var(--mut);font-size:13.5px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-4)}
+.plan{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--sp-4);display:flex;flex-direction:column;gap:10px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.plan:hover{transform:translateY(-4px);border-color:rgba(139,108,255,.5);box-shadow:0 22px 48px rgba(10,6,40,.55)}
+.plan .ribbon{position:absolute;top:-11px;inset-inline-start:18px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:10px;font-weight:900;letter-spacing:.1em;border-radius:999px;padding:4px 12px}
+.plan h3{font-size:16.5px;font-weight:900}
+.plan .cat{font-size:11px;font-weight:900;letter-spacing:.14em;color:var(--acc);text-transform:uppercase}
+.plan .pr{display:flex;align-items:baseline;gap:6px}
+.plan .pr b{font-size:26px;font-weight:900;letter-spacing:-.5px}
+.plan .pr span{color:var(--mut);font-size:12.5px}
+.plan .yr{font-size:12px;color:var(--mut)}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:6px;flex:1}
+.plan ul li{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#cfc9ee}
+.plan ul li svg{width:14px;height:14px;color:var(--ok);flex-shrink:0;margin-top:3px}
+.support{display:grid;grid-template-columns:1.2fr 1fr;gap:var(--sp-4)}
+.supcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp-4)}
+.supcard h3{font-size:15.5px;font-weight:900;margin-bottom:8px}
+.supcard p{color:var(--mut);font-size:13.5px;margin-bottom:10px}
+.supcard a{color:#c3b4ff;font-weight:700;text-decoration:none}
+.faq{max-width:800px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:var(--sp-3) var(--sp-4);margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:800;font-size:14.5px;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq summary::after{content:"+";color:var(--acc);font-weight:900;font-size:18px;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--mut);font-size:13.5px;margin-top:10px}
+.final{background:linear-gradient(135deg,rgba(139,108,255,.16),rgba(77,141,247,.10));border:1px solid rgba(139,108,255,.35);border-radius:var(--r-lg);padding:var(--sp-6) var(--sp-5);text-align:center}
+.final h2{margin-bottom:var(--sp-2)}
+.final p{color:#cfc9ee;max-width:560px;margin:0 auto var(--sp-4)}
+.final .btn{min-width:220px}
+footer{border-top:1px solid var(--line);padding:var(--sp-6) 0 var(--sp-5);color:var(--mut);font-size:13px}
+footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:var(--sp-5);margin-bottom:var(--sp-5)}
+footer h4{color:#ddd8f5;font-size:13px;font-weight:900;margin-bottom:10px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+footer a{color:#cfc9ee;text-decoration:none}
+footer a:hover{color:var(--txt)}
+footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:var(--sp-4)}
+.consent{position:fixed;inset-inline-start:50%;transform:translateX(-50%);bottom:18px;z-index:90;display:flex;gap:16px;align-items:center;width:min(860px,calc(100% - 32px));padding:16px 20px;border-radius:16px;border:1px solid var(--line);background:rgba(19,15,38,.92);backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(5,3,18,.6)}
+.consent p{font-size:13px;color:#cfc9ee;flex:1;min-width:240px}
+.consent .btn{min-height:44px;padding:8px 18px;font-size:12.5px}
+[hidden]{display:none!important}
+.chatdock{position:fixed;bottom:20px;inset-inline-end:20px;z-index:80;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.chatdock .chat-btns{display:flex;flex-direction:column;gap:10px;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .25s,transform .25s}
+.chatdock.open .chat-btns{opacity:1;pointer-events:auto;transform:none}
+.chatdock .cbtn{display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border-radius:999px;color:#fff;font-size:13px;font-weight:800;text-decoration:none;box-shadow:0 10px 26px rgba(5,3,18,.45)}
+.chatdock .cbtn svg{width:17px;height:17px}
+.chatdock .cbtn.wa{background:#25d366}
+.chatdock .cbtn.mail{background:var(--acc)}
+.chatdock .chat-toggle{width:56px;height:56px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(139,108,255,.45)}
+.chatdock .chat-toggle svg{width:24px;height:24px;color:#fff;transition:transform .25s}
+.chatdock.open .chat-toggle svg{transform:rotate(135deg)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media(max-width:1080px){nav ul{gap:16px}}
+@media(max-width:960px){
+  .steps{grid-template-columns:1fr}
+  .support{grid-template-columns:1fr}
+  nav ul{display:none}
+  section{padding:var(--sp-6) 0}
+  .hero{padding:var(--sp-6) 0 var(--sp-4)}
+  footer .cols{grid-template-columns:1fr}
+}
+
+/* checkout overrides */
+.wrap{max-width:1080px}
+.ckgrid{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;align-items:start;margin-top:var(--sp-5)}
+@media(max-width:860px){.ckgrid{grid-template-columns:1fr}}
+.ckcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:26px;margin-bottom:20px}
+.ckcard h2{font-size:15px;font-weight:900;margin-bottom:14px;color:#ddd8f5}
+.ckcard label{display:block;font-size:12.5px;font-weight:800;color:#cfc9ee;margin:14px 0 6px}
+.ckcard input,.ckcard select{width:100%;min-height:46px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(13,11,29,.5);color:var(--txt);font:inherit;font-size:14px}
+.ckcard input:focus,.ckcard select:focus{outline:2px solid var(--acc);outline-offset:1px}
+.apps{display:flex;flex-direction:column;gap:10px}
+.appopt{cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:13px 16px;background:rgba(13,11,29,.5);display:flex;justify-content:space-between;align-items:center;gap:10px;transition:border-color .15s}
 .appopt:has(input:checked){border-color:var(--acc);background:rgba(139,108,255,.12)}
 .appopt input{display:none}
-.appopt b{display:block;font-size:14.5px}
+.appopt b{font-size:14.5px}
 .appopt small{color:var(--mut);font-size:12px}
-.methods{display:grid;gap:10px}
-.method{cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:rgba(255,255,255,.04);display:flex;gap:12px;align-items:flex-start}
+.methods{display:flex;flex-direction:column;gap:10px}
+.method{cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:rgba(13,11,29,.5);display:flex;gap:12px;align-items:flex-start}
 .method:has(input:checked){border-color:var(--acc);background:rgba(139,108,255,.12)}
 .method input{width:auto;min-height:0;margin-top:4px}
 .method b{font-size:14px;display:block}
 .method small{color:var(--mut);font-size:12px}
-.method .soon{margin-inline-start:auto;font-size:10.5px;font-weight:900;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:3px 9px}
-.summary{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-top:1px solid var(--line);margin-top:18px;font-size:14px}
-.summary b{font-size:18px}
+.method .soon{margin-inline-start:auto;font-size:10.5px;font-weight:900;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:3px 9px;flex-shrink:0}
+.summary{position:sticky;top:80px}
+.sumrow{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;color:#cfc9ee;padding:7px 0}
+.sumrow.total{border-top:1px solid var(--line);margin-top:8px;padding-top:14px;font-size:15px;color:var(--txt)}
+.sumrow.total b{font-size:20px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 26px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;border:1px solid transparent;width:100%}
 .btn-p{background:linear-gradient(135deg,var(--acc),#7452f2);color:#fff}
 .btn-p:disabled{opacity:.45;cursor:not-allowed}
 .note{font-size:12.5px;color:var(--mut);margin-top:10px}
-.ok{border-color:rgba(95,225,160,.4)!important;background:rgba(95,225,160,.08)!important;color:#8af0bf;font-weight:700}
-footer{border-top:1px solid var(--line);padding:22px;color:var(--mut);font-size:12.5px;text-align:center;margin-top:40px}
-footer a{color:#cfc9ee}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.note.err{color:#ff9d9d}
+.note.ok{color:var(--ok);font-weight:700}
+.bankdetail{margin-top:10px;display:none}
+.bankdetail.show{display:block}
+.bankdetail .row{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.bankdetail .row b{font-family:monospace;user-select:all}
+h1{font-size:clamp(26px,4vw,36px);font-weight:900;margin:34px 0 6px}
+.sub{color:var(--mut);font-size:15px;margin-bottom:28px}
 </style>
 </head>
 <body>
-<nav>
-  <a class="logo" href="/"><span class="mark">N</span>Nelurio</a>
-  <div class="lang-toggle" role="group" aria-label="Language">
-    <button id="btn-en" class="is-active" onclick="setLang('en')">EN</button>
-    <button id="btn-de" onclick="setLang('de')">DE</button>
-    <button id="btn-fa" onclick="setLang('fa')">فا</button>
-  </div>
-</nav>
-<div class="wrap">
-  <h1 data-i18n="ck.h1">Checkout</h1>
-  <p class="sub" data-i18n="ck.sub">Pick your product, choose a plan and pay — your premium unlocks right after.</p>
-
-  <div class="card">
-    <h2 data-i18n="ck.s1">1 · Your product</h2>
-    <div class="apps" id="apps"><!-- filled by script --></div>
-  </div>
-
-  <div class="card">
-    <h2 data-i18n="ck.s2">2 · Plan &amp; account</h2>
-    <label for="plan" data-i18n="ck.plan">Plan</label>
-    <select id="plan">
-      <option value="monthly" data-i18n="ck.monthly">Monthly</option>
-      <option value="yearly" id="opt-yearly">Yearly — 2 months free</option>
-    </select>
-    <label for="email" data-i18n="ck.email">Your account email</label>
-    <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
-    <label for="region" data-i18n="ck.region">Payment region</label>
-    <select id="region">
-      <option value="eu" data-i18n="ck.eu">Europe / International</option>
-      <option value="ir" data-i18n="ck.ir">Iran</option>
-    </select>
-  </div>
-
-  <div class="card">
-    <h2 data-i18n="ck.s3">3 · Payment method</h2>
-    <div class="methods" id="methods"><!-- filled by script --></div>
-    <div class="card" id="bankbox" style="display:none;background:rgba(139,108,255,.08);border-color:rgba(139,108,255,.35)">
-      <h2 data-i18n="ck.bank.t">Bank transfer (Überweisung)</h2>
-      <div class="row"><span data-i18n="ck.bank.h">Holder</span><b>AMIR KHOSRAVI</b></div>
-      <div class="row"><span>IBAN</span><b>DE00 0000 0000 0000 0000 00</b></div>
-      <div class="row"><span>BIC</span><b>XXXXXXXX</b></div>
-      <div class="row"><span data-i18n="ck.bank.r">Reference</span><b id="bankref">—</b></div>
-      <p class="note" data-i18n="ck.bank.n">Transfer the total with your email as reference. Your premium activates within 24h of receipt.</p>
+<nav><div class="wrap">
+  <a class="logo" href="/"><span class="mark">N</span>Nelurio<b>&nbsp;Suite</b></a>
+  <ul>
+    <li><a href="#products" data-i18n="nav.products">Products</a></li>
+    <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
+    <li><a href="#how" data-i18n="nav.how">How it works</a></li>
+    <li><a href="#support" data-i18n="nav.support">Support</a></li>
+    <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-dd">
+      <button class="lang-dd-btn" id="btn-lang" onclick="toggleLangDD()" aria-label="Language">
+        <span id="lang-label">EN</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="lang-dd-menu" id="lang-dd-menu">
+        <button onclick="setLang('en')">English</button>
+        <button onclick="setLang('de')">Deutsch</button>
+        <button onclick="setLang('fa')">فارسی</button>
+      </div>
     </div>
-    <div class="summary"><span data-i18n="ck.total">Total</span> <b id="total">—</b></div>
-    <button class="btn btn-p" id="pay" onclick="pay()" data-i18n="ck.pay">Continue to payment</button>
-    <p class="note" id="note" data-i18n="ck.note">Secure payment via the provider. Your premium unlocks automatically after payment — or we email you within 24h.</p>
+    <a class="iconlink" href="/account.html" aria-label="My account" data-i18n-aria="ac.navacct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+    <a class="iconlink" href="checkout.html?cart=1" aria-label="Cart" data-i18n-aria="ac.navcart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span id="cart-badge" class="cart-badge hidden">0</span></a>
   </div>
+</div></nav>
+<div class="wrap">
+<h1>Checkout</h1>
+<p class="sub">Pick your product, choose a plan and pay.</p>
+<div class="ckgrid">
+<div>
+<div class="ckcard"><h2>1 · Your product</h2><div class="apps" id="apps"></div></div>
+<div class="ckcard"><h2>2 · Plan &amp; account</h2>
+<label for="plan">Plan</label>
+<select id="plan" onchange="ckRender()"><option value="monthly">Monthly</option><option value="yearly">Yearly — 2 months free</option></select>
+<label for="email">Your account email</label>
+<input id="email" type="email" placeholder="you@example.com" autocomplete="email">
+<label for="region">Payment region</label>
+<select id="region" onchange="ckRender()"><option value="eu">Europe / International</option><option value="ir">Iran</option></select>
 </div>
-<footer>© 2026 Nelurio Suite · by Amir Khosravi · <a href="/">amir-khosravi.de</a></footer>
+<div class="ckcard"><h2>3 · Payment method</h2>
+<div class="methods" id="methods"></div>
+<div class="bankdetail" id="bankdetail">
+<div class="brow"><span>Holder</span><b>AMIR KHOSRAVI</b></div>
+<div class="brow"><span>IBAN</span><b>[OWNER: FILL IBAN]</b></div>
+<div class="brow"><span>BIC</span><b>[OWNER: FILL BIC]</b></div>
+<div class="brow"><span>Reference</span><b id="bankref">—</b></div>
+<p class="note">Transfer the total with the reference above. Premium activates within 24h.</p>
+</div>
+<button class="btn btn-p" id="pay" onclick="ckPay()" style="width:100%;margin-top:16px">Continue to payment</button>
+<p class="note" id="cknote">Secure payment via provider. Premium unlocks after payment — or we email within 24h.</p>
+</div>
+</div>
+</div>
+</div>
+<footer><div class="wrap">
+  <div class="cols">
+    <div>
+      <h4>Nelurio Suite</h4>
+      <ul><li data-i18n="ft.about">Four production-ready apps on one EU-hosted platform — built and operated by Amir Khosravi.</li></ul>
+    </div>
+    <div><h4 data-i18n="ft.legal">Legal</h4><ul>
+      <li><a href="/legal/impressum.html" data-i18n="f.imprint">Impressum</a></li>
+      <li><a href="/legal/privacy.html" data-i18n="f.privacy">Privacy Policy</a></li>
+      <li><a href="/legal/terms.html" data-i18n="f.terms">Terms &amp; Conditions</a></li>
+      <li><a href="/legal/widerruf.html" data-i18n="f.withdraw">Right of Withdrawal</a></li>
+      <li><a href="mailto:support@nelurio.com" data-i18n="f.contact">Contact / Support</a></li>
+    </ul></div>
+  </div>
+  <div class="base">
+    <span>© 2026 Amir Khosravi · Nelurio Suite</span>
+    <span><a href="https://amir-khosravi.de" data-i18n="f.portfolio">Portfolio</a></span>
+  </div>
+</div></footer>
 
 <script>
-/* OWNER-EDITABLE — two ways to connect payments:
-   1) PAYPAL_ME: put ONLY your PayPal.me username (e.g. "amirkhosravi").
-      Every PayPal button then opens paypal.me/<user>/<amount> EUR prefilled.
-   2) PAY_LINKS: exact provider URLs per app+plan+region (Stripe Payment
-      Links, Zarinpal requests, custom PayPal links). Empty = coming soon. */
 const PAYPAL_ME = "";
-const PAY_LINKS = {
-  paypal: {}, stripe: {}, zarinpal: {}
-};
-function discountPct(slug){
-  const a = APPS[slug];
-  const full = a.m * 12;
-  return Math.round((1 - a.y / full) * 100);
-}
+const PAY_LINKS = { paypal: {}, stripe: {}, zarinpal: {} };
 const APPS = {
   nelurio:    { m: 4.99, y: 49.90 },
   finello:    { m: 2.99, y: 29.90 },
   nexdeutsch: { m: 3.49, y: 34.90 },
   washhalle:  { m: 9.99, y: 99.90 }
 };
-const I18N = {
-"ck.h1":{"en":"Checkout","de":"Kasse","fa":"تسویه حساب"},
-"ck.sub":{"en":"Pick your product, choose a plan and pay — your premium unlocks right after.","de":"Wähle dein Produkt, wähle einen Plan und zahle — dein Premium wird direkt freigeschaltet.","fa":"محصولت را انتخاب کن، پلن را بچین و پرداخت کن — پریمیومت بلافاصله فعال می‌شود."},
-"ck.s1":{"en":"1 · Your product","de":"1 · Dein Produkt","fa":"۱ · محصول شما"},
-"ck.s2":{"en":"2 · Plan & account","de":"2 · Plan & Konto","fa":"۲ · پلن و حساب"},
-"ck.s3":{"en":"3 · Payment method","de":"3 · Zahlungsmethode","fa":"۳ · روش پرداخت"},
-"ck.plan":{"en":"Plan","de":"Plan","fa":"پلن"},
-"ck.monthly":{"en":"Monthly","de":"Monatlich","fa":"ماهانه"},
-"ck.yearly":{"en":"Yearly — 2 months free","de":"Jährlich — 2 Monate gratis","fa":"سالانه — ۲ ماه رایگان"},
-"ck.email":{"en":"Your account email","de":"Deine Konto-E-Mail","fa":"ایمیل حسابت"},
-"ck.region":{"en":"Payment region","de":"Zahlungsregion","fa":"منطقه پرداخت"},
-"ck.eu":{"en":"Europe / International","de":"Europa / International","fa":"اروپا / بین‌المللی"},
-"ck.ir":{"en":"Iran","de":"Iran","fa":"ایران"},
-"ck.total":{"en":"Total","de":"Gesamt","fa":"جمع"},
-"ck.pay":{"en":"Continue to payment","de":"Weiter zur Zahlung","fa":"ادامه به پرداخت"},
-"ck.trialline":{"en":"1-month free trial, then {p}/mo","de":"1 Monat gratis, danach {p}/Monat","fa":"۱ ماه رایگان، سپس {p} در ماه"},
-"ck.note":{"en":"Secure payment via the provider. Your premium unlocks automatically after payment — or we email you within 24h.","de":"Sichere Zahlung über den Anbieter. Dein Premium wird nach der Zahlung automatisch freigeschaltet — oder wir mailen dir innerhalb von 24h.","fa":"پرداخت امن از طریق درگاه. پریمیومت بعد از پرداخت خودکار فعال می‌شود — یا تا ۲۴ ساعت ایمیل می‌گیرید."},
-"ck.foot":{"en":"© 2026 Nelurio Suite · by Amir Khosravi · ","de":"© 2026 Nelurio Suite · von Amir Khosravi · ","fa":"© ۲۰۲۶ Nelurio Suite · ساخته امیر خسروی · "},
-"ck.m.paypal":{"en":"PayPal","de":"PayPal","fa":"پی‌پال"},
-"ck.m.paypal.b":{"en":"Pay with your PayPal account","de":"Mit deinem PayPal-Konto zahlen","fa":"پرداخت با حساب پی‌پال"},
-"ck.m.stripe":{"en":"Card — Visa / Mastercard / debit","de":"Karte — Visa / Mastercard / Debit","fa":"کارت — ویزا / مسترکارت / دِبیت"},
-"ck.m.stripe.b":{"en":"Secure card payment (Stripe)","de":"Sichere Kartenzahlung (Stripe)","fa":"پرداخت امن کارتی (استریپ)"},
-"ck.m.zarinpal":{"en":"Zarinpal — for Iran","de":"Zarinpal — für Iran","fa":"زرین‌پال — برای ایران"},
-"ck.m.zarinpal.b":{"en":"Pay in IRR via Zarinpal","de":"In IRR über Zarinpal zahlen","fa":"پرداخت به تومان با زرین‌پال"},
-"ck.soon":{"en":"Coming soon","de":"Demnächst","fa":"به‌زودی"},
-"ck.app.names":{"nelurio":"Nelurio","finello":"Finello","nexdeutsch":"NexDeutsch","washhalle":"Washhalle"},
-"ck.err.method":{"en":"Choose a payment method first.","de":"Wähle zuerst eine Zahlungsmethode.","fa":"اول یک روش پرداخت انتخاب کن."},
-"ck.err.email":{"en":"Enter your account email.","de":"Gib deine Konto-E-Mail ein.","fa":"ایمیل حسابت را وارد کن."},
-"ck.err.soon":{"en":"This method is being connected — coming within days. Pick another or leave your email: we'll mail you the payment link.","de":"Diese Methode wird gerade angebunden — in wenigen Tagen. Wähle eine andere oder lass deine E-Mail: wir mailen dir den Zahlungslink.","fa":"این درگاه در حال وصل شدن است — تا چند روز آینده. روش دیگری انتخاب کن یا ایمیلت را بگذار تا لینک پرداخت را برایت بفرستیم."},
-"ck.ok.mail":{"en":"Noted! We'll email your payment link within 24h.","de":"Notiert! Wir mailen dir deinen Zahlungslink innerhalb von 24h.","fa":"ثبت شد! تا ۲۴ ساعت آینده لینک پرداخت را ایمیل می‌کنیم."}
-};
-function setLang(l){
-  document.documentElement.setAttribute('data-lang', l);
-  document.documentElement.lang = l;
-  document.documentElement.dir = (l === 'fa') ? 'rtl' : 'ltr';
-  ['en','de','fa'].forEach(x=>document.getElementById('btn-'+x).classList.toggle('is-active', x===l));
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const v = I18N[el.getAttribute('data-i18n')];
-    if(v && v[l]) el.textContent = v[l];
-  });
-  render();
-  try{localStorage.setItem('ck-lang',l)}catch(e){}
-}
-function t(k){const v=I18N[k];const l=document.documentElement.lang||'en';return (v&&v[l])?v[l]:(v?v.en:'');}
-function money(n){return '€'+n.toFixed(2);}
-function selectedApp(){ const el=document.querySelector('input[name=app]:checked'); return el?el.value:'nelurio'; }
-function updateTotal(){
-  if(!window.__multi) return;
-  let sum = 0; const plan = document.getElementById('plan').value;
-  document.querySelectorAll('input[name="app"]:checked').forEach(cb=>{ sum += APPS[cb.value][plan === 'yearly' ? 'y' : 'm']; });
-  document.getElementById('total').textContent = money(sum) + (plan==='monthly' ? ' / '+t('ck.monthly').toLowerCase() : '');
-}
-function render(){
-  const app = selectedApp(), plan = document.getElementById('plan').value, region = document.getElementById('region').value;
-  const price = APPS[app][plan === 'yearly' ? 'y' : 'm'];
-  const opt = document.getElementById('opt-yearly');
-  if(opt) opt.textContent = t('ck.yearly') + '  (−' + discountPct(app) + '%)';
-  document.getElementById('total').textContent = money(price) + (plan==='monthly' ? t('ck.monthly')?' / '+t('ck.monthly').toLowerCase():'' : ' / '+t('ck.yearly').split('—')[0].trim().toLowerCase());
-  const box = document.getElementById('methods'); box.innerHTML = '';
-  [['paypal','ck.m.paypal','ck.m.paypal.b'],['stripe','ck.m.stripe','ck.m.stripe.b']].forEach(([id,t1,t2])=>{
-    const link = (PAY_LINKS[id]||{})[app+'|'+plan+'|'+region] || '';
-    const soon = !link;
-    const d = document.createElement('label'); d.className='method';
-    d.innerHTML = '<input type="radio" name="method" value="'+id+'" data-link="'+(soon?'':link)+'" '+(soon?'data-soon="1"':'')+(id==='paypal'?' checked':'')+'><span><b>'+t(t1)+'</b><small>'+t(t2)+'</small></span>'+(soon?'<span class="soon">'+t('ck.soon')+'</span>':'');
-    box.appendChild(d);
-  });
-  const zLink = (PAY_LINKS.zarinpal||{})[app+'|'+plan+'|ir'] || '';
-  if(region === 'ir'){
-    const d = document.createElement('label'); d.className='method';
-    d.innerHTML = '<input type="radio" name="method" value="zarinpal" data-link="'+zLink+'" '+(zLink?'':'data-soon="1"')+'><span><b>'+t('ck.m.zarinpal')+'</b><small>'+t('ck.m.zarinpal.b')+'</small></span>'+(zLink?'':'<span class="soon">'+t('ck.soon')+'</span>');
-    box.appendChild(d);
-  }
-}
-function initApps(){
-  const box = document.getElementById('apps');
+function ckSelApp() { const el = document.querySelector('input[name="app"]:checked'); return el ? el.value : 'nelurio'; }
+function ckSelPlan() { const el = document.getElementById('plan'); return el ? el.value : 'monthly'; }
+function ckRegion() { const el = document.getElementById('region'); return el ? el.value : 'eu'; }
+
+function ckInitApps() {
+  const box = document.getElementById('apps'); if(!box) return;
   const params = new URLSearchParams(location.search);
   const pre = params.get('app');
+  const cart = params.get('cart') === '1' ? cartItems() : [];
   const slugs = cart.length ? cart : Object.keys(APPS);
-  window.__multi = cart.length > 0;
-  slugs.forEach(slug=>{
-    const d = document.createElement('label'); d.className='appopt';
-    if(window.__multi){
-      d.innerHTML = '<input type="checkbox" name="app" value="'+slug+'" checked><b>'+(I18N['ck.app.names'][slug]||slug)+'</b><small>'+t('ck.trialline').replace('{p}', money(APPS[slug].m))+'</small>';
-      d.querySelector('input').addEventListener('change', updateTotal);
-    } else {
-      d.innerHTML = '<input type="radio" name="app" value="'+slug+'" '+(slug===(pre&&APPS[pre]?pre:'nelurio')?'checked':'')+'><b>'+(I18N['ck.app.names'][slug]||slug)+'</b><small>'+t('ck.trialline').replace('{p}', money(APPS[slug].m))+'</small>';
-    }
+  slugs.forEach(slug => {
+    const d = document.createElement('label'); d.className = 'appopt';
+    d.innerHTML = '<input type="radio" name="app" value="' + slug + '" ' + (slug === (pre && APPS[pre] ? pre : 'nelurio') ? 'checked' : '') + '><b>' + slug + '</b><small>1-month free trial · then €' + APPS[slug].m.toFixed(2) + '/mo</small>';
+    d.querySelector('input').addEventListener('change', ckRender);
     box.appendChild(d);
   });
-  box.addEventListener('change', render);
-  document.getElementById('plan').addEventListener('change', render);
-  document.getElementById('region').addEventListener('change', render);
 }
-function pay(){
-  const email = document.getElementById('email').value.trim();
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ alert(t('ck.err.email')); return; }
-  const m = document.querySelector('input[name=method]:checked');
-  if(!m){ alert(t('ck.err.method')); return; }
-  if(m.dataset.soon){ alert(t('ck.err.soon') + '\n' + email); document.getElementById('note').className='note ok'; document.getElementById('note').textContent = t('ck.ok.mail'); return; }
-  window.location.href = m.dataset.link + '?prefilled_email=' + encodeURIComponent(email);
+
+function ckRender() {
+  const app = ckSelApp(), plan = ckSelPlan();
+  if(!APPS[app]) return;
+  const price = APPS[app][plan === 'yearly' ? 'y' : 'm'];
+  const sa = document.getElementById('sum-app');
+  if(sa) sa.textContent = app;
+  const sp = document.getElementById('sum-plan');
+  if(sp) sp.textContent = plan === 'yearly' ? 'Yearly — 2 months free' : 'Monthly';
+  ckRenderMethods(app, plan, ckRegion());
 }
-try{const saved=localStorage.getItem('lang'); if(saved) setLang(saved); else setLang('en');}catch(e){setLang('en')}
-initApps();
+
+function ckRenderMethods(app, plan, region) {
+  const box = document.getElementById('methods'); if(!box) return;
+  box.innerHTML = '';
+  const methods = [
+    ['paypal', 'PayPal', 'Pay with your PayPal account', PAYPAL_ME ? 'https://paypal.me/' + PAYPAL_ME + '/' + APPS[app][plan === 'yearly' ? 'y' : 'm'].toFixed(2) + 'EUR' : ''],
+    ['stripe', 'Card — Visa / Mastercard / debit', 'Secure card payment (Stripe)', (PAY_LINKS.stripe || {})[app + '|' + plan + '|' + region] || ''],
+    ['bank', 'Bank transfer (Überweisung)', 'Transfer with reference code', 'bank']
+  ];
+  if(region === 'ir') methods.push(['zarinpal', 'Zarinpal — for Iran', 'Pay in IRR via Zarinpal', region === 'ir' ? ((PAY_LINKS.zarinpal || {})[app + '|' + plan + '|' + region] || '') : '']);
+  for(const [id, label, sub, url] of methods) {
+    const lab = document.createElement('label'); lab.className = 'method';
+    const soon = !url || url === 'soon';
+    lab.innerHTML = '<input type="radio" name="method" value="' + id + '" data-url="' + (soon ? 'soon' : url) + '"' + (id === 'paypal' ? ' checked' : '') + '><span><b>' + label + '</b><small>' + sub + '</small></span>' + (soon ? '<span class="soon">Coming soon</span>' : '');
+    box.appendChild(lab);
+  }
+}
+
+function ckPay() {
+  const email = document.getElementById('email');
+  if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())) { note('Enter your account email.', true); return; }
+  const m = document.querySelector('input[name="method"]:checked');
+  if(!m) { note('Choose a payment method.', true); return; }
+  const url = m.dataset.url;
+  if(!url || url === 'soon') { note('This method is coming soon — pick another.', true); return; }
+  window.location.href = url;
+}
+
+function note(text, isErr) {
+  const n = document.getElementById('cknote');
+  if(n) { n.textContent = text; n.className = 'note ' + (isErr ? 'err' : 'ok'); }
+}
+
+// ---- init ----
+ckInitApps();
+ckRender();
 </script>
 </body>
 </html>
