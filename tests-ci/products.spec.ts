@@ -27,10 +27,10 @@ test("2: all cover images load", async ({ page }) => {
 test("3: every product carries its live link", async ({ page }) => {
   await page.goto("/products.html");
   for (const url of [
-    "https://app.nelurio.com",
-    "https://finello.nelurio.com",
-    "https://washhalle.nelurio.com",
-    "https://nexdeutsch.nelurio.com",
+    "https://nelurio.com/#p-nelurio",
+    "https://nelurio.com/#p-finello",
+    "https://nelurio.com/#p-washhalle",
+    "https://nelurio.com/#p-nexdeutsch",
     "https://www.saadtattoo.de",
   ]) {
     await expect(page.locator(`.prod a[href="${url}"]`)).toHaveCount(1);

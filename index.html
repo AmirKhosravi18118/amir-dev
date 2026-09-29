@@ -178,6 +178,11 @@ footer a{color:#c3b4ff}
   .car-progress{display:none}
   .car-viewall{padding:10px 16px;font-size:12px}
 }
+.promo-band{border-top:1px solid rgba(255,255,255,.09);border-bottom:1px solid rgba(255,255,255,.09);background:linear-gradient(90deg,rgba(139,108,255,.12),rgba(77,141,247,.08))}
+.promo-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;flex-wrap:wrap}
+.promo-txt b{display:block;font-size:16px}
+.promo-txt span{color:var(--mut);font-size:13.5px}
+.promo-in .btn{min-height:44px}
 </style>
 </head>
 <body>
@@ -214,6 +219,15 @@ footer a{color:#c3b4ff}
   <div class="photo"><img src="amir.jpg" alt="Amir Khosravi"></div>
 </header>
 
+<section class="promo-band" aria-label="Nelurio platform">
+  <div class="wrap promo-in">
+    <div class="promo-txt">
+      <b>Nelurio Suite</b>
+      <span data-i18n="promo.text">All my products run on one platform — free 1-month trials, accounts and more.</span>
+    </div>
+    <a class="btn btn-p" href="https://nelurio.com" data-i18n="promo.cta">Open nelurio.com ↗</a>
+  </div>
+</section>
 <section id="projects">
   <div class="sec-kicker" data-i18n="proj.kicker">Projects</div>
   <h2 data-i18n="proj.h2">Things I've built and shipped</h2>
@@ -234,7 +248,7 @@ footer a{color:#c3b4ff}
             <div class="tags"><span class="tag">Go / chi</span><span class="tag">PostgreSQL</span><span class="tag">React 19</span><span class="tag">OpenAI</span><span class="tag">PWA</span><span class="tag">10 languages</span><span class="tag">GDPR</span></div>
             <p class="build" data-i18n="p1.build">Record a lecture → AI writes the summary, schedules spaced-repetition reviews, generates flashcards & quizzes, and a tutor answers from your own materials with citations. Built solo — backend, frontend, AI, infra, deployment.</p>
             <div class="f-links">
-              <a class="btn btn-p" href="https://app.nelurio.com" target="_blank" rel="noopener" data-i18n="c.liveapp">Open live app</a>
+              <a class="btn btn-p" href="https://nelurio.com/#p-nelurio" target="_blank" rel="noopener" data-i18n="c.viewsuite">View in Nelurio Suite ↗</a>
               <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/nelurio" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
             </div>
           </div>
@@ -248,7 +262,7 @@ footer a{color:#c3b4ff}
             <div class="tags"><span class="tag">Learning platform</span><span class="tag">Spaced practice</span><span class="tag">German market</span></div>
             <p class="build" data-i18n="p2.build">My earlier product for German learners — vocabulary training with structured practice sessions. Nelurio's review engine was born from what I learned building this one. Currently being reworked with everything I know today.</p>
             <div class="f-links">
-              <a class="btn btn-p" href="https://nexdeutsch.nelurio.com" target="_blank" rel="noopener" data-i18n="c.liveapp">Open live app</a>
+              <a class="btn btn-p" href="https://nelurio.com/#p-nexdeutsch" target="_blank" rel="noopener" data-i18n="c.viewsuite">View in Nelurio Suite ↗</a>
               <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
             </div>
           </div>
@@ -262,7 +276,7 @@ footer a{color:#c3b4ff}
             <div class="tags"><span class="tag">Real business</span><span class="tag">Operations</span><span class="tag">In daily use</span></div>
             <p class="build" data-i18n="p3.build">Built for an actual car-wash location: day-to-day operations, tracking and workflow. My first lesson in software for a real customer with real constraints — not a tutorial project.</p>
             <div class="f-links">
-              <a class="btn btn-p" href="https://washhalle.nelurio.com" target="_blank" rel="noopener" data-i18n="c.liveapp">Open live app</a>
+              <a class="btn btn-p" href="https://nelurio.com/#p-washhalle" target="_blank" rel="noopener" data-i18n="c.viewsuite">View in Nelurio Suite ↗</a>
               <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/Waschhalle_App" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
             </div>
           </div>
@@ -289,7 +303,7 @@ footer a{color:#c3b4ff}
             <div class="tags"><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS 4</span><span class="tag">Vite</span><span class="tag">Vitest</span><span class="tag">Student finance</span></div>
             <p class="build" data-i18n="p5.build">Money, sorted: budget calendar with recurring payments and due-statuses, expenses and transactions (manual or imported), and a tax overview for student jobs. Built as a product, not a demo — shipped under a spec-and-issues engineering OS with CI and automated smoke tests.</p>
             <div class="f-links">
-              <a class="btn btn-p" href="https://finello.nelurio.com" target="_blank" rel="noopener" data-i18n="c.liveapp">Open live app</a>
+              <a class="btn btn-p" href="https://nelurio.com/#p-finello" target="_blank" rel="noopener" data-i18n="c.viewsuite">View in Nelurio Suite ↗</a>
               <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/finello" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
             </div>
           </div>
@@ -463,6 +477,9 @@ const I18N = {
 "ct.lead":{"en":"If you have a Werkstudent or Praktikum opening — or just want to look at the code — I'd love a 5-minute live demo of Nelurio. No slides.","de":"Wenn du eine Werkstudenten- oder Praktikumsstelle hast — oder einfach den Code sehen willst — zeige ich dir Nelurio gerne live in 5 Minuten. Ohne Folien."},
 "ct.email":{"en":"Email","de":"E-Mail"},
 "ct.phone":{"en":"Phone","de":"Telefon"},
+"c.viewsuite":{"en":"View in Nelurio Suite ↗","de":"In der Nelurio Suite ansehen ↗"},
+"promo.text":{"en":"All my products run on one platform — free 1-month trials, accounts and more.","de":"Alle meine Produkte laufen auf einer Plattform — gratis 1-Monat-Tests, Konten und mehr."},
+"promo.cta":{"en":"Open nelurio.com ↗","de":"nelurio.com öffnen ↗"},
 "c.liveapp":{"en":"Open live app","de":"Live-App öffnen"},
 "c.livesite":{"en":"Open live site","de":"Live-Website öffnen"},
 "c.ghpriv":{"en":"GitHub (private)","de":"GitHub (privat)"}
