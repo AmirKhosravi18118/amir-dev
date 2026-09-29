@@ -5,6 +5,8 @@ const step = () => undefined;
 
 test("shelf autoplay: advances within 9s and dots follow", async ({ page }) => {
   await page.goto("/nelurio.html");
+  // the autoplay only ticks while the shelf is in view (by design) — bring it into view first
+  await page.locator("#products").scrollIntoViewIfNeeded();
   const lib = page.locator(".lib");
   await expect(page.locator("#shelfdots button")).toHaveCount(4);
   await expect(page.locator("#shelfdots button >> nth=0")).toHaveClass(/active/);
