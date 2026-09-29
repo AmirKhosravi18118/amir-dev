@@ -190,12 +190,16 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 .method b{font-size:14px;display:block}
 .method small{color:var(--mut);font-size:12px}
 .method .soon{margin-inline-start:auto;font-size:10.5px;font-weight:900;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:3px 9px;flex-shrink:0}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:12px;padding:4px}
+.seg button{min-height:42px;border-radius:9px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:13px;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s;padding:4px 8px}
+.seg button:hover{color:var(--txt)}
+.seg button.is-active{background:linear-gradient(135deg,var(--acc),#7452f2);color:#fff;box-shadow:0 6px 16px rgba(139,108,255,.35)}
 @media(min-width:861px){
   .ckgrid{height:calc(100vh - 250px);min-height:460px}
-  .ckgrid>div:first-child{overflow-y:auto;padding-inline-end:8px;scrollbar-width:thin;scrollbar-color:rgba(139,108,255,.45) transparent}
+  .ckgrid>div:first-child{height:100%;min-height:0;overflow-y:auto;padding-inline-end:8px;scrollbar-width:thin;scrollbar-color:rgba(139,108,255,.45) transparent;scroll-behavior:auto}
   .ckgrid>div:first-child::-webkit-scrollbar{width:8px}
   .ckgrid>div:first-child::-webkit-scrollbar-thumb{background:rgba(139,108,255,.45);border-radius:8px}
-  .summary{position:static;height:100%;overflow-y:auto}
+  .summary{position:static;height:100%;min-height:0;overflow-y:auto}
 }
 .ckrow{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13.5px;color:#cfc9ee;padding:9px 0;border-bottom:1px dashed var(--line)}
 .ckrow:last-of-type{border-bottom:0}
@@ -253,12 +257,18 @@ h1{font-size:clamp(26px,4vw,36px);font-weight:900;margin:34px 0 6px}
 <div>
 <div class="ckcard"><h2>1 · Your product</h2><div class="apps" id="apps"></div></div>
 <div class="ckcard"><h2>2 · Plan &amp; account</h2>
-<label for="plan">Plan</label>
-<select id="plan" onchange="ckRender()"><option value="monthly">Monthly</option><option value="yearly">Yearly — 2 months free</option></select>
+<label id="plan-lbl">Plan</label>
+<div class="seg" id="plan-seg" role="group" aria-labelledby="plan-lbl">
+<button type="button" data-v="monthly" aria-pressed="true" class="is-active" onclick="ckPick(this)">Monthly</button>
+<button type="button" data-v="yearly" aria-pressed="false" onclick="ckPick(this)">Yearly — 2 months free</button>
+</div>
 <label for="email">Your account email</label>
 <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
-<label for="region">Payment region</label>
-<select id="region" onchange="ckRender()"><option value="eu">Europe / International</option><option value="ir">Iran</option></select>
+<label id="region-lbl">Payment region</label>
+<div class="seg" id="region-seg" role="group" aria-labelledby="region-lbl">
+<button type="button" data-v="eu" aria-pressed="true" class="is-active" onclick="ckPick(this)">Europe / International</button>
+<button type="button" data-v="ir" aria-pressed="false" onclick="ckPick(this)">Iran</button>
+</div>
 </div>
 <div class="ckcard"><h2>3 · Payment method</h2>
 <div class="methods" id="methods"></div>
@@ -315,8 +325,14 @@ const APPS = {
   washhalle:  { m: 9.99, y: 99.90 }
 };
 function ckSelApp() { const el = document.querySelector('input[name="app"]:checked'); return el ? el.value : 'nelurio'; }
-function ckSelPlan() { const el = document.getElementById('plan'); return el ? el.value : 'monthly'; }
-function ckRegion() { const el = document.getElementById('region'); return el ? el.value : 'eu'; }
+function ckSelPlan() { return ckSegVal('plan-seg', 'monthly'); }
+function ckRegion() { return ckSegVal('region-seg', 'eu'); }
+function ckSegVal(id, fallback) { const el = document.getElementById(id); const a = el && el.querySelector('button.is-active'); return a ? a.dataset.v : fallback; }
+function ckPick(btn) {
+  const group = btn.parentElement;
+  group.querySelectorAll('button').forEach(b => { const on = b === btn; b.classList.toggle('is-active', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+  ckRender();
+}
 
 function cartGet(){ try{ return JSON.parse(localStorage.getItem("nelurio_cart")||"[]"); }catch(e){ return []; } }
 function cartSet(v){ try{ localStorage.setItem("nelurio_cart", JSON.stringify(v)); }catch(e){} cartBadge(); }
