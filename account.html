@@ -364,11 +364,21 @@ function setLang(l){
   document.documentElement.lang = l; document.documentElement.dir = (l==="fa")?"rtl":"ltr";
   document.querySelectorAll("[data-i18n]").forEach(el=>{ const v=I18N[el.getAttribute("data-i18n")]; if(v&&v[l]) el.textContent=v[l]; });
   document.querySelectorAll("[data-i18n-aria]").forEach(el=>{ const v=I18N[el.getAttribute("data-i18n-aria")]; if(v&&v[l]) el.setAttribute("aria-label",v[l]); });
-  const ll = document.getElementById("lang-label"); if(ll) ll.textContent = l.toUpperCase();
+  const ll = document.getElementById("lang-label"); if(ll) ll.textContent = l.toUpperCase() === "FA" ? "فا" : l.toUpperCase();
   try{localStorage.setItem("lang",l)}catch(e){}
   if(S.ents) renderEnts();
 }
-try{ const l = localStorage.getItem("lang"); if(l) setLang(l); }catch(e){}
+const qpLang = new URLSearchParams(location.search).get("lang");
+if(qpLang && /^(en|de|fa)$/.test(qpLang)) setLang(qpLang);
+else { try{ const saved = localStorage.getItem("lang"); if(saved) setLang(saved); }catch(e){} }
+function nlSyncLinks(){
+  const other = location.hostname.indexOf("amir-khosravi") === -1 ? "amir-khosravi.de" : "nelurio.com";
+  const cur = document.documentElement.lang || "en";
+  document.querySelectorAll('a[href*="' + other + '"]').forEach(function(a){
+    try{ const u = new URL(a.href, location.origin); u.searchParams.set("lang", cur); a.href = u.toString(); }catch(e){}
+  });
+}
+nlSyncLinks();
 function toggleLangDD(){ const m = document.getElementById("lang-dd-menu"); m.style.display = (m.style.display === "block") ? "none" : "block"; }
 document.addEventListener("click", function(ev){ const dd = document.querySelector(".lang-dd"); if(dd && !dd.contains(ev.target)){ const m = document.getElementById("lang-dd-menu"); if(m) m.style.display = "none"; } });
 function cartGet(){ try{ return JSON.parse(localStorage.getItem("nelurio_cart")||"[]"); }catch(e){ return []; } }
