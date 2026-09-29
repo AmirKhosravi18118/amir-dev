@@ -121,6 +121,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 <nav><div class="wrap">
   <a class="logo" href="/"><span class="mark">N</span>Nelurio<b>&nbsp;Suite</b></a>
   <ul>
+    <li><a href="/" data-i18n="nav.home">Home</a></li>
     <li><a href="/#products" data-i18n="nav.products">Products</a></li>
     <li><a href="/#pricing" data-i18n="nav.pricing">Pricing</a></li>
     <li><a href="/#how" data-i18n="nav.how">How it works</a></li>
@@ -261,7 +262,7 @@ const API = "/api/v1";
 let CSRF = sessionStorage.getItem("csrf") || "";
 const S = { user: null, ents: null };
 const I18N = {
-"nav.products":{"en":"Products","de":"Produkte","fa":"محصولات"},
+"nav.home":{"en":"Home","de":"Start","fa":"خانه"},"nav.products":{"en":"Products","de":"Produkte","fa":"محصولات"},
 "nav.pricing":{"en":"Pricing","de":"Preise","fa":"قیمت‌ها"},
 "nav.how":{"en":"How it works","de":"So funktioniert's","fa":"چطور کار می‌کند"},
 "nav.support":{"en":"Support","de":"Support","fa":"پشتیبانی"},
