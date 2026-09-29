@@ -580,7 +580,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 const shelfEl = shelf(); if(shelfEl) shelfEl.addEventListener('scroll', shelfEnds, {passive:true});
 shelfEnds();
 shelfFocus();
-const shelf = () => document.querySelector(".lib");
+function shelf() { return document.querySelector(".lib"); }
 function shelfScroll(dir){
   const el = shelf(); if(!el) return;
   const card = el.querySelector(".prod");
