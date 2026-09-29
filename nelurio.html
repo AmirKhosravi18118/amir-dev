@@ -825,6 +825,21 @@ function setLang(l){
 const qpLang = new URLSearchParams(location.search).get("lang");
 if(qpLang && /^(en|de|fa)$/.test(qpLang)) setLang(qpLang);
 else { try{ const saved = localStorage.getItem("lang"); if(saved) setLang(saved); }catch(e){} }
+
+// topbar announcement from site admin (site-config API)
+(async function(){
+  try{
+    const r = await fetch('/api/v1/public/site-config');
+    if(!r.ok) return;
+    const cfg = await r.json();
+    const tb = document.querySelector('.topbar');
+    if(!tb) return;
+    const t = cfg && cfg.topbar;
+    if(!t || t.visible === false){ tb.style.display = 'none'; return; }
+    if(t.text){ tb.removeAttribute('data-i18n'); const sp = tb.querySelector('[data-i18n="tb.text"]'); if(sp) sp.textContent = t.text; }
+    if(t.cta){ const a = tb.querySelector('a'); if(a) a.setAttribute('href', t.cta); }
+  }catch(e){}
+})();
 function nlSyncLinks(){
   const other = location.hostname.indexOf("amir-khosravi") === -1 ? "amir-khosravi.de" : "nelurio.com";
   const cur = document.documentElement.lang || "en";
