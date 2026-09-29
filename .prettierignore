@@ -17,3 +17,5 @@ robots.txt
 sitemap.xml
 legal/
 chat.html
+_tpl_*
+qa_*.mjs
