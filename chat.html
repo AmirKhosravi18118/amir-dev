@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en" data-ga-id="G-M5C9K1JWH4">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Chat — Nelurio Suite</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238b6cff'/%3E%3Ctext x='32' y='44' font-size='36' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0b1d;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);--txt:#efedff;--mut:#a49fd0;--acc:#8b6cff;--acc2:#4d8df7;--ok:#5fe1a0;--r-md:18px}
+*{margin:0;padding:0;box-sizing:border-box}
+html[lang="fa"]{direction:rtl}
+html[lang="fa"] body{font-family:'Vazirmatn','Inter',system-ui,sans-serif}
+body{background:var(--bg);color:var(--txt);font-family:'Inter','Vazirmatn',system-ui,sans-serif;line-height:1.65}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:900;font-size:18px}
+.logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px}
+.right{display:flex;gap:14px;align-items:center}
+.right a{color:var(--mut);text-decoration:none;font-size:13.5px}
+.right a:hover{color:var(--txt)}
+.lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:3px}
+.lang-toggle button{min-height:36px;padding:6px 13px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer}
+.lang-toggle button.is-active{background:var(--acc);color:#fff}
+h1{font-size:clamp(24px,4vw,32px);font-weight:900;margin:34px 0 6px}
+.sub{color:var(--mut);font-size:14.5px;margin-bottom:26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:26px;margin-bottom:20px}
+label{display:block;font-size:12.5px;font-weight:800;color:#cfc9ee;margin:14px 0 6px}
+input,select,textarea{width:100%;min-height:46px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(13,11,29,.5);color:var(--txt);font:inherit;font-size:14px}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--acc);outline-offset:1px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 26px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;border:1px solid transparent;width:100%;margin-top:18px}
+.btn-p{background:linear-gradient(135deg,var(--acc),#7452f2);color:#fff}
+.btn-p:disabled{opacity:.45;cursor:not-allowed}
+.msg{margin-top:12px;font-size:13px;min-height:18px}
+.msg.err{color:#ff9d9d}
+.msg.ok{color:var(--ok);font-weight:700}
+.alt{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.alt a{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--txt);text-decoration:none;font-size:13px;font-weight:700;transition:border-color .15s}
+.alt a:hover{border-color:var(--acc)}
+.alt a svg{width:16px;height:16px}
+.alt a.wa{color:#25d366;border-color:rgba(37,211,102,.3)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var(--mut);font-size:12.5px;margin-top:40px}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/"><span class="mark">N</span>Nelurio</a>
+  <div class="right">
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button id="btn-en" class="is-active" onclick="setLang('en')">EN</button>
+      <button id="btn-de" onclick="setLang('de')">DE</button>
+      <button id="btn-fa" onclick="setLang('fa')">فا</button>
+    </div>
+    <a href="/" style="color:var(--mut);font-size:13px" data-i18n="ch.home">← Home</a>
+  </div>
+</nav>
+<div class="wrap">
+  <h1 data-i18n="ch.h1">Live chat</h1>
+  <p class="sub" data-i18n="ch.sub">Write your message — it goes straight to the builder. Response within 24 hours.</p>
+
+  <div class="card">
+    <label for="ch-app" data-i18n="ch.app">Which app?</label>
+    <select id="ch-app">
+      <option value="general" data-i18n="ch.app.general">General question</option>
+      <option value="nelurio">Nelurio</option>
+      <option value="finello">Finello</option>
+      <option value="nexdeutsch">NexDeutsch</option>
+      <option value="washhalle">Washhalle</option>
+    </select>
+    <label for="ch-email" data-i18n="ch.email">Your email (so we can reply)</label>
+    <input id="ch-email" type="email" placeholder="you@example.com" autocomplete="email">
+    <label for="ch-msg" data-i18n="ch.msg">Your message</label>
+    <textarea id="ch-msg" placeholder="Write your question here…"></textarea>
+    <button class="btn btn-p" id="ch-send" onclick="sendChat()" data-i18n="ch.send">Send message</button>
+    <p class="msg" id="ch-msg-status"></p>
+  </div>
+
+  <div class="alt">
+    <a class="wa" href="https://wa.me/496122002699" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
+    <a href="mailto:support@nelurio.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;vertical-align:-3px;margin-inline-end:4px"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg> support@nelurio.com</a>
+  </div>
+</div>
+<footer>© 2026 Nelurio Suite · by Amir Khosravi · <a href="/">nelurio.com</a></footer>
+
+<script>
+const CH_I18N = {
+"ch.h1":{"en":"Live chat","de":"Live-Chat","fa":"چت زنده"},
+"ch.sub":{"en":"Write your message — it goes straight to the builder. Response within 24 hours.","de":"Schreibe deine Nachricht — sie geht direkt an den Entwickler. Antwort innerhalb von 24 Stunden.","fa":"پیامت را بنویس — مستقیم به سازنده می‌رسد. پاسخ در ۲۴ ساعت."},
+"ch.app":{"en":"Which app?","de":"Welche App?","fa":"کدام اپ؟"},
+"ch.app.general":{"en":"General question","de":"Allgemeine Frage","fa":"سؤال عمومی"},
+"ch.email":{"en":"Your email (so we can reply)","de":"Deine E-Mail (damit wir antworten können)","fa":"ایمیلت (تا جواب بدیم)"},
+"ch.msg":{"en":"Your message","de":"Deine Nachricht","fa":"پیامت"},
+"ch.send":{"en":"Send message","de":"Nachricht senden","fa":"ارسال پیام"},
+"ch.home":{"en":"← Home","de":"← Start","fa":"← خانه"},
+"ch.ok":{"en":"Message sent! We'll reply to your email within 24 hours.","de":"Nachricht gesendet! Wir antworten innerhalb von 24 Stunden per E-Mail.","fa":"پیام ارسال شد! تا ۲۴ ساعت به ایمیلت جواب می‌دهیم."},
+"ch.err.email":{"en":"Please enter your email so we can reply.","de":"Bitte gib deine E-Mail ein, damit wir antworten können.","fa":"ایمیلت را وارد کن تا جواب بدهیم."},
+"ch.err.msg":{"en":"Please write a message.","de":"Bitte schreibe eine Nachricht.","fa":"لطفاً پیام بنویس."},
+"ch.err.send":{"en":"Failed to send — please try WhatsApp or email directly.","de":"Senden fehlgeschlagen — bitte WhatsApp oder E-Mail direkt nutzen.","fa":"ارسال نشد — لطفاً واتساپ یا ایمیل را مستقیم استفاده کن."}
+};
+function setLang(l){
+  document.documentElement.lang = l;
+  document.documentElement.dir = (l === 'fa') ? 'rtl' : 'ltr';
+  ['en','de','fa'].forEach(x=>document.getElementById('btn-'+x).classList.toggle('is-active', x===l));
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v = CH_I18N[el.getAttribute('data-i18n')];
+    if(v && v[l]) el.textContent = v[l];
+  });
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+try{const saved=localStorage.getItem('lang'); if(saved) setLang(saved);}catch(e){}
+
+async function sendChat(){
+  const app = document.getElementById('ch-app');
+  const email = document.getElementById('ch-email');
+  const msgEl = document.getElementById('ch-msg');
+  const status = document.getElementById('ch-msg-status');
+  const msg = msgEl ? msgEl.value.trim() : '';
+  const mail = email ? email.value.trim() : '';
+  if(!mail || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)) { status.textContent = CH_I18N['ch.err.email'] ? CH_I18N['ch.err.email'].fa || 'Enter email' : 'Enter email'; status.className = 'msg err'; return; }
+  if(!msg || msg.length < 5) { status.textContent = 'لطفاً پیامت را بنویس.'; status.className = 'msg err'; return; }
+  status.textContent = '⏳ Sending…'; status.className = 'msg';
+  try {
+    const res = await fetch('/api/v1/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: '[CHAT:' + (app||'general') + '] ' + msg,
+        email: mail
+      })
+    });
+    if(res.ok) {
+      status.textContent = CH_I18N['ch.ok'] ? CH_I18N['ch.ok'].fa || 'Sent!' : '✅ Sent!';
+      status.className = 'msg ok';
+      msgEl.value = '';
+    } else {
+      status.textContent = '❌ Failed — please use WhatsApp or email.';
+      status.className = 'msg err';
+    }
+  } catch(e) {
+    status.textContent = '❌ Connection error — try WhatsApp.';
+    status.className = 'msg err';
+  }
+}
+</script>
+</body>
+</html>
