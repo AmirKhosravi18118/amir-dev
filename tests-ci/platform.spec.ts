@@ -28,8 +28,13 @@ test("2: every card is real — status chip + https open link", async ({ page })
     await expect(cards.nth(i).locator(".status")).toBeVisible();
     await expect(cards.nth(i).locator('a[href^="https://"]').first()).toBeAttached();
   }
-  // flagship carries the account CTA (its real auth exists)
-  await expect(cards.nth(0).getByRole("link", { name: /create free account/i })).toBeAttached();
+  // flagship carries the trial CTA (its real auth exists)
+  await expect(cards.nth(0).getByRole("link", { name: /free trial/i })).toBeAttached();
+  // platform sells honestly: trial + buy per card, ZERO GitHub links
+  for (let i = 0; i < 4; i++) {
+    await expect(cards.nth(i).getByRole("link", { name: /buy product/i })).toBeAttached();
+  }
+  expect(await page.locator('a[href*="github.com"]').count()).toBe(0);
 });
 
 test("3: DE toggle — hero + cards translate, persists over reload", async ({ page }) => {
@@ -41,6 +46,18 @@ test("3: DE toggle — hero + cards translate, persists over reload", async ({ p
   await expect(page.locator('[data-i18n="lib.h2"]')).toHaveText("Vier Produkte. Ein Regal.");
   await page.reload();
   await expect(page.locator(".hero .sub")).toContainText("Produktbibliothek");
+});
+
+test("3b: FA toggle — RTL + Persian hero, persists over reload", async ({ page }) => {
+  await page.goto("/nelurio.html");
+  await page.click("#btn-fa");
+  await expect(page.locator("html")).toHaveAttribute("lang", "fa");
+  await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+  await expect(page.locator(".hero .sub")).toContainText("کتابخانه محصولات امیر خسروی");
+  await expect(page.locator('[data-i18n="lib.h2"]')).toHaveText("چهار محصول. یک قفسه.");
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("lang", "fa");
+  await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
 });
 
 test("4: consent — banner visible, no gtag; accept injects and persists", async ({ page }) => {
