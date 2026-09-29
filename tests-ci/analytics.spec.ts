@@ -60,6 +60,40 @@ test("4: decline + reload — gtag never injected, decision persisted", async ({
 test("5: lang=de — banner shows German text", async ({ page }) => {
   await page.goto("/products.html");
   await page.click("#btn-de");
-  await expect(page.locator('[data-i18n="cons.accept"]')).toHaveText("Akzeptieren");
-  await expect(page.locator("#consentBanner p")).toContainText("einwilligungsbasierte");
+  await expect(page.locator('[data-i18n="cons.accept"]')).toHaveText("Alle akzeptieren");
+  await expect(page.locator("#consentBanner p")).toContainText("notwendige Speicherung");
+});
+
+test("6: customize — statistics off saves denied (no gtag), on saves granted", async ({ page }) => {
+  await page.goto("/products.html");
+  await expect(page.locator("#consentBanner")).toBeVisible();
+  await page.click("#consent-customize");
+  await expect(page.locator("#consent-detail")).toBeVisible();
+  // essential checkbox is locked on
+  await expect(page.locator("#consent-detail input").first()).toBeDisabled();
+  await page.uncheck("#consent-stats");
+  await page.click("#consent-save");
+  await expect(page.locator("#consentBanner")).toBeHidden();
+  expect(await page.evaluate(() => localStorage.getItem("analytics_consent"))).toBe("denied");
+  expect(await page.evaluate(() => typeof window.gtag)).toBe("undefined");
+
+  // reopen via openConsent() (the footer link's handler opens collapsed) — expand settings
+  await page.evaluate(() => openConsent());
+  await page.click("#consent-customize");
+  await expect(page.locator("#consent-detail")).toBeVisible();
+  await expect(page.locator("#consent-stats")).not.toBeChecked();
+  await page.check("#consent-stats");
+  await page.click("#consent-save");
+  expect(await page.evaluate(() => localStorage.getItem("analytics_consent"))).toBe("granted");
+  await expect(page.locator('script[src*="googletagmanager.com"]').first()).toBeAttached();
+});
+
+test("7: footer cookie-settings link reopens the banner on nelurio.com", async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem("analytics_consent", "denied"));
+  await page.goto("/nelurio.html");
+  await expect(page.locator("#consentBanner")).toBeHidden();
+  await page.click('a[data-i18n="f.cookies"]');
+  await expect(page.locator("#consentBanner")).toBeVisible();
+  await page.click("#consent-accept");
+  expect(await page.evaluate(() => localStorage.getItem("analytics_consent"))).toBe("granted");
 });
