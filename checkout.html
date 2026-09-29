@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout — Nelurio Suite</title>
+<title>Checkout | Nelurio Suite</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238b6cff'/%3E%3Ctext x='32' y='44' font-size='36' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EN%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -275,7 +275,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 <label id="plan-lbl">Plan</label>
 <div class="seg" id="plan-seg" role="group" aria-labelledby="plan-lbl">
 <button type="button" data-v="monthly" aria-pressed="true" class="is-active" onclick="ckPick(this)">Monthly</button>
-<button type="button" data-v="yearly" aria-pressed="false" onclick="ckPick(this)">Yearly — 2 months free</button>
+<button type="button" data-v="yearly" aria-pressed="false" onclick="ckPick(this)">Yearly, 2 months free</button>
 </div>
 <label for="email">Your account email</label>
 <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
@@ -291,22 +291,22 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 <div class="brow"><span>Holder</span><b>AMIR KHOSRAVI</b></div>
 <div class="brow"><span>IBAN</span><b>DE00 0000 0000 0000 0000 00</b></div>
 <div class="brow"><span>BIC</span><b>[OWNER: FILL BIC]</b></div>
-<div class="brow"><span>Reference</span><b id="bankref">—</b></div>
+<div class="brow"><span>Reference</span><b id="bankref">-</b></div>
 <p class="note">Transfer the total with the reference above. Premium activates within 24h.</p>
 </div>
 <button class="btn btn-p" id="pay" onclick="ckPay()" style="width:100%;margin-top:16px">Continue to payment</button>
-<p class="note" id="cknote">Secure payment via provider. Premium unlocks after payment — or we email within 24h.</p>
+<p class="note" id="cknote">Secure payment via provider. Premium unlocks after payment, or we email within 24h.</p>
 </div>
 </div>
 <aside class="summary" aria-label="Order summary"><div class="ckcard"><h2>Final checklist</h2>
-<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Product</span><b id="sum-app">—</b></div>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Product</span><b id="sum-app">-</b></div>
 <div id="sum-items"></div>
-<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Plan</span><b id="sum-plan">—</b></div>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Plan</span><b id="sum-plan">-</b></div>
 <div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free trial</span><b>1 month · no card</b></div>
-<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Region</span><b id="sum-region">—</b></div>
-<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Payment</span><b id="sum-method">—</b></div>
-<div class="sumrow total"><span>Total after trial</span><b id="sum-total">—</b></div>
-<p class="note">Cancel anytime. 1-month free trial, then the plan price — cancel before it ends and you pay nothing.<br>All prices are final prices — as a small business under § 19 UStG (Kleinunternehmer) no VAT is charged.</p>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Region</span><b id="sum-region">-</b></div>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Payment</span><b id="sum-method">-</b></div>
+<div class="sumrow total"><span>Total after trial</span><b id="sum-total">-</b></div>
+<p class="note">Cancel anytime. 1-month free trial, then the plan price, cancel before it ends and you pay nothing.<br>All prices are final prices, as a small business under § 19 UStG (Kleinunternehmer) no VAT is charged.</p>
 </div></aside>
 </div>
 </div>
@@ -314,7 +314,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   <div class="cols">
     <div class="fbrand">
       <a class="logo" href="/"><span class="mark">N</span>Nelurio<b>&nbsp;Suite</b></a>
-      <p data-i18n="ft.about">Four production-ready apps on one EU-hosted platform — built and operated by Amir Khosravi.</p>
+      <p data-i18n="ft.about">Four production-ready apps on one EU-hosted platform, built and operated by Amir Khosravi.</p>
       <span class="fchip"><i></i>EU-hosted · GDPR-first</span>
     </div>
     <div><h4 data-i18n="f.platform">Platform</h4><ul>
@@ -377,7 +377,7 @@ const I18N = {
 "nav.how":{"en":"How it works","de":"So funktioniert's","fa":"چطور کار می‌کند"},
 "nav.support":{"en":"Support","de":"Support","fa":"پشتیبانی"},
 "nav.faq":{"en":"FAQ","de":"FAQ","fa":"سؤالات متداول"},
-"ft.about":{"en":"Four production-ready apps on one EU-hosted platform — built and operated by Amir Khosravi.","de":"Vier produktionsreife Apps auf einer in der EU gehosteten Plattform — gebaut und betrieben von Amir Khosravi.","fa":"چهار اپ آماده روی یک پلتفرم اروپایی — ساخته و اداره‌شده توسط امیر خسروی."},
+"ft.about":{"en":"Four production-ready apps on one EU-hosted platform, built and operated by Amir Khosravi.","de":"Vier produktionsreife Apps auf einer in der EU gehosteten Plattform – gebaut und betrieben von Amir Khosravi.","fa":"چهار اپ آماده روی یک پلتفرم اروپایی، ساخته و اداره‌شده توسط امیر خسروی."},
 "ft.legal":{"en":"Legal","de":"Rechtliches","fa":"قانونی"},
 "f.imprint":{"en":"Impressum","de":"Impressum","fa":"ایمپرسوم"},
 "f.privacy":{"en":"Privacy Policy","de":"Datenschutzerklärung","fa":"حریم خصوصی"},
@@ -449,7 +449,7 @@ function ckRender() {
   if(!APPS[app]) return;
   const sa = document.getElementById('sum-app');
   const sp = document.getElementById('sum-plan');
-  if(sp) sp.textContent = plan === 'yearly' ? 'Yearly — 2 months free' : 'Monthly';
+  if(sp) sp.textContent = plan === 'yearly' ? 'Yearly, 2 months free' : 'Monthly';
   const unit = plan === 'yearly' ? '/yr' : '/mo';
   let price;
   const items = document.getElementById('sum-items');
@@ -495,10 +495,10 @@ function ckRenderMethods(app, plan, region, totalOverride) {
   const amount = (totalOverride != null ? totalOverride : APPS[app][plan === 'yearly' ? 'y' : 'm']).toFixed(2);
   const methods = [
     ['paypal', 'PayPal', 'Pay with your PayPal account', PAYPAL_ME ? 'https://paypal.me/' + PAYPAL_ME + '/' + amount + 'EUR' : ''],
-    ['stripe', 'Card — Visa / Mastercard / debit', 'Secure card payment (Stripe)', (PAY_LINKS.stripe || {})[app + '|' + plan + '|' + region] || ''],
+    ['stripe', 'Card, Visa / Mastercard / debit', 'Secure card payment (Stripe)', (PAY_LINKS.stripe || {})[app + '|' + plan + '|' + region] || ''],
     ['bank', 'Bank transfer (Überweisung)', 'Transfer with reference code', 'soon']
   ];
-  if(region === 'ir') methods.push(['zarinpal', 'Zarinpal — for Iran', 'Pay in IRR via Zarinpal', region === 'ir' ? ((PAY_LINKS.zarinpal || {})[app + '|' + plan + '|' + region] || '') : '']);
+  if(region === 'ir') methods.push(['zarinpal', 'Zarinpal, for Iran', 'Pay in IRR via Zarinpal', region === 'ir' ? ((PAY_LINKS.zarinpal || {})[app + '|' + plan + '|' + region] || '') : '']);
   for(const [id, label, sub, url] of methods) {
     const lab = document.createElement('label'); lab.className = 'method';
     const soon = !url || url === 'soon';
@@ -514,7 +514,7 @@ function ckPay() {
   const m = document.querySelector('input[name="method"]:checked');
   if(!m) { note('Choose a payment method.', true); return; }
   const url = m.dataset.url;
-  if(!url || url === 'soon') { note('This method is coming soon — pick another.', true); return; }
+  if(!url || url === 'soon') { note('This method is coming soon, pick another.', true); return; }
   window.location.href = url;
 }
 
