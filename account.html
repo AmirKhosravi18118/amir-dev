@@ -10,123 +10,304 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0d0b1d;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);--txt:#efedff;--mut:#a49fd0;--acc:#8b6cff;--acc2:#4d8df7;--ok:#5fe1a0;--r-md:18px}
+
+:root{
+  --bg:#0d0b1d;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);
+  --txt:#efedff;--mut:#a49fd0;--acc:#8b6cff;--acc2:#4d8df7;--ok:#5fe1a0;
+  --sp-2:12px;--sp-3:16px;--sp-4:24px;--sp-5:32px;--sp-6:48px;--sp-7:72px;
+  --r-md:18px;--r-lg:22px;
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html[lang="fa"]{direction:rtl}
 html[lang="fa"] body{font-family:'Vazirmatn','Inter',system-ui,sans-serif}
-body{background:var(--bg);color:var(--txt);font-family:'Inter','Vazirmatn',system-ui,sans-serif;line-height:1.65}
-.lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:3px}
-.lang-toggle button{min-height:36px;padding:6px 13px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer}
-.lang-toggle button.is-active{background:var(--acc);color:#fff}
-.wrap{max-width:860px;margin:0 auto;padding:0 22px}
-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line)}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:900;font-size:18px}
-.logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px}
-.right{display:flex;gap:14px;align-items:center}
-.right a{color:var(--mut);text-decoration:none;font-size:13.5px}
-.right a:hover{color:var(--txt)}
-h1{font-size:clamp(24px,4vw,34px);font-weight:900;margin:34px 0 4px}
-.sub{color:var(--mut);font-size:14px;margin-bottom:26px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:26px;margin-bottom:20px}
-h2{font-size:15px;font-weight:900;margin-bottom:14px}
-label{display:block;font-size:12.5px;font-weight:800;color:#cfc9ee;margin:12px 0 6px}
-input{width:100%;min-height:46px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--txt);font:inherit;font-size:14px}
-input:focus{outline:2px solid var(--acc);outline-offset:1px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 24px;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;border:1px solid transparent;text-decoration:none;margin-top:16px}
-.btn-p{background:linear-gradient(135deg,var(--acc),#7452f2);color:#fff}
-.btn-s{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--txt);text-decoration:none}
+body{background:var(--bg);color:var(--txt);font-family:'Inter','Vazirmatn',system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(13,11,29,.78);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:900;font-size:17px;flex-shrink:0}
+.logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px;box-shadow:0 6px 18px rgba(139,108,255,.35)}
+nav ul{display:flex;gap:22px;list-style:none;align-items:center}
+nav ul a{color:var(--mut);text-decoration:none;font-size:13.5px;font-weight:600;transition:color .15s;white-space:nowrap}
+nav ul a:hover{color:var(--txt)}
+.nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.lang-dd{position:relative}
+.lang-dd-btn{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:5px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--txt);font-weight:800;font-size:12px;cursor:pointer}
+.lang-dd-menu{position:absolute;top:calc(100% + 4px);inset-inline-end:0;background:#1a1733;border:1px solid var(--line);border-radius:12px;padding:4px;min-width:130px;display:none;z-index:60;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.lang-dd-menu button{display:block;width:100%;text-align:start;padding:8px 14px;border-radius:8px;border:0;background:transparent;color:var(--txt);font-weight:700;font-size:13px;cursor:pointer}
+.lang-dd-menu button:hover{background:rgba(139,108,255,.15)}
+.iconlink{position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--txt);text-decoration:none;transition:border-color .15s}
+.iconlink:hover{border-color:var(--acc)}
+.iconlink svg{width:18px;height:18px}
+.iconlink .cart-badge{position:absolute;top:-7px;inset-inline-end:-7px;background:var(--acc);color:#fff;font-size:10px;font-weight:900;border-radius:999px;padding:1px 5px;min-width:16px;text-align:center}
+.iconlink.is-current{border-color:rgba(139,108,255,.6);background:rgba(139,108,255,.14)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 22px;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;border:1px solid transparent;text-decoration:none;transition:transform .15s,border-color .15s,box-shadow .15s;white-space:nowrap}
+.btn svg{width:16px;height:16px;flex-shrink:0}
+.btn-p{background:linear-gradient(135deg,var(--acc),#7452f2);color:#fff;box-shadow:0 10px 26px rgba(139,108,255,.3)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(139,108,255,.42)}
+.btn-p:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
+.btn-s{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--txt)}
+.btn-s:hover{border-color:var(--acc);transform:translateY(-2px)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+h1{font-size:clamp(26px,4vw,36px);font-weight:900;margin:34px 0 6px}
+.sub{color:var(--mut);font-size:15px;margin-bottom:28px}
+.acgrid{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:start;margin-top:var(--sp-5)}
+@media(max-width:880px){.acgrid{grid-template-columns:1fr}}
+.acard{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:26px;margin-bottom:20px}
+.acard h2{font-size:15px;font-weight:900;margin-bottom:14px;color:#ddd8f5}
+.acard label{display:block;font-size:12.5px;font-weight:800;color:#cfc9ee;margin:14px 0 6px}
+.acard input{width:100%;min-height:46px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(13,11,29,.5);color:var(--txt);font:inherit;font-size:14px}
+.acard input:focus{outline:2px solid var(--acc);outline-offset:1px}
+.kicker{display:inline-block;font-size:11.5px;font-weight:900;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:8px}
+.bene{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.bene:last-of-type{border-bottom:0}
+.bico{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 20px rgba(139,108,255,.3)}
+.bico svg{width:18px;height:18px;color:#fff}
+.bene b{font-size:14px;display:block}
+.bene p{color:var(--mut);font-size:13px;margin-top:2px}
+.trust{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.trust span{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:800;color:#cfc9ee;border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.trust svg{width:12px;height:12px;color:var(--ok)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:12px;padding:4px;margin-bottom:6px}
+.seg button{min-height:40px;border-radius:9px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:13.5px;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.seg button.is-active{background:linear-gradient(135deg,var(--acc),#7452f2);color:#fff;box-shadow:0 6px 16px rgba(139,108,255,.35)}
+.pw{position:relative}
+.pw input{padding-inline-end:46px}
+.pw .eye{position:absolute;inset-inline-end:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:8px;border:0;background:transparent;color:var(--mut);cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.pw .eye:hover{color:var(--txt)}
+.pw .eye svg{width:17px;height:17px}
+.mini{font-size:12px;color:var(--mut);margin-top:12px;line-height:1.6}
+.mini a{color:#c3b4ff;font-weight:700;text-decoration:none}
+.mini a:hover{text-decoration:underline}
+.forgot{margin-top:10px;font-size:12.5px}
+.forgot a{color:#c3b4ff;font-weight:700;text-decoration:none}
+.forgot a:hover{text-decoration:underline}
 .msg{margin-top:12px;font-size:13px;min-height:18px}
-.msg.err{color:#ff9d9d}.msg.ok{color:var(--ok)}
-.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
-.row:last-child{border-bottom:0}
-.badge{font-size:10.5px;font-weight:900;letter-spacing:.1em;border-radius:999px;padding:4px 11px;border:1px solid var(--line);color:var(--mut)}
+.msg.err{color:#ff9d9d}.msg.ok{color:var(--ok);font-weight:700}
+.phead{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.avatar{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;color:#fff;box-shadow:0 10px 24px rgba(139,108,255,.35);flex-shrink:0}
+.pmeta{flex:1;min-width:180px}
+.pmeta b{font-size:16px;display:block}
+.pmeta span{color:var(--mut);font-size:13px}
+.pill{font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#8af0bf;border:1px solid rgba(95,225,160,.4);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.pactions{display:flex;gap:10px;flex-wrap:wrap}
+.pactions .btn{min-height:40px;padding:8px 16px;font-size:13px;margin:0;width:auto}
+.badge{font-size:10.5px;font-weight:900;letter-spacing:.1em;border-radius:999px;padding:4px 11px;border:1px solid var(--line);color:var(--mut);white-space:nowrap}
 .badge.trial{border-color:rgba(139,108,255,.5);color:#c3b4ff}
 .badge.premium{border-color:rgba(95,225,160,.5);color:#8af0bf}
 .badge.available{color:var(--mut)}
+.approw{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.approw:last-child{border-bottom:0}
+.mono{width:42px;height:42px;border-radius:12px;background:rgba(139,108,255,.14);border:1px solid rgba(139,108,255,.35);color:#c3b4ff;font-weight:900;font-size:17px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.appmeta{flex:1;min-width:200px;font-size:13.5px}
+.appside{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.act{min-height:38px;padding:7px 16px;font-size:12.5px;margin:0;width:auto}
+.empty{text-align:center;padding:var(--sp-5) var(--sp-3)}
+.empty .eico{width:52px;height:52px;border-radius:16px;background:rgba(139,108,255,.12);border:1px solid rgba(139,108,255,.3);display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px}
+.empty .eico svg{width:22px;height:22px;color:#c3b4ff}
+.empty b{display:block;font-size:15px;margin-bottom:4px}
+.empty p{color:var(--mut);font-size:13px;margin-bottom:14px}
+footer{border-top:1px solid var(--line);padding:var(--sp-6) 0 var(--sp-5);color:var(--mut);font-size:13px}
+footer .cols{display:grid;grid-template-columns:1.3fr 1fr;gap:var(--sp-5);margin-bottom:var(--sp-5)}
+footer h4{color:#ddd8f5;font-size:13px;font-weight:900;margin-bottom:10px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+footer a{color:#cfc9ee;text-decoration:none}
+footer a:hover{color:var(--txt)}
+footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:var(--sp-4)}
 .hidden{display:none!important}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+@media(max-width:960px){nav ul{display:none}footer .cols{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<nav>
-  <a class="logo" href="/"><span class="mark">N</span>Nelurio</a>
-  <div class="right">
-    <div class="lang-toggle" role="group" aria-label="Language">
-      <button id="btn-en" class="is-active" onclick="setLang('en')">EN</button>
-      <button id="btn-de" onclick="setLang('de')">DE</button>
-      <button id="btn-fa" onclick="setLang('fa')">فا</button>
+<nav><div class="wrap">
+  <a class="logo" href="/"><span class="mark">N</span>Nelurio<b>&nbsp;Suite</b></a>
+  <ul>
+    <li><a href="/#products" data-i18n="nav.products">Products</a></li>
+    <li><a href="/#pricing" data-i18n="nav.pricing">Pricing</a></li>
+    <li><a href="/#how" data-i18n="nav.how">How it works</a></li>
+    <li><a href="/#support" data-i18n="nav.support">Support</a></li>
+    <li><a href="/#faq" data-i18n="nav.faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-dd">
+      <button class="lang-dd-btn" id="btn-lang" onclick="toggleLangDD()" aria-label="Language">
+        <span id="lang-label">EN</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="lang-dd-menu" id="lang-dd-menu">
+        <button onclick="setLang('en')">English</button>
+        <button onclick="setLang('de')">Deutsch</button>
+        <button onclick="setLang('fa')">فارسی</button>
+      </div>
     </div>
-    <a href="/" data-i18n="nav.home">Home</a>
-    <a href="/#products" data-i18n="nav.products">Products</a>
-    <a href="/#pricing" data-i18n="nav.pricing">Pricing</a>
+    <a class="iconlink is-current" href="/account.html" aria-label="My account" aria-current="page" data-i18n-aria="ac.navacct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+    <a class="iconlink" href="checkout.html?cart=1" aria-label="Cart" data-i18n-aria="ac.navcart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span id="cart-badge" class="cart-badge hidden">0</span></a>
   </div>
-</nav>
+</div></nav>
 <div class="wrap">
-  <h1 data-i18n="ac.h1">My account</h1>
-  <p class="sub" data-i18n="ac.sub">Sign in to manage your trials, plans and apps.</p>
+<h1 data-i18n="ac.h1">My account</h1>
+<p class="sub" data-i18n="ac.sub">Manage your trials, plans and apps — one login for the whole Nelurio Suite.</p>
 
-  <div class="card" id="authcard">
-    <div style="display:flex;gap:10px;margin-bottom:8px">
-      <button class="btn btn-p" style="min-height:40px;margin:0" id="tab-login" onclick="switchTab('login')" data-i18n="ac.login">Sign in</button>
-      <button class="btn btn-s" style="min-height:40px;margin:0" id="tab-register" onclick="switchTab('register')" data-i18n="ac.register">Create account</button>
-    </div>
-    <div id="f-login">
-      <label for="li-email" data-i18n="ac.email">Email</label>
-      <input id="li-email" type="email" autocomplete="email">
-      <label for="li-pass" data-i18n="ac.pass">Password</label>
+<div id="authview">
+<div class="acgrid">
+<div class="acard">
+  <span class="kicker" data-i18n="ac.why.kicker">Why an account</span>
+  <h2 data-i18n="ac.why.h2">One login. Every app.</h2>
+  <div class="bene">
+    <span class="bico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+    <span><b data-i18n="ac.why.b1.t">1-month free trials</b><p data-i18n="ac.why.b1.p">Try every app free for a full month. No card required.</p></span>
+  </div>
+  <div class="bene">
+    <span class="bico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+    <span><b data-i18n="ac.why.b2.t">Everything in one place</b><p data-i18n="ac.why.b2.p">Trials, plans and status for all four apps in a single view.</p></span>
+  </div>
+  <div class="bene">
+    <span class="bico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+    <span><b data-i18n="ac.why.b3.t">Instant activation</b><p data-i18n="ac.why.b3.p">Start a trial and premium unlocks in seconds.</p></span>
+  </div>
+  <div class="bene">
+    <span class="bico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+    <span><b data-i18n="ac.why.b4.t">EU privacy</b><p data-i18n="ac.why.b4.p">GDPR-compliant and hosted in the EU.</p></span>
+  </div>
+  <div class="trust">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>GDPR</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>EU-hosted</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No card for trials</span>
+  </div>
+</div>
+<div class="acard" id="authcard">
+  <div class="seg" role="tablist" aria-label="Sign in or create account">
+    <button id="tab-login" role="tab" aria-selected="true" class="is-active" onclick="switchTab('login')" data-i18n="ac.login">Sign in</button>
+    <button id="tab-register" role="tab" aria-selected="false" onclick="switchTab('register')" data-i18n="ac.register">Create account</button>
+  </div>
+  <div id="f-login">
+    <label for="li-email" data-i18n="ac.email">Email</label>
+    <input id="li-email" type="email" autocomplete="email">
+    <label for="li-pass" data-i18n="ac.pass">Password</label>
+    <div class="pw">
       <input id="li-pass" type="password" autocomplete="current-password">
-      <button class="btn btn-p" id="btn-login" onclick="doLogin()" data-i18n="ac.login">Sign in</button>
+      <button type="button" class="eye" onclick="togglePw('li-pass', this)" aria-label="Show password" data-i18n-aria="ac.pw.show"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
     </div>
-    <div id="f-register" class="hidden">
-      <label for="rg-name" data-i18n="ac.name">Display name</label>
-      <input id="rg-name" type="text" autocomplete="name">
-      <label for="rg-email" data-i18n="ac.email">Email</label>
-      <input id="rg-email" type="email" autocomplete="email">
-      <label for="rg-pass" data-i18n="ac.pass">Password (min. 10 characters)</label>
+    <button class="btn btn-p" id="btn-login" style="width:100%;margin-top:18px" onclick="doLogin()" data-i18n="ac.login">Sign in</button>
+    <p class="forgot"><span data-i18n="ac.forgot">Forgot your password?</span> <a href="mailto:support@nelurio.com?subject=Password%20reset">support@nelurio.com</a></p>
+  </div>
+  <div id="f-register" class="hidden">
+    <label for="rg-name" data-i18n="ac.name">Display name</label>
+    <input id="rg-name" type="text" autocomplete="name">
+    <label for="rg-email" data-i18n="ac.email">Email</label>
+    <input id="rg-email" type="email" autocomplete="email">
+    <label for="rg-pass" data-i18n="ac.pass10">Password (min. 10 characters)</label>
+    <div class="pw">
       <input id="rg-pass" type="password" autocomplete="new-password">
-      <button class="btn btn-p" id="btn-register" onclick="doRegister()" data-i18n="ac.register">Create account</button>
+      <button type="button" class="eye" onclick="togglePw('rg-pass', this)" aria-label="Show password" data-i18n-aria="ac.pw.show"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
     </div>
-    <p class="msg" id="authmsg"></p>
+    <button class="btn btn-p" id="btn-register" style="width:100%;margin-top:18px" onclick="doRegister()" data-i18n="ac.register">Create account</button>
+    <p class="mini"><span data-i18n="ac.legal.pre">By creating an account you agree to our</span> <a href="/legal/terms.html" data-i18n="f.terms">Terms &amp; Conditions</a> <span data-i18n="ac.legal.and">and</span> <a href="/legal/privacy.html" data-i18n="f.privacy">Privacy Policy</a>.</p>
   </div>
+  <p class="msg" id="authmsg"></p>
+</div>
+</div>
+</div>
 
-  <div class="card hidden" id="accountcard">
-    <h2 data-i18n="ac.profile">Profile</h2>
-    <div class="row"><span data-i18n="ac.email">Email</span><b id="p-email">—</b></div>
-    <div class="row"><span data-i18n="ac.name">Display name</span><b id="p-name">—</b></div>
-    <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
-      <a class="btn btn-s" href="checkout.html" data-i18n="ac.buy">Buy a product</a>
-      <button class="btn btn-s" onclick="logout()" data-i18n="ac.logout">Sign out</button>
+<div id="userview" class="hidden">
+  <div class="acard">
+    <div class="phead">
+      <span class="avatar" id="p-initials" aria-hidden="true">—</span>
+      <span class="pmeta">
+        <b id="p-name">—</b>
+        <span id="p-email">—</span>
+      </span>
+      <span class="pill" data-i18n="ac.signedin">Signed in</span>
+      <span class="pactions">
+        <a class="btn btn-s" href="checkout.html" data-i18n="ac.buy">Buy a product</a>
+        <button class="btn btn-s" onclick="logout()" data-i18n="ac.logout">Sign out</button>
+      </span>
     </div>
   </div>
-
-  <div class="card hidden" id="entcard">
+  <div class="acard" id="entcard">
     <h2 data-i18n="ac.apps">Your apps</h2>
     <div id="entlist"></div>
+    <div id="entempty" class="empty hidden">
+      <span class="eico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+      <b data-i18n="ac.empty.h">No apps yet</b>
+      <p data-i18n="ac.empty.p">Start a free trial or buy directly — your apps appear here.</p>
+      <a class="btn btn-p act" href="/#products" data-i18n="ac.empty.cta">Explore the suite</a>
+    </div>
     <p class="msg" id="entmsg"></p>
   </div>
 </div>
+</div>
 
-<footer style="border-top:1px solid var(--line);padding:22px;text-align:center;color:var(--mut);font-size:12.5px;margin-top:30px">© 2026 Nelurio Suite · <a href="/" style="color:inherit">nelurio.com</a></footer>
+<footer><div class="wrap">
+  <div class="cols">
+    <div>
+      <h4>Nelurio Suite</h4>
+      <ul><li data-i18n="ft.about">Four production-ready apps on one EU-hosted platform — built and operated by Amir Khosravi.</li></ul>
+    </div>
+    <div><h4 data-i18n="ft.legal">Legal</h4><ul>
+      <li><a href="/legal/impressum.html" data-i18n="f.imprint">Impressum</a></li>
+      <li><a href="/legal/privacy.html" data-i18n="f.privacy">Privacy Policy</a></li>
+      <li><a href="/legal/terms.html" data-i18n="f.terms">Terms &amp; Conditions</a></li>
+      <li><a href="/legal/widerruf.html" data-i18n="f.withdraw">Right of Withdrawal</a></li>
+      <li><a href="mailto:support@nelurio.com" data-i18n="f.contact">Contact / Support</a></li>
+    </ul></div>
+  </div>
+  <div class="base">
+    <span>© 2026 Amir Khosravi · Nelurio Suite</span>
+    <span><a href="https://amir-khosravi.de" data-i18n="f.portfolio">Portfolio</a></span>
+  </div>
+</div></footer>
 
 <script>
 const API = "/api/v1";
 let CSRF = sessionStorage.getItem("csrf") || "";
 const S = { user: null, ents: null };
 const I18N = {
-"nav.home":{"en":"Home","de":"Start","fa":"خانه"},
 "nav.products":{"en":"Products","de":"Produkte","fa":"محصولات"},
 "nav.pricing":{"en":"Pricing","de":"Preise","fa":"قیمت‌ها"},
+"nav.how":{"en":"How it works","de":"So funktioniert's","fa":"چطور کار می‌کند"},
+"nav.support":{"en":"Support","de":"Support","fa":"پشتیبانی"},
+"nav.faq":{"en":"FAQ","de":"FAQ","fa":"سؤالات متداول"},
+"ac.navacct":{"en":"My account","de":"Mein Konto","fa":"حساب من"},
+"ac.navcart":{"en":"Cart","de":"Warenkorb","fa":"سبد خرید"},
 "ac.h1":{"en":"My account","de":"Mein Konto","fa":"حساب من"},
-"ac.sub":{"en":"Sign in to manage your trials, plans and apps.","de":"Melde dich an, um Tests, Pläne und Apps zu verwalten.","fa":"برای مدیریت تست‌ها، پلن‌ها و اپ‌ها وارد شو."},
+"ac.sub":{"en":"Manage your trials, plans and apps — one login for the whole Nelurio Suite.","de":"Verwalte Testphasen, Pläne und Apps — ein Login für die ganze Nelurio-Suite.","fa":"ترایال‌ها، پلن‌ها و اپ‌هایت را مدیریت کن — یک ورود برای کل مجموعه نلوریو."},
+"ac.why.kicker":{"en":"Why an account","de":"Warum ein Konto","fa":"چرا حساب بسازی"},
+"ac.why.h2":{"en":"One login. Every app.","de":"Ein Login. Alle Apps.","fa":"یک ورود. همه اپ‌ها."},
+"ac.why.b1.t":{"en":"1-month free trials","de":"1 Monat kostenlos testen","fa":"یک ماه تست رایگان"},
+"ac.why.b1.p":{"en":"Try every app free for a full month. No card required.","de":"Jede App einen ganzen Monat gratis testen. Keine Karte nötig.","fa":"هر اپ را یک ماه کامل رایگان امتحان کن. بدون نیاز به کارت."},
+"ac.why.b2.t":{"en":"Everything in one place","de":"Alles an einem Ort","fa":"همه‌چیز یک‌جا"},
+"ac.why.b2.p":{"en":"Trials, plans and status for all four apps in a single view.","de":"Testphasen, Pläne und Status für alle vier Apps in einer Ansicht.","fa":"ترایال، پلن و وضعیت هر چهار اپ در یک نما."},
+"ac.why.b3.t":{"en":"Instant activation","de":"Sofortige Aktivierung","fa":"فعال‌سازی فوری"},
+"ac.why.b3.p":{"en":"Start a trial and premium unlocks in seconds.","de":"Testphase starten — Premium wird in Sekunden freigeschaltet.","fa":"ترایال را شروع کن و پریمیوم در چند ثانیه فعال می‌شود."},
+"ac.why.b4.t":{"en":"EU privacy","de":"EU-Datenschutz","fa":"حریم خصوصی اروپایی"},
+"ac.why.b4.p":{"en":"GDPR-compliant and hosted in the EU.","de":"DSGVO-konform und in der EU gehostet.","fa":"مطابق GDPR و با میزبانی در اروپا."},
 "ac.login":{"en":"Sign in","de":"Anmelden","fa":"ورود"},
 "ac.register":{"en":"Create account","de":"Konto erstellen","fa":"ساخت حساب"},
 "ac.email":{"en":"Email","de":"E-Mail","fa":"ایمیل"},
 "ac.pass":{"en":"Password","de":"Passwort","fa":"رمز عبور"},
+"ac.pass10":{"en":"Password (min. 10 characters)","de":"Passwort (min. 10 Zeichen)","fa":"رمز عبور (حداقل ۱۰ کاراکتر)"},
+"ac.pw.show":{"en":"Show password","de":"Passwort zeigen","fa":"نمایش رمز"},
+"ac.pw.hide":{"en":"Hide password","de":"Passwort verbergen","fa":"پنهان‌کردن رمز"},
 "ac.name":{"en":"Display name","de":"Anzeigename","fa":"نام نمایشی"},
-"ac.profile":{"en":"Profile","de":"Profil","fa":"پروفایل"},
+"ac.forgot":{"en":"Forgot your password?","de":"Passwort vergessen?","fa":"رمزت را فراموش کردی؟"},
+"ac.legal.pre":{"en":"By creating an account you agree to our","de":"Mit der Kontoerstellung akzeptierst du unsere","fa":"با ساخت حساب، شرایط ما را می‌پذیری:"},
+"ac.legal.and":{"en":"and","de":"und","fa":"و"},
+"ac.signedin":{"en":"Signed in","de":"Angemeldet","fa":"وارد شدی"},
 "ac.apps":{"en":"Your apps","de":"Deine Apps","fa":"اپ‌های تو"},
 "ac.buy":{"en":"Buy a product","de":"Produkt kaufen","fa":"خرید محصول"},
+"ac.buy.short":{"en":"Buy","de":"Kaufen","fa":"خرید"},
+"ac.try":{"en":"Start 1-month free trial","de":"1 Monat gratis testen","fa":"شروع تست یک‌ماهه رایگان"},
 "ac.logout":{"en":"Sign out","de":"Abmelden","fa":"خروج"},
+"ac.empty.h":{"en":"No apps yet","de":"Noch keine Apps","fa":"هنوز اپی نداری"},
+"ac.empty.p":{"en":"Start a free trial or buy directly — your apps appear here.","de":"Starte eine Testphase oder kaufe direkt — deine Apps erscheinen hier.","fa":"ترایال رایگان شروع کن یا مستقیم بخر — اپ‌هایت اینجا ظاهر می‌شوند."},
+"ac.empty.cta":{"en":"Explore the suite","de":"Suite entdecken","fa":"دیدن مجموعه"},
+"ft.about":{"en":"Four production-ready apps on one EU-hosted platform — built and operated by Amir Khosravi.","de":"Vier produktionsreife Apps auf einer in der EU gehosteten Plattform — gebaut und betrieben von Amir Khosravi.","fa":"چهار اپ آماده روی یک پلتفرم اروپایی — ساخته و اداره‌شده توسط امیر خسروی."},
+"ft.legal":{"en":"Legal","de":"Rechtliches","fa":"قانونی"},
+"f.imprint":{"en":"Impressum","de":"Impressum","fa":"ایمپرسوم"},
+"f.privacy":{"en":"Privacy Policy","de":"Datenschutzerklärung","fa":"حریم خصوصی"},
+"f.terms":{"en":"Terms & Conditions","de":"AGB","fa":"شرایط و مقررات"},
+"f.withdraw":{"en":"Right of Withdrawal","de":"Widerrufsbelehrung","fa":"حق انصراف"},
+"f.contact":{"en":"Contact / Support","de":"Kontakt & Support","fa":"تماس و پشتیبانی"},
+"f.portfolio":{"en":"Portfolio","de":"Portfolio","fa":"نمونه‌کارها"},
 "ac.err.email":{"en":"Enter a valid email.","de":"Gültige E-Mail eingeben.","fa":"ایمیل معتبر وارد کن."},
 "ac.err.pass":{"en":"Password must be at least 10 characters.","de":"Passwort muss mindestens 10 Zeichen haben.","fa":"رمز حداقل ۱۰ کاراکتر باشد."},
 "ac.err.name":{"en":"Enter a display name.","de":"Anzeigename eingeben.","fa":"نام نمایشی وارد کن."},
@@ -148,11 +329,19 @@ function lang(){ return document.documentElement.lang || "en"; }
 function setLang(l){
   document.documentElement.lang = l; document.documentElement.dir = (l==="fa")?"rtl":"ltr";
   document.querySelectorAll("[data-i18n]").forEach(el=>{ const v=I18N[el.getAttribute("data-i18n")]; if(v&&v[l]) el.textContent=v[l]; });
+  document.querySelectorAll("[data-i18n-aria]").forEach(el=>{ const v=I18N[el.getAttribute("data-i18n-aria")]; if(v&&v[l]) el.setAttribute("aria-label",v[l]); });
+  const ll = document.getElementById("lang-label"); if(ll) ll.textContent = l.toUpperCase();
   try{localStorage.setItem("lang",l)}catch(e){}
   if(S.ents) renderEnts();
 }
 try{ const l = localStorage.getItem("lang"); if(l) setLang(l); }catch(e){}
-
+function toggleLangDD(){ const m = document.getElementById("lang-dd-menu"); m.style.display = (m.style.display === "block") ? "none" : "block"; }
+document.addEventListener("click", function(ev){ const dd = document.querySelector(".lang-dd"); if(dd && !dd.contains(ev.target)){ const m = document.getElementById("lang-dd-menu"); if(m) m.style.display = "none"; } });
+function cartGet(){ try{ return JSON.parse(localStorage.getItem("nelurio_cart")||"[]"); }catch(e){ return []; } }
+function cartSet(v){ try{ localStorage.setItem("nelurio_cart", JSON.stringify(v)); }catch(e){} cartBadge(); }
+function cartItems(){ return cartGet(); }
+function cartBadge(){ const b = document.getElementById("cart-badge"); if(!b) return; const n = cartGet().length; b.textContent = n; b.classList.toggle("hidden", n === 0); }
+cartBadge();
 async function api(path, opts={}){
   opts.headers = Object.assign({"Content-Type":"application/json"}, opts.headers||{});
   if(CSRF) opts.headers["X-CSRF-Token"] = CSRF;
@@ -165,6 +354,20 @@ function msg(id, text, isErr){ const el = document.getElementById(id); el.textCo
 function switchTab(which){
   document.getElementById("f-login").classList.toggle("hidden", which !== "login");
   document.getElementById("f-register").classList.toggle("hidden", which !== "register");
+  const tl = document.getElementById("tab-login"), tr = document.getElementById("tab-register");
+  tl.classList.toggle("is-active", which === "login"); tl.setAttribute("aria-selected", which === "login" ? "true" : "false");
+  tr.classList.toggle("is-active", which === "register"); tr.setAttribute("aria-selected", which === "register" ? "true" : "false");
+}
+function togglePw(id, btn){
+  const el = document.getElementById(id);
+  const show = el.type === "password";
+  el.type = show ? "text" : "password";
+  btn.setAttribute("aria-label", t(show ? "ac.pw.hide" : "ac.pw.show"));
+}
+function initials(s){
+  const parts = String(s||"").trim().split(/[\s@._-]+/).filter(Boolean);
+  if(!parts.length) return "?";
+  return (parts[0].charAt(0) + (parts[1] ? parts[1].charAt(0) : "")).toUpperCase();
 }
 async function doLogin(){
   const email = document.getElementById("li-email").value.trim();
@@ -209,32 +412,43 @@ async function loadEnts(){
   renderEnts();
 }
 function renderEnts(){
-  const box = document.getElementById("entlist"); box.innerHTML = "";
+  const box = document.getElementById("entlist");
+  const empty = document.getElementById("entempty");
+  box.innerHTML = "";
+  if(!S.ents.length){ empty.classList.remove("hidden"); return; }
+  empty.classList.add("hidden");
   for(const e of S.ents){
-    const row = document.createElement("div"); row.className = "row";
-    const state = e.status === "premium" ? '<span class="badge premium">' + t("ac.state.premium") + '</span>'
-      : e.status === "trial" ? '<span class="badge trial">' + t("ac.state.trial") + (e.daysLeft != null ? " · " + e.daysLeft + "d" : "") + '</span>'
-      : '<span class="badge available">' + t("ac.state.available") + '</span>';
-    row.innerHTML = '<span>' + t("app." + e.appSlug) + '</span><span style="display:flex;gap:10px;align-items:center">' + state +
-      (e.status === "available" ? '<button class="btn btn-s" style="min-height:36px;margin:0;padding:6px 14px" onclick="startTrial(\'' + e.appSlug + '\')">' + t("ac.state.available") + '</button>' : '') + '</span>';
+    const row = document.createElement("div"); row.className = "approw";
+    const letter = String(e.appSlug||"?").charAt(0).toUpperCase();
+    let badge = "", action = "";
+    if(e.status === "premium"){
+      badge = '<span class="badge premium">' + t("ac.state.premium") + '</span>';
+    } else if(e.status === "trial"){
+      badge = '<span class="badge trial">' + (e.daysLeft != null ? t("ac.trial", { d: e.daysLeft }) : t("ac.state.trial")) + '</span>';
+      action = '<a class="btn btn-s act" href="checkout.html?app=' + encodeURIComponent(e.appSlug) + '">' + t("ac.buy.short") + '</a>';
+    } else {
+      badge = '<span class="badge available">' + t("ac.state.available") + '</span>';
+      action = '<button class="btn btn-p act" onclick="startTrial(\'' + encodeURIComponent(e.appSlug) + '\')">' + t("ac.try") + '</button>';
+    }
+    row.innerHTML = '<span class="mono" aria-hidden="true">' + letter + '</span>' +
+      '<span class="appmeta">' + t("app." + e.appSlug) + '</span>' +
+      '<span class="appside">' + badge + action + '</span>';
     box.appendChild(row);
   }
-  document.getElementById("entcard").classList.remove("hidden");
 }
 async function loadAccount(){
   const { res, data } = await api("/auth/me");
-  if(!res.ok){ // not signed in — show auth card
-    document.getElementById("authcard").classList.remove("hidden");
-    document.getElementById("accountcard").classList.add("hidden");
-    document.getElementById("entcard").classList.add("hidden");
+  if(!res.ok){ // not signed in — show auth view
+    document.getElementById("authview").classList.remove("hidden");
+    document.getElementById("userview").classList.add("hidden");
     return;
   }
   const u = (data && data.data) || {};
-  document.getElementById("authcard").classList.add("hidden");
-  document.getElementById("accountcard").classList.remove("hidden");
-  document.getElementById("entcard").classList.remove("hidden");
+  document.getElementById("authview").classList.add("hidden");
+  document.getElementById("userview").classList.remove("hidden");
   document.getElementById("p-email").textContent = u.email || "—";
   document.getElementById("p-name").textContent = u.displayName || "—";
+  document.getElementById("p-initials").textContent = initials(u.displayName || u.email);
   await loadEnts();
 }
 loadAccount();
