@@ -71,7 +71,7 @@ h1{font-size:clamp(26px,4vw,36px);font-weight:900;margin:34px 0 6px}
 .seg button{min-height:40px;border-radius:9px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:13.5px;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
 .seg button.is-active{background:linear-gradient(135deg,var(--acc),#7452f2);color:#fff;box-shadow:0 6px 16px rgba(139,108,255,.35)}
 .pw{position:relative}
-.pw input{padding-inline-end:46px}
+.pw input{padding-inline-end:52px}
 .pw .eye{position:absolute;inset-inline-end:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:8px;border:0;background:transparent;color:var(--mut);cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
 .pw .eye:hover{color:var(--txt)}
 .pw .eye svg{width:17px;height:17px}
@@ -129,6 +129,33 @@ footer a:hover{color:var(--txt)}
 footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px;font-size:12.5px}
 @media(max-width:860px){footer .cols{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){footer .cols{grid-template-columns:1fr}}
+
+/* mobile nav (firewall standard: full navigation on every viewport) */
+.nav-burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.05);color:var(--txt);cursor:pointer;align-items:center;justify-content:center;flex-shrink:0}
+.nav-burger svg{width:20px;height:20px}
+.nav-burger:hover{border-color:var(--acc)}
+.nav-mobile{position:fixed;top:64px;left:0;right:0;z-index:49;background:rgba(13,11,29,.97);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:6px 22px 12px;display:none}
+.nav-mobile a{display:flex;align-items:center;min-height:48px;color:#cfc9ee;text-decoration:none;font-size:15px;font-weight:600;border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-mobile a:last-child{border-bottom:0}
+.nav-mobile.open{display:block}
+@media(max-width:960px){
+  .nav-burger{display:inline-flex}
+  nav ul{display:none}
+  .nav-mobile.open{display:block}
+}
+
+/* firewall tap-target standard */
+.lang-dd-btn,.lang-dd-menu button,.seg button,.lang-toggle button{min-height:44px}
+.iconlink{width:44px;height:44px}
+.links .btn,.pactions .btn,.act,.alt a,.consent .btn,.pm-close,.car-btn{min-height:44px}
+.eye{width:44px;height:44px}
+@media(max-width:960px){footer .cols{grid-template-columns:1fr 1fr}}
+
+@media(max-width:520px){
+  nav .wrap{padding:0 12px;gap:10px}
+  .logo b{display:none}
+  .logo{font-size:15px}
+}
 </style>
 </head>
 <body>
@@ -156,7 +183,17 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
     <a class="iconlink is-current" href="/account.html" aria-label="My account" aria-current="page" data-i18n-aria="ac.navacct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
     <a class="iconlink" href="checkout.html?cart=1" aria-label="Cart" data-i18n-aria="ac.navcart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span id="cart-badge" class="cart-badge hidden">0</span></a>
   </div>
-</div></nav>
+    <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false" onclick="navToggle()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/"  data-i18n-mirror="nav.home">Home</a>
+    <a href="/#products"  data-i18n-mirror="nav.products">Products</a>
+    <a href="/#pricing"  data-i18n-mirror="nav.pricing">Pricing</a>
+    <a href="/#how"  data-i18n-mirror="nav.how">How it works</a>
+    <a href="/#support"  data-i18n-mirror="nav.support">Support</a>
+    <a href="/#faq"  data-i18n-mirror="nav.faq">FAQ</a>
+  </div>
+</div>
+</nav>
 <div class="wrap">
 <h1 data-i18n="ac.h1">My account</h1>
 <p class="sub" data-i18n="ac.sub">Manage your trials, plans and apps, one login for the whole Nelurio Suite.</p>
@@ -363,6 +400,12 @@ function lang(){ return document.documentElement.lang || "en"; }
 function setLang(l){
   document.documentElement.lang = l; document.documentElement.dir = (l==="fa")?"rtl":"ltr";
   document.querySelectorAll("[data-i18n]").forEach(el=>{ const v=I18N[el.getAttribute("data-i18n")]; if(v&&v[l]) el.textContent=v[l]; });
+
+  document.querySelectorAll('[data-i18n-mirror]').forEach(el=>{
+    const kk = el.getAttribute('data-i18n-mirror');
+    const vv = I18N[kk] || (window.CH_I18N && window.CH_I18N[kk]);
+    if(vv && vv[l]) el.textContent = vv[l];
+  });
   document.querySelectorAll("[data-i18n-aria]").forEach(el=>{ const v=I18N[el.getAttribute("data-i18n-aria")]; if(v&&v[l]) el.setAttribute("aria-label",v[l]); });
   const ll = document.getElementById("lang-label"); if(ll) ll.textContent = l.toUpperCase() === "FA" ? "فا" : l.toUpperCase();
   try{localStorage.setItem("lang",l)}catch(e){}
@@ -496,6 +539,19 @@ async function loadAccount(){
   await loadEnts();
 }
 loadAccount();
+</script>
+<script>
+function navToggle(){
+  const m = document.getElementById("nav-mobile");
+  const b = document.getElementById("nav-burger");
+  const open = m.classList.toggle("open");
+  b.setAttribute("aria-expanded", open ? "true" : "false");
+}
+document.querySelectorAll("#nav-mobile a").forEach(a => a.addEventListener("click", () => {
+  document.getElementById("nav-mobile").classList.remove("open");
+  document.getElementById("nav-burger").setAttribute("aria-expanded", "false");
+}));
+document.addEventListener("keydown", e => { if(e.key === "Escape" && document.getElementById("nav-mobile").classList.contains("open")) navToggle(); });
 </script>
 </body>
 </html>

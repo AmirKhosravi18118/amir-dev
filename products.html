@@ -114,6 +114,27 @@ footer a{color:#c3b4ff}
   section{padding:44px 0}
   .hero{padding:52px 0 10px}
 }
+
+/* mobile nav (firewall standard: full navigation on every viewport) */
+.nav-burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.05);color:var(--txt);cursor:pointer;align-items:center;justify-content:center;flex-shrink:0}
+.nav-burger svg{width:20px;height:20px}
+.nav-burger:hover{border-color:var(--acc)}
+.nav-mobile{position:fixed;top:64px;left:0;right:0;z-index:49;background:rgba(13,11,29,.97);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:6px 22px 12px;display:none}
+.nav-mobile a{display:flex;align-items:center;min-height:48px;color:#cfc9ee;text-decoration:none;font-size:15px;font-weight:600;border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-mobile a:last-child{border-bottom:0}
+.nav-mobile.open{display:block}
+@media(max-width:860px){
+  .nav-burger{display:inline-flex}
+  nav ul{display:none}
+  .nav-mobile.open{display:block}
+}
+
+/* firewall tap-target standard */
+.lang-dd-btn,.lang-dd-menu button,.seg button,.lang-toggle button{min-height:44px}
+.iconlink{width:44px;height:44px}
+.links .btn,.pactions .btn,.act,.alt a,.consent .btn,.pm-close,.car-btn{min-height:44px}
+.eye{width:44px;height:44px}
+@media(max-width:960px){footer .cols{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -132,7 +153,14 @@ footer a{color:#c3b4ff}
     </div>
     <a class="btn btn-p nav-cta" href="index.html#contact" data-i18n="nav.cta">Get in touch</a>
   </div>
-</div></nav>
+    <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false" onclick="navToggle()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html#projects"  data-i18n-mirror="nav.portfolio">Portfolio</a>
+    <a href="index.html#about"  data-i18n-mirror="nav.about">About</a>
+    <a href="index.html#contact"  data-i18n-mirror="nav.contact">Contact</a>
+  </div>
+</div>
+</nav>
 
 <div class="wrap">
 <header class="hero">
@@ -325,6 +353,12 @@ function setLang(l){
     const v = I18N[k];
     if(v && v[l]) el.textContent = v[l];
   });
+
+  document.querySelectorAll('[data-i18n-mirror]').forEach(el=>{
+    const kk = el.getAttribute('data-i18n-mirror');
+    const vv = I18N[kk] || (window.CH_I18N && window.CH_I18N[kk]);
+    if(vv && vv[l]) el.textContent = vv[l];
+  });
   try{localStorage.setItem('lang',l)}catch(e){}
 }
 const qpLang = new URLSearchParams(location.search).get("lang");
@@ -398,6 +432,19 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   window.openConsent = function(){ detail.hidden = true; saveBtn.hidden = true; banner.hidden = false; };
   window.initAnalytics();
 })();
+</script>
+<script>
+function navToggle(){
+  const m = document.getElementById("nav-mobile");
+  const b = document.getElementById("nav-burger");
+  const open = m.classList.toggle("open");
+  b.setAttribute("aria-expanded", open ? "true" : "false");
+}
+document.querySelectorAll("#nav-mobile a").forEach(a => a.addEventListener("click", () => {
+  document.getElementById("nav-mobile").classList.remove("open");
+  document.getElementById("nav-burger").setAttribute("aria-expanded", "false");
+}));
+document.addEventListener("keydown", e => { if(e.key === "Escape" && document.getElementById("nav-mobile").classList.contains("open")) navToggle(); });
 </script>
 </body>
 </html>
