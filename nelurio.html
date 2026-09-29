@@ -60,6 +60,11 @@ nav ul a:hover{color:var(--txt)}
 .nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:3px}
 .lang-toggle button{min-height:34px;padding:5px 11px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:11.5px;cursor:pointer}
+.lang-dd{position:relative}
+.lang-dd-btn{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:5px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--txt);font-weight:800;font-size:12px;cursor:pointer}
+.lang-dd-menu{position:absolute;top:calc(100% + 4px);inset-inline-end:0;background:#1a1733;border:1px solid var(--line);border-radius:12px;padding:4px;min-width:130px;display:none;z-index:60;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.lang-dd-menu button{display:block;width:100%;text-align:start;padding:8px 14px;border-radius:8px;border:0;background:transparent;color:var(--txt);font-weight:700;font-size:13px;cursor:pointer}
+.lang-dd-menu button:hover{background:rgba(139,108,255,.15)}
 .lang-toggle button.is-active{background:var(--acc);color:#fff}
 .iconlink{position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--txt);text-decoration:none;transition:border-color .15s}
 .iconlink:hover{border-color:var(--acc)}
@@ -77,16 +82,15 @@ section{padding:var(--sp-7) 0}
 h2{font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-.6px;margin-bottom:var(--sp-2)}
 .lead{color:var(--mut);max-width:660px;font-size:15.5px;margin-bottom:var(--sp-5)}
 .hero{padding:var(--sp-6) 0 var(--sp-4);position:relative}
-.hero::before{content:"";position:absolute;top:-220px;inset-inline-end:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(139,108,255,.15),transparent 65%);pointer-events:none;animation:breathe 9s ease-in-out infinite}
-.hero::after{content:"";position:absolute;top:-80px;inset-inline-start:-200px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(77,141,247,.10),transparent 65%);pointer-events:none;animation:breathe 11s ease-in-out infinite reverse}
+.hero::before{content:"";position:absolute;top:-220px;inset-inline-end:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(139,108,255,.15),transparent 65%);pointer-events:none;animation:breathe 9s ease-in-out infinite;opacity:.6}
+.hero::after{content:"";position:absolute;top:-80px;inset-inline-start:-200px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(77,141,247,.10),transparent 65%);pointer-events:none;animation:breathe 11s ease-in-out infinite reverse;opacity:.6}
 @keyframes breathe{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
-.badge{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:999px;border:1px solid rgba(139,108,255,.4);background:rgba(139,108,255,.1);font-size:11px;font-weight:900;letter-spacing:.16em;color:#c3b4ff;margin-bottom:var(--sp-4)}
 .badge i{width:7px;height:7px;border-radius:50%;background:#a585ff;box-shadow:0 0 10px #a585ff;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 h1{font-size:clamp(38px,5.4vw,62px);font-weight:900;letter-spacing:-2px;line-height:1.04;margin-bottom:var(--sp-3)}
 h1 .grad{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero .sub{font-size:18px;color:#ddd8f5;max-width:640px;font-weight:600;margin-bottom:var(--sp-3)}
-.hero .lead{font-size:15.5px;margin-bottom:var(--sp-5)}
+.hero .sub{font-size:17px;color:#cfc9ee;max-width:580px;margin-bottom:var(--sp-2)}
+.hero .lead{display:none}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .proof{display:flex;flex-wrap:wrap;gap:10px 22px;margin:var(--sp-5) 0 0}
 .pf{display:inline-flex;align-items:center;gap:8px;color:#cfc9ee;font-size:13px;font-weight:700}
@@ -202,23 +206,25 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
     <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
   </ul>
   <div class="nav-right">
-    <div class="lang-toggle" role="group" aria-label="Language">
-      <button id="btn-en" class="is-active" onclick="setLang('en')">EN</button>
-      <button id="btn-de" onclick="setLang('de')">DE</button>
-      <button id="btn-fa" onclick="setLang('fa')">فا</button>
+    <div class="lang-dd">
+      <button class="lang-dd-btn" id="btn-lang" onclick="toggleLangDD()" aria-label="Language">
+        <span id="lang-label">EN</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="lang-dd-menu" id="lang-dd-menu">
+        <button onclick="setLang('en')">English</button>
+        <button onclick="setLang('de')">Deutsch</button>
+        <button onclick="setLang('fa')">فارسی</button>
+      </div>
     </div>
     <a class="iconlink" href="/account.html" aria-label="My account" data-i18n-aria="ac.navacct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
     <a class="iconlink" href="checkout.html?cart=1" aria-label="Cart" data-i18n-aria="ac.navcart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span id="cart-badge" class="cart-badge hidden">0</span></a>
-    <a class="btn btn-p" href="#pricing" data-i18n="nav.cta">Start free</a>
   </div>
 </div></nav>
 
 <div class="wrap">
 <header class="hero">
-  <div class="badge"><i></i><span data-i18n="nl.badge">NELURIO SUITE · BY AMIR KHOSRAVI</span></div>
   <h1><span data-i18n="nl.h1a">Stop juggling tools.</span><br><span class="grad" data-i18n="nl.h1b">Run everything from one library.</span></h1>
-  <p class="sub" data-i18n="nl.sub">The product library of Amir Khosravi — focused apps for studying, money, language and real business operations.</p>
-  <p class="lead" data-i18n="nl.lead">Pick an app, start your free month and get productive today. No credit card. No setup. EU-hosted and GDPR-first from day one.</p>
+  <p class="sub" data-i18n="nl.sub">Four focused apps for studying, money, language and real business — one platform, one account.</p>
   <div class="hero-ctas">
     <a class="btn btn-p" href="#pricing" data-i18n="nl.cta.trial0">Start your free month</a>
     <a class="btn btn-s" href="#products" data-i18n="nl.cta.browse">Explore the products</a>
@@ -229,7 +235,6 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
     <span class="pf"><i></i><span data-i18n="pf.3">24/7 monitoring</span></span>
     <span class="pf"><i></i><span data-i18n="pf.4">GDPR delete anytime</span></span>
   </div>
-  <p class="builder-note"><span data-i18n="nl.builder">Built end-to-end by</span> <a href="https://amir-khosravi.de">Amir Khosravi</a><span data-i18n="nl.builder2"> — developer &amp; BWL student, Rhein-Main. The story behind every product lives on the portfolio.</span></p>
 </header>
 
 <section id="products" style="padding-top:var(--sp-4)">
@@ -540,11 +545,22 @@ const I18N = {
 "cons.accept":{"en":"Accept","de":"Akzeptieren","fa":"می‌پذیرم"},
 "cons.decline":{"en":"Decline","de":"Ablehnen","fa":"رد می‌کنم"}
 };
+function toggleLangDD(){
+  const m = document.getElementById('lang-dd-menu');
+  m.style.display = (m.style.display === 'block') ? 'none' : 'block';
+}
+document.addEventListener('click', e => {
+  const dd = document.querySelector('.lang-dd');
+  if(dd && !dd.contains(e.target)) { const m = document.getElementById('lang-dd-menu'); if(m) m.style.display = 'none'; }
+});
 function setLang(l){
   document.documentElement.setAttribute('data-lang', l);
   document.documentElement.lang = l;
   document.documentElement.dir = (l === 'fa') ? 'rtl' : 'ltr';
-  ['en','de','fa'].forEach(x=>document.getElementById('btn-'+x).classList.toggle('is-active', x===l));
+  const lbl = document.getElementById('lang-label');
+  if(lbl) lbl.textContent = l.toUpperCase() === 'FA' ? 'فا' : l.toUpperCase();
+  const menu = document.getElementById('lang-dd-menu');
+  if(menu) menu.style.display = 'none';
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const v = I18N[el.getAttribute('data-i18n')];
     if(v && v[l]) el.textContent = v[l];
