@@ -157,6 +157,10 @@ footer a{color:#c3b4ff}
 .consent{position:fixed;left:20px;right:20px;bottom:20px;z-index:90;max-width:660px;margin:0 auto;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:16px 20px;border-radius:16px;background:rgba(16,13,36,.92);border:1px solid rgba(139,108,255,.35);backdrop-filter:blur(12px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
 .consent p{font-size:13px;color:#cfc9ee;flex:1;min-width:240px}
 .consent .btn{padding:9px 16px;font-size:12.5px}
+.crow{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:#cfc9ee}
+.crow input{width:16px;height:16px;min-height:0;margin:2px 0 0;accent-color:var(--acc);flex:0 0 auto}
+.crow b{display:block;color:var(--txt)}
+.crow small{color:var(--mut);font-size:11.5px}
 
 @media(prefers-reduced-motion:reduce){.reveal,.hero > div{opacity:1;transform:none;transition:none;animation:none}}
 
@@ -397,11 +401,17 @@ footer a{color:#c3b4ff}
 </div></footer>
 
 <div id="consentBanner" class="consent" hidden role="dialog" aria-live="polite">
-  <p data-i18n="cons.text">This site uses consent-based, privacy-friendly analytics — page statistics only, no ads, no cross-site tracking. You decide; change your mind anytime by clearing this site's data.</p>
-  <div style="display:flex;gap:10px">
-    <button id="consent-accept" class="btn btn-p" type="button" data-i18n="cons.accept">Accept</button>
-    <button id="consent-decline" class="btn btn-s" type="button" data-i18n="cons.decline">Decline</button>
-  </div>
+  <p data-i18n="cons.text">This site uses only essential storage by default (session login, shopping cart, language, chat). Anonymous statistics via Google Analytics 4 are optional — always your choice.</p>
+    <div id="consent-detail" hidden style="flex-basis:100%;margin-top:10px;display:grid;gap:8px">
+      <label class="crow"><input type="checkbox" checked disabled aria-label="Essential"><span><b data-i18n="cons.cat.essential">Essential — always active</b><small data-i18n="cons.cat.essential.desc">Session login, shopping cart, language, chat history.</small></span></label>
+      <label class="crow"><input type="checkbox" id="consent-stats" checked><span><b data-i18n="cons.cat.stats">Statistics</b><small data-i18n="cons.cat.stats.desc">Anonymous page statistics via Google Analytics 4.</small></span></label>
+    </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <button id="consent-accept" class="btn btn-p" type="button" data-i18n="cons.accept">Accept all</button>
+      <button id="consent-decline" class="btn btn-s" type="button" data-i18n="cons.decline">Only essential</button>
+      <button id="consent-customize" class="btn btn-s" type="button" data-i18n="cons.customize">Customize</button>
+      <button id="consent-save" class="btn btn-p" type="button" data-i18n="cons.save" hidden>Save selection</button>
+    </div>
 </div>
 </div>
 
@@ -430,9 +440,15 @@ const I18N = {
 "pm.title":{"en":"All projects","de":"Alle Projekte"},
 "pm.sub":{"en":"Every project here is live and open to try — no mockups, no vaporware. Newest at the bottom.","de":"Jedes Projekt hier ist live und zum Ausprobieren offen — keine Mockups, kein Vaporware. Neueste unten."},
 "pm.close":{"en":"Close","de":"Schließen"},
-"cons.text":{"en":"This site uses consent-based, privacy-friendly analytics — page statistics only, no ads, no cross-site tracking. You decide; change your mind anytime by clearing this site's data.","de":"Diese Website nutzt einwilligungsbasierte, datenschutzfreundliche Analytik — nur Seitenstatistik, keine Werbung, kein übergreifendes Tracking. Du entscheidest; jederzeit änderbar durch Löschen der Website-Daten."},
-"cons.accept":{"en":"Accept","de":"Akzeptieren"},
-"cons.decline":{"en":"Decline","de":"Ablehnen"},
+"cons.text":{"en":"This site uses only essential storage by default (session login, shopping cart, language, chat). Anonymous statistics via Google Analytics 4 are optional — always your choice.","de":"Diese Seite nutzt standardmäßig nur notwendige Speicherung (Anmeldung, Warenkorb, Sprache, Chat). Anonyme Statistik über Google Analytics 4 ist optional — immer deine Entscheidung.","fa":"این سایت به‌صورت پیشفرض فقط از ذخیره‌سازی ضروری استفاده می‌کند (ورود، سبد خرید، زبان، چت). آمار ناشناس با Google Analytics 4 اختیاری است — تصمیم همیشه با توست."},
+"cons.accept":{"en":"Accept all","de":"Alle akzeptieren","fa":"پذیرش همه"},
+"cons.decline":{"en":"Only essential","de":"Nur notwendige","fa":"فقط ضروری‌ها"},
+"cons.customize":{"en":"Customize","de":"Anpassen","fa":"تنظیم دقیق"},
+"cons.save":{"en":"Save selection","de":"Auswahl speichern","fa":"ذخیره انتخاب"},
+"cons.cat.essential":{"en":"Essential — always active","de":"Notwendig — immer aktiv","fa":"ضروری — همیشه فعال"},
+"cons.cat.essential.desc":{"en":"Session login, shopping cart, language, chat history.","de":"Anmeldung, Warenkorb, Sprache, Chatverlauf.","fa":"ورود، سبد خرید، زبان، تاریخچه چت."},
+"cons.cat.stats":{"en":"Statistics","de":"Statistik","fa":"آمار"},
+"cons.cat.stats.desc":{"en":"Anonymous page statistics via Google Analytics 4.","de":"Anonyme Seitenstatistik über Google Analytics 4.","fa":"آمار ناشناس بازدید با Google Analytics 4."},
 "p1.what":{"en":"AI study assistant for university students — live in beta.","de":"KI-Lernassistent für Studierende — live im Beta."},
 "p1.build":{"en":"Record a lecture → AI writes the summary, schedules spaced-repetition reviews, generates flashcards & quizzes, and a tutor answers from your own materials with citations. Built solo — backend, frontend, AI, infra, deployment.","de":"Vorlesung erfassen → die KI schreibt die Zusammenfassung, plant Wiederholungen, erstellt Lernkarten & Quiz — der Tutor antwortet aus deinen eigenen Materialien mit Quellen. Solo gebaut — Backend, Frontend, KI, Infra, Deployment."},
 "p2.what":{"en":"German vocabulary learning platform.","de":"Plattform zum Deutsch-Vokabeln lernen."},
@@ -661,6 +677,18 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   };
   document.getElementById('consent-accept').addEventListener('click', ()=>decide('granted'));
   document.getElementById('consent-decline').addEventListener('click', ()=>decide('denied'));
+  const detail = document.getElementById('consent-detail');
+  const saveBtn = document.getElementById('consent-save');
+  document.getElementById('consent-customize').addEventListener('click', function(){
+    detail.hidden = !detail.hidden;
+    saveBtn.hidden = detail.hidden;
+    if(!detail.hidden){
+      let c = null; try{ c = localStorage.getItem(KEY); }catch(e){}
+      document.getElementById('consent-stats').checked = c !== 'denied';
+    }
+  });
+  saveBtn.addEventListener('click', function(){ decide(document.getElementById('consent-stats').checked ? 'granted' : 'denied'); });
+  window.openConsent = function(){ detail.hidden = true; saveBtn.hidden = true; banner.hidden = false; };
   window.initAnalytics();
 })();
 </script>

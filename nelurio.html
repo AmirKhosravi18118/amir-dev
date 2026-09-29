@@ -175,9 +175,13 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:7px}
 footer a{color:#cfc9ee;text-decoration:none}
 footer a:hover{color:var(--txt)}
 footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:var(--sp-4)}
-.consent{position:fixed;inset-inline-start:50%;transform:translateX(-50%);bottom:18px;z-index:90;display:flex;gap:16px;align-items:center;width:min(860px,calc(100% - 32px));padding:16px 20px;border-radius:16px;border:1px solid var(--line);background:rgba(19,15,38,.92);backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(5,3,18,.6)}
+.consent{position:fixed;inset-inline-start:50%;transform:translateX(-50%);bottom:18px;z-index:90;display:flex;flex-wrap:wrap;gap:16px;align-items:center;width:min(860px,calc(100% - 32px));padding:16px 20px;border-radius:16px;border:1px solid var(--line);background:rgba(19,15,38,.92);backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(5,3,18,.6)}
 .consent p{font-size:13px;color:#cfc9ee;flex:1;min-width:240px}
 .consent .btn{min-height:44px;padding:8px 18px;font-size:12.5px}
+.crow{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:#cfc9ee}
+.crow input{width:16px;height:16px;min-height:0;margin:2px 0 0;accent-color:var(--acc);flex:0 0 auto}
+.crow b{display:block;color:var(--txt)}
+.crow small{color:var(--mut);font-size:11.5px}
 [hidden]{display:none!important}.hidden{display:none!important}
 .chatdock{position:fixed;bottom:20px;inset-inline-end:20px;z-index:95;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
 .chatdock .chat-panel{display:none;flex-direction:column;width:min(360px,calc(100vw - 32px));height:min(520px,72vh);background:rgba(19,15,38,.97);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 70px rgba(5,3,18,.6);overflow:hidden;opacity:0;transform:translateY(12px) scale(.98);transition:opacity .22s,transform .22s}
@@ -424,6 +428,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
       <li><a href="/legal/privacy.html" data-i18n="f.privacy">Privacy Policy</a></li>
       <li><a href="/legal/terms.html" data-i18n="f.terms">Terms &amp; Conditions</a></li>
       <li><a href="/legal/widerruf.html" data-i18n="f.withdraw">Right of Withdrawal</a></li>
+      <li><a href="#" onclick="openConsent();return false" data-i18n="f.cookies">Cookie settings</a></li>
       <li><a href="mailto:support@nelurio.com" data-i18n="f.contact">Contact / Support</a></li>
     </ul></div>
   </div>
@@ -434,11 +439,17 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 </div></footer>
 
 <div id="consentBanner" class="consent" hidden role="dialog" aria-live="polite">
-  <p data-i18n="cons.text">This site uses consent-based, privacy-friendly analytics — page statistics only, no ads, no cross-site tracking. You decide; change your mind anytime by clearing this site's data.</p>
-  <div style="display:flex;gap:10px">
-    <button id="consent-accept" class="btn btn-p" type="button" data-i18n="cons.accept">Accept</button>
-    <button id="consent-decline" class="btn btn-s" type="button" data-i18n="cons.decline">Decline</button>
-  </div>
+  <p data-i18n="cons.text">This site uses only essential storage by default (session login, shopping cart, language, chat). Anonymous statistics via Google Analytics 4 are optional — always your choice.</p>
+    <div id="consent-detail" hidden style="flex-basis:100%;margin-top:10px;display:grid;gap:8px">
+      <label class="crow"><input type="checkbox" checked disabled aria-label="Essential"><span><b data-i18n="cons.cat.essential">Essential — always active</b><small data-i18n="cons.cat.essential.desc">Session login, shopping cart, language, chat history.</small></span></label>
+      <label class="crow"><input type="checkbox" id="consent-stats" checked><span><b data-i18n="cons.cat.stats">Statistics</b><small data-i18n="cons.cat.stats.desc">Anonymous page statistics via Google Analytics 4.</small></span></label>
+    </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <button id="consent-accept" class="btn btn-p" type="button" data-i18n="cons.accept">Accept all</button>
+      <button id="consent-decline" class="btn btn-s" type="button" data-i18n="cons.decline">Only essential</button>
+      <button id="consent-customize" class="btn btn-s" type="button" data-i18n="cons.customize">Customize</button>
+      <button id="consent-save" class="btn btn-p" type="button" data-i18n="cons.save" hidden>Save selection</button>
+    </div>
 </div>
 
 <div class="chatdock" id="chatdock">
@@ -602,10 +613,11 @@ const I18N = {
 "f.privacy":{"en":"Privacy Policy","de":"Datenschutzerklärung","fa":"سیاست حریم خصوصی"},
 "f.terms":{"en":"Terms & Conditions","de":"AGB","fa":"شرایط و مقررات"},
 "f.withdraw":{"en":"Right of Withdrawal","de":"Widerrufsbelehrung","fa":"حق انصراف"},
+"f.cookies":{"en":"Cookie settings","de":"Cookie-Einstellungen","fa":"تنظیمات کوکی"},
 "f.contact":{"en":"Contact / Support","de":"Kontakt / Support","fa":"تماس / پشتیبانی"},
 "f.portfolio":{"en":"Portfolio","de":"Portfolio","fa":"پورتفولیو"},
-"cons.text":{"en":"This site uses consent-based, privacy-friendly analytics — page statistics only, no ads, no cross-site tracking. You decide; change your mind anytime by clearing this site's data.","de":"Diese Website nutzt einwilligungsbasierte, datenschutzfreundliche Analytik — nur Seitenstatistik, keine Werbung, kein übergreifendes Tracking. Du entscheidest؛ هر زمان با پاک کردن داده‌های سایت می‌توانی نظرت را عوض کنی.","fa":"این سایت از تحلیل آماری مبتنی بر رضایت استفاده می‌کند — فقط آمار بازدید، بدون تبلیغ و ردیابی بین‌سایتی. تصمیم با توست؛ هر زمان با پاک کردن داده‌های سایت می‌توانی نظرت را عوض کنی."},
-"cons.accept":{"en":"Accept","de":"Akzeptieren","fa":"می‌پذیرم"},
+"cons.text":{"en":"This site uses only essential storage by default (session login, shopping cart, language, chat). Anonymous statistics via Google Analytics 4 are optional — always your choice.","de":"Diese Seite nutzt standardmäßig nur notwendige Speicherung (Anmeldung, Warenkorb, Sprache, Chat). Anonyme Statistik über Google Analytics 4 ist optional — immer deine Entscheidung.","fa":"این سایت به‌صورت پیشفرض فقط از ذخیره‌سازی ضروری استفاده می‌کند (ورود، سبد خرید، زبان، چت). آمار ناشناس با Google Analytics 4 اختیاری است — تصمیم همیشه با توست."},
+"cons.accept":{"en":"Accept all","de":"Alle akzeptieren","fa":"پذیرش همه"},
 "cons.decline":{"en":"Decline","de":"Ablehnen","fa":"رد می‌کنم"}
 };
 function toggleLangDD(){
@@ -808,6 +820,18 @@ document.addEventListener('langchange', chatRender);
   };
   document.getElementById('consent-accept').addEventListener('click', ()=>decide('granted'));
   document.getElementById('consent-decline').addEventListener('click', ()=>decide('denied'));
+  const detail = document.getElementById('consent-detail');
+  const saveBtn = document.getElementById('consent-save');
+  document.getElementById('consent-customize').addEventListener('click', function(){
+    detail.hidden = !detail.hidden;
+    saveBtn.hidden = detail.hidden;
+    if(!detail.hidden){
+      let c = null; try{ c = localStorage.getItem(KEY); }catch(e){}
+      document.getElementById('consent-stats').checked = c !== 'denied';
+    }
+  });
+  saveBtn.addEventListener('click', function(){ decide(document.getElementById('consent-stats').checked ? 'granted' : 'denied'); });
+  window.openConsent = function(){ detail.hidden = true; saveBtn.hidden = true; banner.hidden = false; };
   window.initAnalytics();
 })();
 </script>
