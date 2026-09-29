@@ -92,7 +92,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
     <label for="ch-email" data-i18n="ch.email">Your email (so we can reply)</label>
     <input id="ch-email" type="email" placeholder="you@example.com" autocomplete="email">
     <label for="ch-msg" data-i18n="ch.msg">Your message</label>
-    <textarea id="ch-msg" placeholder="Write your question here…"></textarea>
+    <textarea id="ch-msg" data-i18n-placeholder="ch.msg.ph" placeholder="Write your question here…"></textarea>
     <button class="btn btn-p" id="ch-send" onclick="sendChat()" data-i18n="ch.send">Send message</button>
     <p class="msg" id="ch-msg-status"></p>
   </div>
@@ -161,11 +161,13 @@ const CH_I18N = {
 "f.rights":{"en":"© 2026 Amir Khosravi · Nelurio Suite","de":"© 2026 Amir Khosravi · Nelurio Suite","fa":"© 2026 Amir Khosravi · Nelurio Suite"},
 "nav.products":{"en":"Products","de":"Produkte","fa":"محصولات"},
 "nav.pricing":{"en":"Pricing","de":"Preise","fa":"قیمت‌ها"},
-"ch.home":{"en":"← Home","de":"← Start","fa":"← خانه"},
 "ch.ok":{"en":"Message sent! We'll reply to your email within 24 hours.","de":"Nachricht gesendet! Wir antworten innerhalb von 24 Stunden per E-Mail.","fa":"پیام ارسال شد! تا ۲۴ ساعت به ایمیلت جواب می‌دهیم."},
 "ch.err.email":{"en":"Please enter your email so we can reply.","de":"Bitte gib deine E-Mail ein, damit wir antworten können.","fa":"ایمیلت را وارد کن تا جواب بدهیم."},
 "ch.err.msg":{"en":"Please write a message.","de":"Bitte schreibe eine Nachricht.","fa":"لطفاً پیام بنویس."},
-"ch.err.send":{"en":"Failed to send, please try WhatsApp or email directly.","de":"Senden fehlgeschlagen – bitte WhatsApp oder E-Mail direkt nutzen.","fa":"ارسال نشد، لطفاً واتساپ یا ایمیل را مستقیم استفاده کن."}
+"ch.msg.ph":{"en":"Write your question here…","de":"Schreib hier deine Frage…","fa":"سؤالت را اینجا بنویس…"},
+"ch.sending":{"en":"⏳ Sending…","de":"⏳ Wird gesendet…","fa":"⏳ در حال ارسال…"},
+"ch.err.conn":{"en":"❌ Connection error, try WhatsApp.","de":"❌ Verbindungsfehler – WhatsApp versuchen.","fa":"❌ خطای اتصال، واتساپ را امتحان کن."},
+"ch.err.send":{"en":"Failed to send, please try WhatsApp or email directly.","de":"Senden fehlgeschlagen – bitte WhatsApp oder E-Mail direkt nutzen.","fa":"ارسال نشد، لطفاً مستقیم از واتساپ یا ایمیل استفاده کن."}
 };
 function setLang(l){
   document.documentElement.lang = l;
@@ -174,6 +176,10 @@ function setLang(l){
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const v = CH_I18N[el.getAttribute('data-i18n')];
     if(v && v[l]) el.textContent = v[l];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const v = CH_I18N[el.getAttribute('data-i18n-placeholder')];
+    if(v && v[l]) el.setAttribute('placeholder', v[l]);
   });
   try{localStorage.setItem('lang',l)}catch(e){}
 }
@@ -186,9 +192,10 @@ async function sendChat(){
   const status = document.getElementById('ch-msg-status');
   const msg = msgEl ? msgEl.value.trim() : '';
   const mail = email ? email.value.trim() : '';
-  if(!mail || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)) { status.textContent = CH_I18N['ch.err.email'] ? CH_I18N['ch.err.email'].fa || 'Enter email' : 'Enter email'; status.className = 'msg err'; return; }
-  if(!msg || msg.length < 5) { status.textContent = 'لطفاً پیامت را بنویس.'; status.className = 'msg err'; return; }
-  status.textContent = '⏳ Sending…'; status.className = 'msg';
+  if(!mail || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)) { const L = (k) => { const v = CH_I18N[k]; return (v && (v[(document.documentElement.lang) || 'en'] || v.en)) || k; };
+  status.textContent = L('ch.err.email'); status.className = 'msg err'; return; }
+  if(!msg || msg.length < 5) { status.textContent = L('ch.err.msg'); status.className = 'msg err'; return; }
+  status.textContent = L('ch.sending'); status.className = 'msg';
   try {
     const res = await fetch('/api/v1/feedback', {
       method: 'POST',
@@ -199,15 +206,15 @@ async function sendChat(){
       })
     });
     if(res.ok) {
-      status.textContent = CH_I18N['ch.ok'] ? CH_I18N['ch.ok'].fa || 'Sent!' : '✅ Sent!';
+      status.textContent = L('ch.ok');
       status.className = 'msg ok';
       msgEl.value = '';
     } else {
-      status.textContent = '❌ Failed, please use WhatsApp or email.';
+      status.textContent = L('ch.err.send');
       status.className = 'msg err';
     }
   } catch(e) {
-    status.textContent = '❌ Connection error, try WhatsApp.';
+    status.textContent = L('ch.err.conn');
     status.className = 'msg err';
   }
 }

@@ -266,26 +266,26 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   </div>
 </div></nav>
 <div class="wrap">
-<h1>Checkout</h1>
-<p class="sub">Pick your product, choose a plan and pay.</p>
+<h1 data-i18n="ck.h1">Checkout</h1>
+<p class="sub" data-i18n="ck.sub">Pick your product, choose a plan and pay.</p>
 <div class="ckgrid">
 <div>
-<div class="ckcard"><h2>1 · Your product</h2><div class="apps" id="apps"></div></div>
-<div class="ckcard"><h2>2 · Plan &amp; account</h2>
-<label id="plan-lbl">Plan</label>
+<div class="ckcard"><h2 data-i18n="ck.s1">1 · Your product</h2><div class="apps" id="apps"></div></div>
+<div class="ckcard"><h2 data-i18n="ck.s2">2 · Plan &amp; account</h2>
+<label id="plan-lbl" data-i18n="ck.plan">Plan</label>
 <div class="seg" id="plan-seg" role="group" aria-labelledby="plan-lbl">
-<button type="button" data-v="monthly" aria-pressed="true" class="is-active" onclick="ckPick(this)">Monthly</button>
-<button type="button" data-v="yearly" aria-pressed="false" onclick="ckPick(this)">Yearly, 2 months free</button>
+<button type="button" data-v="monthly" aria-pressed="true" class="is-active" onclick="ckPick(this)" data-i18n="ck.plan.m">Monthly</button>
+<button type="button" data-v="yearly" aria-pressed="false" onclick="ckPick(this)" data-i18n="ck.plan.y">Yearly, 2 months free</button>
 </div>
-<label for="email">Your account email</label>
+<label for="email" data-i18n="ck.email">Your account email</label>
 <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
-<label id="region-lbl">Payment region</label>
+<label id="region-lbl" data-i18n="ck.region">Payment region</label>
 <div class="seg" id="region-seg" role="group" aria-labelledby="region-lbl">
-<button type="button" data-v="eu" aria-pressed="true" class="is-active" onclick="ckPick(this)">Europe / International</button>
-<button type="button" data-v="ir" aria-pressed="false" onclick="ckPick(this)">Iran</button>
+<button type="button" data-v="eu" aria-pressed="true" class="is-active" onclick="ckPick(this)" data-i18n="ck.region.eu">Europe / International</button>
+<button type="button" data-v="ir" aria-pressed="false" onclick="ckPick(this)" data-i18n="ck.region.ir">Iran</button>
 </div>
 </div>
-<div class="ckcard"><h2>3 · Payment method</h2>
+<div class="ckcard"><h2 data-i18n="ck.s3">3 · Payment method</h2>
 <div class="methods" id="methods"></div>
 <div class="bankdetail" id="bankdetail">
 <div class="brow"><span>Holder</span><b>AMIR KHOSRAVI</b></div>
@@ -294,19 +294,19 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 <div class="brow"><span>Reference</span><b id="bankref">-</b></div>
 <p class="note">Transfer the total with the reference above. Premium activates within 24h.</p>
 </div>
-<button class="btn btn-p" id="pay" onclick="ckPay()" style="width:100%;margin-top:16px">Continue to payment</button>
-<p class="note" id="cknote">Secure payment via provider. Premium unlocks after payment, or we email within 24h.</p>
+<button class="btn btn-p" id="pay" onclick="ckPay()" style="width:100%;margin-top:16px" data-i18n="ck.pay">Continue to payment</button>
+<p class="note" id="cknote" data-i18n="ck.note">Secure payment via provider. Premium unlocks after payment, or we email within 24h.</p>
 </div>
 </div>
-<aside class="summary" aria-label="Order summary"><div class="ckcard"><h2>Final checklist</h2>
-<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Product</span><b id="sum-app">-</b></div>
+<aside class="summary" aria-label="Order summary"><div class="ckcard"><h2 data-i18n="ck.checklist">Final checklist</h2>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ck.row.product">Product</span></span><b id="sum-app">-</b></div>
 <div id="sum-items"></div>
-<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Plan</span><b id="sum-plan">-</b></div>
-<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free trial</span><b>1 month · no card</b></div>
-<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Region</span><b id="sum-region">-</b></div>
-<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Payment</span><b id="sum-method">-</b></div>
-<div class="sumrow total"><span>Total after trial</span><b id="sum-total">-</b></div>
-<p class="note">Cancel anytime. 1-month free trial, then the plan price, cancel before it ends and you pay nothing.<br>All prices are final prices, as a small business under § 19 UStG (Kleinunternehmer) no VAT is charged.</p>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ck.row.plan">Plan</span></span><b id="sum-plan">-</b></div>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ck.row.trial">Free trial</span></span><b data-i18n="ck.row.trialv">1 month · no card</b></div>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ck.row.region">Region</span></span><b id="sum-region">-</b></div>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ck.row.payment">Payment</span></span><b id="sum-method">-</b></div>
+<div class="sumrow total"><span data-i18n="ck.row.total">Total after trial</span><b id="sum-total">-</b></div>
+<p class="note" data-i18n="ck.note2">Cancel anytime. 1-month free trial, then the plan price, cancel before it ends and you pay nothing.<br>All prices are final prices, as a small business under § 19 UStG (Kleinunternehmer) no VAT is charged.</p>
 </div></aside>
 </div>
 </div>
@@ -365,6 +365,43 @@ function ckPick(btn) {
 // ---- shared i18n layer (values synced from account.html) ----
 const I18N = {
 "nav.home":{"en":"Home","de":"Start","fa":"خانه"},
+"ck.h1":{"en":"Checkout","de":"Kasse","fa":"پرداخت"},
+"ck.sub":{"en":"Pick your product, choose a plan and pay.","de":"Produkt wählen, Plan aussuchen und bezahlen.","fa":"محصول را انتخاب کن، پلن را بچین و پرداخت کن."},
+"ck.s1":{"en":"1 · Your product","de":"1 · Dein Produkt","fa":"۱ · محصول تو"},
+"ck.s2":{"en":"2 · Plan & account","de":"2 · Plan & Konto","fa":"۲ · پلن و حساب"},
+"ck.plan":{"en":"Plan","de":"Plan","fa":"پلن"},
+"ck.plan.m":{"en":"Monthly","de":"Monatlich","fa":"ماهانه"},
+"ck.plan.y":{"en":"Yearly, 2 months free","de":"Jährlich, 2 Monate gratis","fa":"سالانه، ۲ ماه رایگان"},
+"ck.email":{"en":"Your account email","de":"Deine Konto-E-Mail","fa":"ایمیل حسابت"},
+"ck.region":{"en":"Payment region","de":"Zahlungsregion","fa":"منطقه پرداخت"},
+"ck.region.eu":{"en":"Europe / International","de":"Europa / International","fa":"اروپا / بین‌الملل"},
+"ck.region.ir":{"en":"Iran","de":"Iran","fa":"ایران"},
+"ck.s3":{"en":"3 · Payment method","de":"3 · Zahlungsmethode","fa":"۳ · روش پرداخت"},
+"ck.pay":{"en":"Continue to payment","de":"Weiter zur Zahlung","fa":"ادامه به پرداخت"},
+"ck.note":{"en":"Secure payment via provider. Premium unlocks after payment, or we email within 24h.","de":"Sichere Zahlung über den Anbieter. Premium wird nach der Zahlung freigeschaltet, oder wir melden uns innerhalb von 24h.","fa":"پرداخت امن از طریق درگاه. پریمیوم بعد از پرداخت فعال می‌شود یا تا ۲۴ ساعت ایمیل می‌زنیم."},
+"ck.checklist":{"en":"Final checklist","de":"Letzte Checkliste","fa":"چک‌لیست نهایی"},
+"ck.row.product":{"en":"Product","de":"Produkt","fa":"محصول"},
+"ck.row.plan":{"en":"Plan","de":"Plan","fa":"پلن"},
+"ck.row.trial":{"en":"Free trial","de":"Gratis-Test","fa":"تست رایگان"},
+"ck.row.trialv":{"en":"1 month · no card","de":"1 Monat · keine Karte","fa":"۱ ماه · بدون کارت"},
+"ck.row.region":{"en":"Region","de":"Region","fa":"منطقه"},
+"ck.row.payment":{"en":"Payment","de":"Zahlung","fa":"پرداخت"},
+"ck.row.total":{"en":"Total after trial","de":"Gesamt nach dem Test","fa":"جمع بعد از تست"},
+"ck.note2":{"en":"Cancel anytime. 1-month free trial, then the plan price, cancel before it ends and you pay nothing.<br>All prices are final prices","de":"Jederzeit kündbar. 1 Monat gratis, dann der Plan-Preis – vorher gekündigt, zahlt du nichts.<br>Alle Preise sind Endpreise","fa":"هر وقت بخواهی لغو می‌شود. یک ماه تست رایگان، بعدش قیمت پلن؛ قبل از پایان لغو کنی چیزی پرداخت نمی‌کنی.<br>همه قیمت‌ها قیمت نهایی است"},
+"ck.oneapp":{"en":"1 app","de":"1 App","fa":"۱ اپ"},
+"ck.apps":{"en":"2 apps","de":"2 Apps","fa":"۲ اپ"},
+"ck.trialthen":{"en":"1-month free trial · then","de":"1 Monat gratis · danach","fa":"یک ماه تست رایگان · بعدش"},
+"ck.soon":{"en":"Coming soon","de":"Kommt bald","fa":"به‌زودی"},
+"ck.m.paypalsub":{"en":"Pay with your PayPal account","de":"Mit deinem PayPal-Konto zahlen","fa":"پرداخت با حساب پی‌پال تو"},
+"ck.m.card":{"en":"Card, Visa / Mastercard / debit","de":"Karte, Visa / Mastercard / Debit","fa":"کارت، ویزا / مسترکارت / دبیت"},
+"ck.m.cardsub":{"en":"Secure card payment (Stripe)","de":"Sichere Kartenzahlung (Stripe)","fa":"پرداخت امن کارتی (Stripe)"},
+"ck.m.bank":{"en":"Bank transfer (Überweisung)","de":"Banküberweisung","fa":"حواله بانکی"},
+"ck.m.banksub":{"en":"Transfer with reference code","de":"Überweisung mit Referenzcode","fa":"حواله با کد پیگیری"},
+"ck.m.zar":{"en":"Zarinpal, for Iran","de":"Zarinpal, für den Iran","fa":"زرین‌پال، برای ایران"},
+"ck.m.zarsub":{"en":"Pay in IRR via Zarinpal","de":"In IRR über Zarinpal zahlen","fa":"پرداخت به ریال با زرین‌پال"},
+"ck.err.email":{"en":"Enter your account email.","de":"Gib deine Konto-E-Mail ein.","fa":"ایمیل حسابت را وارد کن."},
+"ck.err.method":{"en":"Choose a payment method.","de":"Wähle eine Zahlungsmethode.","fa":"یک روش پرداخت انتخاب کن."},
+"ck.err.soon":{"en":"This method is coming soon, pick another.","de":"Diese Methode kommt bald, wähle eine andere.","fa":"این روش به‌زودی می‌آید، یکی دیگر انتخاب کن."},
 "f.platform":{"en":"Platform","de":"Plattform","fa":"پلتفرم"},
 "f.support":{"en":"Support","de":"Support","fa":"پشتیبانی"},
 "f.whatsapp":{"en":"WhatsApp","de":"WhatsApp","fa":"واتساپ"},
@@ -389,7 +426,7 @@ const I18N = {
 "ac.navcart":{"en":"Cart","de":"Warenkorb","fa":"سبد خرید"},
 };
 function lang(){ return document.documentElement.lang || "en"; }
-function t(k){ const v = I18N[k]; const l = lang(); return (v && (v[l] || v.en)) || k; }
+function t(k, vars){ let v = I18N[k]; if(!v) return k; let out = v[lang()] || v.en; if(vars) for(const key in vars) out = out.replace("{"+key+"}", vars[key]); return out; }
 function setLang(l){
   document.documentElement.lang = l;
   document.documentElement.dir = (l === "fa") ? "rtl" : "ltr";
@@ -438,7 +475,7 @@ function ckInitApps() {
   slugs.forEach(slug => {
     const d = document.createElement('label'); d.className = 'appopt';
     const checked = cart.length ? 'checked' : (slug === (pre && APPS[pre] ? pre : 'nelurio') ? 'checked' : '');
-    d.innerHTML = '<input type="' + (cart.length ? 'checkbox' : 'radio') + '" name="app" value="' + slug + '" ' + checked + '><b>' + slug + '</b><small>1-month free trial · then €' + APPS[slug].m.toFixed(2) + '/mo</small>';
+    d.innerHTML = '<input type="' + (cart.length ? 'checkbox' : 'radio') + '" name="app" value="' + slug + '" ' + checked + '><b>' + slug + '</b><small>' + t('ck.trialthen') + ' €' + APPS[slug].m.toFixed(2) + '/mo</small>';
     d.querySelector('input').addEventListener('change', ckRender);
     box.appendChild(d);
   });
@@ -449,7 +486,7 @@ function ckRender() {
   if(!APPS[app]) return;
   const sa = document.getElementById('sum-app');
   const sp = document.getElementById('sum-plan');
-  if(sp) sp.textContent = plan === 'yearly' ? 'Yearly, 2 months free' : 'Monthly';
+  if(sp) sp.textContent = t(plan === 'yearly' ? 'ck.plan.y' : 'ck.plan.m');
   const unit = plan === 'yearly' ? '/yr' : '/mo';
   let price;
   const items = document.getElementById('sum-items');
@@ -464,13 +501,13 @@ function ckRender() {
         r.innerHTML = '<span>' + b.value.charAt(0).toUpperCase() + b.value.slice(1) + '</span><span>\u20ac' + p.toFixed(2) + unit + '</span>';
         items.appendChild(r); }
     });
-    if(sa) sa.textContent = boxes.length + (boxes.length === 1 ? ' app' : ' apps');
+    if(sa) sa.textContent = boxes.length === 1 ? t('ck.oneapp') : t('ck.apps');
     ckRenderMethods(app, plan, ckRegion(), price);
   } else {
     price = APPS[app][plan === 'yearly' ? 'y' : 'm'];
     if(sa) sa.textContent = app.charAt(0).toUpperCase() + app.slice(1);
     if(items){ const r = document.createElement('div'); r.className = 'minirow';
-      r.innerHTML = '<span>1-month free trial</span><span>\u20ac0.00</span>'; items.appendChild(r); }
+      r.innerHTML = '<span>' + t('ck.row.trialv') + '</span><span>\u20ac0.00</span>'; items.appendChild(r); }
     ckRenderMethods(app, plan, ckRegion());
   }
   const st = document.getElementById('sum-total');
@@ -481,7 +518,7 @@ function ckRender() {
 
 function ckSumRegion(){
   const el = document.getElementById('sum-region');
-  if(el) el.textContent = ckRegion() === 'ir' ? 'Iran' : 'Europe / International';
+  if(el) el.textContent = t(ckRegion() === 'ir' ? 'ck.region.ir' : 'ck.region.eu');
 }
 function ckSumMethod(){
   const m = document.querySelector('input[name="method"]:checked');
@@ -494,15 +531,15 @@ function ckRenderMethods(app, plan, region, totalOverride) {
   box.innerHTML = '';
   const amount = (totalOverride != null ? totalOverride : APPS[app][plan === 'yearly' ? 'y' : 'm']).toFixed(2);
   const methods = [
-    ['paypal', 'PayPal', 'Pay with your PayPal account', PAYPAL_ME ? 'https://paypal.me/' + PAYPAL_ME + '/' + amount + 'EUR' : ''],
-    ['stripe', 'Card, Visa / Mastercard / debit', 'Secure card payment (Stripe)', (PAY_LINKS.stripe || {})[app + '|' + plan + '|' + region] || ''],
-    ['bank', 'Bank transfer (Überweisung)', 'Transfer with reference code', 'soon']
+    ['paypal', 'PayPal', t('ck.m.paypalsub'), PAYPAL_ME ? 'https://paypal.me/' + PAYPAL_ME + '/' + amount + 'EUR' : ''],
+    ['stripe', t('ck.m.card'), t('ck.m.cardsub'), (PAY_LINKS.stripe || {})[app + '|' + plan + '|' + region] || ''],
+    ['bank', t('ck.m.bank'), t('ck.m.banksub'), 'soon']
   ];
-  if(region === 'ir') methods.push(['zarinpal', 'Zarinpal, for Iran', 'Pay in IRR via Zarinpal', region === 'ir' ? ((PAY_LINKS.zarinpal || {})[app + '|' + plan + '|' + region] || '') : '']);
+  if(region === 'ir') methods.push(['zarinpal', t('ck.m.zar'), t('ck.m.zarsub'), region === 'ir' ? ((PAY_LINKS.zarinpal || {})[app + '|' + plan + '|' + region] || '') : '']);
   for(const [id, label, sub, url] of methods) {
     const lab = document.createElement('label'); lab.className = 'method';
     const soon = !url || url === 'soon';
-    lab.innerHTML = '<input type="radio" name="method" value="' + id + '" data-url="' + (soon ? 'soon' : url) + '"' + (id === 'paypal' ? ' checked' : '') + '><span><b>' + label + '</b><small>' + sub + '</small></span>' + (soon ? '<span class="soon">Coming soon</span>' : '');
+    lab.innerHTML = '<input type="radio" name="method" value="' + id + '" data-url="' + (soon ? 'soon' : url) + '"' + (id === 'paypal' ? ' checked' : '') + '><span><b>' + label + '</b><small>' + sub + '</small></span>' + (soon ? '<span class="soon">' + t('ck.soon') + '</span>' : '');
     lab.querySelector('input').addEventListener('change', ckSumMethod);
     box.appendChild(lab);
   }
@@ -510,11 +547,11 @@ function ckRenderMethods(app, plan, region, totalOverride) {
 
 function ckPay() {
   const email = document.getElementById('email');
-  if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())) { note('Enter your account email.', true); return; }
+  if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())) { note(t('ck.err.email'), true); return; }
   const m = document.querySelector('input[name="method"]:checked');
-  if(!m) { note('Choose a payment method.', true); return; }
+  if(!m) { note(t('ck.err.method'), true); return; }
   const url = m.dataset.url;
-  if(!url || url === 'soon') { note('This method is coming soon, pick another.', true); return; }
+  if(!url || url === 'soon') { note(t('ck.err.soon'), true); return; }
   window.location.href = url;
 }
 
