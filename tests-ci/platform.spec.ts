@@ -35,6 +35,11 @@ test("2: every card is real — status chip + https open link", async ({ page })
     await expect(cards.nth(i).getByRole("link", { name: /buy product/i })).toBeAttached();
   }
   expect(await page.locator('a[href*="github.com"]').count()).toBe(0);
+  // store funnel: every card shows its price line + Buy routes into checkout
+  for (let i = 0; i < 4; i++) {
+    await expect(cards.nth(i).locator(".price")).toBeVisible();
+  }
+  expect(await page.locator('a[href^="checkout.html?app="]').count()).toBe(4);
 });
 
 test("3: DE toggle — hero + cards translate, persists over reload", async ({ page }) => {

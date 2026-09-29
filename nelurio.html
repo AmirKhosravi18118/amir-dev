@@ -74,6 +74,7 @@ h1 .grad{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-backg
 .prod h3{font-size:19px;font-weight:900}
 .prod .flag{font-size:10.5px;font-weight:900;letter-spacing:.18em;color:var(--acc);text-transform:uppercase}
 .prod .what{color:var(--mut);font-size:13.8px;flex:1}
+.price{font-size:12.5px;font-weight:800;color:#8af0bf}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:#cfc9ee;background:rgba(255,255,255,.04)}
 .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
@@ -170,6 +171,10 @@ footer a:hover{color:var(--txt)}
         <h3>Nelurio</h3>
         <p class="what" data-i18n="n1.what">AI study assistant for university students — record a lecture, get summaries, spaced-repetition reviews, flashcards & a tutor that answers from your own materials with citations.</p>
         <div class="tags"><span class="tag">Go / chi</span><span class="tag">PostgreSQL</span><span class="tag">React 19</span><span class="tag">OpenAI</span><span class="tag">PWA</span><span class="tag">10 languages</span><span class="tag">GDPR</span></div>
+        <p class="price" data-i18n="n1.price">n1.price placeholder</p>
+        <p class="price" data-i18n="n2.price">n2.price placeholder</p>
+        <p class="price" data-i18n="n3.price">n3.price placeholder</p>
+        <p class="price" data-i18n="n4.price">n4.price placeholder</p>
         <div class="links">
           <a class="btn btn-p" href="https://app.nelurio.com" target="_blank" rel="noopener" data-i18n="n.trial">Start 1-month free trial</a>
           <a class="btn btn-s" href="https://app.nelurio.com" target="_blank" rel="noopener" data-i18n="n.buy">Buy product</a>
@@ -186,7 +191,7 @@ footer a:hover{color:var(--txt)}
         <div class="tags"><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS 4</span><span class="tag">Vite</span><span class="tag">Vitest</span></div>
         <div class="links">
           <a class="btn btn-p" href="https://finello.nelurio.com" target="_blank" rel="noopener" data-i18n="n.trial">Start 1-month free trial</a>
-          <a class="btn btn-s" href="https://finello.nelurio.com" target="_blank" rel="noopener" data-i18n="n.buy">Buy product</a>
+          <a class="btn btn-s" href="checkout.html?app=finello" data-i18n="n.buy">Buy product</a>
         </div>
       </div>
     </article>
@@ -200,7 +205,7 @@ footer a:hover{color:var(--txt)}
         <div class="tags"><span class="tag">Real business</span><span class="tag">Operations</span><span class="tag">In daily use</span></div>
         <div class="links">
           <a class="btn btn-p" href="https://washhalle.nelurio.com" target="_blank" rel="noopener" data-i18n="n.trial">Start 1-month free trial</a>
-          <a class="btn btn-s" href="https://washhalle.nelurio.com" target="_blank" rel="noopener" data-i18n="n.buy">Buy product</a>
+          <a class="btn btn-s" href="checkout.html?app=washhalle" data-i18n="n.buy">Buy product</a>
         </div>
       </div>
     </article>
@@ -214,7 +219,7 @@ footer a:hover{color:var(--txt)}
         <div class="tags"><span class="tag">Learning platform</span><span class="tag">Spaced practice</span><span class="tag">German market</span></div>
         <div class="links">
           <a class="btn btn-p" href="https://nexdeutsch.nelurio.com" target="_blank" rel="noopener" data-i18n="n.trial">Start 1-month free trial</a>
-          <a class="btn btn-s" href="https://nexdeutsch.nelurio.com" target="_blank" rel="noopener" data-i18n="n.buy">Buy product</a>
+          <a class="btn btn-s" href="checkout.html?app=nexdeutsch" data-i18n="n.buy">Buy product</a>
         </div>
       </div>
     </article>
@@ -312,6 +317,10 @@ const I18N = {
 "n3.what":{"en":'Operations app for a real car-wash business — day-to-day operations, tracking and workflow. In daily use on site since launch.',"de":'Operations-App für eine echte Autowaschanlage — Tagesbetrieb, Tracking und Workflow. Seit Launch täglich im Einsatz.',"fa":'اپ عملیات برای یک کارواش واقعی — عملیات روزانه، پیگیری و گردش کار. از زمان عرضه هر روز در محل استفاده می\u200cشود.'},
 "n4.flag":{"en":'LANGUAGE',"de":'SPRACHE',"fa":'زبان'},
 "n4.what":{"en":"German vocabulary learning platform — structured practice sessions with spaced practice. Nelurio's review engine was born from what I learned here; a rework is in progress.","de":'Plattform zum Deutsch-Vokabeln lernen — strukturierte Übungen mit Spaced Practice. Nelurios Wiederholungs-Engine entstand aus den Erfahrungen hier; eine Überarbeitung läuft.',"fa":'پلتفرم یادگیری لغات آلمانی — جلسات تمرین ساختاریافته با تکرار فاصله\u200cدار. موتور مرور نلوریو از همین\u200cجا متولد شد؛ بازنویسی در جریان است.'},
+"n1.price":{"en":"1-month free trial · then €4.99/mo","de":"1 Monat gratis · danach €4.99/Mon.","fa":"۱ ماه رایگان · سپس ۴٫۹۹ در ماه"},
+"n2.price":{"en":"1-month free trial · then €2.99/mo","de":"1 Monat gratis · danach €2.99/Mon.","fa":"۱ ماه رایگان · سپس ۲٫۹۹ در ماه"},
+"n3.price":{"en":"1-month free trial · then €3.49/mo","de":"1 Monat gratis · danach €3.49/Mon.","fa":"۱ ماه رایگان · سپس ۳٫۴۹ در ماه"},
+"n4.price":{"en":"1-month free trial · then €9.99/mo","de":"1 Monat gratis · danach €9.99/Mon.","fa":"۱ ماه رایگان · سپس ۹٫۹۹ در ماه"},
 "how.kicker":{"en":'How it works',"de":"So funktioniert's","fa":'نحوه استفاده'},
 "how.h2":{"en":'From visitor to user in three steps.',"de":'Von Besucher zu Nutzer in drei Schritten.',"fa":'در سه قدم از بازدیدکننده به کاربر.'},
 "how.lead":{"en":'No installation, no credit card — pick an app and start.',"de":'Keine Installation, keine Kreditkarte — App wählen und starten.',"fa":'بدون نصب، بدون کارت بانکی — اپ را انتخاب کن و شروع کن.'},
