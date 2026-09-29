@@ -42,7 +42,7 @@
   --r-md:18px;--r-lg:22px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 html[lang="fa"]{direction:rtl}
 html[lang="fa"] body{font-family:'Vazirmatn','Inter',system-ui,sans-serif;overflow-x:clip}
@@ -63,7 +63,7 @@ nav ul a:hover{color:var(--txt)}
 .lang-dd{position:relative}
 .lang-dd-btn{display:inline-flex;align-items:center;gap:5px;min-height:44px;padding:5px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--txt);font-weight:800;font-size:12px;cursor:pointer}
 .lang-dd-menu{position:absolute;top:calc(100% + 4px);inset-inline-end:0;background:#1a1733;border:1px solid var(--line);border-radius:12px;padding:4px;min-width:130px;display:none;z-index:60;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.lang-dd-menu button{display:block;width:100%;text-align:start;padding:8px 14px;border-radius:8px;border:0;background:transparent;color:var(--txt);font-weight:700;font-size:13px;cursor:pointer}
+.lang-dd-menu button{display:block;width:100%;min-height:44px;text-align:start;padding:8px 14px;border-radius:8px;border:0;background:transparent;color:var(--txt);font-weight:700;font-size:13px;cursor:pointer}
 .lang-dd-menu button:hover{background:rgba(139,108,255,.15)}
 .lang-toggle button.is-active{background:var(--acc);color:#fff}
 .iconlink{position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--txt);text-decoration:none;transition:border-color .15s}
@@ -153,10 +153,10 @@ scrollbar-width:thin;scrollbar-color:rgba(139,108,255,.45) transparent;
 .lib::-webkit-scrollbar{display:none}
 html[lang="fa"] .lib{-webkit-mask-image:linear-gradient(270deg,#000 92%,transparent);mask-image:linear-gradient(270deg,#000 92%,transparent)}
 .shelfdots{display:flex;gap:6px;max-width:420px;margin-top:2px}
-.shelfdots button{flex:1;height:22px;padding:9px 0;background:transparent;border:0;position:relative;overflow:visible;border:0;padding:0;background:rgba(255,255,255,.10);border-radius:999px;cursor:pointer;position:relative;overflow:hidden;transition:background .2s}
+.shelfdots button{flex:1;height:40px;padding:17px 0;background:transparent;border:0;position:relative;overflow:visible;border:0;padding:0;background:rgba(255,255,255,.10);border-radius:999px;cursor:pointer;position:relative;overflow:hidden;transition:background .2s}
 .shelfdots button:hover{background:rgba(255,255,255,.20)}
 .shelfdots button.done{background:rgba(139,108,255,.50)}
-.shelfdots button i{position:absolute;left:0;right:0;top:9px;bottom:9px;background:linear-gradient(90deg,var(--acc),var(--acc2));transform:scaleX(0);transform-origin:left;border-radius:inherit}
+.shelfdots button i{position:absolute;left:0;right:0;top:17px;bottom:17px;background:linear-gradient(90deg,var(--acc),var(--acc2));transform:scaleX(0);transform-origin:left;border-radius:inherit}
 html[lang="fa"] .shelfdots button i{transform-origin:right}
 .prod{position:relative;flex:0 0 min(420px,86%);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;scroll-margin-top:90px}
 .prod:hover{transform:translateY(-6px);border-color:rgba(139,108,255,.55);box-shadow:0 28px 60px rgba(10,6,40,.6)}
@@ -224,7 +224,7 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:7px}
 footer a{color:#cfc9ee;text-decoration:none}
 footer a:hover{color:var(--txt)}
 footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:var(--sp-4)}
-.consent{position:fixed;inset-inline-start:50%;transform:translateX(-50%);bottom:18px;z-index:96;display:flex;flex-wrap:wrap;gap:16px;align-items:center;width:min(860px,calc(100% - 32px));padding:16px 20px;border-radius:16px;border:1px solid var(--line);background:rgba(19,15,38,.92);backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(5,3,18,.6)}
+.consent{position:fixed;inset-inline:0;margin-inline:auto;transform:none;bottom:18px;z-index:96;display:flex;flex-wrap:wrap;gap:16px;align-items:center;width:min(860px,calc(100% - 32px));padding:16px 20px;border-radius:16px;border:1px solid var(--line);background:rgba(19,15,38,.92);backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(5,3,18,.6)}
 .consent p{font-size:13px;color:#cfc9ee;flex:1;min-width:240px}
 .consent .btn{min-height:44px;padding:8px 18px;font-size:12.5px}
 .crow{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:#cfc9ee}
