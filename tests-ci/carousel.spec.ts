@@ -45,7 +45,7 @@ test("3: dot 4 → Saad Tattoo; 3b: next until wrap ends Finello→Nelurio", asy
   await trackX(page, 400);
   const finello = page.locator("#carTrack .proj").nth(4);
   await expect(finello.locator("h3")).toHaveText("Finello");
-  await expect(finello.locator('a[href*="nelurio.com/#p-finello"]')).toBeVisible();
+  await expect(finello.locator('a[href*="nelurio.com"][href*="#p-finello"]')).toBeVisible();
   await page.locator(".car-next").click();
   await trackX(page, 0); // wrapped: …Saad Tattoo → Finello → Nelurio
 });

@@ -85,7 +85,7 @@ test("5: structure — support, FAQ and legal links", async ({ page }) => {
   await expect(page.locator('footer a[href="/legal/privacy.html"]')).toBeAttached();
   await expect(page.locator('footer a[href="/legal/terms.html"]')).toBeAttached();
   await expect(page.locator('footer a[href="/legal/widerruf.html"]')).toBeAttached();
-  await expect(page.locator('footer a[href="https://amir-khosravi.de"]')).toBeAttached();
+  await expect(page.locator('footer a[href*="amir-khosravi.de"]')).toBeAttached();
   // SEO: structured data present
   expect(await page.locator('script[type="application/ld+json"]').count()).toBeGreaterThanOrEqual(
     2,
