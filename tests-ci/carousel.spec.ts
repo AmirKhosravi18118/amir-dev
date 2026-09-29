@@ -85,7 +85,7 @@ test("7: DE toggle translates slides + modal; persists over reload", async ({ pa
   await expect(page.locator("#pmTitle")).toHaveText("Alle Projekte");
   await expect(page.locator('[data-i18n="proj.viewall"]')).toHaveText("Alle ansehen");
   await expect(page.locator('#carTrack [data-i18n="p1.what"]')).toHaveText(
-    "KI-Lernassistent für Studierende – live im Beta.",
+    "KI-Lernassistent für Studierende – live als Beta.",
   );
   await page.reload();
   await expect(page.locator('[data-i18n="nav.projects"]')).toHaveText("Projekte");

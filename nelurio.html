@@ -111,6 +111,7 @@ scrollbar-width:thin;scrollbar-color:rgba(139,108,255,.45) transparent;
 -webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);mask-image:linear-gradient(90deg,#000 92%,transparent)}
 .lib{scrollbar-width:none}
 .lib::-webkit-scrollbar{display:none}
+html[lang="fa"] .lib{-webkit-mask-image:linear-gradient(270deg,#000 92%,transparent);mask-image:linear-gradient(270deg,#000 92%,transparent)}
 .shelfdots{display:flex;gap:6px;max-width:420px;margin-top:2px}
 .shelfdots button{flex:1;height:3px;border:0;padding:0;background:rgba(255,255,255,.10);border-radius:999px;cursor:pointer;position:relative;overflow:hidden;transition:background .2s}
 .shelfdots button:hover{background:rgba(255,255,255,.20)}
@@ -532,9 +533,21 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 
 <script>
 const I18N = {
-"tb.text":{"en":"NEW, every app is free to try for a full month. No card needed.","de":"NEU – jede App ist einen ganzen Monat gratis testbar. Keine Karte nötig.","fa":"جدید، هر اپ یک ماه کامل رایگان تست می‌شود. بدون کارت بانکی."},
+"tb.text":{"en":"NEW, every app is free to try for a full month. No card needed.","de":"NEU – jede App kann einen ganzen Monat kostenlos getestet werden. Keine Karte nötig.","fa":"جدید، هر اپ یک ماه کامل رایگان تست می‌شود. بدون کارت بانکی."},
 "tb.cta":{"en":"Pick yours ↗","de":"Wähle deine ↗","fa":"انتخاب کن ↗"},
 "nav.home":{"en":"Home","de":"Start","fa":"خانه"},
+"pr.n1a":{"en":"All study features","de":"Alle Studienfunktionen","fa":"همه قابلیت‌های مطالعه"},
+"pr.n1b":{"en":"AI summaries & tutor","de":"KI-Zusammenfassungen & Tutor","fa":"خلاصه‌سازی هوشمند و معلم"},
+"pr.n1c":{"en":"Priority support","de":"Prioritäts-Support","fa":"پشتیبانی ویژه"},
+"pr.n2a":{"en":"Budget calendar","de":"Budget-Kalender","fa":"تقویم بودجه"},
+"pr.n2b":{"en":"Expense tracking","de":"Ausgaben-Tracking","fa":"پیگیری هزینه‌ها"},
+"pr.n2c":{"en":"Tax overview for mini-jobs","de":"Steuer-Überblick für Mini-Jobs","fa":"بررسی مالیات مشاغل کوچک"},
+"pr.n3a":{"en":"Day-to-day operations","de":"Tägliche Abläufe","fa":"عملیات روزانه"},
+"pr.n3b":{"en":"Real-time tracking","de":"Echtzeit-Tracking","fa":"ردیابی لحظه‌ای"},
+"pr.n3c":{"en":"Built with a real customer","de":"Mit einem echten Kunden gebaut","fa":"ساخته‌شده با یک مشتری واقعی"},
+"pr.n4a":{"en":"Structured practice sessions","de":"Strukturierte Übungseinheiten","fa":"جلسات تمرین ساختاریافته"},
+"pr.n4b":{"en":"Spaced repetition","de":"Spaced Repetition","fa":"مرور فاصله‌دار"},
+"pr.n4c":{"en":"German-market focus","de":"Fokus auf dem deutschen Markt","fa":"متمرکز بر بازار آلمان"},
 "f.platform":{"en":"Platform","de":"Plattform","fa":"پلتفرم"},
 "f.support":{"en":"Support","de":"Support","fa":"پشتیبانی"},
 "f.whatsapp":{"en":"WhatsApp","de":"WhatsApp","fa":"واتساپ"},
@@ -549,18 +562,18 @@ const I18N = {
 "ac.navacct":{"en":"My account","de":"Mein Konto","fa":"حساب من"},
 "ac.navcart":{"en":"Cart","de":"Warenkorb","fa":"سبد خرید"},
 "nl.badge":{"en":"NELURIO SUITE · BY AMIR KHOSRAVI","de":"NELURIO SUITE · VON AMIR KHOSRAVI","fa":"مجموعه نلوریو · ساخته امیر خسروی"},
-"nl.h1a":{"en":"Stop juggling tools","de":"Schluss mit Tool-Chaos.","fa":"وسایل پراکنده را کنار بگذار"},
-"nl.h1b":{"en":"Run everything from one library","de":"Alles aus einer Bibliothek","fa":"همه‌چیز از یک کتابخانه"},
+"nl.h1a":{"en":"Stop juggling tools","de":"Schluss mit Tool-Chaos.","fa":"ابزارهای پراکنده را کنار بگذار"},
+"nl.h1b":{"en":"Run everything from one library","de":"Alles aus einer Bibliothek","fa":"همه‌چیز را از یک کتابخانه مدیریت کن"},
 "nl.sub":{"en":"The product library of Amir Khosravi, focused apps for studying, money, language and real business operations.","de":"Die Produktbibliothek von Amir Khosravi – fokussierte Apps für Studium, Finanzen, Sprache und echte Geschäftsabläufe.","fa":"کتابخانه محصولات امیر خسروی، اپ‌های متمرکز برای تحصیل، مالی، زبان و عملیات واقعی کسب‌وکار."},
-"nl.lead":{"en":"Pick an app, start your free month and get productive today. No credit card. No setup. EU-hosted and GDPR-first from day one.","de":"Wähle eine App, starte deinen Gratis-Monat و werde heute produktiv. Keine Kreditkarte. Kein Setup. EU-gehostet und DSGVO-first von Anfang an.","fa":"یک اپ انتخاب کن، ماه رایگانت را شروع کن و همین امروز بهره‌ور شو. بدون کارت بانکی، بدون راه‌اندازی. از روز اول میزبانی اروپا و GDPR-محور."},
+"nl.lead":{"en":"Pick an app, start your free month and get productive today. No credit card. No setup. EU-hosted and GDPR-first from day one.","de":"Wähle eine App, starte deinen Gratis-Monat und werde heute produktiv. Keine Kreditkarte. Kein Setup. EU-gehostet und DSGVO-first von Anfang an.","fa":"یک اپ انتخاب کن، ماه رایگانت را شروع کن و همین امروز بهره‌ور شو. بدون کارت بانکی، بدون راه‌اندازی. از روز اول میزبانی اروپا و GDPR-محور."},
 "nl.cta.trial0":{"en":"Start your free month","de":"Starte deinen Gratis-Monat","fa":"ماه رایگانت را شروع کن"},
 "nl.cta.browse":{"en":"Explore the products","de":"Produkte entdecken","fa":"مشاهده محصولات"},
 "nl.builder":{"en":"Built end-to-end by","de":"Komplett gebaut von","fa":"ساخته شده توسط"},
 "nl.builder2":{"en":", developer & BWL student, Rhein-Main. The story behind every product lives on the portfolio.","de":" – Entwickler & BWL-Student, Rhein-Main. Die Geschichte hinter jedem Produkt findest du im Portfolio.","fa":"، توسعه‌دهنده و دانشجوی BWL، راین‌ماین. داستان هر محصول در پورتفولیوست."},
-"pf.1":{"en":"4 live products","de":"4 live Produkte","fa":"۴ محصول لایو"},
+"pf.1":{"en":"4 live products","de":"4 Live-Produkte","fa":"۴ محصول لایو"},
 "pf.2":{"en":"EU-hosted","de":"EU-gehostet","fa":"میزبانی اروپا"},
 "pf.3":{"en":"24/7 monitoring","de":"24/7-Monitoring","fa":"مانیتورینگ ۲۴/۷"},
-"pf.4":{"en":"GDPR delete anytime","de":"DSGVO-Löschung jederzeit","fa":"حذف GDPR هر زمان"},
+"pf.4":{"en":"GDPR delete anytime","de":"DSGVO-Löschung jederzeit","fa":"حذف داده‌ها هر زمان (GDPR)"},
 "lib.kicker":{"en":"The library","de":"Die Bibliothek","fa":"کتابخانه"},
 "lib.h2":{"en":"Four products. One shelf.","de":"Vier Produkte. Ein Regal.","fa":"چهار محصول. یک قفسه."},
 "lib.lead":{"en":"Every card is a real, running product. Open one and use it right now.","de":"Jede Karte ist ein echtes, laufendes Produkt – keine Demo. Öffne eines und leg sofort los.","fa":"هر کارت یک محصول واقعی و در حال اجراست، نه دمو. یکی را باز کن و همین حالا استفاده کن."},
@@ -569,14 +582,14 @@ const I18N = {
 "st.daily":{"en":"LIVE · DAILY USE","de":"LIVE · TÄGLICH IM EINSATZ","fa":"لایو · استفاده روزانه"},
 "n.trial":{"en":"Start 1-month free trial","de":"1 Monat gratis testen","fa":"شروع تست رایگان ۱ ماهه"},
 "n.buy":{"en":"Buy product","de":"Produkt kaufen","fa":"خرید محصول"},
-"n1.flag":{"en":"FLAGSHIP APP","de":"LEUCHTTURM-APP","fa":"اپ پرچم‌دار"},
+"n1.flag":{"en":"FLAGSHIP APP","de":"FLAGGSCHIFF-APP","fa":"اپ پرچم‌دار"},
 "n1.what":{"en":"AI study assistant for university students, record a lecture, get summaries, spaced-repetition reviews, flashcards & a tutor that answers from your own materials with citations.","de":"KI-Lernassistent für Studierende – Vorlesung aufnehmen, Zusammenfassungen erhalten, Wiederholungen planen, Lernkarten & ein Tutor, der aus deinen eigenen Materialien mit Quellen antwortet.","fa":"دستیار مطالعه هوش مصنوعی برای دانشجوها، ویدیوی کلاس را ضبط کن، خلاصه بگیر، مرورهای فاصله‌دار، فلش‌کارت و یک معلم که از جزوه‌های خودت با ذکر منبع جواب می‌دهد."},
 "n1.f1":{"en":"Lecture recording with AI summaries","de":"Vorlesungsaufnahme mit KI-Zusammenfassungen","fa":"ضبط کلاس با خلاصه‌سازی هوش مصنوعی"},
 "n1.f2":{"en":"Spaced-repetition review planner","de":"Wiederholungsplaner mit Spaced Repetition","fa":"برنامه‌ریز مرور فاصله‌دار"},
-"n1.f3":{"en":"Tutor answers with citations","de":"Tutor antwortet mit Quellen","fa":"معلم با پاسخ مستند"},
+"n1.f3":{"en":"Tutor answers with citations","de":"Tutor antwortet mit Quellen","fa":"پاسخ معلم با ذکر منبع"},
 "n1.price":{"en":"1-month free trial · then €8.99/mo","de":"1 Monat gratis · danach 8,99 €/Mon.","fa":"۱ ماه رایگان · سپس ۸٫۹۹ € در ماه"},
 "n2.flag":{"en":"FINANCE","de":"FINANZEN","fa":"مالی"},
-"n2.what":{"en":"Personal finance app for students in Germany, budget calendar with recurring payments, expenses & transactions, and a tax overview for student jobs.","de":"Persönliche Finanz-App für Studierende in Deutschland – Budget-Kalender mit wiederkehrenden Zahlungen, Ausgaben & Transaktionen و Steuer-Überblick für Studentenjobs.","fa":"اپ مالی شخصی برای دانشجوهای آلمان، تقویم بودجه با پرداخت‌های تکرارشونده، هزینه‌ها و تراکنش‌ها و نمای مالیاتی برای کارهای دانشجویی."},
+"n2.what":{"en":"Personal finance app for students in Germany, budget calendar with recurring payments, expenses & transactions, and a tax overview for student jobs.","de":"Persönliche Finanz-App für Studierende in Deutschland – Budget-Kalender mit wiederkehrenden Zahlungen, Ausgaben & Transaktionen und Steuer-Überblick für Studentenjobs.","fa":"اپ مالی شخصی برای دانشجوهای آلمان، تقویم بودجه با پرداخت‌های تکرارشونده، هزینه‌ها و تراکنش‌ها و نمای مالیاتی برای کارهای دانشجویی."},
 "n2.f1":{"en":"Budget calendar","de":"Budget-Kalender","fa":"تقویم بودجه"},
 "n2.f2":{"en":"Recurring payments tracking","de":"Wiederkehrende Zahlungen","fa":"پیگیری پرداخت‌های تکرارشونده"},
 "n2.f3":{"en":"Tax overview for mini-jobs","de":"Steuer-Überblick für Minijobs","fa":"نمای مالیاتی مینی‌جاب‌ها"},
@@ -588,42 +601,42 @@ const I18N = {
 "n3.f3":{"en":"Built with a real customer","de":"Mit echtem Kunden gebaut","fa":"ساخته‌شده با مشتری واقعی"},
 "n3.price":{"en":"1-month free trial · then €9.99/mo","de":"1 Monat gratis · danach 9,99 €/Mon.","fa":"۱ ماه رایگان · سپس ۹٫۹۹ € در ماه"},
 "n4.flag":{"en":"LANGUAGE","de":"SPRACHE","fa":"زبان"},
-"n4.what":{"en":"German vocabulary learning platform, structured practice sessions with spaced practice. Nelurio's review engine was born from what I learned here; a rework is in progress.","de":"Plattform zum Deutsch-Vokabeln lernen – strukturierte Übungen mit Spaced Practice. Nelurios Wiederholungs-Engine entstand aus den Erfahrungen hier; eine Überarbeitung läuft.","fa":"پلتفرم یادگیری لغات آلمانی، جلسات تمرین ساختاریافته با تکرار فاصله‌دار. موتور مرور نلوریو از همین‌جا متولد شد؛ بازنویسی در جریان است."},
+"n4.what":{"en":"German vocabulary learning platform, structured practice sessions with spaced practice. Nelurio's review engine was born from what I learned here; a rework is in progress.","de":"Plattform zum Lernen deutscher Vokabeln – strukturierte Übungen mit Spaced Practice. Nelurios Wiederholungs-Engine entstand aus den Erfahrungen hier; sie wird gerade überarbeitet.","fa":"پلتفرم یادگیری لغات آلمانی، جلسات تمرین ساختاریافته با تکرار فاصله‌دار. موتور مرور نلوریو از همین‌جا متولد شد؛ بازنویسی در جریان است."},
 "n4.f1":{"en":"Structured practice sessions","de":"Strukturierte Übungseinheiten","fa":"جلسات تمرین ساختاریافته"},
 "n4.f2":{"en":"Spaced repetition","de":"Spaced Repetition","fa":"تکرار فاصله‌دار"},
 "n4.f3":{"en":"Built for the German market","de":"Für den deutschen Markt","fa":"ساخته‌شده برای بازار آلمان"},
 "n4.price":{"en":"1-month free trial · then €4.99/mo","de":"1 Monat gratis · danach 4,99 €/Mon.","fa":"۱ ماه رایگان · سپس ۴٫۹۹ € در ماه"},
 "pr.kicker":{"en":"Pricing","de":"Preise","fa":"قیمت‌ها"},
-"pr.h2":{"en":"Try free for a month. Then pick your plan.","de":"Einen Monat gratis testen. Dann Plan wählen.","fa":"یک ماه رایگان تست کن. بعد پلنت را انتخاب کن."},
-"pr.lead":{"en":"Every app starts with a full free month, no credit card. Stay on the free core or go premium.","de":"Jede App startet mit einem ganzen Gratis-Monat – keine Kreditkarte. Bleibe im Gratis-Kern oder werde Premium.","fa":"هر اپ با یک ماه کامل رایگان شروع می‌شود، بدون کارت بانکی. روی هستهٔ رایگان بمان یا پریمیوم شو."},
+"pr.h2":{"en":"Try free for a month. Then pick your plan.","de":"Einen Monat gratis testen. Dann den passenden Plan wählen.","fa":"یک ماه رایگان تست کن. بعد پلنت را انتخاب کن."},
+"pr.lead":{"en":"Every app starts with a full free month, no credit card. Stay on the free core or go premium.","de":"Jede App startet mit einem ganzen Gratis-Monat – keine Kreditkarte. Bleibe kostenlos – oder werde Premium.","fa":"هر اپ با یک ماه کامل رایگان شروع می‌شود، بدون کارت بانکی. روی هستهٔ رایگان بمان یا پریمیوم شو."},
 "pr.flagship":{"en":"FLAGSHIP","de":"FLAGGSCHIFF","fa":"پرچم‌دار"},
 "pr.mo":{"en":"/ month","de":"/ Monat","fa":"/ ماه"},
 "pr.buy":{"en":"Get started","de":"Loslegen","fa":"شروع کن"},
-"ch.status":{"en":"Replies within 24h","de":"Antwort innerhalb von 24h","fa":"پاسخ در تا 24 ساعت"},
+"ch.status":{"en":"Replies within 24h","de":"Antwort innerhalb von 24h","fa":"پاسخ در کمتر از ۲۴ ساعت"},
 "ch.app.all":{"en":"All topics","de":"Alle Themen","fa":"همه موضوع‌ها"},
 "ch.email.ph":{"en":"Your email","de":"Deine E-Mail","fa":"ایمیلت"},
 "ch.msg.ph":{"en":"Write your message…","de":"Schreib deine Nachricht…","fa":"پیامت را بنویس…"},
 "ch.send":{"en":"Send","de":"Senden","fa":"ارسال"},
-"ch.hi":{"en":"Hi! Write your question and your email, we reply within 24h.","de":"Hi! Schreib deine Frage und deine E-Mail – wir antworten innerhalb von 24h.","fa":"سلام! سوالت و ایمیلت را بنویس، تا 24 ساعت جواب می‌دهیم."},
-"ch.ok":{"en":"✅ Message sent, we reply within 24h.","de":"✅ Nachricht gesendet – wir antworten innerhalb von 24h.","fa":"✅ پیامت رسید، تا 24 ساعت جواب می‌دهیم."},
-"ch.fail":{"en":"⚠️ Sending failed, please use WhatsApp or email.","de":"⚠️ Senden fehlgeschlagen – bitte WhatsApp oder E-Mail nutzen.","fa":"⚠️ ارسال نشد، لطفاً واتساپ یا ایمیل."},
+"ch.hi":{"en":"Hi! Write your question and your email, we reply within 24h.","de":"Hi! Schreib deine Frage und deine E-Mail – wir antworten innerhalb von 24h.","fa":"سلام! سؤالت و ایمیلت را بنویس، تا ۲۴ ساعت جواب می‌دهیم."},
+"ch.ok":{"en":"✅ Message sent, we reply within 24h.","de":"✅ Nachricht gesendet – wir antworten innerhalb von 24h.","fa":"✅ پیامت رسید، تا ۲۴ ساعت جواب می‌دهیم."},
+"ch.fail":{"en":"⚠️ Sending failed, please use WhatsApp or email.","de":"⚠️ Senden fehlgeschlagen – bitte WhatsApp oder E-Mail nutzen.","fa":"⚠️ ارسال نشد، لطفاً از واتساپ یا ایمیل استفاده کن."},
 "ch.err.email":{"en":"Enter a valid email first.","de":"Erst eine gültige E-Mail eingeben.","fa":"اول ایمیل معتبر وارد کن."},
 "ch.err.msg":{"en":"Message too short.","de":"Nachricht zu kurz.","fa":"پیام خیلی کوتاه است."},
 "ch.new":{"en":"New chat","de":"Neuer Chat","fa":"چت جدید"},
 "ch.close":{"en":"Close chat","de":"Chat schließen","fa":"بستن چت"},
-"ch.open":{"en":"Open live chat","de":"Live-Chat öffnen","fa":"بازکردن چت زنده"},
+"ch.open":{"en":"Open live chat","de":"Live-Chat öffnen","fa":"باز کردن چت زنده"},
 "pr.yr1":{"en":"or €89.90 / year (2 months free)","de":"oder 89,90 € / Jahr (2 Monate gratis)","fa":"یا ۸۹٫۹۰ € / سال (۲ ماه رایگان)"},
 "pr.yr2":{"en":"or €49.90 / year (2 months free)","de":"oder 49,90 € / Jahr (2 Monate gratis)","fa":"یا ۴۹٫۹۰ € / سال (۲ ماه رایگان)"},
 "pr.yr3":{"en":"or €49.90 / year (2 months free)","de":"oder 49,90 € / Jahr (2 Monate gratis)","fa":"یا ۴۹٫۹۰ € / سال (۲ ماه رایگان)"},
 "pr.yr4":{"en":"or €99.90 / year (2 months free)","de":"oder 99,90 € / Jahr (2 Monate gratis)","fa":"یا ۹۹٫۹۰ € / سال (۲ ماه رایگان)"},
-"pr.note":{"en":"All plans start with a 1-month free trial, no credit card required. Cancel anytime. All prices are final prices, as a small business under § 19 UStG (Kleinunternehmer) no VAT is charged.","de":"Alle Pläne starten mit einem gratis Testmonat – keine Kreditkarte nötig. Jederzeit kündbar. Alle Preise sind Endpreise – als Kleinunternehmer gem. § 19 UStG wird keine Umsatzsteuer berechnet.","fa":"همه پلن‌ها با یک ماه تست رایگان شروع می‌شوند، بدون کارت اعتباری. هر وقت بخواهی لغو می‌شود. همه قیمت‌ها قیمت نهایی است، به عنوان کسب‌وکار کوچک (§۱۹ UStG) مالیات بر ارزش افزوده دریافت نمی‌شود."},
+"pr.note":{"en":"All plans start with a 1-month free trial, no credit card required. Cancel anytime. All prices are final prices, as a small business under § 19 UStG (Kleinunternehmer) no VAT is charged.","de":"Alle Pläne starten mit einem gratis Testmonat – keine Kreditkarte nötig. Jederzeit kündbar. Alle Preise sind Endpreise – als Kleinunternehmer gem. § 19 UStG wird keine Umsatzsteuer berechnet.","fa":"همه پلن‌ها با یک ماه تست رایگان شروع می‌شوند، بدون کارت اعتباری. هر وقت بخواهی می‌توانی لغو کنی. قیمت‌ها نهایی‌اند، به‌عنوان کسب‌وکار کوچک (§۱۹ UStG) مالیات بر ارزش افزوده دریافت نمی‌شود."},
 "how.kicker":{"en":"How it works","de":"So funktioniert's","fa":"نحوه استفاده"},
-"how.h2":{"en":"From visitor to user in three steps.","de":"Von Besucher zu Nutzer in drei Schritten.","fa":"در سه قدم از بازدیدکننده به کاربر."},
+"how.h2":{"en":"From visitor to user in three steps.","de":"Von Besucher zu Nutzer in drei Schritten.","fa":"در سه قدم از بازدیدکننده به کاربر تبدیل شو."},
 "how.lead":{"en":"No installation, no credit card, pick an app and start.","de":"Keine Installation, keine Kreditkarte – App wählen und starten.","fa":"بدون نصب، بدون کارت بانکی، اپ را انتخاب کن و شروع کن."},
 "how.s1t":{"en":"Pick an app","de":"App wählen","fa":"اپ را انتخاب کن"},
 "how.s1b":{"en":"Every card above is live. Choose the tool that fits what you need today.","de":"Jede Karte oben ist live. Wähle das Werkzeug, das heute zu dir passt.","fa":"هر کارت بالا لایو است. ابزاری را انتخاب کن که امروز به کارت می‌آید."},
 "how.s2t":{"en":"Start your free month","de":"Starte deinen Gratis-Monat","fa":"ماه رایگانت را شروع کن"},
-"how.s2b":{"en":"Create your account inside the app, the 30-day trial starts instantly, no card needed.","de":"Erstelle dein Konto in der App – der 30-Tage-Test startet sofort, keine Karte nötig.","fa":"داخل اپ حسابت را بساز، تست ۳۰ روزه فوراً شروع می‌شود، بدون کارت."},
+"how.s2b":{"en":"Create your account inside the app, the 30-day trial starts instantly, no card needed.","de":"Erstelle dein Konto in der App – der Gratis-Monat startet sofort, keine Karte nötig.","fa":"داخل اپ حسابت را بساز، تست ۳۰ روزه فوراً شروع می‌شود، بدون کارت."},
 "how.s3t":{"en":"Your data stays yours","de":"Deine Daten bleiben deine","fa":"داده‌هایت مال خودت می‌ماند"},
 "how.s3b":{"en":"EU-hosted infrastructure, GDPR-first defaults, and you can delete your account and all its data yourself, any time.","de":"EU-gehostete Infrastruktur, DSGVO-first – und du kannst dein Konto samt Daten jederzeit selbst löschen.","fa":"زیرساخت اروپا، پیش‌فرض‌های GDPR، و هر زمان خودت می‌توانی حسابت و همه داده‌هایش را حذف کنی."},
 "su.kicker":{"en":"Support","de":"Support","fa":"پشتیبانی"},
@@ -636,16 +649,16 @@ const I18N = {
 "su.o2b":{"en":"Use the chat bubble on every page, WhatsApp or email, straight to the builder.","de":"Nutze die Chat-Blase auf jeder Seite – WhatsApp oder E-Mail, direkt zum Entwickler.","fa":"از حباب چت در گوشهٔ هر صفحه استفاده کن، واتساپ یا ایمیل، مستقیم به سازنده."},
 "su.o2c":{"en":"Open chat","de":"Chat öffnen","fa":"باز کردن چت"},
 "fq.kicker":{"en":"FAQ","de":"FAQ","fa":"سؤالات متداول"},
-"fq.h2":{"en":"Questions, answered.","de":"Fragen, beantwortet.","fa":"سؤالات، پاسخ‌گفته."},
-"fq.lead":{"en":"Anything else? support@nelurio.com, answered within 24 hours.","de":"Noch etwas? support@nelurio.com – Antwort innerhalb von 24 Stunden.","fa":"چیز دیگر؟ support@nelurio.com، پاسخ در ۲۴ ساعت."},
+"fq.h2":{"en":"Questions, answered.","de":"Fragen? Antworten.","fa":"سؤالات متداول"},
+"fq.lead":{"en":"Anything else? support@nelurio.com, answered within 24 hours.","de":"Noch etwas? support@nelurio.com – Antwort innerhalb von 24 Stunden.","fa":"سؤال دیگری دارید؟ support@nelurio.com، پاسخ در ۲۴ ساعت."},
 "fq.q1":{"en":"Is there a free trial?","de":"Gibt es eine Gratis-Testphase?","fa":"تست رایگان دارید؟"},
-"fq.a1":{"en":"Yes, every app comes with a full 1-month free trial. No credit card required, and you keep everything you created.","de":"Ja – jede App kommt mit einem vollen 1-Monat-Gratis-Test. Keine Kreditkarte, und du behältst alles, was du erstellt hast.","fa":"بله، هر اپ یک ماه کامل تست رایگان دارد. بدون کارت بانکی و همه چیزهایی که ساختی برایت می‌ماند."},
+"fq.a1":{"en":"Yes, every app comes with a full 1-month free trial. No credit card required, and you keep everything you created.","de":"Ja – jede App kommt mit einem vollen 1-Monat-Gratis-Test. Keine Kreditkarte, und du behältst alles, was du erstellt hast.","fa":"بله، هر اپ یک ماه کامل تست رایگان دارد. بدون کارت بانکی و همه‌چیزهایی که ساختی برایت می‌ماند."},
 "fq.q2":{"en":"Where is my data stored?","de":"Wo werden meine Daten gespeichert?","fa":"داده‌هایم کجا ذخیره می‌شوند؟"},
 "fq.a2":{"en":"On EU-hosted infrastructure in Germany/Europe. GDPR-first defaults, and you can delete your account and all data yourself, anytime.","de":"Auf EU-gehosteter Infrastruktur. DSGVO-first, und du kannst Konto und Daten jederzeit selbst löschen.","fa":"روی زیرساخت میزبانی‌شده در اروپا. GDPR-محور و هر زمان خودت می‌توانی حسابت و داده‌ها را حذف کنی."},
 "fq.q3":{"en":"How do I pay?","de":"Wie zahle ich?","fa":"چطور پرداخت می‌کنم؟"},
-"fq.a3":{"en":"PayPal, Visa/Mastercard/debit via Stripe for Europe, and Zarinpal for customers in Iran. Checkout happens right here on nelurio.com.","de":"PayPal, Visa/Mastercard/Debit via Stripe für Europa – und Zarinpal für Kunden im Iran. Checkout direkt auf nelurio.com.","fa":"پی‌پال، ویزا/مسترکارت/دبیت با استریپ برای اروپا، و زرین‌پال برای کاربران ایران. پرداخت همین‌جا در nelurio.com انجام می‌شود."},
+"fq.a3":{"en":"PayPal, Visa/Mastercard/debit via Stripe for Europe, and Zarinpal for customers in Iran. Checkout happens right here on nelurio.com.","de":"PayPal, Visa-/Mastercard-/Debitkarte über Stripe für Europa – und Zarinpal für Kunden im Iran. Bezahlung direkt auf nelurio.com.","fa":"پی‌پال، ویزا/مسترکارت/دبیت با استریپ برای اروپا، و زرین‌پال برای کاربران ایران. پرداخت همین‌جا در nelurio.com انجام می‌شود."},
 "fq.q4":{"en":"Can I cancel anytime?","de":"Kann ich jederzeit kündigen?","fa":"می‌توانم هر زمان لغو کنم؟"},
-"fq.a4":{"en":"Yes. No lock-in, no hidden fees. You keep access until the end of your paid period.","de":"Ja. Kein Lock-in, keine versteckten Kosten. Zugang bleibt bis zum Ende der bezahlten Laufzeit.","fa":"بله. بدون قفل، بدون هزینهٔ پنهان. دسترسی‌ات تا پایان دورهٔ پرداخت‌شده باقی می‌ماند."},
+"fq.a4":{"en":"Yes. No lock-in, no hidden fees. You keep access until the end of your paid period.","de":"Ja. Kein Lock-in, keine versteckten Kosten. Du behältst Zugang bis zum Ende der bezahlten Laufzeit.","fa":"بله. بدون قرارداد الزام‌آور، بدون هزینهٔ پنهان. دسترسی‌ات تا پایان دورهٔ پرداخت‌شده باقی می‌ماند."},
 "fq.q5":{"en":"Who builds Nelurio Suite?","de":"Wer baut Nelurio Suite?","fa":"چه کسی Nelurio Suite را می‌سازد؟"},
 "fq.a5":{"en":"Amir Khosravi, software developer and BWL student in Rhein-Main, Germany. Every product is designed, built and operated by the same person you email.","de":"Amir Khosravi – Softwareentwickler und BWL-Student in Rhein-Main. Jedes Produkt wird von derselben Person entworfen, gebaut und betrieben, die auch deine E-Mail beantwortet.","fa":"امیر خسروی، توسعه‌دهندهٔ نرم‌افزار و دانشجوی BWL در راین‌ماین آلمان. هر محصول توسط همان کسی طراحی، ساخته و اداره می‌شود که ایمیلت را جواب می‌دهد."},
 "fin.h2":{"en":"Your free month is one click away.","de":"Dein Gratis-Monat ist einen Klick entfernt.","fa":"ماه رایگانت یک کلیک فاصله دارد."},
@@ -660,7 +673,7 @@ const I18N = {
 "f.cookies":{"en":"Cookie settings","de":"Cookie-Einstellungen","fa":"تنظیمات کوکی"},
 "f.contact":{"en":"Contact / Support","de":"Kontakt / Support","fa":"تماس / پشتیبانی"},
 "f.portfolio":{"en":"Portfolio","de":"Portfolio","fa":"پورتفولیو"},
-"cons.text":{"en":"This site uses only essential storage by default (session login, shopping cart, language, chat). Anonymous statistics via Google Analytics 4 are optional, always your choice.","de":"Diese Seite nutzt standardmäßig nur notwendige Speicherung (Anmeldung, Warenkorb, Sprache, Chat). Anonyme Statistik über Google Analytics 4 ist optional – immer deine Entscheidung.","fa":"این سایت به‌صورت پیشفرض فقط از ذخیره‌سازی ضروری استفاده می‌کند (ورود، سبد خرید، زبان، چت). آمار ناشناس با Google Analytics 4 اختیاری است، تصمیم همیشه با توست."},
+"cons.text":{"en":"This site uses only essential storage by default (session login, shopping cart, language, chat). Anonymous statistics via Google Analytics 4 are optional, always your choice.","de":"Diese Seite nutzt standardmäßig nur notwendige Speicherung (Anmeldung, Warenkorb, Sprache, Chat). Anonyme Statistik über Google Analytics 4 ist optional – immer deine Entscheidung.","fa":"این سایت به‌صورت پیش‌فرض فقط از ذخیره‌سازی ضروری استفاده می‌کند (ورود، سبد خرید، زبان، چت). آمار ناشناس با Google Analytics 4 اختیاری است، تصمیم همیشه با توست."},
 "cons.accept":{"en":"Accept all","de":"Alle akzeptieren","fa":"پذیرش همه"},
 "cons.decline":{"en":"Decline","de":"Ablehnen","fa":"رد می‌کنم"}
 };
@@ -722,8 +735,8 @@ function shelfEnds(){
   const max = el.scrollWidth - el.clientWidth - 2;
   const pos = Math.abs(el.scrollLeft);
   const rtl = document.documentElement.dir === "rtl";
-  const atStart = rtl ? pos >= max : pos <= 2;
-  const atEnd = rtl ? pos <= 2 : pos >= max;
+  const atStart = pos <= 2;
+  const atEnd = pos >= max;
   prev.disabled = atStart; next.disabled = atEnd;
 }
 window.addEventListener("load", shelfEnds);
@@ -749,7 +762,7 @@ function shelfGoTo(i){
   const cards = shelfCards(); if(!cards.length) return;
   const idx = Math.max(0, Math.min(i, cards.length - 1));
   const target = cards[idx].offsetLeft - cards[0].offsetLeft;
-  el.scrollTo({ left: document.documentElement.dir === "rtl" ? -target : target, behavior: "smooth" });
+  el.scrollTo({ left: target, behavior: "smooth" });
 }
 function shelfRenderDots(){
   const box = document.getElementById("shelfdots"); if(!box) return;
