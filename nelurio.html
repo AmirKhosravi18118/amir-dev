@@ -76,9 +76,9 @@ section{padding:var(--sp-7) 0}
 .kicker{display:inline-block;font-size:11.5px;font-weight:900;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:var(--sp-2)}
 h2{font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-.6px;margin-bottom:var(--sp-2)}
 .lead{color:var(--mut);max-width:660px;font-size:15.5px;margin-bottom:var(--sp-5)}
-.hero{padding:var(--sp-8) 0 var(--sp-6);position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;top:-220px;inset-inline-end:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(139,108,255,.22),transparent 65%);pointer-events:none;animation:breathe 9s ease-in-out infinite}
-.hero::after{content:"";position:absolute;top:-80px;inset-inline-start:-200px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(77,141,247,.14),transparent 65%);pointer-events:none;animation:breathe 11s ease-in-out infinite reverse}
+.hero{padding:var(--sp-6) 0 var(--sp-4);position:relative}
+.hero::before{content:"";position:absolute;top:-220px;inset-inline-end:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(139,108,255,.15),transparent 65%);pointer-events:none;animation:breathe 9s ease-in-out infinite}
+.hero::after{content:"";position:absolute;top:-80px;inset-inline-start:-200px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(77,141,247,.10),transparent 65%);pointer-events:none;animation:breathe 11s ease-in-out infinite reverse}
 @keyframes breathe{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
 .badge{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:999px;border:1px solid rgba(139,108,255,.4);background:rgba(139,108,255,.1);font-size:11px;font-weight:900;letter-spacing:.16em;color:#c3b4ff;margin-bottom:var(--sp-4)}
 .badge i{width:7px;height:7px;border-radius:50%;background:#a585ff;box-shadow:0 0 10px #a585ff;animation:pulse 2s infinite}
@@ -91,8 +91,14 @@ h1 .grad{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-backg
 .proof{display:flex;flex-wrap:wrap;gap:10px 22px;margin:var(--sp-5) 0 0}
 .pf{display:inline-flex;align-items:center;gap:8px;color:#cfc9ee;font-size:13px;font-weight:700}
 .pf i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
-.lib{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--sp-4)}
-.prod{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;scroll-margin-top:90px}
+.lib{display:flex;gap:var(--sp-4);overflow-x:auto;scroll-snap-type:x mandatory;
+padding:4px 4px var(--sp-4);scroll-padding-inline-start:4px;
+scrollbar-width:thin;scrollbar-color:rgba(139,108,255,.45) transparent;
+-webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);mask-image:linear-gradient(90deg,#000 92%,transparent)}
+.lib::-webkit-scrollbar{height:8px}
+.lib::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:8px}
+.lib::-webkit-scrollbar-thumb{background:rgba(139,108,255,.45);border-radius:8px}
+.prod{position:relative;flex:0 0 min(420px,86%);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;scroll-margin-top:90px}
 .prod:hover{transform:translateY(-6px);border-color:rgba(139,108,255,.55);box-shadow:0 28px 60px rgba(10,6,40,.6)}
 .prod .cover{position:relative;aspect-ratio:16/10;overflow:hidden;background:#141024}
 .prod .cover img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
@@ -220,7 +226,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   <p class="builder-note"><span data-i18n="nl.builder">Built end-to-end by</span> <a href="https://amir-khosravi.de">Amir Khosravi</a><span data-i18n="nl.builder2"> — developer &amp; BWL student, Rhein-Main. The story behind every product lives on the portfolio.</span></p>
 </header>
 
-<section id="products">
+<section id="products" style="padding-top:var(--sp-4)">
   <span class="kicker reveal" data-i18n="lib.kicker">The library</span>
   <h2 class="reveal" data-i18n="lib.h2">Four products. One shelf.</h2>
   <p class="lead reveal" data-i18n="lib.lead">Every card is a real, running product — not a demo. Open one and use it right now.</p>
@@ -540,8 +546,16 @@ const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+shelfFocus();
 function cartGet(){ try{ return JSON.parse(localStorage.getItem("nelurio_cart")||"[]"); }catch(e){ return []; } }
 function cartSet(v){ try{ localStorage.setItem("nelurio_cart", JSON.stringify(v)); }catch(e){} cartBadge(); }
+function shelfFocus(){
+  const h = location.hash;
+  if(!h || !h.startsWith("#p-")) return;
+  const el = document.querySelector(h);
+  if(el) el.scrollIntoView({behavior:"smooth", inline:"center", block:"nearest"});
+}
+window.addEventListener("hashchange", shelfFocus);
 function cartBadge(){ const b = document.getElementById("cart-badge"); if(!b) return; const n = cartGet().length; b.textContent = n; b.classList.toggle("hidden", n === 0); }
 function addToCart(slug){ const c = cartGet(); if(!c.includes(slug)){ c.push(slug); cartSet(c); } const b = document.getElementById("cart-badge"); if(b){ b.animate([{transform:"scale(1.5)"},{transform:"scale(1)"}],{duration:250}); } }
 cartBadge();
