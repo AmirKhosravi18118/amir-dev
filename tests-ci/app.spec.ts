@@ -31,7 +31,7 @@ test("every project card renders: title, links, tags", async ({ page }) => {
   const cards = page.locator("#carTrack .proj"); // modal clones exist too — scope to the track
   await expect(cards).toHaveCount(5);
   await expect(page.locator("#carTrack .proj h3").filter({ hasText: "Nelurio" })).toBeVisible();
-  await expect(page.locator('#carTrack a[href*="app.nelurio.com"]').first()).toBeVisible();
+  await expect(page.locator('#carTrack a[href*="nelurio.com/#p-nelurio"]').first()).toBeVisible();
 });
 
 test("all images load (naturalWidth > 0)", async ({ page }) => {
