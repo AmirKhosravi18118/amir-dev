@@ -111,9 +111,15 @@ footer a:hover{color:var(--txt)}
   section{padding:var(--sp-6) 0}
   .hero{padding:var(--sp-6) 0 var(--sp-2)}
 }
+.topbar{background:linear-gradient(90deg,var(--acc),#6a4df0);color:#fff;text-align:center;padding:9px 16px;font-size:13.5px;font-weight:700}
+.topbar a{color:#fff;text-decoration:underline;font-weight:900;margin-inline-start:6px}
+.proof{display:flex;flex-wrap:wrap;gap:10px 22px;margin:0 0 var(--sp-4)}
+.pf{display:inline-flex;align-items:center;gap:8px;color:#cfc9ee;font-size:13px;font-weight:700}
+.pf i{width:7px;height:7px;border-radius:50%;background:#5fe1a0;box-shadow:0 0 8px #5fe1a0}
 </style>
 </head>
 <body>
+<div class="topbar"><span data-i18n="tb.text">NEW — every app is free to try for a full month. No card needed.</span> <a href="#products" data-i18n="tb.cta">Pick yours ↗</a></div>
 <nav><div class="wrap">
   <a class="logo" href="/"><span class="mark">N</span>Nelurio<b>&nbsp;Suite</b></a>
   <ul>
@@ -139,10 +145,16 @@ footer a:hover{color:var(--txt)}
   <p class="sub" data-i18n="nl.sub">The product library of Amir Khosravi — focused apps for studying, money, language and real business operations.</p>
   <p class="lead" data-i18n="nl.lead">Pick an app, open it and start right away — every product here is live, monitored and maintained. Accounts are free, your data belongs to you, and new tools land in the same library as they ship.</p>
   <div class="hero-ctas">
-    <a class="btn btn-p" href="#products" data-i18n="nl.cta.browse">Browse the library</a>
-    <a class="btn btn-s" href="https://amir-khosravi.de" data-i18n="nl.cta.builder">About the builder</a>
+    <a class="btn btn-p" href="#products" data-i18n="nl.cta.trial">Start your free month</a>
+    <a class="btn btn-s" href="#products" data-i18n="nl.cta.browse">Browse the library</a>
   </div>
-  <p class="builder-note"><span data-i18n="nl.builder">Built end-to-end by</span> <a href="/">Amir Khosravi</a> <span data-i18n="nl.builder2">— developer & BWL student, Rhein-Main. The story behind every product lives on the portfolio.</span></p>
+  <div class="proof">
+  <span class="pf"><i></i><span data-i18n="pf.1">4 live products</span></span>
+  <span class="pf"><i></i><span data-i18n="pf.2">EU-hosted</span></span>
+  <span class="pf"><i></i><span data-i18n="pf.3">24/7 monitoring</span></span>
+  <span class="pf"><i></i><span data-i18n="pf.4">GDPR delete anytime</span></span>
+</div>
+<p class="builder-note"><span data-i18n="nl.builder">Built end-to-end by</span> <a href="/">Amir Khosravi</a> <span data-i18n="nl.builder2">— developer & BWL student, Rhein-Main. The story behind every product lives on the portfolio.</span></p>
 </header>
 
 <section id="products">
@@ -264,6 +276,13 @@ footer a:hover{color:var(--txt)}
 
 <script>
 const I18N = {
+"tb.text":{"en":'NEW — every app is free to try for a full month. No card needed.',"de":'NEU — jede App ist einen ganzen Monat gratis testbar. Keine Karte nötig.',"fa":'جدید — هر اپ یک ماه کامل رایگان تست می\u200cشود. بدون کارت بانکی.'},
+"tb.cta":{"en":'Pick yours ↗',"de":'Wähle deine ↗',"fa":'انتخاب کن ↗'},
+"nl.cta.trial":{"en":'Start your free month',"de":'Starte deinen Gratis-Monat',"fa":'ماه رایگانت را شروع کن'},
+"pf.1":{"en":'4 live products',"de":'4 live Produkte',"fa":'۴ محصول لایو'},
+"pf.2":{"en":'EU-hosted',"de":'EU-gehostet',"fa":'میزبانی اروپا'},
+"pf.3":{"en":'24/7 monitoring',"de":'24/7-Monitoring',"fa":'مانیتورینگ ۲۴/۷'},
+"pf.4":{"en":'GDPR delete anytime',"de":'DSGVO-Löschung jederzeit',"fa":'حذف GDPR هر زمان'},
 "nav.products":{"en":'Products',"de":'Produkte',"fa":'محصولات'},
 "nav.how":{"en":'How it works',"de":"So funktioniert's","fa":'نحوه استفاده'},
 "nav.platform":{"en":'Platform',"de":'Plattform',"fa":'پلتفرم'},
