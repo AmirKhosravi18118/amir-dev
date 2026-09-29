@@ -144,7 +144,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 .consent{position:fixed;inset-inline-start:50%;transform:translateX(-50%);bottom:18px;z-index:90;display:flex;gap:16px;align-items:center;width:min(860px,calc(100% - 32px));padding:16px 20px;border-radius:16px;border:1px solid var(--line);background:rgba(19,15,38,.92);backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(5,3,18,.6)}
 .consent p{font-size:13px;color:#cfc9ee;flex:1;min-width:240px}
 .consent .btn{min-height:44px;padding:8px 18px;font-size:12.5px}
-[hidden]{display:none!important}
+[hidden]{display:none!important}.hidden{display:none!important}
 .chatdock{position:fixed;bottom:20px;inset-inline-end:20px;z-index:80;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
 .chatdock .chat-btns{display:flex;flex-direction:column;gap:10px;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .25s,transform .25s}
 .chatdock.open .chat-btns{opacity:1;pointer-events:auto;transform:none}
@@ -190,7 +190,20 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 .method b{font-size:14px;display:block}
 .method small{color:var(--mut);font-size:12px}
 .method .soon{margin-inline-start:auto;font-size:10.5px;font-weight:900;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:3px 9px;flex-shrink:0}
-.summary{position:sticky;top:80px}
+@media(min-width:861px){
+  .ckgrid{height:calc(100vh - 250px);min-height:460px}
+  .ckgrid>div:first-child{overflow-y:auto;padding-inline-end:8px;scrollbar-width:thin;scrollbar-color:rgba(139,108,255,.45) transparent}
+  .ckgrid>div:first-child::-webkit-scrollbar{width:8px}
+  .ckgrid>div:first-child::-webkit-scrollbar-thumb{background:rgba(139,108,255,.45);border-radius:8px}
+  .summary{position:static;height:100%;overflow-y:auto}
+}
+.ckrow{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13.5px;color:#cfc9ee;padding:9px 0;border-bottom:1px dashed var(--line)}
+.ckrow:last-of-type{border-bottom:0}
+.ckrow>span:first-child{display:flex;align-items:center;gap:8px}
+.ckrow>span:first-child svg{width:13px;height:13px;color:var(--acc);flex-shrink:0}
+.ckrow b{font-size:13.5px;color:var(--txt);text-align:end}
+.minirow{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;color:var(--mut);padding:3px 0 3px 21px}
+html[lang="fa"] .minirow{padding:3px 21px 3px 0}
 .sumrow{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;color:#cfc9ee;padding:7px 0}
 .sumrow.total{border-top:1px solid var(--line);margin-top:8px;padding-top:14px;font-size:15px;color:var(--txt)}
 .sumrow.total b{font-size:20px}
@@ -260,10 +273,13 @@ h1{font-size:clamp(26px,4vw,36px);font-weight:900;margin:34px 0 6px}
 <p class="note" id="cknote">Secure payment via provider. Premium unlocks after payment — or we email within 24h.</p>
 </div>
 </div>
-<aside class="summary" aria-label="Order summary"><div class="ckcard"><h2>Order summary</h2>
-<div class="sumrow"><span>Product</span><b id="sum-app">—</b></div>
-<div class="sumrow"><span>Plan</span><b id="sum-plan">—</b></div>
-<div class="sumrow"><span>Free trial</span><b>1 month</b></div>
+<aside class="summary" aria-label="Order summary"><div class="ckcard"><h2>Final checklist</h2>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Product</span><b id="sum-app">—</b></div>
+<div id="sum-items"></div>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Plan</span><b id="sum-plan">—</b></div>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free trial</span><b>1 month · no card</b></div>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Region</span><b id="sum-region">—</b></div>
+<div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Payment</span><b id="sum-method">—</b></div>
 <div class="sumrow total"><span>Total after trial</span><b id="sum-total">—</b></div>
 <p class="note">Cancel anytime. 1-month free trial, then the plan price — cancel before it ends and you pay nothing.</p>
 </div></aside>
@@ -331,19 +347,43 @@ function ckRender() {
   const sa = document.getElementById('sum-app');
   const sp = document.getElementById('sum-plan');
   if(sp) sp.textContent = plan === 'yearly' ? 'Yearly — 2 months free' : 'Monthly';
+  const unit = plan === 'yearly' ? '/yr' : '/mo';
   let price;
+  const items = document.getElementById('sum-items');
+  if(items) items.innerHTML = '';
   if(ckCartMode()){
     const boxes = Array.from(document.querySelectorAll('#apps input[name="app"]:checked'));
-    price = boxes.reduce((s,b)=> s + (APPS[b.value] ? APPS[b.value][plan === 'yearly' ? 'y' : 'm'] : 0), 0);
+    price = 0;
+    boxes.forEach(b => {
+      const p = APPS[b.value][plan === 'yearly' ? 'y' : 'm'];
+      price += p;
+      if(items){ const r = document.createElement('div'); r.className = 'minirow';
+        r.innerHTML = '<span>' + b.value.charAt(0).toUpperCase() + b.value.slice(1) + '</span><span>\u20ac' + p.toFixed(2) + unit + '</span>';
+        items.appendChild(r); }
+    });
     if(sa) sa.textContent = boxes.length + (boxes.length === 1 ? ' app' : ' apps');
     ckRenderMethods(app, plan, ckRegion(), price);
   } else {
     price = APPS[app][plan === 'yearly' ? 'y' : 'm'];
-    if(sa) sa.textContent = app;
+    if(sa) sa.textContent = app.charAt(0).toUpperCase() + app.slice(1);
+    if(items){ const r = document.createElement('div'); r.className = 'minirow';
+      r.innerHTML = '<span>1-month free trial</span><span>\u20ac0.00</span>'; items.appendChild(r); }
     ckRenderMethods(app, plan, ckRegion());
   }
   const st = document.getElementById('sum-total');
-  if(st) st.textContent = '€' + price.toFixed(2) + (plan === 'yearly' ? '/yr' : '/mo');
+  if(st) st.textContent = '\u20ac' + price.toFixed(2) + unit;
+  ckSumRegion();
+  ckSumMethod();
+}
+
+function ckSumRegion(){
+  const el = document.getElementById('sum-region');
+  if(el) el.textContent = ckRegion() === 'ir' ? 'Iran' : 'Europe / International';
+}
+function ckSumMethod(){
+  const m = document.querySelector('input[name="method"]:checked');
+  const el = document.getElementById('sum-method');
+  if(el) el.textContent = m ? m.closest('.method').querySelector('b').textContent : '\u2014';
 }
 
 function ckRenderMethods(app, plan, region, totalOverride) {
@@ -360,6 +400,7 @@ function ckRenderMethods(app, plan, region, totalOverride) {
     const lab = document.createElement('label'); lab.className = 'method';
     const soon = !url || url === 'soon';
     lab.innerHTML = '<input type="radio" name="method" value="' + id + '" data-url="' + (soon ? 'soon' : url) + '"' + (id === 'paypal' ? ' checked' : '') + '><span><b>' + label + '</b><small>' + sub + '</small></span>' + (soon ? '<span class="soon">Coming soon</span>' : '');
+    lab.querySelector('input').addEventListener('change', ckSumMethod);
     box.appendChild(lab);
   }
 }
