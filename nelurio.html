@@ -78,6 +78,7 @@ nav ul a:hover{color:var(--txt)}
 .btn-s:hover{border-color:var(--acc);transform:translateY(-2px)}
 a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
 section{padding:var(--sp-7) 0}
+section[id],.plan{scroll-margin-top:76px}
 .kicker{display:inline-block;font-size:11.5px;font-weight:900;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:var(--sp-2)}
 h2{font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-.6px;margin-bottom:var(--sp-2)}
 .lead{color:var(--mut);max-width:660px;font-size:15.5px;margin-bottom:var(--sp-5)}
@@ -103,7 +104,14 @@ h2{font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-.6px;margin-bo
 @keyframes hvfloat{from{transform:translateY(-6px)}to{transform:translateY(8px)}}
 @media(prefers-reduced-motion:reduce){.hv-f1,.hv-f2{animation:none}}
 @media(max-width:1020px){.hero{grid-template-columns:1fr;gap:34px}.hero-visual{min-height:0;margin-top:6px}.hv-f1{inset-inline-end:4px}.hv-f2{inset-inline-start:4px}}
+@media(max-width:480px){
+  .links{flex-direction:column;align-items:stretch}
+  .links .btn{width:100%;white-space:normal;font-size:13px}
+  .plan .btn-p{width:100%}
+}
 @media(max-width:560px){
+  .links{flex-direction:column}
+  .links .btn{width:100%}
   .hv-frame{transform:none}
   .hv-glow{inset:0}
   .hv-card{width:150px;padding:8px 10px;gap:8px}
@@ -155,7 +163,8 @@ html[lang="fa"] .shelfdots button i{transform-origin:right}
 .prod .cover{position:relative;aspect-ratio:16/10;overflow:hidden;background:#141024;border-radius:var(--r-lg) var(--r-lg) 0 0}
 .prod .cover img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .prod:hover .cover img{transform:scale(1.045)}
-.status{position:absolute;top:14px;inset-inline-end:14px;display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;background:rgba(9,20,14,.78);backdrop-filter:blur(6px);border:1px solid rgba(95,225,160,.35);color:#8af0bf;font-size:10.5px;font-weight:800;letter-spacing:.14em}
+.status{max-width:calc(100% - 28px);position:absolute;top:14px;inset-inline-end:14px;display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;background:rgba(9,20,14,.78);backdrop-filter:blur(6px);border:1px solid rgba(95,225,160,.35);color:#8af0bf;font-size:10.5px;font-weight:800;letter-spacing:.14em}
+.status span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .status i{width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 9px var(--ok);animation:pulse 2s infinite}
 .status.beta{border-color:rgba(139,108,255,.45);color:#c3b4ff}
 .status.beta i{background:#a585ff;box-shadow:0 0 9px #a585ff}
@@ -285,7 +294,7 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
 footer a{color:#cfc9ee;text-decoration:none;transition:color .15s}
 footer a:hover{color:var(--txt)}
 footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px;font-size:12.5px}
-@media(max-width:860px){footer .cols{grid-template-columns:1fr 1fr}}
+@media(max-width:960px){footer .cols{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){footer .cols{grid-template-columns:1fr}}
 
 /* mobile nav (firewall standard: full navigation on every viewport) */
@@ -306,6 +315,14 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   nav .wrap{padding:0 12px;gap:10px}
   .logo b{display:none}
   .logo{font-size:15px}
+}
+
+@media(max-width:640px){
+  .shelfnav{display:none}
+  .lib{gap:var(--sp-3);padding-top:12px;margin-top:-8px;-webkit-mask-image:linear-gradient(90deg,#000 95%,transparent);mask-image:linear-gradient(90deg,#000 95%,transparent)}
+  html[lang="fa"] .lib{-webkit-mask-image:linear-gradient(270deg,#000 95%,transparent);mask-image:linear-gradient(270deg,#000 95%,transparent)}
+  .shelfdots button{height:26px}
+  .shelfdots button i{top:11px;bottom:11px}
 }
 </style>
 </head>
@@ -841,9 +858,9 @@ document.addEventListener("langchange", shelfEnds);
 // ---- shelf autoplay: 8s story-style progress ----
 const SHELF_MS = 8000;
 let shelfPaused = false, shelfElapsed = 0, shelfLast = performance.now();
-const shelfReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const shelfReduced = window.matchMedia && (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.matchMedia("(hover: none)").matches);
 function shelfCards(){ return Array.from(document.querySelectorAll(".lib .prod")); }
-function shelfStep(){ const el = shelf(); const c = el && el.querySelector(".prod"); return c ? c.getBoundingClientRect().width + 24 : 400; }
+function shelfStep(){ const el = shelf(); const c = el && el.querySelector(".prod"); const gap = c ? parseFloat(getComputedStyle(el).columnGap) || 24 : 24; return c ? c.getBoundingClientRect().width + gap : 400; }
 function shelfIndex(){
   const el = shelf(); if(!el) return 0;
   const n = shelfCards().length; if(n < 2) return 0;
