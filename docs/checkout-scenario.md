@@ -22,9 +22,9 @@
 
 | app        | monthly | yearly (2 months free) |
 | ---------- | ------- | ---------------------- |
-| nelurio    | €4.99   | €49.90                 |
-| finello    | €2.99   | €29.90                 |
-| nexdeutsch | €3.49   | €34.90                 |
+| nelurio    | €8.99   | €89.90                 |
+| finello    | €4.99   | €49.90                 |
+| nexdeutsch | €4.99   | €49.90                 |
 | washhalle  | €9.99   | €99.90                 |
 
 Trial: 30 days free per app, once, no card required (already live via
