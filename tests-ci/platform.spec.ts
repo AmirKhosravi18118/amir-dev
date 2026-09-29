@@ -86,8 +86,6 @@ test("5: structure — how/platform/roadmap + legal and builder links", async ({
   await expect(page.locator('footer a[href*="legal/imprint"]')).toBeAttached();
   await expect(page.locator('footer a[href*="legal/privacy"]')).toBeAttached();
   await expect(page.locator('footer a[href="https://amir-khosravi.de"]')).toBeAttached();
-  // honesty: no fake pricing/checkout anywhere
-  const html = await page.content();
-  expect(html.toLowerCase()).not.toContain("checkout");
-  expect(html.toLowerCase()).not.toContain("buy now");
+  // store funnel is real: buy routes into the config-driven checkout page
+  await expect(page.locator('a[href^="checkout.html?app="]').first()).toBeAttached();
 });
