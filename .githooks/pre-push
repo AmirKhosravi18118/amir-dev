@@ -1,0 +1,14 @@
+#!/bin/sh
+# FIREWALL GUARD: local pushes to main are blocked — main only via PR merge.
+# (gh pr merge updates main on the remote; the local branch is never main.)
+while read local_ref local_sha remote_ref remote_sha; do
+  case "$remote_ref" in
+    refs/heads/main)
+      if [ "$local_ref" = "refs/heads/main" ]; then
+        echo "BLOCKED: direct push to main — open a branch + PR (firewall rule)." >&2
+        exit 1
+      fi
+      ;;
+  esac
+done
+exit 0
