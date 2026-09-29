@@ -15,7 +15,7 @@ test("1: loads — hero, 4 product cards, zero console errors", async ({ page })
     if (msg.type() === "error") errors.push(msg.text());
   });
   await page.goto("/nelurio.html");
-  await expect(page.locator(".logo")).toContainText("Nelurio");
+  await expect(page.locator("nav .logo")).toContainText("Nelurio");
   await expect(page.locator("h1 .grad")).toContainText("one library");
   await expect(page.locator(".lib .prod")).toHaveCount(4);
   expect(errors).toEqual([]);
