@@ -81,7 +81,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
     <label for="plan" data-i18n="ck.plan">Plan</label>
     <select id="plan">
       <option value="monthly" data-i18n="ck.monthly">Monthly</option>
-      <option value="yearly" data-i18n="ck.yearly">Yearly — 2 months free</option>
+      <option value="yearly" id="opt-yearly">Yearly — 2 months free</option>
     </select>
     <label for="email" data-i18n="ck.email">Your account email</label>
     <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
@@ -95,6 +95,14 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
   <div class="card">
     <h2 data-i18n="ck.s3">3 · Payment method</h2>
     <div class="methods" id="methods"><!-- filled by script --></div>
+    <div class="card" id="bankbox" style="display:none;background:rgba(139,108,255,.08);border-color:rgba(139,108,255,.35)">
+      <h2 data-i18n="ck.bank.t">Bank transfer (Überweisung)</h2>
+      <div class="row"><span data-i18n="ck.bank.h">Holder</span><b>AMIR KHOSRAVI</b></div>
+      <div class="row"><span>IBAN</span><b>DE00 0000 0000 0000 0000 00</b></div>
+      <div class="row"><span>BIC</span><b>XXXXXXXX</b></div>
+      <div class="row"><span data-i18n="ck.bank.r">Reference</span><b id="bankref">—</b></div>
+      <p class="note" data-i18n="ck.bank.n">Transfer the total with your email as reference. Your premium activates within 24h of receipt.</p>
+    </div>
     <div class="summary"><span data-i18n="ck.total">Total</span> <b id="total">—</b></div>
     <button class="btn btn-p" id="pay" onclick="pay()" data-i18n="ck.pay">Continue to payment</button>
     <p class="note" id="note" data-i18n="ck.note">Secure payment via the provider. Your premium unlocks automatically after payment — or we email you within 24h.</p>
@@ -103,11 +111,20 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 <footer>© 2026 Nelurio Suite · by Amir Khosravi · <a href="/">amir-khosravi.de</a></footer>
 
 <script>
-/* OWNER-EDITABLE payment links — put your PayPal.me / Stripe Payment Link /
-   Zarinpal request URL here per app+plan+region. Empty string = coming soon. */
+/* OWNER-EDITABLE — two ways to connect payments:
+   1) PAYPAL_ME: put ONLY your PayPal.me username (e.g. "amirkhosravi").
+      Every PayPal button then opens paypal.me/<user>/<amount> EUR prefilled.
+   2) PAY_LINKS: exact provider URLs per app+plan+region (Stripe Payment
+      Links, Zarinpal requests, custom PayPal links). Empty = coming soon. */
+const PAYPAL_ME = "";
 const PAY_LINKS = {
   paypal: {}, stripe: {}, zarinpal: {}
 };
+function discountPct(slug){
+  const a = APPS[slug];
+  const full = a.m * 12;
+  return Math.round((1 - a.y / full) * 100);
+}
 const APPS = {
   nelurio:    { m: 4.99, y: 49.90 },
   finello:    { m: 2.99, y: 29.90 },
@@ -169,6 +186,8 @@ function updateTotal(){
 function render(){
   const app = selectedApp(), plan = document.getElementById('plan').value, region = document.getElementById('region').value;
   const price = APPS[app][plan === 'yearly' ? 'y' : 'm'];
+  const opt = document.getElementById('opt-yearly');
+  if(opt) opt.textContent = t('ck.yearly') + '  (−' + discountPct(app) + '%)';
   document.getElementById('total').textContent = money(price) + (plan==='monthly' ? t('ck.monthly')?' / '+t('ck.monthly').toLowerCase():'' : ' / '+t('ck.yearly').split('—')[0].trim().toLowerCase());
   const box = document.getElementById('methods'); box.innerHTML = '';
   [['paypal','ck.m.paypal','ck.m.paypal.b'],['stripe','ck.m.stripe','ck.m.stripe.b']].forEach(([id,t1,t2])=>{
