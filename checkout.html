@@ -306,6 +306,7 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 <div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ck.row.region">Region</span></span><b id="sum-region">-</b></div>
 <div class="ckrow"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ck.row.payment">Payment</span></span><b id="sum-method">-</b></div>
 <div class="sumrow total"><span data-i18n="ck.row.total">Total after trial</span><b id="sum-total">-</b></div>
+<p class="note" id="rate-note" hidden></p>
 <p class="note" data-i18n="ck.note2">Cancel anytime. 1-month free trial, then the plan price, cancel before it ends and you pay nothing.<br>All prices are final prices, as a small business under § 19 UStG (Kleinunternehmer) no VAT is charged.</p>
 </div></aside>
 </div>
@@ -345,6 +346,9 @@ footer .base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 <script>
 const PAYPAL_ME = "amirhoseinkhosravi";
 const PAY_LINKS = { paypal: {}, stripe: {}, zarinpal: {} };
+// Zarinpal payment links (owner fills after registering at zarinpal.com):
+// one fixed-amount link per app+plan, e.g. ZARINPAL_LINKS["nelurio|monthly"] = "https://zarinp.al/XXXXXX"
+const ZARINPAL_LINKS = {};
 const APPS = {
   nelurio:    { m: 8.99, y: 89.90 },
   finello:    { m: 4.99, y: 49.90 },
@@ -402,6 +406,9 @@ const I18N = {
 "ck.err.email":{"en":"Enter your account email.","de":"Gib deine Konto-E-Mail ein.","fa":"ایمیل حسابت را وارد کن."},
 "ck.err.method":{"en":"Choose a payment method.","de":"Wähle eine Zahlungsmethode.","fa":"یک روش پرداخت انتخاب کن."},
 "ck.err.soon":{"en":"This method is coming soon, pick another.","de":"Diese Methode kommt bald, wähle eine andere.","fa":"این روش به‌زودی می‌آید، یکی دیگر انتخاب کن."},
+"ck.rate":{"en":"Today's rate: 1 EUR = {r} IRR","de":"Heutiger Kurs: 1 EUR = {r} IRR","fa":"نرخ روز: ۱ یورو = {r} ریال"},
+"ck.approx":{"en":"approx.","de":"ca.","fa":"حدود"},
+"ck.ratefail":{"en":"Live rate unavailable, the EUR price applies.","de":"Live-Kurs nicht verfügbar, der EUR-Preis gilt.","fa":"نرخ زنده در دسترس نیست، قیمت یورویی ملاک است."},
 "f.platform":{"en":"Platform","de":"Plattform","fa":"پلتفرم"},
 "f.support":{"en":"Support","de":"Support","fa":"پشتیبانی"},
 "f.whatsapp":{"en":"WhatsApp","de":"WhatsApp","fa":"واتساپ"},
@@ -473,6 +480,30 @@ cartBadge();
 
 function ckCartMode(){ return new URLSearchParams(location.search).get('cart') === '1'; }
 
+// ---- live EUR -> Toman rate (Iran region) ----
+let CK_EUR_IRR = null;
+async function ckFetchRate(){
+  try{
+    const cached = JSON.parse(localStorage.getItem('eur_irr') || 'null');
+    if(cached && cached.rate && Date.now() - cached.at < 3600e3) return cached.rate;
+  }catch(e){}
+  try{
+    const r = await fetch('https://open.er-api.com/v6/latest/EUR');
+    const d = await r.json();
+    if(d && d.rates && d.rates.IRR){
+      const rate = Math.round(d.rates.IRR);
+      try{ localStorage.setItem('eur_irr', JSON.stringify({ at: Date.now(), rate: rate })); }catch(e){}
+      return rate;
+    }
+  }catch(e){}
+  try{ const c = JSON.parse(localStorage.getItem('eur_irr') || 'null'); return c && c.rate; }catch(e){ return null; }
+}
+function ckToman(eur, irr){
+  if(!irr) return '';
+  const toman = Math.round(eur * irr / 10 / 1000) * 1000; // round to 1000 toman
+  return toman.toLocaleString('fa-IR') + ' \u062a\u0648\u0645\u0627\u0646';
+}
+
 function ckInitApps() {
   const box = document.getElementById('apps'); if(!box) return;
   const params = new URLSearchParams(location.search);
@@ -519,6 +550,17 @@ function ckRender() {
   }
   const st = document.getElementById('sum-total');
   if(st) st.textContent = '\u20ac' + price.toFixed(2) + unit;
+  const rateNote = document.getElementById('rate-note');
+  if(ckRegion() === 'ir'){
+    ckFetchRate().then(function(irr){
+      CK_EUR_IRR = irr;
+      if(rateNote && irr){
+        rateNote.hidden = false;
+        rateNote.textContent = t('ck.rate').replace('{r}', irr.toLocaleString('fa-IR')) + ' \u00b7 ' + t('ck.approx') + ' ' + ckToman(price, irr);
+      }
+      if(rateNote && !irr){ rateNote.hidden = false; rateNote.textContent = t('ck.ratefail'); }
+    });
+  } else if(rateNote){ rateNote.hidden = true; }
   ckSumRegion();
   ckSumMethod();
 }
@@ -542,7 +584,15 @@ function ckRenderMethods(app, plan, region, totalOverride) {
     ['stripe', t('ck.m.card'), t('ck.m.cardsub'), (PAY_LINKS.stripe || {})[app + '|' + plan + '|' + region] || ''],
     ['bank', t('ck.m.bank'), t('ck.m.banksub'), 'soon']
   ];
-  if(region === 'ir') methods.push(['zarinpal', t('ck.m.zar'), t('ck.m.zarsub'), region === 'ir' ? ((PAY_LINKS.zarinpal || {})[app + '|' + plan + '|' + region] || '') : '']);
+  if(region === 'ir'){
+    const zl = (window.ZARINPAL_LINKS || {})[app + '|' + plan];
+    if(zl){
+      methods = methods.filter(function(m){ return m[0] !== 'zarinpal'; });
+      methods.push(['zarinpal', t('ck.m.zar'), t('ck.m.zarsub'), zl]);
+    }
+  }
+  // legacy zarinpal entry removed — live link handled above
+  if(false) methods.push(['zarinpal', t('ck.m.zar'), t('ck.m.zarsub'), region === 'ir' ? ((PAY_LINKS.zarinpal || {})[app + '|' + plan + '|' + region] || '') : '']);
   for(const [id, label, sub, url] of methods) {
     const lab = document.createElement('label'); lab.className = 'method';
     const soon = !url || url === 'soon';
