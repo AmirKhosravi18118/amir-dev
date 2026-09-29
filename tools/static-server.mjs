@@ -24,6 +24,12 @@ const MIME = {
 const server = createServer(async (req, res) => {
   try {
     let path = decodeURIComponent(new URL(req.url, "http://x").pathname);
+    // site-config stub: matches production API shape so local/pages render identically
+    if (path === "/api/v1/public/site-config") {
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ topbar: { visible: true, text: "", cta: "#pricing" } }));
+      return;
+    }
     if (path.endsWith("/")) path += "index.html";
     const file = normalize(join(root, path));
     if (!file.startsWith(root)) throw new Error("traversal");
