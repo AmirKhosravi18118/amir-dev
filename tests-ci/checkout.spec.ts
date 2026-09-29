@@ -7,11 +7,19 @@ test("checkout: ?app preselect + order summary total", async ({ page }) => {
   await page.goto("/checkout.html?app=finello");
   await expect(page.locator(".appopt")).toHaveCount(4);
   await expect(page.locator('input[name="app"][value="finello"]')).toBeChecked();
-  await expect(page.locator("#sum-app")).toHaveText("finello");
+  await expect(page.locator("#sum-app")).toHaveText("Finello");
   await expect(page.locator("#sum-total")).toHaveText("€4.99/mo");
   await page.selectOption("#plan", "yearly");
   await expect(page.locator("#sum-plan")).toHaveText("Yearly — 2 months free");
   await expect(page.locator("#sum-total")).toHaveText("€49.90/yr");
+  // final checklist reacts live: region + payment method
+  await expect(page.locator("#sum-region")).toHaveText("Europe / International");
+  await expect(page.locator("#sum-method")).toHaveText("PayPal");
+  await page.selectOption("#region", "ir");
+  await expect(page.locator("#sum-region")).toHaveText("Iran");
+  await page.selectOption("#region", "eu");
+  await page.locator(".method:has-text('Stripe') input").check({ force: true });
+  await expect(page.locator("#sum-method")).toContainText("Card");
   expect(errors).toEqual([]);
 });
 
