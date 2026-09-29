@@ -16,15 +16,15 @@ test("1: loads — hero, 5 product cards, zero console errors", async ({ page })
   });
   await page.goto("/nelurio.html");
   await expect(page.locator("h1")).toContainText("Nelurio");
-  await expect(page.locator(".lib .prod")).toHaveCount(5);
+  await expect(page.locator(".lib .prod")).toHaveCount(4);
   expect(errors).toEqual([]);
 });
 
 test("2: every card is real — status chip + https open link", async ({ page }) => {
   await page.goto("/nelurio.html");
   const cards = page.locator(".lib .prod");
-  await expect(cards).toHaveCount(5);
-  for (let i = 0; i < 5; i++) {
+  await expect(cards).toHaveCount(4);
+  for (let i = 0; i < 4; i++) {
     await expect(cards.nth(i).locator(".status")).toBeVisible();
     await expect(cards.nth(i).locator('a[href^="https://"]').first()).toBeAttached();
   }
@@ -38,7 +38,7 @@ test("3: DE toggle — hero + cards translate, persists over reload", async ({ p
   await expect(page.locator("html")).toHaveAttribute("lang", "de");
   await expect(page.locator(".hero .sub")).toContainText("Produktbibliothek von Amir Khosravi");
   await expect(page.locator(".lib .prod").nth(1).locator("h3")).toHaveText("Finello");
-  await expect(page.locator('[data-i18n="lib.h2"]')).toHaveText("Fünf Produkte. Ein Regal.");
+  await expect(page.locator('[data-i18n="lib.h2"]')).toHaveText("Vier Produkte. Ein Regal.");
   await page.reload();
   await expect(page.locator(".hero .sub")).toContainText("Produktbibliothek");
 });

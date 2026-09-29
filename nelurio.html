@@ -13,6 +13,8 @@
 :root{
   --bg:#0d0b1d;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);
   --txt:#efedff;--mut:#a49fd0;--acc:#8b6cff;--acc2:#4d8df7;
+  --sp-2:12px;--sp-3:16px;--sp-4:24px;--sp-5:32px;--sp-6:48px;--sp-7:72px;--sp-8:96px;
+  --r-lg:22px;--r-md:18px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -29,25 +31,25 @@ nav ul a{color:var(--mut);text-decoration:none;font-size:14px;font-weight:600;tr
 nav ul a:hover{color:var(--txt)}
 .nav-right{display:flex;align-items:center;gap:12px}
 .lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:3px}
-.lang-toggle button{padding:6px 12px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer;transition:all .15s}
+.lang-toggle button{min-height:36px;padding:6px 14px;border-radius:7px;border:0;background:transparent;color:var(--mut);font-weight:800;font-size:12px;cursor:pointer;transition:all .15s}
 .lang-toggle button.is-active{background:var(--acc);color:#fff}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:12px;font-weight:800;font-size:14px;text-decoration:none;cursor:pointer;transition:transform .15s,border-color .15s,background .15s;border:1px solid transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 20px;border-radius:12px;font-weight:800;font-size:14px;text-decoration:none;cursor:pointer;transition:transform .15s,border-color .15s,background .15s;border:1px solid transparent}
 .btn-p{background:linear-gradient(135deg,var(--acc),#7452f2);color:#fff;box-shadow:0 10px 26px rgba(139,108,255,.3)}
 .btn-p:hover{transform:translateY(-2px)}
 .btn-s{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--txt)}
 .btn-s:hover{border-color:var(--acc);transform:translateY(-2px)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
-section{padding:64px 0}
-.kicker{display:inline-block;font-size:11.5px;font-weight:900;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:12px}
-h2{font-size:30px;font-weight:900;letter-spacing:-.5px;margin-bottom:10px}
-.lead{color:var(--mut);max-width:660px;font-size:15.5px;margin-bottom:34px}
-.hero{padding:72px 0 26px;position:relative;overflow:hidden}
+section{padding:var(--sp-7) 0}
+.kicker{display:inline-block;font-size:11.5px;font-weight:900;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:var(--sp-2)}
+h2{font-size:clamp(24px,3vw,30px);font-weight:900;letter-spacing:-.5px;margin-bottom:var(--sp-2)}
+.lead{color:var(--mut);max-width:660px;font-size:15.5px;margin-bottom:var(--sp-5)}
+.hero{padding:var(--sp-8) 0 var(--sp-4);position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;top:-220px;right:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(139,108,255,.22),transparent 65%);pointer-events:none}
 .hero::after{content:"";position:absolute;top:-80px;left:-200px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(77,141,247,.14),transparent 65%);pointer-events:none}
 .badge{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:999px;border:1px solid rgba(139,108,255,.4);background:rgba(139,108,255,.1);font-size:11px;font-weight:900;letter-spacing:.16em;color:#c3b4ff;margin-bottom:24px}
 .badge i{width:7px;height:7px;border-radius:50%;background:#a585ff;box-shadow:0 0 10px #a585ff;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-h1{font-size:56px;font-weight:900;letter-spacing:-2px;line-height:1.05}
+h1{font-size:clamp(38px,5vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.05}
 h1 .grad{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .sub{margin:20px 0 10px;font-size:19px;color:#ddd8f5;max-width:600px;font-weight:600}
 .hero .lead{font-size:15.5px;margin-bottom:32px}
@@ -66,23 +68,23 @@ h1 .grad{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-backg
 .status.beta i{background:#a585ff;box-shadow:0 0 9px #a585ff}
 .status.client{border-color:rgba(77,141,247,.45);color:#a9c8ff}
 .status.client i{background:#4d8df7;box-shadow:0 0 9px #4d8df7}
-.prod .body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.prod .body{padding:var(--sp-3) var(--sp-4) var(--sp-4);display:flex;flex-direction:column;gap:var(--sp-2);flex:1}
 .prod h3{font-size:19px;font-weight:900}
 .prod .flag{font-size:10.5px;font-weight:900;letter-spacing:.18em;color:var(--acc);text-transform:uppercase}
 .prod .what{color:var(--mut);font-size:13.8px;flex:1}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:#cfc9ee;background:rgba(255,255,255,.04)}
 .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
-.links .btn{padding:9px 16px;font-size:12.5px}
+.links .btn{min-height:40px;padding:8px 16px;font-size:12.5px}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-4) var(--sp-4)}
 .step .num{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-flex;align-items:center;justify-content:center;font-weight:900;color:#fff;margin-bottom:14px}
 .step h3{font-size:16.5px;font-weight:900;margin-bottom:8px}
 .step p{color:var(--mut);font-size:13.8px}
 .honest{margin-top:22px;padding:16px 20px;border:1px dashed rgba(139,108,255,.4);border-radius:14px;color:#cfc9ee;font-size:13.5px;background:rgba(139,108,255,.06)}
 .honest b{color:#c3b4ff}
 .ops{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.op{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.op{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4)}
 .op h3{font-size:14.5px;font-weight:900;margin-bottom:6px;color:#ddd8f5}
 .op p{color:var(--mut);font-size:12.8px}
 .road{display:flex;flex-wrap:wrap;gap:12px}
@@ -95,7 +97,7 @@ footer a{color:#cfc9ee;text-decoration:none}
 footer a:hover{color:var(--txt)}
 .consent{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:90;display:flex;gap:16px;align-items:center;width:min(860px,calc(100% - 32px));padding:16px 20px;border-radius:16px;border:1px solid var(--line);background:rgba(19,15,38,.92);backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(5,3,18,.6)}
 .consent p{font-size:13px;color:#cfc9ee;flex:1;min-width:240px}
-.consent .btn{padding:9px 16px;font-size:12.5px}
+.consent .btn{min-height:44px;padding:8px 16px;font-size:12.5px}
 [hidden]{display:none!important}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
@@ -104,9 +106,8 @@ footer a:hover{color:var(--txt)}
   .steps{grid-template-columns:1fr}
   .ops{grid-template-columns:1fr}
   nav ul{display:none}
-  section{padding:46px 0}
-  .hero{padding:48px 0 8px}
-  h1{font-size:40px}
+  section{padding:var(--sp-6) 0}
+  .hero{padding:var(--sp-6) 0 var(--sp-2)}
 }
 </style>
 </head>
@@ -143,7 +144,7 @@ footer a:hover{color:var(--txt)}
 
 <section id="products">
   <span class="kicker" data-i18n="lib.kicker">The library</span>
-  <h2 data-i18n="lib.h2">Five products. One shelf.</h2>
+  <h2 data-i18n="lib.h2">Four products. One shelf.</h2>
   <p class="lead" data-i18n="lib.lead">Every card is a real, running product — not a demo. Open one and use it right now.</p>
   <div class="lib">
 
@@ -199,19 +200,6 @@ footer a:hover{color:var(--txt)}
         <div class="links">
           <a class="btn btn-p" href="https://nexdeutsch.nelurio.com" target="_blank" rel="noopener" data-i18n="c.openapp">Open live app</a>
           <a class="btn btn-s" href="https://github.com/AmirKhosravi18118/NexDeutsch" target="_blank" rel="noopener"><span data-i18n="c.ghpriv">GitHub (private)</span></a>
-        </div>
-      </div>
-    </article>
-
-    <article class="prod reveal">
-      <div class="cover"><img src="saadtattoo.png" alt="Saad Tattoo website" loading="lazy"><span class="status client"><i></i><span data-i18n="st.client">CLIENT · LIVE</span></span></div>
-      <div class="body">
-        <span class="flag" data-i18n="n5.flag">CLIENT WORK</span>
-        <h3>Saad Tattoo</h3>
-        <p class="what" data-i18n="n5.what">Booking-focused website for a tattoo studio in Wiesbaden — concept, design, AI-generated visual assets, content and launch. My first paid client project.</p>
-        <div class="tags"><span class="tag">Wix Studio</span><span class="tag">AI-assisted design</span><span class="tag">Client work</span></div>
-        <div class="links">
-          <a class="btn btn-p" href="https://www.saadtattoo.de" target="_blank" rel="noopener" data-i18n="c.opensite">Open live site</a>
         </div>
       </div>
     </article>
@@ -286,7 +274,7 @@ const I18N = {
 "nl.builder":{"en":"Built end-to-end by","de":"Komplett gebaut von"},
 "nl.builder2":{"en":"— developer & BWL student, Rhein-Main. The story behind every product lives on the portfolio.","de":"— Entwickler & BWL-Student, Rhein-Main. Die Geschichte hinter jedem Produkt findest du im Portfolio."},
 "lib.kicker":{"en":"The library","de":"Die Bibliothek"},
-"lib.h2":{"en":"Five products. One shelf.","de":"Fünf Produkte. Ein Regal."},
+"lib.h2":{"en":"Four products. One shelf.","de":"Vier Produkte. Ein Regal."},
 "lib.lead":{"en":"Every card is a real, running product — not a demo. Open one and use it right now.","de":"Jede Karte ist ein echtes, laufendes Produkt — keine Demo. Öffne eines und leg sofort los."},
 "st.beta":{"en":"LIVE · BETA — FREE","de":"LIVE · BETA — KOSTENLOS"},
 "st.live":{"en":"LIVE — FREE","de":"LIVE — KOSTENLOS"},
@@ -305,8 +293,6 @@ const I18N = {
 "n3.what":{"en":"Operations app for a real car-wash business — day-to-day operations, tracking and workflow. In daily use on site since launch.","de":"Operations-App für eine echte Autowaschanlage — Tagesbetrieb, Tracking und Workflow. Seit Launch täglich im Einsatz."},
 "n4.flag":{"en":"LANGUAGE","de":"SPRACHE"},
 "n4.what":{"en":"German vocabulary learning platform — structured practice sessions with spaced practice. Nelurio's review engine was born from what I learned here; a rework is in progress.","de":"Plattform zum Deutsch-Vokabeln lernen — strukturierte Übungen mit Spaced Practice. Nelurios Wiederholungs-Engine entstand aus den Erfahrungen hier; eine Überarbeitung läuft."},
-"n5.flag":{"en":"CLIENT WORK","de":"KUNDENARBEIT"},
-"n5.what":{"en":"Booking-focused website for a tattoo studio in Wiesbaden — concept, design, AI-generated visual assets, content and launch. My first paid client project.","de":"Buchungsorientierte Website für ein Tattoo-Studio in Wiesbaden — Konzept, Design, KI-generierte Visuals, Inhalt und Launch. Mein erstes bezahltes Kundenprojekt."},
 "how.kicker":{"en":"How it works","de":"So funktioniert's"},
 "how.h2":{"en":"From visitor to user in three steps.","de":"Von Besucher zu Nutzer in drei Schritten."},
 "how.lead":{"en":"No installation, no credit card — pick an app and start.","de":"Keine Installation, keine Kreditkarte — App wählen und starten."},
