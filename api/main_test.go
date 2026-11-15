@@ -167,7 +167,7 @@ func TestContactHappyPath(t *testing.T) {
 	if err := json.Unmarshal(fw[0].body, &payload); err != nil {
 		t.Fatal(err)
 	}
-	if payload["type"] != "inquiry.new" || payload["email"] != "jane@example.com" {
+	if payload["email"] != "jane@example.com" || payload["message"] == "" || payload["type"] != "project" {
 		t.Fatalf("forward payload = %v", payload)
 	}
 	key := "test-ingest-key"

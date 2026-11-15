@@ -384,7 +384,7 @@ func SignEvent(key string, timestamp string, body []byte) string {
 	return hex.EncodeToString(mac.Sum(nil))
 }
 
-func (s *server) forwardSigned(payload any) {
+func (s *server) forwardSigned(payload any, path string) {
 	if s.cfg.studioURL == "" || s.cfg.ingestKey == "" {
 		return // forwarding disabled by config
 	}
@@ -394,7 +394,7 @@ func (s *server) forwardSigned(payload any) {
 		return
 	}
 	ts := strconv.FormatInt(time.Now().Unix(), 10)
-	req, err := http.NewRequestWithContext(context.Background(), http.MethodPost, s.cfg.studioURL, bytes.NewReader(body))
+	req, err := http.NewRequestWithContext(context.Background(), http.MethodPost, strings.TrimRight(s.cfg.studioURL, "/")+path, bytes.NewReader(body))
 	if err != nil {
 		log.Printf("studio forward: %v", err)
 		return
@@ -604,16 +604,14 @@ func (s *server) handleContact(w http.ResponseWriter, r *http.Request) {
 	}
 	go s.sendAutoReply(*in, lang)
 
-	// Signed, non-blocking forward to AK Studio.
+	// Signed, non-blocking forward to AK Studio (receiver: POST /ingest/v1/inquiry).
 	go s.forwardSigned(map[string]any{
-		"type":         "inquiry.new",
-		"id":           in.ID,
-		"name":         in.Name,
-		"email":        in.Email,
-		"inquiry_type": in.Type,
-		"budget":       in.Budget,
-		"created_at":   in.CreatedAt,
-	})
+		"name":    in.Name,
+		"email":   in.Email,
+		"type":    in.Type,
+		"budget":  in.Budget,
+		"message": in.Message,
+	}, "/inquiry")
 
 	writeJSON(w, http.StatusOK, map[string]any{"ok": true, "id": in.ID})
 }
@@ -789,7 +787,7 @@ func (s *server) handleEvent(w http.ResponseWriter, r *http.Request) {
 		"name":   ev.Name,
 		"ts":     ev.TS,
 		"source": "amirsite",
-	})
+	}, "/event")
 	writeJSON(w, http.StatusOK, map[string]bool{"ok": true, "forwarded": true})
 }
 
