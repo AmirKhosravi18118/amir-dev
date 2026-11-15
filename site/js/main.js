@@ -51,6 +51,9 @@ $$('.seg button[data-kind]').forEach(b=>b.addEventListener('click',()=>{
   const ml=$('#msgLabel');if(ml)ml.textContent=t(koop?'ct.msg2':'ct.msg1');
 }));
 
+/* page render time = form-open time; server timing check needs >=2s fill */
+const PAGE_TS=Date.now();
+
 /* contact form: client validation, accessible states, JSON POST to /api/contact */
 $('#form')&&$('#form').addEventListener('submit',async e=>{
   e.preventDefault();
@@ -74,7 +77,7 @@ $('#form')&&$('#form').addEventListener('submit',async e=>{
     budget:fd.get('budget')||'not_sure',
     consent:fd.get('consent')==='on',
     website:fd.get('website')||'',
-    ts:Date.now()
+    ts:PAGE_TS
   };
   try{
     await fetch('/api/csrf',{cache:'no-store'}); // double-submit: sets csrf_token cookie
