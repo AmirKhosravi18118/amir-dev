@@ -1,0 +1,114 @@
+[
+ {
+  "file": "01-app-dashboard.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Dashboard mit Tagesplan",
+  "label_en": "Dashboard with daily plan",
+  "demo_data": true
+ },
+ {
+  "file": "02-app-courses.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Kursübersicht",
+  "label_en": "Course overview",
+  "demo_data": true
+ },
+ {
+  "file": "03-app-course-detail.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Kursdetail und Fortschritt",
+  "label_en": "Course detail and progress",
+  "demo_data": true
+ },
+ {
+  "file": "04-app-tasks-reviews.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Aufgaben und Wiederholungen",
+  "label_en": "Tasks and spaced reviews",
+  "demo_data": true
+ },
+ {
+  "file": "05-app-focus-forest.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Fokus-Timer mit Wald",
+  "label_en": "Focus timer with forest",
+  "demo_data": true
+ },
+ {
+  "file": "06-app-record-lesson.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Vorlesung erfassen",
+  "label_en": "Record today's lesson",
+  "demo_data": true
+ },
+ {
+  "file": "10-app-mobile-dashboard.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Dashboard mobil",
+  "label_en": "Mobile dashboard",
+  "demo_data": true
+ },
+ {
+  "file": "11-app-mobile-courses.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Kurse mobil",
+  "label_en": "Mobile courses",
+  "demo_data": true
+ },
+ {
+  "file": "20-site-hero.jpg",
+  "device": "desktop",
+  "area": "site",
+  "label_de": "Suite-Startseite",
+  "label_en": "Suite landing hero",
+  "demo_data": false
+ },
+ {
+  "file": "21-site-library-shelf.jpg",
+  "device": "desktop",
+  "area": "site",
+  "label_de": "Produktregal",
+  "label_en": "Product shelf",
+  "demo_data": false
+ },
+ {
+  "file": "22-site-pricing.jpg",
+  "device": "desktop",
+  "area": "site",
+  "label_de": "Preise",
+  "label_en": "Pricing",
+  "demo_data": false
+ },
+ {
+  "file": "23-site-how-it-works.jpg",
+  "device": "desktop",
+  "area": "site",
+  "label_de": "So funktioniert's",
+  "label_en": "How it works",
+  "demo_data": false
+ },
+ {
+  "file": "24-site-support.jpg",
+  "device": "desktop",
+  "area": "site",
+  "label_de": "Support",
+  "label_en": "Support",
+  "demo_data": false
+ },
+ {
+  "file": "30-site-mobile-hero.jpg",
+  "device": "mobile",
+  "area": "site",
+  "label_de": "Startseite mobil",
+  "label_en": "Mobile landing",
+  "demo_data": false
+ }
+]

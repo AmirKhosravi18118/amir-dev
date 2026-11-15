@@ -1,0 +1,33 @@
+/* Design tokens — amir-khosravi.de. All colours live here. */
+:root{
+  --bg:#0B0B0C; --panel:#17171A; --cream:#EDE6D8; --mute:#9B958A;
+  --dim:#8A8478;
+  --gold:#C9A96E; --gold2:#E6CFA0; --ink-on-gold:#1B1600;
+  --line:rgba(237,230,216,.10); --line2:rgba(201,169,110,.35);
+  --line-strong:rgba(237,230,216,.35);
+  --line-soft:rgba(237,230,216,.18);
+  --gold-08:rgba(201,169,110,.08); --gold-16:rgba(201,169,110,.16);
+  --gold-18:rgba(201,169,110,.18); --gold-06:rgba(201,169,110,.06);
+  --gold-14:rgba(201,169,110,.14); --gold-glow:rgba(201,169,110,.10);
+  --gold-shadow:rgba(201,169,110,.18);
+  --black-shadow:rgba(0,0,0,.6);
+  --white-04:rgba(255,255,255,.04); --white-07:rgba(255,255,255,.07);
+  --white-14:rgba(255,255,255,.14); --white-16:rgba(255,255,255,.16);
+  --cream-06:rgba(237,230,216,.06);
+  --nav-bg:rgba(11,11,12,.78);
+  --overlay-bg:rgba(5,5,6,.88);
+  --stage-a:#1b1b1f; --stage-b:#0c0c0e;
+  --screen-frame:#2B2B2F; --screen:#000;
+  --lid-a:#2E2E33; --lid-b:#141416;
+  --phone-frame-a:#8d8d95; --phone-frame-b:#2c2c31; --phone-frame-c:#141417;
+  --phone-frame-d:#2f2f35; --phone-frame-e:#9a9aa2;
+  --phone-side-a:#5a5a62; --phone-side-b:#26262a;
+  --phone-bezel:#050506;
+  --surface-card:#141416;
+  --error:#e08a7a;
+  --qr-bg:#EDE6D8; --qr-ink:#0B0B0C;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Manrope','Segoe UI',system-ui,-apple-system,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:dark;
+}

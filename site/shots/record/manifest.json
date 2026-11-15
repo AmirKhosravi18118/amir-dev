@@ -1,0 +1,65 @@
+[
+ {
+  "file": "01-today-en-dark.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Heute, dunkel",
+  "label_en": "Today, dark",
+  "source": "app",
+  "demo_data": true
+ },
+ {
+  "file": "02-today-en-light.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Heute, hell",
+  "label_en": "Today, light",
+  "source": "app",
+  "demo_data": true
+ },
+ {
+  "file": "03-records-en-dark.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Rekordbuch mit Bestwerten",
+  "label_en": "Record book with PRs",
+  "source": "app",
+  "demo_data": true
+ },
+ {
+  "file": "04-next-week-target-en.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Ziel für nächste Woche",
+  "label_en": "Next-week target",
+  "source": "app",
+  "demo_data": true
+ },
+ {
+  "file": "05-profile-en-light.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Profil und Trainingsplan",
+  "label_en": "Profile and weekly plan",
+  "source": "app",
+  "demo_data": true
+ },
+ {
+  "file": "06-desktop-today.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Heute auf dem Desktop",
+  "label_en": "Today on desktop",
+  "source": "app",
+  "demo_data": true
+ },
+ {
+  "file": "07-desktop-records.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Rekorde auf dem Desktop",
+  "label_en": "Records on desktop",
+  "source": "app",
+  "demo_data": true
+ }
+]

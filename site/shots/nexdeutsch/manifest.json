@@ -1,0 +1,50 @@
+[
+ {
+  "file": "01-home.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Lernplan und Serie",
+  "label_en": "Learning plan and streak",
+  "demo_data": true
+ },
+ {
+  "file": "02-course.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Kurs Deutsch A1",
+  "label_en": "German A1 course",
+  "demo_data": true
+ },
+ {
+  "file": "03-review.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Wiederholung mit Leitner",
+  "label_en": "Leitner review session",
+  "demo_data": true
+ },
+ {
+  "file": "04-home-mobile.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Start mobil",
+  "label_en": "Mobile home",
+  "demo_data": true
+ },
+ {
+  "file": "05-review-mobile.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Wiederholung mobil",
+  "label_en": "Mobile review",
+  "demo_data": true
+ },
+ {
+  "file": "06-course-mobile.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Kurs mobil",
+  "label_en": "Mobile course",
+  "demo_data": true
+ }
+]

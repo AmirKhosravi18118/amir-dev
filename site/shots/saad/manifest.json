@@ -1,0 +1,58 @@
+[
+ {
+  "file": "01-home.jpg",
+  "device": "desktop",
+  "area": "website",
+  "label_de": "Startseite",
+  "label_en": "Home page",
+  "demo_data": false
+ },
+ {
+  "file": "02-galerie.jpg",
+  "device": "desktop",
+  "area": "website",
+  "label_de": "Galerie",
+  "label_en": "Gallery",
+  "demo_data": false
+ },
+ {
+  "file": "03-booking.jpg",
+  "device": "desktop",
+  "area": "website",
+  "label_de": "Buchungsstrecke",
+  "label_en": "Booking flow",
+  "demo_data": false
+ },
+ {
+  "file": "04-ausbildung.jpg",
+  "device": "desktop",
+  "area": "website",
+  "label_de": "Ausbildung",
+  "label_en": "Training courses",
+  "demo_data": false
+ },
+ {
+  "file": "05-service.jpg",
+  "device": "desktop",
+  "area": "website",
+  "label_de": "Leistungsseite",
+  "label_en": "Service page",
+  "demo_data": false
+ },
+ {
+  "file": "06-home-mobile.jpg",
+  "device": "mobile",
+  "area": "website",
+  "label_de": "Startseite mobil",
+  "label_en": "Home on mobile",
+  "demo_data": false
+ },
+ {
+  "file": "07-galerie-mobile.jpg",
+  "device": "mobile",
+  "area": "website",
+  "label_de": "Galerie mobil",
+  "label_en": "Gallery on mobile",
+  "demo_data": false
+ }
+]
