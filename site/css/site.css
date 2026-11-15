@@ -221,7 +221,7 @@ label{display:grid;gap:6px;font-size:.72rem;letter-spacing:.12em;text-transform:
 input,select,textarea{font:inherit;font-size:1rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--cream);background:var(--bg);border:1px solid var(--line);padding:12px 13px;width:100%;min-width:0;transition:border-color .2s}
 input:focus,select:focus,textarea:focus{border-color:var(--gold);outline:none}
 textarea{min-height:120px;resize:vertical}
-.f-err{display:block;width:100%;color:var(--error);font-size:.82rem;text-transform:none;letter-spacing:0;font-weight:400;min-height:0}
+.f-err{display:block;width:100%;grid-column:1/-1;color:var(--error);font-size:.82rem;text-transform:none;letter-spacing:0;font-weight:400;min-height:0}
 input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--error)}
 .status{border:1px solid var(--gold);padding:12px 14px;font-size:.92rem}
 .ways{display:grid;gap:10px}
@@ -317,7 +317,7 @@ footer a:hover{color:var(--cream)}
 @media (max-width:520px){.row{grid-template-columns:minmax(0,1fr)}.facts li{grid-template-columns:minmax(0,1fr);gap:2px}.steps{grid-template-columns:minmax(0,1fr)}.gal-info .acts{grid-template-columns:minmax(0,1fr)}}
 
 /* misc */
-.chk{grid-template-columns:22px minmax(0,1fr);text-transform:none;letter-spacing:0;font-weight:300;color:var(--mute);font-size:.9rem}
+.chk{grid-template-columns:22px minmax(0,1fr);align-items:start;text-transform:none;letter-spacing:0;font-weight:300;color:var(--mute);font-size:.9rem}
 .chk input{width:18px;height:18px;accent-color:var(--gold);margin-top:2px}
 
 /* field errors: full-width line, never a narrow column */
