@@ -109,17 +109,18 @@ section{scroll-margin-top:70px}
 
 /* work tiles */
 .work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.tile{position:relative;background:var(--panel);border:1px solid var(--line);aspect-ratio:4/3;overflow:hidden;display:grid;align-content:end;padding:22px;text-align:left;transition:border-color .3s;width:100%}
+.tile{position:relative;background:var(--panel);border:1px solid var(--line);aspect-ratio:4/3;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;text-align:left;transition:border-color .3s;width:100%}
 .tile.wide{grid-column:1/-1;aspect-ratio:21/9}
 .tile:hover,.tile:focus-visible{border-color:var(--line2)}
 .tile .glow{position:absolute;inset:-40%;background:radial-gradient(closest-side,var(--gold-16),transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none;transform:translate(var(--gx,0),var(--gy,0))}
 .tile:hover .glow{opacity:1}
 .tile .texture{position:absolute;inset:0;background:radial-gradient(70% 60% at 70% 20%,var(--white-04),transparent 70%),linear-gradient(180deg,transparent 45%,rgba(0,0,0,.6) 100%)}
-.tile .dev{position:absolute;inset:7% 8% 31%;display:grid;place-items:center;perspective:1200px}
+/* Device stage is its own flex row: the meta/title NEVER rides onto the mockup. */
+.tile .dev{position:relative;flex:1 1 auto;min-height:0;margin-bottom:16px;display:grid;place-items:center;perspective:1200px}
 .tile .dev>.tilt{width:100%;display:grid;place-items:center}
-.tile .laptop{width:min(78%,500px)}
-.tile.wide .dev{inset:4% 8% 26%}
-.tile.wide .laptop{width:min(54%,600px)}
+.tile .laptop{width:min(72%,440px);max-height:100%}
+.tile.wide .dev{margin-bottom:18px}
+.tile.wide .laptop{width:min(50%,540px);max-height:100%}
 .tile .dev>.tilt.over{position:absolute;inset:0;pointer-events:none;display:block}
 .tile .dev>.tilt.over .phone{position:absolute;width:min(17%,112px);right:8%;bottom:-2%}
 .tile .phone.only{width:min(24%,150px)}
@@ -291,7 +292,7 @@ footer a:hover{color:var(--cream)}
 @media (max-width:900px){
   .services,.work,.split,.contact{grid-template-columns:minmax(0,1fr)}
   .tile,.tile.wide{aspect-ratio:1/1;grid-column:auto}
-  .tile .dev,.tile.wide .dev{inset:5% 8% 34%}
+  .tile .dev{margin-bottom:14px}
   .tile .laptop,.tile.wide .laptop{width:88%}
   .tile .dev>.tilt.over .phone{width:22%}
   .tile .phone.only{width:34%}
