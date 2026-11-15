@@ -80,8 +80,9 @@ func envOr(k, def string) string {
 
 const (
 	maxBodyBytes = 32 << 10
-	maxAgeTS     = 3 * time.Second // contact form ts must not be older
-	maxFutureTS  = 2 * time.Second // small clock-skew allowance
+	maxFillTS    = 6 * time.Hour   // contact form ts older than this = stale/replay
+	minHumanFill = 2 * time.Second // filled faster than this = likely a bot
+	maxFutureTS  = 2 * time.Minute // small clock-skew allowance
 	csrfCookie   = "csrf_token"
 )
 
@@ -642,11 +643,18 @@ func validateContact(req contactRequest, now time.Time) []string {
 	if req.TS <= 0 {
 		errs = append(errs, "ts is required")
 	} else {
-		ts := time.Unix(req.TS, 0)
+		// Clients may send seconds or milliseconds; normalise to seconds.
+		sec := req.TS
+		if sec > 1e12 { // ms epoch (~from 2001-09 onward)
+			sec /= 1000
+		}
+		ts := time.Unix(sec, 0)
 		if ts.After(now.Add(maxFutureTS)) {
 			errs = append(errs, "ts is in the future")
-		} else if now.Sub(ts) > maxAgeTS {
+		} else if now.Sub(ts) > maxFillTS {
 			errs = append(errs, "ts is too old (possible replay)")
+		} else if now.Sub(ts) < minHumanFill {
+			errs = append(errs, "ts is too fast (likely a bot)")
 		}
 	}
 	return errs
