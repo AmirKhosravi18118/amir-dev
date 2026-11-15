@@ -11,7 +11,7 @@ const en = JSON.parse(fs.readFileSync(path.join(root, 'i18n/en.json'), 'utf8'));
 const { PROJECTS } = new Function(fs.readFileSync(path.join(root, 'js/projects-data.js'), 'utf8') + ';return {PROJECTS};')();
 const BY = Object.fromEntries(PROJECTS.map(p => [p.slug, p]));
 const ORIGIN = 'https://amir-khosravi.de';
-const LI = 'https://www.linkedin.com/in/amir-khosravi-18118';
+const LI = 'https://www.linkedin.com/in/amir-khosravi18118';
 const GH = 'https://github.com/AmirKhosravi18118';
 const slugs = PROJECTS.map(p => p.slug);
 

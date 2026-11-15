@@ -48,7 +48,7 @@ tests-ci/           Playwright end-to-end tests
 ## Contact
 
 **Amir Khosravi** — [amir-khosravi.de](https://amir-khosravi.de) ·
-[LinkedIn](https://www.linkedin.com/in/amir-khosravi-18118) ·
+[LinkedIn](https://www.linkedin.com/in/amir-khosravi18118) ·
 a.h.khosravi1383@gmail.com
 
 © 2026 Amir Khosravi
