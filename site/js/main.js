@@ -28,6 +28,8 @@ document.addEventListener('click',e=>{
     if(el)el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
     if(s.hasAttribute('data-closefab'))toggleFab(false);
     $('#navLinks')&&$('#navLinks').classList.remove('open');$('#menuBtn')&&$('#menuBtn').setAttribute('aria-expanded','false');return}
+  const og=e.target.closest('[data-open]');
+  if(og){import('./gallery.js').then(m=>m.openGallery(og.dataset.open));return}
   const c=e.target.closest('[data-copy]');
   if(c){const txt=c.dataset.copy,done=()=>{const l=c.querySelector('small')||c,o=l.textContent;l.textContent=t('ct.copied');setTimeout(()=>l.textContent=o,1600)};
     navigator.clipboard.writeText(txt).then(done).catch(()=>{});return}
@@ -67,7 +69,10 @@ $('#form')&&$('#form').addEventListener('submit',async e=>{
   data.type=f.querySelector('.seg button[aria-pressed="true"]')?.dataset.kind||'projekt';
   data.ts=Date.now();
   try{
-    const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    await fetch('/api/csrf',{cache:'no-store'}); // double-submit: sets csrf_token cookie
+    const tok=(document.cookie.match(/(?:^|; )csrf_token=([^;]+)/)||[])[1]||'';
+    const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':tok},body:JSON.stringify(data)});
+    if(r.status===403){await fetch('/api/csrf',{cache:'no-store'});} // stale token → refresh for next try
     st.textContent=t(r.ok?'ct.ok':'ct.bad');
     if(r.ok)f.reset();
   }catch(err){st.textContent=t('ct.bad')}
