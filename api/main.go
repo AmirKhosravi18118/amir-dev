@@ -26,6 +26,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	_ "github.com/jackc/pgx/v5/stdlib" // register the "pgx" database/sql driver
 )
 
 // ---------------------------------------------------------------- config
