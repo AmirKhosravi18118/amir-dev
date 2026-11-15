@@ -97,7 +97,7 @@ func (e *testEnv) postContact(t *testing.T, mutate func(*contactRequest), opts .
 		Budget:  "5k-10k",
 		Message: "I would like to work with you on a new portfolio site.",
 		Consent: true,
-		TS:      time.Now().Unix(),
+		TS:      time.Now().Add(-5 * time.Second).Unix(),
 	}
 	if mutate != nil {
 		mutate(&body)
@@ -205,7 +205,7 @@ func TestContactValidationFailures(t *testing.T) {
 		"message too short": func(c *contactRequest) { c.Message = "short" },
 		"message too long":  func(c *contactRequest) { c.Message = string(bytes.Repeat([]byte("x"), 4001)) },
 		"no consent":        func(c *contactRequest) { c.Consent = false },
-		"stale ts":          func(c *contactRequest) { c.TS = time.Now().Add(-10 * time.Second).Unix() },
+		"stale ts":          func(c *contactRequest) { c.TS = time.Now().Add(-7 * time.Hour).Unix() },
 		"future ts":         func(c *contactRequest) { c.TS = time.Now().Add(10 * time.Second).Unix() },
 		"missing ts":        func(c *contactRequest) { c.TS = 0 },
 	}
