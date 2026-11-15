@@ -65,9 +65,17 @@ $('#form')&&$('#form').addEventListener('submit',async e=>{
   if(cons){const good=cons.checked;cons.setAttribute('aria-invalid',good?'false':'true');if(consErr)consErr.textContent=good?'':t('ct.errConsent');if(!good)ok=false}
   st.hidden=false;
   if(!ok){st.textContent=t('ct.bad');return}
-  const data=Object.fromEntries(new FormData(f).entries());
-  data.type=f.querySelector('.seg button[aria-pressed="true"]')?.dataset.kind||'projekt';
-  data.ts=Date.now();
+  const fd=new FormData(f);
+  const kind=f.querySelector('.seg button[aria-pressed="true"]')?.dataset.kind||'projekt';
+  /* API contract: type project|collaboration, budget enum, consent bool, ms epoch ts */
+  const data={
+    name:fd.get('name')||'', email:fd.get('email')||'', message:fd.get('message')||'',
+    type:kind==='koop'?'collaboration':'project',
+    budget:fd.get('budget')||'not_sure',
+    consent:fd.get('consent')==='on',
+    website:fd.get('website')||'',
+    ts:Date.now()
+  };
   try{
     await fetch('/api/csrf',{cache:'no-store'}); // double-submit: sets csrf_token cookie
     const tok=(document.cookie.match(/(?:^|; )csrf_token=([^;]+)/)||[])[1]||'';

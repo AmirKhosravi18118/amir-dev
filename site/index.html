@@ -153,7 +153,7 @@
         <label for="f-art"><span data-t="ct.what">Worum geht es?</span>
           <select id="f-art" name="art"><option data-t="ct.o1">Neue Website</option><option data-t="ct.o2">Interne App</option><option data-t="ct.o3">Bestehendes verbessern</option><option data-t="ct.o4">Noch unsicher, bitte beraten</option></select></label>
         <label for="f-budget"><span data-t="ct.bud">Budgetrahmen</span>
-          <select id="f-budget" name="budget"><option data-t="ct.b0">Noch offen</option><option data-t="ct.b1">bis 1.500 €</option><option data-t="ct.b2">1.500 € bis 5.000 €</option><option data-t="ct.b3">5.000 € bis 10.000 €</option><option data-t="ct.b4">über 10.000 €</option></select></label>
+          <select id="f-budget" name="budget"><option value="not_sure" data-t="ct.b0">Noch offen</option><option value="<5k" data-t="ct.b1">bis 1.500 €</option><option value="5k-10k" data-t="ct.b2">1.500 € bis 5.000 €</option><option value="10k-25k" data-t="ct.b3">5.000 € bis 10.000 €</option><option value=">25k" data-t="ct.b4">über 10.000 €</option></select></label>
       </div>
       <label for="f-msg"><span id="msgLabel" data-t="ct.msg1">Was möchtest du erreichen?</span><textarea id="f-msg" name="message" required aria-describedby="f-msg-err"></textarea><span class="f-err" id="f-msg-err" aria-live="polite"></span></label>
       <label class="chk" for="f-consent"><input id="f-consent" name="consent" type="checkbox" required aria-describedby="f-consent-err"><span data-t="ct.consent">Ich stimme zu, dass meine Angaben zur Beantwortung der Anfrage gespeichert werden. Weitere Informationen in der Datenschutzerklärung.</span><span class="f-err" id="f-consent-err" aria-live="polite"></span></label>
