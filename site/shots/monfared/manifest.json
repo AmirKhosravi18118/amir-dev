@@ -1,0 +1,87 @@
+[
+ {
+  "file": "01-site-home.jpg",
+  "device": "desktop",
+  "area": "website",
+  "label_de": "Startseite",
+  "label_en": "Home page",
+  "demo_data": false,
+  "source": "app"
+ },
+ {
+  "file": "02-site-home-services.jpg",
+  "device": "desktop",
+  "area": "website",
+  "label_de": "Leistungen auf der Startseite",
+  "label_en": "Services on the home page",
+  "demo_data": false,
+  "source": "app"
+ },
+ {
+  "file": "03-site-leistungen.jpg",
+  "device": "desktop",
+  "area": "website",
+  "label_de": "Leistungen und Produkte",
+  "label_en": "Services and products",
+  "demo_data": false,
+  "source": "app"
+ },
+ {
+  "file": "06-site-home-mobile.jpg",
+  "device": "mobile",
+  "area": "website",
+  "label_de": "Startseite mobil",
+  "label_en": "Home on mobile",
+  "demo_data": false,
+  "source": "app"
+ },
+ {
+  "file": "07-site-leistungen-mobile.jpg",
+  "device": "mobile",
+  "area": "website",
+  "label_de": "Leistungen mobil",
+  "label_en": "Services on mobile",
+  "demo_data": false,
+  "source": "app"
+ },
+ {
+  "file": "05-panel-dashboard.jpg",
+  "device": "desktop",
+  "area": "panel",
+  "label_de": "Panel-Dashboard",
+  "label_en": "Panel dashboard",
+  "demo_data": true
+ },
+ {
+  "file": "06-panel-jobs.jpg",
+  "device": "desktop",
+  "area": "panel",
+  "label_de": "Auftragsdetail mit Schritten",
+  "label_en": "Job detail with steps",
+  "demo_data": true
+ },
+ {
+  "file": "07-panel-permissions.jpg",
+  "device": "desktop",
+  "area": "panel",
+  "label_de": "Rechteverwaltung (Admin)",
+  "label_en": "Permissions (admin)",
+  "demo_data": true
+ },
+ {
+  "file": "09-panel-team.jpg",
+  "device": "desktop",
+  "area": "panel",
+  "label_de": "Team und Mitarbeiter",
+  "label_en": "Team management",
+  "demo_data": true
+ },
+ {
+  "file": "08-panel-mobile.jpg",
+  "device": "mobile",
+  "area": "panel",
+  "label_de": "Panel mobil: Aufträge",
+  "label_en": "Panel mobile: jobs",
+  "demo_data": true
+ }
+]

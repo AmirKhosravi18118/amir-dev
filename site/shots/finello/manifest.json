@@ -1,0 +1,58 @@
+[
+ {
+  "file": "01-dashboard.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Monatsbilanz und Zahlungen",
+  "label_en": "Monthly balance and payments",
+  "demo_data": true
+ },
+ {
+  "file": "02-calendar.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Zahlungskalender",
+  "label_en": "Payment calendar",
+  "demo_data": true
+ },
+ {
+  "file": "04-analysis.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Ausgabenanalyse mit Diagramm",
+  "label_en": "Spending analysis chart",
+  "demo_data": true
+ },
+ {
+  "file": "05-transactions.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Umsätze und Suche",
+  "label_en": "Transactions and search",
+  "demo_data": true
+ },
+ {
+  "file": "06-analysis-mobile.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Ausgaben nach Kategorie",
+  "label_en": "Spending by category",
+  "demo_data": true
+ },
+ {
+  "file": "07-dashboard-mobile.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Dashboard mobil",
+  "label_en": "Mobile dashboard",
+  "demo_data": true
+ },
+ {
+  "file": "08-calendar-mobile.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Kalender mobil",
+  "label_en": "Mobile calendar",
+  "demo_data": true
+ }
+]

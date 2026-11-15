@@ -1,0 +1,74 @@
+[
+ {
+  "file": "01-overview.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Übersicht mit Besuchern, Anfragen und Verlauf",
+  "label_en": "Overview with visitors, inquiries and trend",
+  "demo_data": true
+ },
+ {
+  "file": "02-inbox.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Ein Posteingang für Formular, WhatsApp und E-Mail",
+  "label_en": "One inbox for form, WhatsApp and email",
+  "demo_data": true
+ },
+ {
+  "file": "03-flows.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Zwölf Abläufe auf einer Systemkarte",
+  "label_en": "Twelve pipelines on one system map",
+  "demo_data": true
+ },
+ {
+  "file": "04-notifications.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Push, E-Mail und Telegram pro Ereignis",
+  "label_en": "Push, email and Telegram per event",
+  "demo_data": true
+ },
+ {
+  "file": "05-account.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Konto, Passkeys und Anmeldung in zwei Schritten",
+  "label_en": "Account, passkeys and two-step sign-in",
+  "demo_data": true
+ },
+ {
+  "file": "06-seo.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "SEO-Prüfung mit Suchbegriffen",
+  "label_en": "SEO check with search terms",
+  "demo_data": true
+ },
+ {
+  "file": "07-overview-mobile.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Übersicht auf dem Handy",
+  "label_en": "Overview on the phone",
+  "demo_data": true
+ },
+ {
+  "file": "08-menu-mobile.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Alle Bereiche im Menü",
+  "label_en": "All sections in the menu",
+  "demo_data": true
+ },
+ {
+  "file": "09-notifications-mobile.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Push-Einstellungen und App-Installation",
+  "label_en": "Push settings and app install",
+  "demo_data": true
+ }
+]

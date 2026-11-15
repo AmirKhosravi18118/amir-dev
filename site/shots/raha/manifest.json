@@ -1,0 +1,65 @@
+[
+ {
+  "file": "01-storefront-home.jpg",
+  "device": "desktop",
+  "area": "storefront",
+  "label_de": "Startseite mit Gemälde-Collage",
+  "label_en": "Home with artwork collage",
+  "source": "design-prototype",
+  "demo_data": true
+ },
+ {
+  "file": "02-storefront-gallery.jpg",
+  "device": "desktop",
+  "area": "storefront",
+  "label_de": "Galerie-Raster",
+  "label_en": "Collection grid",
+  "source": "design-prototype",
+  "demo_data": true
+ },
+ {
+  "file": "03-storefront-artwork.jpg",
+  "device": "desktop",
+  "area": "storefront",
+  "label_de": "Werkdetailseite",
+  "label_en": "Artwork detail page",
+  "source": "design-prototype",
+  "demo_data": true
+ },
+ {
+  "file": "04-storefront-order.jpg",
+  "device": "desktop",
+  "area": "storefront",
+  "label_de": "Bestellformular",
+  "label_en": "Order form",
+  "source": "design-prototype",
+  "demo_data": true
+ },
+ {
+  "file": "05-storefront-mobile-home.jpg",
+  "device": "mobile",
+  "area": "storefront",
+  "label_de": "Startseite mobil",
+  "label_en": "Mobile home",
+  "source": "design-prototype",
+  "demo_data": true
+ },
+ {
+  "file": "06-storefront-mobile-artwork.jpg",
+  "device": "mobile",
+  "area": "storefront",
+  "label_de": "Werkdetail mobil",
+  "label_en": "Mobile artwork detail",
+  "source": "design-prototype",
+  "demo_data": true
+ },
+ {
+  "file": "07-storefront-mobile-gallery.jpg",
+  "device": "mobile",
+  "area": "storefront",
+  "label_de": "Galerie mobil",
+  "label_en": "Mobile gallery",
+  "source": "design-prototype",
+  "demo_data": true
+ }
+]

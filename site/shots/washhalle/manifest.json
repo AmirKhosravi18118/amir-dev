@@ -1,0 +1,66 @@
+[
+ {
+  "file": "01-dashboard.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Tagesübersicht und Umsatz",
+  "label_en": "Daily overview and revenue",
+  "demo_data": true
+ },
+ {
+  "file": "02-team-performance.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Mitarbeiterleistung und Schichten",
+  "label_en": "Team performance and shifts",
+  "demo_data": true
+ },
+ {
+  "file": "03-double-check.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Double Check mit Lizenzflags",
+  "label_en": "Double-check with license flags",
+  "demo_data": true
+ },
+ {
+  "file": "04-approvals.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Freigaben und Hinweise",
+  "label_en": "Approvals and alerts",
+  "demo_data": true
+ },
+ {
+  "file": "05-price-rules.jpg",
+  "device": "desktop",
+  "area": "app",
+  "label_de": "Preisregeln",
+  "label_en": "Price rules",
+  "demo_data": true
+ },
+ {
+  "file": "06-mobile-dashboard.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Dashboard mobil",
+  "label_en": "Mobile dashboard",
+  "demo_data": true
+ },
+ {
+  "file": "07-mobile-capture.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Waschung erfassen",
+  "label_en": "Capture a wash",
+  "demo_data": true
+ },
+ {
+  "file": "08-mobile-summary.jpg",
+  "device": "mobile",
+  "area": "app",
+  "label_de": "Auswertung mobil",
+  "label_en": "Mobile summary",
+  "demo_data": true
+ }
+]
