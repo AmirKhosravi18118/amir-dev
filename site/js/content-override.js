@@ -38,6 +38,7 @@
         if (p && svc.desc) p.textContent = svc.desc;
       });
     }
+    applied = true;
     document.documentElement.dataset.contentOverride = 'applied';
   } catch { /* static-first: baked copy stands */ }
 })();
