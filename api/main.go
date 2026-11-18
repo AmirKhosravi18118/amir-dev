@@ -40,8 +40,10 @@ type config struct {
 
 	smtpHost, smtpPort, smtpUser, smtpPass, contactTo string
 
-	studioURL string
-	ingestKey string
+	studioURL  string
+	ingestKey  string
+	studio2URL string
+	studio2Key string
 }
 
 func loadConfig() config {
@@ -55,17 +57,19 @@ func loadConfig() config {
 		log.Printf("WARNING: IP_SALT not set; generated ephemeral salt (ip_hash values will change on restart)")
 	}
 	return config{
-		port:      os.Getenv("PORT"),
-		dbURL:     os.Getenv("DATABASE_URL"),
-		storeFile: envOr("STORE_FILE", "/var/lib/amir-site/inquiries.jsonl"),
-		ipSalt:    ipSalt,
-		smtpHost:  os.Getenv("SMTP_HOST"),
-		smtpPort:  envOr("SMTP_PORT", "587"),
-		smtpUser:  os.Getenv("SMTP_USER"),
-		smtpPass:  os.Getenv("SMTP_PASS"),
-		contactTo: os.Getenv("CONTACT_TO"),
-		studioURL: os.Getenv("STUDIO_INGEST_URL"),
-		ingestKey: os.Getenv("INGEST_KEY_AMIRSITE"),
+		port:       os.Getenv("PORT"),
+		dbURL:      os.Getenv("DATABASE_URL"),
+		storeFile:  envOr("STORE_FILE", "/var/lib/amir-site/inquiries.jsonl"),
+		ipSalt:     ipSalt,
+		smtpHost:   os.Getenv("SMTP_HOST"),
+		smtpPort:   envOr("SMTP_PORT", "587"),
+		smtpUser:   os.Getenv("SMTP_USER"),
+		smtpPass:   os.Getenv("SMTP_PASS"),
+		contactTo:  os.Getenv("CONTACT_TO"),
+		studioURL:  os.Getenv("STUDIO_INGEST_URL"),
+		ingestKey:  os.Getenv("INGEST_KEY_AMIRSITE"),
+		studio2URL: os.Getenv("STUDIO2_INGEST_URL"),
+		studio2Key: os.Getenv("INGEST_KEY_STUDIO"),
 	}
 }
 
@@ -342,8 +346,8 @@ func (m *mailer) send(from, to, subject, body string) error {
 }
 
 const (
-	ownerSubject = "Neue Anfrage ueber amir-khosravi.de"
-	ownerBody    = "Neue Anfrage (%s):\n\nName: %s\nE-Mail: %s\nTyp: %s\nBudget: %s\n\n%s\n"
+	ownerSubject   = "Neue Anfrage ueber amir-khosravi.de"
+	ownerBody      = "Neue Anfrage (%s):\n\nName: %s\nE-Mail: %s\nTyp: %s\nBudget: %s\n\n%s\n"
 	replySubjectDE = "Danke fuer Ihre Nachricht"
 	replyBodyDE    = "Hallo %s,\n\nvielen Dank fuer Ihre Nachricht ueber amir-khosravi.de. Ich habe Ihre Anfrage erhalten und melde mich in der Regel innerhalb von 24 Stunden bei Ihnen.\n\nViele Gruesse\nAmir Khosravi\n"
 	replySubjectEN = "Thanks for your message"
@@ -385,32 +389,42 @@ func SignEvent(key string, timestamp string, body []byte) string {
 }
 
 func (s *server) forwardSigned(payload any, path string) {
-	if s.cfg.studioURL == "" || s.cfg.ingestKey == "" {
-		return // forwarding disabled by config
-	}
 	body, err := json.Marshal(payload)
 	if err != nil {
 		log.Printf("studio forward: marshal: %v", err)
 		return
 	}
+	dests := []struct{ url, key, label string }{
+		{s.cfg.studioURL, s.cfg.ingestKey, "studio"},
+		{s.cfg.studio2URL, s.cfg.studio2Key, "studio2"},
+	}
+	for _, d := range dests {
+		if d.url == "" || d.key == "" {
+			continue // destination disabled by config
+		}
+		s.postSigned(d.url, d.key, d.label, path, body)
+	}
+}
+
+func (s *server) postSigned(url, key, label, path string, body []byte) {
 	ts := strconv.FormatInt(time.Now().Unix(), 10)
-	req, err := http.NewRequestWithContext(context.Background(), http.MethodPost, strings.TrimRight(s.cfg.studioURL, "/")+path, bytes.NewReader(body))
+	req, err := http.NewRequestWithContext(context.Background(), http.MethodPost, strings.TrimRight(url, "/")+path, bytes.NewReader(body))
 	if err != nil {
-		log.Printf("studio forward: %v", err)
+		log.Printf("%s forward: %v", label, err)
 		return
 	}
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("X-AK-Timestamp", ts)
-	req.Header.Set("X-AK-Signature", SignEvent(s.cfg.ingestKey, ts, body))
+	req.Header.Set("X-AK-Signature", SignEvent(key, ts, body))
 	client := &http.Client{Timeout: 10 * time.Second}
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Printf("studio forward failed (non-blocking): %v", err)
+		log.Printf("%s forward failed (non-blocking): %v", label, err)
 		return
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode >= 300 {
-		log.Printf("studio forward: unexpected status %d", resp.StatusCode)
+		log.Printf("%s forward: unexpected status %d", label, resp.StatusCode)
 	}
 }
 
@@ -684,7 +698,7 @@ func (s *server) sendAutoReply(in inquiry, lang string) {
 // ---- email retry loop
 
 type retryQueue struct {
-	mu   sync.Mutex
+	mu    sync.Mutex
 	items []inquiry
 }
 
