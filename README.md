@@ -39,11 +39,17 @@ panel with live system monitoring, guided integrations and bilingual DE/FA UI.
 ## Repository layout
 
 ```
-index.html …        portfolio + store pages (static, fast)
-tools/              watchdogs + audits (e.g. EUR→IRR rate watchdog)
-docs/               engineering standard, handover, ADRs
+site/               amir-khosravi.de (static, DE/EN, project case studies)
+*.html + legal/     nelurio.com store funnel (pricing, checkout, account, legal)
+api/                contact API (Go) with tests and .env.example
 tests-ci/           Playwright end-to-end tests
+.github/ .githooks/ CI workflows and the pre-push guard (no direct push to main)
+scripts/            repeatable deploy, artifact push, CI contract check
+tools/              watchdogs, audits and mock-up generators
+docs/               engineering standard, contracts, ADRs, task briefs, handover
 ```
+
+Local-only artefacts (QC screenshots, generated previews) are git-ignored; see `.gitignore`.
 
 ## Contact
 
