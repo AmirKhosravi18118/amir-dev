@@ -2,7 +2,9 @@
    published site-content.json (Studio → webroot). Static-first: if the file
    is missing, the baked i18n copy stays — the fetch failure is silent and
    never blocks rendering. */
-(async function applySiteContent() {
+let applied = false;
+async function applySiteContent() {
+  if (applied) return;
   try {
     const r = await fetch('/content/site-content.json', { cache: 'no-store' });
     if (!r.ok) return;
@@ -41,4 +43,8 @@
     applied = true;
     document.documentElement.dataset.contentOverride = 'applied';
   } catch { /* static-first: baked copy stands */ }
-})();
+}
+/* Run early, then again after full load — the i18n/JS shell paints baked text
+   asynchronously, so one early pass can be overwritten. */
+applySiteContent();
+window.addEventListener('load', () => setTimeout(applySiteContent, 300));
