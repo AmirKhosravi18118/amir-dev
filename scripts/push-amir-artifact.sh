@@ -4,7 +4,7 @@
 set -euo pipefail
 VPS="${AMIR_VPS:-ubuntu@92.5.111.34}"
 KEY="${AMIR_SSH_KEY:-$HOME/.ssh/nelurio-oracle.key}"
-EX="--exclude BRIEF.md --exclude quality-baseline.d --exclude tests --exclude tools"
+EX="--exclude BRIEF.md --exclude quality-baseline.d --exclude tests --exclude tools --exclude content"
 
 git archive HEAD site | gzip > /tmp/amir-site.tar.gz
 scp -q -i "$KEY" /tmp/amir-site.tar.gz "$VPS":/tmp/
