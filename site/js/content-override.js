@@ -7,16 +7,25 @@
     const r = await fetch('/content/site-content.json', { cache: 'no-store' });
     if (!r.ok) return;
     const j = await r.json();
+    // published shape: {hero:{title,lead}, promise, services:[{title,desc}], about:{title,body}}
     const map = {
-      hero_title: '[data-t="hero.h1"]',
-      hero_lead: '[data-t="hero.lead"]',
+      heroTitle: '[data-t="hero.h1"]',
+      heroLead: '[data-t="hero.lead"]',
       promise: '[data-t="pr.p"]',
-      about_body: '[data-t="ab.p"]',
-      about_title: '[data-t="ab.h2"]'
+      aboutBody: '[data-t="ab.p"]',
+      aboutTitle: '[data-t="ab.h2"]'
+    };
+    const vals = {
+      heroTitle: j.hero && j.hero.title,
+      heroLead: j.hero && j.hero.lead,
+      promise: j.promise,
+      aboutBody: j.about && j.about.body,
+      aboutTitle: j.about && j.about.title
     };
     for (const [key, sel] of Object.entries(map)) {
-      if (!j[key]) continue;
-      document.querySelectorAll(sel).forEach((el) => { el.textContent = j[key]; });
+      const v = vals[key];
+      if (!v) continue;
+      document.querySelectorAll(sel).forEach((el) => { el.textContent = v; });
     }
     if (Array.isArray(j.services)) {
       const cards = document.querySelectorAll('#leistungen .svc');
